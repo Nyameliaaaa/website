@@ -42,6 +42,12 @@ header, footer {
     margin: 0 auto;
 }
 
+.header_flex {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
 main.container {
     margin: 12px auto;
 }
@@ -50,4 +56,11 @@ main.container {
     .container {
         margin: 10px;
     }
+}
+
+.header_img {
+    border-radius: 100%;
+    margin-top: 10px;
+    height: 7vw;
+    width: 7vw;
 }
