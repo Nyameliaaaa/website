@@ -42,6 +42,10 @@ header, footer {
     margin: 0 auto;
 }
 
+main.container {
+    margin: 12px auto;
+}
+
 @media (max-width: 690px) { 
     .container {
         margin: 10px;
