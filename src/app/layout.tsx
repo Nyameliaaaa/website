@@ -24,7 +24,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-base text-text">
+        <div className="h-[100vh] w-[100vw] overflow-hidden bg-gradient-to-br from-mantle via-crust to-mantle">
+          <div className="mb-2">
+            <div className="grid grid-cols-5">
+              <div className="h-4 bg-sapphire"></div>
+              <div className="h-4 bg-pink"></div>
+              <div className="h-4 latte bg-base"></div>
+              <div className="h-4 bg-pink"></div>
+              <div className="h-4 bg-sapphire"></div>
+            </div>
+          </div>
+          <div className="overflow-y-scroll">{children}</div>
+        </div>
+      </body>
     </html>
   );
 }
