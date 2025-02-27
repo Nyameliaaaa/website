@@ -1,32 +1,48 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div>
       <div className="mb-5">
-        {/* header :3 */}
-        <div className="flex flex-row items-center justify-center px-4 md:px-24 gap-4 md:gap-0">
-          <div className="w-1/3">
-            <Image
-              alt=""
-              src="/images/amelia.png"
-              className="rounded-full mx-auto"
-              width={128 + 64}
-              height={128 + 64}
-            />
+        {/* little about me */}
+        <section className="mb-3">
+          <h2 className="text-xl md:text-3xl font-semibold mb-2">
+            <span className="text-pink">{"//"}</span>
+            <span className="ml-2">so who are you?</span>
+          </h2>
+
+          <p className="text-md md:text-2xl">
+            hi im a basic transfem bitch im 16 and i use she/her pronouns
+          </p>
+        </section>
+
+        {/* links */}
+        <section>
+          <h2 className="text-xl md:text-3xl font-semibold mb-2">
+            <span className="text-pink">{"//"}</span>
+            <span className="ml-2">and where do i go next?</span>
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <Link className="bg-surface0 p-2 rounded-xl" href="/about">
+              <p className="md:text-2xl text-center">about</p>
+            </Link>
+            <Link className="bg-surface0 p-2 rounded-xl" href="/projects">
+              <p className="md:text-2xl text-center">projects</p>
+            </Link>
+            <a
+              className="bg-surface0 p-2 rounded-xl"
+              href="https://github.com/nyameliaaaa"
+            >
+              <p className="md:text-2xl text-center">github</p>
+            </a>
+            <a
+              className="bg-surface0 p-2 rounded-xl"
+              href="https://bsky.app/profile/nyamelia.is-immensely.gay"
+            >
+              <p className="md:text-2xl text-center">bsky</p>
+            </a>
           </div>
-          <div className="w-2/3">
-            <h1 className="text-pink font-bold text-2xl md:text-5xl">
-              amelia rose :3
-            </h1>
-            <p className="text-md text-subtext0 font-medium md:text-2xl">
-              nyamelia
-            </p>
-            <p className="mt-5 md:mt-7 text-md md:text-2xl font-medium">
-              hi :)
-            </p>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
   );
