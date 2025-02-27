@@ -1,16 +1,18 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div>
       <div className="mb-5">
         {/* header :3 */}
-        <div className="flex flex-row items-center justify-center px-4 md:px-24">
+        <div className="flex flex-row items-center justify-center px-4 md:px-24 gap-4 md:gap-0">
           <div className="w-1/3">
-            <img
+            <Image
               alt=""
               src="/images/amelia.png"
-              className="rounded-full mx-auto w-[8vw] h-[8vw]"
+              className="rounded-full mx-auto"
+              width={128 + 64}
+              height={128 + 64}
             />
           </div>
           <div className="w-2/3">
@@ -21,14 +23,11 @@ export default function Home() {
               nyamelia
             </p>
             <p className="mt-5 md:mt-7 text-md md:text-2xl font-medium">
-              hi :3
+              hi :)
             </p>
           </div>
         </div>
       </div>
-
-      <p>:3</p>
-      <p>run before i pound your mom  </p>
     </div>
   );
 }
