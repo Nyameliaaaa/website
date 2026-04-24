@@ -10,7 +10,7 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"deploy:pg": "deploy-to-git"
+		"deploy": "node deploy.mjs"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^5.0.4",
@@ -25,20 +25,6 @@
 	},
 	"devDependencies": {
 		"@catppuccin/tailwindcss": "^1.0.0",
-		"@tailwindcss/typography": "^0.5.19",
-		"deploy-to-git": "^0.4.1"
-	},
-	"config": {
-		"deployToGit": {
-			"repository": "ssh://git@git.gay/nyamelia/website.git",
-			"branch": "pages",
-			"folder": "__deploy",
-			"script": "npm run build-my-app",
-			"commit": "deploy :3",
-			"user": {
-				"email": "nyameliaaaa@proton.me",
-				"name": "amelia-rose-deploy"
-			}
-		}
+		"@tailwindcss/typography": "^0.5.19"
 	}
 }
