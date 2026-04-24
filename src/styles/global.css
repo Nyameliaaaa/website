@@ -41,3 +41,11 @@
 	font-weight: var(--shiki-dark-font-weight) !important;
 	text-decoration: var(--shiki-dark-text-decoration) !important;
 }
+
+mark {
+	@apply bg-ctp-crust text-ctp-pink;
+}
+
+kbd {
+	@apply border-ctp-surface0;
+}

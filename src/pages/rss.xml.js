@@ -1,16 +1,16 @@
-import { getCollection } from 'astro:content';
-import rss from '@astrojs/rss';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from "astro:content";
+import rss from "@astrojs/rss";
 
 export async function GET(context) {
-	const posts = await getCollection('ramblings');
+	const ramblings = await getCollection("ramblings");
 	return rss({
-		title: SITE_TITLE,
-		description: SITE_DESCRIPTION,
+		title: "amelia's ramblings :3",
+		description:
+			"i sometimes bark i mean think i mean bark and i think some people would like to hear that. i think (i dont)",
 		site: context.site,
-		items: posts.map((post) => ({
-			...post.data,
-			link: `/blog/${post.id}/`,
+		items: ramblings.map((rambling) => ({
+			...rambling.data,
+			link: `/ramblings/${rambling.id}/`,
 		})),
 	});
 }

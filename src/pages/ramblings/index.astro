@@ -1,18 +1,21 @@
 ---
 import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
+import IconLink from "../../components/IconLink.astro";
 import Base from "../../layouts/Base.astro";
-import Rambling from "../../components/Rambling.astro";
+import Rambling from "../../components/RamblingCard.astro";
 
-const posts = (await getCollection("ramblings")).sort(
+const ramblings = (await getCollection("ramblings")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
-<Base title="amelia's ramblings">
+<Base title="amelia's ramblings" description=":3">
+	<div class="my-2">
+		<IconLink text="view by tags" icon="label" url="/ramblings/tags/" />
+	</div>
 	<section>
 		<ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
-			{[...posts].map((rambling) => <Rambling rambling={rambling} />)}
+			{[...ramblings].map((rambling) => <Rambling rambling={rambling} />)}
 		</ul>
 	</section>
 </Base>

@@ -12,27 +12,40 @@ export async function getStaticPaths() {
 }
 type Props = CollectionEntry<"ramblings">;
 
-const post = Astro.props;
-const { Content } = await render(post);
+const rambling = Astro.props;
+const { Content } = await render(rambling);
 ---
 
-<Base title={post.data.title} description={post.data.description}>
-	<article
-		class="prose prose-ctp max-w-none prose-img:rounded-lg prose-img:drop-shadow-md mt-0"
-	>
+<Base title={rambling.data.title} description={rambling.data.description}>
+	<article>
 		<div>
-			<div>
-				<FormattedDate date={post.data.pubDate} />
+			<div class="flex flex-row gap-4 items-center">
+				<p class="text-ctp-subtext1">
+					written <span class="text-ctp-text font-semibold"
+						><FormattedDate date={rambling.data.pubDate} /></span
+					>
+				</p>
 				{
-					post.data.updatedDate && (
-						<div>
-							Last updated on{" "}
-							<FormattedDate date={post.data.updatedDate} />
-						</div>
+					rambling.data.updatedDate && (
+						<>
+							<p class="text-ctp-subtext1">|</p>
+							<p class="text-ctp-subtext1">
+								updated{" "}
+								<span class="text-ctp-text font-semibold">
+									<FormattedDate
+										date={rambling.data.updatedDate}
+									/>
+								</span>
+							</p>
+						</>
 					)
 				}
 			</div>
 		</div>
-		<Content />
+		<div
+			class="prose prose-ctp max-w-none prose-img:rounded-lg prose-img:drop-shadow-md mt-4"
+		>
+			<Content />
+		</div>
 	</article>
 </Base>

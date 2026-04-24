@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../../layouts/Base.astro";
+
+const ramblings = await getCollection("ramblings");
+const tags = [...new Set(ramblings.flatMap((p) => p.data.tags))];
+---
+
+<Base
+	title="amelia's ramblings"
+	description="a full list of all tags that exist :P"
+>
+	<section>
+		<ul class="mt-4 list-disc list-inside">
+			{
+				tags.map((tag) => (
+					<li class="text-xl font-medium hover:text-ctp-pink duration-400 transition-all hover:underline underline-offset-2">
+						<a href={`/ramblings/tags/${tag}`}>{tag}</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</Base>
