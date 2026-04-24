@@ -1,44 +1,51 @@
 {
-	"name": "website",
-	"type": "module",
-	"version": "0.0.1",
-	"engines": {
-		"node": ">=22.12.0"
-	},
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro",
-		"deploy:pg": "deploy-to-git"
-	},
-	"dependencies": {
-		"@astrojs/mdx": "^5.0.4",
-		"@astrojs/rss": "^4.0.18",
-		"@astrojs/sitemap": "^3.7.2",
-		"@iconify-json/mdi": "^1.2.3",
-		"@tailwindcss/vite": "^4.2.4",
-		"astro": "^6.1.9",
-		"astro-icon": "^1.1.5",
-		"sharp": "^0.34.3",
-		"tailwindcss": "^4.2.4"
-	},
-	"devDependencies": {
-		"@catppuccin/tailwindcss": "^1.0.0",
-		"@tailwindcss/typography": "^0.5.19",
-		"deploy-to-git": "^0.4.1"
-	},
-	"config": {
-		"deployToGit": {
-			"repository": "git@git.gay/nyamelia/website.git",
-			"branch": "pages",
-			"folder": "__deploy",
-			"script": "npm run build-my-app",
-			"commit": "deploy :3",
-			"user": {
-				"email": "nyameliaaaa@proton.me",
-				"name": "amelia-rose-deploy"
-			}
-		}
-	}
+  "name": "website",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "npm run build && wrangler dev",
+    "astro": "astro",
+    "deploy:pg": "deploy-to-git",
+    "generate-types": "wrangler types",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.2.1",
+    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
+    "@iconify-json/mdi": "^1.2.3",
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "^6.1.9",
+    "astro-icon": "^1.1.5",
+    "sharp": "^0.34.3",
+    "tailwindcss": "^4.2.4"
+  },
+  "devDependencies": {
+    "@catppuccin/tailwindcss": "^1.0.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "deploy-to-git": "^0.4.1",
+    "wrangler": "^4.85.0"
+  },
+  "config": {
+    "deployToGit": {
+      "repository": "git@git.gay/nyamelia/website.git",
+      "branch": "pages",
+      "folder": "__deploy",
+      "script": "npm run build-my-app",
+      "commit": "deploy :3",
+      "user": {
+        "email": "nyameliaaaa@proton.me",
+        "name": "amelia-rose-deploy"
+      }
+    }
+  },
+  "overrides": {
+    "vite": "^7"
+  }
 }
