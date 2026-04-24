@@ -30,7 +30,7 @@
 	},
 	"config": {
 		"deployToGit": {
-			"repository": "git@git.gay/nyamelia/website.git",
+			"repository": "ssh://git@git.gay/nyamelia/website.git",
 			"branch": "pages",
 			"folder": "__deploy",
 			"script": "npm run build-my-app",
