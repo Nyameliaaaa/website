@@ -10,9 +10,10 @@ import IconLink from "../components/IconLink.astro";
 interface Props {
 	title?: string;
 	description?: string;
+	show?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, show } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 function getBackPath() {
@@ -26,10 +27,11 @@ function getBackPath() {
 
 const hasNavigated = Astro.url.pathname !== "/";
 const hasInfo = title ?? description;
+const showEnabled = show === undefined ? true : show;
 ---
 
 <!doctype html>
-<html lang="en" class="macchiato">
+<html lang="en" class="mocha">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -69,16 +71,18 @@ const hasInfo = title ?? description;
 		<slot name="head" />
 	</head>
 	<body
-		class="h-screen w-screen overflow-hidden bg-linear-to-br from-ctp-mantle via-ctp-crust to-ctp-mantle text-ctp-text text-lg font-display"
+			class="h-screen w-screen overflow-hidden bg-linear-to-br from-ctp-mantle via-ctp-crust to-ctp-mantle"
 	>
-		<div class="h-full overflow-y-scroll">
+		<div
+			class="h-full overflow-y-scroll macchiato text-ctp-text text-lg font-display"
+		>
 			<TransFlag />
 
 			<Header />
 
 			<main class:list={[AUTO_MARGIN, "my-4"]}>
 				<div
-					class="bg-ctp-base p-3 rounded-lg border-2 border-dashed border-ctp-pink"
+					class="bg-ctp-mantle p-3 rounded-lg border-2 border-dashed border-ctp-pink"
 				>
 					{
 						hasNavigated && (
@@ -92,7 +96,7 @@ const hasInfo = title ?? description;
 						)
 					}
 					{
-						hasInfo && (
+						hasInfo && showEnabled && (
 							<div class="mb-2">
 								<h1 class="font-bold text-2xl text-ctp-pink">
 									{title}

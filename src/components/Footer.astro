@@ -1,7 +1,7 @@
 ---
 import { AUTO_MARGIN, FOOTER_PIXELIES } from "../consts";
-import { Icon } from "astro-icon/components";
 import IconLink from "./IconLink.astro";
+import { Image } from "astro:assets";
 ---
 
 <footer class="py-3">
@@ -11,15 +11,25 @@ import IconLink from "./IconLink.astro";
 			{
 				FOOTER_PIXELIES.map((pixelie) => (
 					<li>
-						<a href={pixelie.url ?? ""}>
-							<img
+						{pixelie.url ? (
+							<a href={pixelie.url}>
+								<Image
+									src={pixelie.img}
+									width="88"
+									height="31"
+									alt={pixelie.alt ?? ""}
+									style="image-rendering: pixelated;"
+								/>
+							</a>
+						) : (
+							<Image
 								src={pixelie.img}
 								width="88"
 								height="31"
-								alt={pixelie.url}
+								alt={pixelie.alt ?? ""}
 								style="image-rendering: pixelated;"
 							/>
-						</a>
+						)}
 					</li>
 				))
 			}
@@ -39,11 +49,7 @@ import IconLink from "./IconLink.astro";
 				url="https://git.gay/nyamelia/website"
 				text="view source"
 			/>
-			<IconLink
-				icon="rss"
-				url="/rss.xml"
-				text="rss feed"
-			/>
+			<IconLink icon="rss" url="/rss.xml" text="rss feed" />
 		</div>
 	</div>
 </footer>

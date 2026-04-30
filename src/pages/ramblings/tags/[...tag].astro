@@ -5,13 +5,17 @@ import Rambling from "../../../components/RamblingCard.astro";
 
 export async function getStaticPaths() {
 	const ramblings = await getCollection("ramblings");
-	const tags = [...new Set(ramblings.flatMap((rambling) => rambling.data.tags))];
+	const tags = [
+		...new Set(ramblings.flatMap((rambling) => rambling.data.tags)),
+	];
 	return tags.map((tag) => ({
 		params: { tag },
 		props: {
 			tag,
 			ramblings: ramblings.filter(
-				(rambling) => rambling.data.tags && rambling.data.tags.includes(tag ?? ""),
+				(rambling) =>
+					rambling.data.tags &&
+					rambling.data.tags.includes(tag ?? ""),
 			),
 		},
 	}));

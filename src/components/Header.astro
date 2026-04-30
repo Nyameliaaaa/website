@@ -1,48 +1,32 @@
 ---
-import {
-	AUTO_MARGIN,
-	SITE_DESCRIPTION,
-	SITE_TITLE,
-	HEADER_URLS,
-} from "../consts";
-import HeaderLink from "../components/HeaderLink.astro";
+import { AUTO_MARGIN, HEADER_URLS } from '../consts';
+import HeaderLink from '../components/HeaderLink.astro';
 ---
 
 <header>
-	<nav
-		class:list={[
-			AUTO_MARGIN,
-			"flex flex-col gap-2 items-center justify-center",
-		]}
-	>
-		<h2>
-			<a
-				href="/"
-				class="text-lg md:text-3xl text-ctp-pink font-bold text-shadow-ctp-crust"
-				>amelia :3</a
-			>
-		</h2>
-		<div
-			class="flex flex-row gap-3 p-2 rounded-md bg-ctp-mantle border border-dashed border-ctp-subtext0"
-		>
-			<span>[</span>
-			<ul class="flex flex-row gap-4">
-				{
-					HEADER_URLS.map((url) => (
-						<li>
-							<HeaderLink
-								href={url.url}
-								inactiveClass="text-ctp-subtext0 font-semibold"
-								class="hover:text-ctp-subtext1 transition-colors transition-400"
-								activeClass="text-ctp-pink font-bold"
-							>
-								{url.name}
-							</HeaderLink>
-						</li>
-					))
-				}
-			</ul>
-			<span>]</span>
-		</div>
-	</nav>
+    <nav class:list={[AUTO_MARGIN, 'flex flex-col gap-2 items-center justify-center']}>
+        <h2>
+            <a href="/" class="text-xl md:text-3xl text-ctp-pink font-bold text-shadow-ctp-crust">amelia :3</a>
+        </h2>
+        <div class="flex flex-row gap-3 p-2 rounded-md bg-ctp-mantle border border-dashed border-ctp-subtext0">
+            <span>[</span>
+            <ul class="flex flex-row gap-4">
+                {
+                    HEADER_URLS.map(url => (
+                        <li>
+                            <HeaderLink
+                                href={url.url}
+                                inactiveClass="text-ctp-subtext0 font-semibold"
+                                class="hover:text-ctp-subtext1 transition-colors transition-400"
+                                activeClass="text-ctp-pink font-bold"
+                            >
+                                {url.name}
+                            </HeaderLink>
+                        </li>
+                    ))
+                }
+            </ul>
+            <span>]</span>
+        </div>
+    </nav>
 </header>

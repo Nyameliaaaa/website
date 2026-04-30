@@ -1,32 +1,32 @@
 ---
-import { type CollectionEntry } from "astro:content";
-import FormattedDate from "./FormattedDate.astro";
+import { type CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
 
-type Props = { rambling: CollectionEntry<"ramblings"> };
+type Props = { rambling: CollectionEntry<'ramblings'> };
 const { rambling } = Astro.props;
 ---
 
-<li class="rounded-md bg-ctp-mantle p-2">
-	<a href={`/ramblings/${rambling.id}/`}>
-		<h2 class="font-semibold text-xl text-ctp-pink">
-			{rambling.data.title}
-		</h2>
-		<p>
-			<FormattedDate date={rambling.data.pubDate} />
-		</p>
-		{
-			rambling.data.tags && (
-				<div class="flex flex-row flex-wrap gap-2 mt-2">
-					{rambling.data.tags.map((tag) => (
-						<a
-							href={`/ramblings/tags/${tag}`}
-							class="border border-ctp-subtext0 px-1 border-dashed rounded-sm"
-						>
-							{tag}
-						</a>
-					))}
-				</div>
-			)
-		}
-	</a>
+<li class="rounded-md bg-ctp-base p-2">
+    <a href={`/ramblings/${rambling.id}/`}>
+        <h2 class="font-semibold text-xl text-ctp-pink">
+            {rambling.data.title}
+        </h2>
+        <p>
+            <FormattedDate date={rambling.data.pubDate} />
+        </p>
+        {
+            rambling.data.tags && (
+                <div class="flex flex-row flex-wrap gap-2 mt-2">
+                    {rambling.data.tags.map((tag) => (
+                        <a
+                            href={`/ramblings/tags/${tag}`}
+                            class="border border-ctp-subtext0 px-1 border-dashed rounded-sm"
+                        >
+                            #{tag}
+                        </a>
+                    ))}
+                </div>
+            )
+        }
+    </a>
 </li>
