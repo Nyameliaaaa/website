@@ -46,9 +46,15 @@
                 leave-to-class="opacity-0"
                 mode="out-in"
             >
-                <p v-if="loading">loading {{ '<3' }}</p>
-                <p v-if="error">something went wrong {{ '<\/3' }}</p>
+                <p v-if="loading" class="text-ctp-subtext0 font-semibold text-center">loading {{ '<3' }}</p>
+                <p v-if="error" class="text-ctp-subtext0 font-semibold text-center">
+                    something went wrong {{ '<\/3' }}
+                </p>
                 <div v-if="data">
+                    <p v-if="data.entries.length === 0" class="text-ctp-subtext0 font-semibold text-center">
+                        no entries {{ '<\/3' }}
+                    </p>
+
                     <template v-for="entry in data.entries">
                         <div class="bg-ctp-base rounded-sm p-2 mb-2 w-full">
                             <div class="flex flex-row justify-between">
@@ -68,10 +74,9 @@
                             <p class="text-lg font-semibold">{{ entry.message }}</p>
                         </div>
                     </template>
-                    <!-- <code class="w-full">{{ JSON.stringify(data.entries, null, 2) }}</code> -->
-                </div>
 
-                <IconLink v-if="isHomepage" url="/guestbook" icon="arrow-right-thin" text="see all entries" />
+                    <IconLink v-if="isHomepage" url="/guestbook" icon="arrow-right-thin" text="see all entries" />
+                </div>
             </TransitionGroup>
         </div>
     </div>
