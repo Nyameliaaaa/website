@@ -20,10 +20,10 @@ interface Props {
         <slot name="head" />
     </head>
     <body
-        class="h-screen w-screen overflow-hidden bg-linear-to-br from-ctp-mantle via-ctp-crust to-ctp-mantle selection:bg-ctp-pink selection:text-ctp-crust"
+        class="min-h-screen w-screen bg-linear-to-br from-ctp-mantle via-ctp-crust to-ctp-mantle selection:bg-ctp-pink selection:text-ctp-crust"
     >
         <TransFlag />
-        <div class="h-full overflow-y-scroll macchiato text-ctp-text text-lg font-display pt-2 pb-7">
+        <div class="h-full macchiato text-ctp-text text-lg font-display pt-2 pb-7">
             <Header />
 
             <main class:list={[AUTO_MARGIN, 'my-4']}>
