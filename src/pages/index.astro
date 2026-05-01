@@ -15,7 +15,14 @@ const sub = 'font-medium text-ctp-subtext1 mb-2';
 >
     <div class="mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
         <div class="order-first md:order-last md:self-start md:mr-5 rounded-md">
-            <Image src={pfp} alt="amelia :3" width={200} height={200} class="border-2 border-dashed border-ctp-mauve" />
+            <Image
+                src={pfp}
+                alt="amelia :3"
+                width={200}
+                height={200}
+                class="border-2 border-dashed border-ctp-mauve"
+                loading="eager"
+            />
         </div>
         <div class="order-last md:order-first">
             <div class="mb-6">

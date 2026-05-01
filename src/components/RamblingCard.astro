@@ -17,10 +17,10 @@ const { rambling } = Astro.props;
         {
             rambling.data.tags && (
                 <div class="flex flex-row flex-wrap gap-2 mt-2">
-                    {rambling.data.tags.map((tag) => (
+                    {rambling.data.tags.map(tag => (
                         <a
                             href={`/ramblings/tags/${tag}`}
-                            class="border border-ctp-subtext0 px-1 border-dashed rounded-sm"
+                            class="border border-ctp-subtext0 px-1 border-dashed rounded-sm hover:bg-ctp-surface0 transition-colors duration-500"
                         >
                             #{tag}
                         </a>

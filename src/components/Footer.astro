@@ -1,55 +1,53 @@
 ---
-import { AUTO_MARGIN, FOOTER_PIXELIES } from "../consts";
-import IconLink from "./IconLink.astro";
-import { Image } from "astro:assets";
+import { AUTO_MARGIN, FOOTER_PIXELIES, FOOTER_URLS } from '../consts';
+import IconLink from './IconLink.astro';
+import { Image } from 'astro:assets';
 ---
 
 <footer class="py-3">
-	<div class:list={[AUTO_MARGIN, "grid grid-cols-1 md:grid-cols-2"]}>
-		<!-- gap-3 p-2 rounded-md bg-ctp-mantle border border-dashed border-ctp-subtext0 -->
-		<ul class="flex flex-row flex-wrap justify-start gap-2">
-			{
-				FOOTER_PIXELIES.map((pixelie) => (
-					<li>
-						{pixelie.url ? (
-							<a href={pixelie.url}>
-								<Image
-									src={pixelie.img}
-									width="88"
-									height="31"
-									alt={pixelie.alt ?? ""}
-									style="image-rendering: pixelated;"
-								/>
-							</a>
-						) : (
-							<Image
-								src={pixelie.img}
-								width="88"
-								height="31"
-								alt={pixelie.alt ?? ""}
-								style="image-rendering: pixelated;"
-							/>
-						)}
-					</li>
-				))
-			}
-		</ul>
-		<div class="flex flex-col gap-2 items-left justify-between p-2">
-			<div
-				class="group flex flex-row gap-2 transition-all duration-400 items-center"
-			>
-				<p class="text-ctp-subtext0 md:text-lg">
-					made with <span class="text-ctp-pink font-semibold"
-						>{"<3"} and :3</span
-					> by amelia
-				</p>
-			</div>
-			<IconLink
-				icon="git"
-				url="https://git.gay/nyamelia/website"
-				text="view source"
-			/>
-			<IconLink icon="rss" url="/rss.xml" text="rss feed" />
-		</div>
-	</div>
+    <div class:list={[AUTO_MARGIN, 'grid grid-cols-1 md:grid-cols-2 select-none']}>
+        <ul class="flex flex-row flex-wrap justify-start gap-2">
+            {
+                FOOTER_PIXELIES.map(pixelie => (
+                    <li>
+                        {pixelie.url ? (
+                            <a href={pixelie.url}>
+                                <Image
+                                    src={pixelie.img}
+                                    width="88"
+                                    height="31"
+                                    alt={pixelie.alt ?? ''}
+                                    style="image-rendering: pixelated;"
+                                />
+                            </a>
+                        ) : (
+                            <Image
+                                src={pixelie.img}
+                                width="88"
+                                height="31"
+                                alt={pixelie.alt ?? ''}
+                                style="image-rendering: pixelated;"
+                            />
+                        )}
+                    </li>
+                ))
+            }
+        </ul>
+        <div class="flex flex-col gap-2 items-left justify-between p-2">
+            <div class="group flex flex-row gap-2 transition-all duration-400 items-center">
+                <p class="text-ctp-subtext0 md:text-lg">
+                    made with <span class="text-ctp-pink font-semibold">{'<3'} and :3</span> by amelia
+                </p>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:gap-3">
+                {
+                    FOOTER_URLS.map((url, index) => (
+                        <div class:list={[{ 'xl:col-span-1': index % 2 === 0, 'xl:col-span-2': index % 2 === 1 }]}>
+                            <IconLink {...url} />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
 </footer>

@@ -1,0 +1,29 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import RamblingProse from '../components/RamblingProse.astro';
+import RamblingTableOfContents from '../components/RamblingTableOfContents.astro';
+import { RAMBLING_SIDEBAR_TOC } from '../consts';
+import Page from '../layouts/Page.astro';
+
+export async function getStaticPaths() {
+    const pages = await getCollection('pages');
+    return pages.map(page => ({
+        params: { slug: page.id },
+        props: page
+    }));
+}
+
+type Props = CollectionEntry<'pages'>;
+
+const page = Astro.props;
+const { Content, headings } = await render(page);
+---
+
+<Page title={page.data.title} description={page.data.description}>
+    <section>
+        <div class:list={RAMBLING_SIDEBAR_TOC}>
+            <RamblingTableOfContents headings={headings} articleTitle="uses" />
+            <RamblingProse><Content /></RamblingProse>
+        </div>
+    </section>
+</Page>

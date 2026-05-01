@@ -47,13 +47,11 @@ canonicalHeadings.push({
     children: buildTree(Astro.props.headings),
     depth: 0
 });
-
-// console.log(JSON.stringify(canonicalHeadings, null, 2));
 ---
 
 <aside
     class:list={[
-        'p-2',
+        'p-2 select-none',
         'max-lg:bg-ctp-base max-lg:rounded-md max-lg:w-fit max-lg:my-2',
         'lg:col-span-1 lg:sticky lg:top-2 lg:self-start lg:h-fit lg:overflow-y-auto lg:max-h-screen lg:pb-4'
     ]}

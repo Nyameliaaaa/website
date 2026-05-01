@@ -9,7 +9,9 @@
                 id="name"
             />
 
-            <label class="text-ctp-subtext0 font-semibold" for="message">message</label>
+            <label class="text-ctp-subtext0 font-semibold" for="message"
+                >message <span class="text-ctp-pink">*</span></label
+            >
             <textarea
                 class="block w-full h-20 resize-none bg-ctp-base border-none mb-2 rounded-sm focus:ring-2 focus:ring-ctp-pink placeholder-ctp-subtext1 text-ctp-text"
                 v-model="message"
@@ -20,12 +22,12 @@
             />
 
             <label class="text-ctp-subtext0 font-semibold" for="email">email</label>
-            <p class="text-ctp-subtext1">only visible to amelia :p</p>
+            <p class="text-ctp-subtext1">only visible to amelia, u dont have to include this :p</p>
             <input
                 class="block w-full bg-ctp-base border-none mb-2 rounded-sm focus:ring-2 focus:ring-ctp-pink placeholder-ctp-subtext1 text-ctp-text"
                 v-model="email"
                 autocomplete="nope"
-                placeholder="anonymous"
+                placeholder="hi@example.com"
                 type="email"
                 id="email"
             />
