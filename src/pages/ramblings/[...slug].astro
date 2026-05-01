@@ -1,10 +1,10 @@
 ---
+import { TOC_SIDEBAR_CLASSES } from '@/consts';
+import MarkdownProse from '@components/MarkdownProse.astro';
+import MarkdownTableOfContents from '@components/MarkdownTableOfContents.astro';
+import RamblingDate from '@components/RamblingDate.astro';
+import Page from '@layouts/Page.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import RamblingDate from '../../components/RamblingDate.astro';
-import RamblingProse from '../../components/RamblingProse.astro';
-import RamblingTableOfContents from '../../components/RamblingTableOfContents.astro';
-import { RAMBLING_SIDEBAR_TOC } from '../../consts';
-import Page from '../../layouts/Page.astro';
 
 export async function getStaticPaths() {
     const ramblings = await getCollection('ramblings');
@@ -24,10 +24,22 @@ const { Content, headings } = await render(rambling);
     <section>
         <div class="mb-5">
             <RamblingDate {...rambling} />
+            <div class="mt-3 flex flex-row gap-2">
+                {
+                    rambling.data.tags?.map(tag => (
+                        <a
+                            href={`/ramblings/tags/${tag}`}
+                            class="border border-ctp-subtext0 px-1 border-dashed rounded-sm hover:bg-ctp-surface0 transition-colors duration-500"
+                        >
+                            #{tag}
+                        </a>
+                    ))
+                }
+            </div>
         </div>
-        <div class:list={RAMBLING_SIDEBAR_TOC}>
-            <RamblingTableOfContents headings={headings} />
-            <RamblingProse><Content /></RamblingProse>
+        <div class:list={TOC_SIDEBAR_CLASSES}>
+            <MarkdownTableOfContents headings={headings} />
+            <MarkdownProse><Content /></MarkdownProse>
         </div>
     </section>
 </Page>

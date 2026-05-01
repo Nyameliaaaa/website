@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE } from '../consts';
+import { RSS_TITLE } from '../consts';
 
 interface Props {
     title?: string;
@@ -9,7 +9,7 @@ interface Props {
 const { title, description } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const canonicalTitle = `${SITE_TITLE} | ${title ?? 'a page'}`;
+const canonicalTitle = `${title ?? 'a page'} | amelia :3`;
 ---
 
 <meta charset="utf-8" />
@@ -17,7 +17,7 @@ const canonicalTitle = `${SITE_TITLE} | ${title ?? 'a page'}`;
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="icon" href="/favicon.png" />
 
-<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />
+<link rel="alternate" type="application/rss+xml" title={RSS_TITLE} href={new URL('rss.xml', Astro.site)} />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->

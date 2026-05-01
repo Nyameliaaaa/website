@@ -1,16 +1,16 @@
 ---
+import { RSS_DESCRIPTION, RSS_TITLE } from '@/consts';
+import IconLink from '@components/IconLink.astro';
+import Rambling from '@components/RamblingCard.astro';
+import Page from '@layouts/Page.astro';
 import { getCollection } from 'astro:content';
-import IconLink from '../../components/IconLink.astro';
-import Page from '../../layouts/Page.astro';
-import Rambling from '../../components/RamblingCard.astro';
-import { RAMBLING_DESCRIPTION } from '../../consts';
 
 const ramblings = (await getCollection('ramblings')).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
-<Page title="amelia's ramblings" description={RAMBLING_DESCRIPTION}>
+<Page title={RSS_TITLE} description={RSS_DESCRIPTION}>
     <div class="my-2">
         <IconLink text="view by tags" icon="label" url="/ramblings/tags/" />
     </div>

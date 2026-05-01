@@ -1,14 +1,36 @@
 ---
-import { AUTO_MARGIN, FOOTER_PIXELIES, FOOTER_URLS } from '../consts';
-import IconLink from './IconLink.astro';
+import { AUTO_MARGIN } from '@/consts';
+import { type PixelieEntry } from '@/types';
+import IconLink from '@components/IconLink.astro';
 import { Image } from 'astro:assets';
+
+const urls = [
+    { url: 'https://git.gay/nyamelia/website', text: 'view source', icon: 'git' },
+    { url: '/rss.xml', text: 'rss feed', icon: 'rss' },
+    { url: '/guestbook', text: 'guestbook', icon: 'pencil-box-multiple' },
+    { url: '/pixelies', text: 'the 88x31 museum', icon: 'link-box-variant' }
+];
+
+export const pixelies: PixelieEntry[] = [
+    {
+        url: 'https://gayspace.fr',
+        img: 'https://gayspace.fr/images/buttons/button.gif',
+        alt: 'lori <3'
+    },
+    {
+        url: 'https://git.gay',
+        img: 'https://git.gay/assets/img/button.svg',
+        alt: 'git.gay'
+    },
+    { img: 'https://maia.crimew.gay/badges/acab.gif', alt: 'ACAB' }
+];
 ---
 
 <footer class="py-3">
     <div class:list={[AUTO_MARGIN, 'grid grid-cols-1 md:grid-cols-2 select-none']}>
         <ul class="flex flex-row flex-wrap justify-start gap-2">
             {
-                FOOTER_PIXELIES.map(pixelie => (
+                pixelies.map(pixelie => (
                     <li>
                         {pixelie.url ? (
                             <a href={pixelie.url}>
@@ -41,7 +63,7 @@ import { Image } from 'astro:assets';
             </div>
             <div class="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:gap-3">
                 {
-                    FOOTER_URLS.map((url, index) => (
+                    urls.map((url, index) => (
                         <div class:list={[{ 'xl:col-span-1': index % 2 === 0, 'xl:col-span-2': index % 2 === 1 }]}>
                             <IconLink {...url} />
                         </div>

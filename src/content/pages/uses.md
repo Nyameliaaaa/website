@@ -20,16 +20,22 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 
 ### destiny (Galaxy S23 FE)
 
-go look it up i dont care /j
+- **OS:** Android 16 (One Ui 8, yes i know)
+- **CPU:** Exynos 2200
+- **RAM:** 8GiB LPDDR5
+- **GPU:** Xclipse 920
+- **storage**: 256GB UFS 3.1
+- **display**: 6.4" 1080x2340 @ 403 ppi 120Hz AMOLED
 
 ## peripherals
 
-- [Lenovo Legion M410](https://support.lenovo.com/us/en/solutions/acc500348-lenovo-legion-m410-wireless-rgb-gaming-mouse-overview-and-parts)
-- Huawei FreeLace (not listed)
+- [Lenovo Legion M410](https://support.lenovo.com/us/en/solutions/acc500348-lenovo-legion-m410-wireless-rgb-gaming-mouse-overview-and-parts): my main mouse
+- **Huawei FreeLace (not listed):** my headphones, i hate them, if you have reccomendations please give them
 
 ## software
 
 ### apps
 
-- [bitwarden](https://bitwarden.com)
-- [2FAS](https://2fas.com/auth)
+- [bitwarden](https://bitwarden.com): password manager
+- [2FAS](https://2fas.com/auth): TOTP 2FA
+- [firefox](https://firefox.com): web browser (the only valid one)

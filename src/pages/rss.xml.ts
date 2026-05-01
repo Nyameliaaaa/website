@@ -1,18 +1,14 @@
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { RSS_DESCRIPTION, RSS_TITLE } from '@/consts';
 import rss from '@astrojs/rss';
-import { RAMBLING_DESCRIPTION } from '../consts';
 import type { APIContext } from 'astro';
-// import { type RSSFeedItem } from '@astrojs/rss';
-// import MarkdownIt from 'markdown-it';
-// import sanitizeHtml from 'sanitize-html';
+import { getCollection } from 'astro:content';
 
 export async function GET(context: APIContext) {
     const ramblings = await getCollection('ramblings');
 
-
     return rss({
-        title: "amelia's ramblings :3",
-        description: RAMBLING_DESCRIPTION,
+        title: RSS_TITLE,
+        description: RSS_DESCRIPTION,
         site: context.site ?? 'https://nyamelia.is-immensely.gay/',
 
         items: ramblings.map(rambling => ({

@@ -1,5 +1,5 @@
 ---
-title: 'hi :'
+title: 'hi :3'
 description: 'what if rambling'
 pubDate: 'May 1 2026'
 tags: [hi]

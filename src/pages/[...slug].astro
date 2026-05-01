@@ -1,9 +1,9 @@
 ---
+import { TOC_SIDEBAR_CLASSES } from '@/consts';
+import MarkdownProse from '@components/MarkdownProse.astro';
+import MarkdownTableOfContents from '@components/MarkdownTableOfContents.astro';
+import Page from '@layouts/Page.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import RamblingProse from '../components/RamblingProse.astro';
-import RamblingTableOfContents from '../components/RamblingTableOfContents.astro';
-import { RAMBLING_SIDEBAR_TOC } from '../consts';
-import Page from '../layouts/Page.astro';
 
 export async function getStaticPaths() {
     const pages = await getCollection('pages');
@@ -21,9 +21,9 @@ const { Content, headings } = await render(page);
 
 <Page title={page.data.title} description={page.data.description}>
     <section>
-        <div class:list={RAMBLING_SIDEBAR_TOC}>
-            <RamblingTableOfContents headings={headings} articleTitle="uses" />
-            <RamblingProse><Content /></RamblingProse>
+        <div class:list={TOC_SIDEBAR_CLASSES}>
+            <MarkdownTableOfContents headings={headings} articleTitle="uses" />
+            <MarkdownProse><Content /></MarkdownProse>
         </div>
     </section>
 </Page>

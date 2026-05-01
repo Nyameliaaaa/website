@@ -1,6 +1,13 @@
 ---
-import { AUTO_MARGIN, HEADER_URLS } from '../consts';
-import HeaderLink from '../components/HeaderLink.astro';
+import { AUTO_MARGIN } from '@/consts';
+import HeaderLink from '@components/HeaderLink.astro';
+
+const links = [
+    { name: ':3', url: '/' },
+    { name: 'ramblings', url: '/ramblings' },
+    { name: 'music taste lol', url: '/music' },
+    { name: 'uses', url: '/uses' }
+];
 ---
 
 <header>
@@ -12,7 +19,7 @@ import HeaderLink from '../components/HeaderLink.astro';
             <span>[</span>
             <ul class="flex flex-row divide-x-2 divide-ctp-subtext0 divide-dashed">
                 {
-                    HEADER_URLS.map(url => (
+                    links.map(url => (
                         <li>
                             <HeaderLink
                                 href={url.url}

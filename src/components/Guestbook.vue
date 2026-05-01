@@ -92,8 +92,8 @@ const props = defineProps<{
     isHomepage: boolean;
 }>();
 
-import { ref, onMounted, TransitionGroup } from 'vue';
-import IconLink from './VueIconLink.vue';
+import { onMounted, ref, TransitionGroup } from 'vue';
+import IconLink from '@components/VueIconLink.vue';
 
 interface GuestbookEntry {
     name: string;
