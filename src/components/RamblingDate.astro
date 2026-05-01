@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+type Props = CollectionEntry<'ramblings'>;
+
+const rambling = Astro.props;
+---
+
+<div class="flex flex-row max-lg:gap-1 lg:gap-4 items-center">
+    <p class="text-ctp-subtext1">
+        written <span class="text-ctp-text font-semibold"><FormattedDate date={rambling.data.pubDate} /></span>
+    </p>
+    {
+        rambling.data.updatedDate && (
+            <>
+                <p class="text-ctp-subtext1">|</p>
+                <p class="text-ctp-subtext1">
+                    updated{' '}
+                    <span class="text-ctp-text font-semibold">
+                        <FormattedDate date={rambling.data.updatedDate} />
+                    </span>
+                </p>
+            </>
+        )
+    }
+</div>

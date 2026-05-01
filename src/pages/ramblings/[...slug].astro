@@ -1,51 +1,32 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
-import Base from "../../layouts/Base.astro";
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import RamblingDate from '../../components/RamblingDate.astro';
+import RamblingProse from '../../components/RamblingProse.astro';
+import RamblingTableOfContents from '../../components/RamblingTableOfContents.astro';
+import { RAMBLING_SIDEBAR_TOC } from '../../consts';
+import Page from '../../layouts/Page.astro';
 
 export async function getStaticPaths() {
-	const ramblings = await getCollection("ramblings");
-	return ramblings.map((rambling) => ({
-		params: { slug: rambling.id },
-		props: rambling,
-	}));
+    const ramblings = await getCollection('ramblings');
+    return ramblings.map(rambling => ({
+        params: { slug: rambling.id },
+        props: rambling
+    }));
 }
-type Props = CollectionEntry<"ramblings">;
+type Props = CollectionEntry<'ramblings'>;
 
 const rambling = Astro.props;
-const { Content } = await render(rambling);
+const { Content, headings } = await render(rambling);
 ---
 
-<Base title={rambling.data.title} description={rambling.data.description}>
-	<article>
-		<div>
-			<div class="flex flex-row gap-4 items-center">
-				<p class="text-ctp-subtext1">
-					written <span class="text-ctp-text font-semibold"
-						><FormattedDate date={rambling.data.pubDate} /></span
-					>
-				</p>
-				{
-					rambling.data.updatedDate && (
-						<>
-							<p class="text-ctp-subtext1">|</p>
-							<p class="text-ctp-subtext1">
-								updated{" "}
-								<span class="text-ctp-text font-semibold">
-									<FormattedDate
-										date={rambling.data.updatedDate}
-									/>
-								</span>
-							</p>
-						</>
-					)
-				}
-			</div>
-		</div>
-		<div
-			class="prose prose-ctp max-w-none prose-img:rounded-lg prose-img:drop-shadow-md mt-4"
-		>
-			<Content />
-		</div>
-	</article>
-</Base>
+<Page title={rambling.data.title} description={rambling.data.description}>
+    <section>
+        <div class="mb-5">
+            <RamblingDate {...rambling} />
+        </div>
+        <div class:list={RAMBLING_SIDEBAR_TOC}>
+            <RamblingTableOfContents headings={headings} />
+            <RamblingProse><Content /></RamblingProse>
+        </div>
+    </section>
+</Page>

@@ -46,3 +46,29 @@ mark {
 kbd {
     @apply border-ctp-surface0;
 }
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-ctp-mantle);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-ctp-pink);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ctp-mauve);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ctp-pink) var(--color-ctp-mantle);
+}
+
+.footnotes h2 {
+    text-transform: lowercase;
+}

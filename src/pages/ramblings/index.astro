@@ -1,24 +1,22 @@
 ---
-import { getCollection } from "astro:content";
-import IconLink from "../../components/IconLink.astro";
-import Base from "../../layouts/Base.astro";
-import Rambling from "../../components/RamblingCard.astro";
+import { getCollection } from 'astro:content';
+import IconLink from '../../components/IconLink.astro';
+import Page from '../../layouts/Page.astro';
+import Rambling from '../../components/RamblingCard.astro';
+import { RAMBLING_DESCRIPTION } from '../../consts';
 
-const ramblings = (await getCollection("ramblings")).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+const ramblings = (await getCollection('ramblings')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
-<Base
-	title="amelia's ramblings"
-	description="i sometimes bark i mean think i mean bark and i think some people would like to hear that. i think (i dont)"
->
-	<div class="my-2">
-		<IconLink text="view by tags" icon="label" url="/ramblings/tags/" />
-	</div>
-	<section>
-		<ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
-			{[...ramblings].map((rambling) => <Rambling rambling={rambling} />)}
-		</ul>
-	</section>
-</Base>
+<Page title="amelia's ramblings" description={RAMBLING_DESCRIPTION}>
+    <div class="my-2">
+        <IconLink text="view by tags" icon="label" url="/ramblings/tags/" />
+    </div>
+    <section>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {[...ramblings].map(rambling => <Rambling rambling={rambling} />)}
+        </ul>
+    </section>
+</Page>

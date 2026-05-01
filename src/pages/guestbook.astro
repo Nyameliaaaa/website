@@ -1,8 +1,8 @@
 ---
-import Base from '../layouts/Base.astro';
+import Page from '../layouts/Page.astro';
 import GuestbookListing from '../components/Guestbook.vue';
 ---
 
-<Base title="guestbook :3" description="u should put smth here once uve looked at everything ^w^">
+<Page title="guestbook :3" description="u should put smth here once uve looked at everything ^w^">
     <GuestbookListing client:load isHomepage={false} />
-</Base>
+</Page>

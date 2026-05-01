@@ -1,23 +1,25 @@
 <template>
     <div :class="{ ['grid grid-cols-1 gap-3 lg:grid-cols-5']: isHomepage }">
         <div class="col-span-2">
-            <label class="text-ctp-subtext0 font-semibold">name</label>
+            <label class="text-ctp-subtext0 font-semibold" for="name">name</label>
             <input
                 class="block w-full bg-ctp-base border-none mb-2 rounded-sm focus:ring-2 focus:ring-ctp-pink placeholder-ctp-subtext1 text-ctp-text"
                 v-model="name"
                 placeholder="anonymous"
+                id="name"
             />
 
-            <label class="text-ctp-subtext0 font-semibold">message</label>
+            <label class="text-ctp-subtext0 font-semibold" for="message">message</label>
             <textarea
                 class="block w-full h-20 resize-none bg-ctp-base border-none mb-2 rounded-sm focus:ring-2 focus:ring-ctp-pink placeholder-ctp-subtext1 text-ctp-text"
                 v-model="message"
                 placeholder="dont be a meanie ^^"
                 required="true"
                 minlength="1"
+                id="message"
             />
 
-            <label class="text-ctp-subtext0 font-semibold">email</label>
+            <label class="text-ctp-subtext0 font-semibold" for="email">email</label>
             <p class="text-ctp-subtext1">only visible to amelia :p</p>
             <input
                 class="block w-full bg-ctp-base border-none mb-2 rounded-sm focus:ring-2 focus:ring-ctp-pink placeholder-ctp-subtext1 text-ctp-text"
@@ -25,6 +27,7 @@
                 autocomplete="nope"
                 placeholder="anonymous"
                 type="email"
+                id="email"
             />
 
             <button

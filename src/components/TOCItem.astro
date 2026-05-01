@@ -1,0 +1,41 @@
+---
+import TOCItemRecurse from './TOCItem.astro';
+
+interface Heading {
+    text: string;
+    slug: string;
+    depth: number;
+    children: Heading[];
+}
+
+interface Props {
+    heading: Heading;
+    depth?: number;
+}
+
+const { heading, depth = 0 } = Astro.props;
+---
+
+<div>
+    <a
+        href={`#${heading.slug}`}
+        class="mb-1 hover:text-ctp-pink hover:underline hover:underline-offset-2 transition-all duration-500 pl-1"
+    >
+        {heading.text === 'Footnotes' ? heading.text.toLowerCase() : heading.text}
+    </a>
+    <div
+        class:list={[
+            'border-l-2 ml-2 pl-3 rounded-bl-xl',
+            {
+                'border-ctp-red': heading.depth === 0,
+                'border-ctp-peach': heading.depth === 1,
+                'border-ctp-yellow': heading.depth === 2,
+                'border-ctp-green': heading.depth === 3,
+                'border-ctp-sapphire': heading.depth === 4,
+                'border-ctp-lavender': heading.depth === 5
+            }
+        ]}
+    >
+        {heading.children.map(child => <TOCItemRecurse heading={child} depth={depth + 1} />)}
+    </div>
+</div>

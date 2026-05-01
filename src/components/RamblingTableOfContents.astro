@@ -1,0 +1,64 @@
+---
+import type { MarkdownHeading } from 'astro';
+import { HEADER_ID } from '../consts';
+import TOCItem from './TOCItem.astro';
+
+interface Props {
+    headings: MarkdownHeading[];
+    articleTitle?: string;
+}
+
+interface Heading {
+    text: string;
+    slug: string;
+    depth: number;
+    children: Heading[];
+}
+
+const canonicalHeadings: Heading[] = [];
+
+const buildTree = (headings: MarkdownHeading[]) => {
+    const root: Heading[] = [];
+    const stack: Heading[] = [];
+
+    for (const heading of headings) {
+        const node: Heading = { text: heading.text, slug: heading.slug, children: [], depth: heading.depth - 1 };
+
+        // pop stack until we find a parent with lower depth
+        while (stack.length > 0 && stack[stack.length - 1].depth >= heading.depth) {
+            stack.pop();
+        }
+
+        if (stack.length === 0) {
+            root.push(node);
+        } else {
+            stack[stack.length - 1].children.push(node);
+        }
+
+        stack.push({ ...node, depth: heading.depth });
+    }
+
+    return root;
+};
+
+canonicalHeadings.push({
+    text: Astro.props.articleTitle ?? 'article',
+    slug: HEADER_ID,
+    children: buildTree(Astro.props.headings),
+    depth: 0
+});
+
+// console.log(JSON.stringify(canonicalHeadings, null, 2));
+---
+
+<aside
+    class:list={[
+        'p-2',
+        'max-lg:bg-ctp-base max-lg:rounded-md max-lg:w-fit max-lg:my-2',
+        'lg:col-span-1 lg:sticky lg:top-2 lg:self-start lg:h-fit lg:overflow-y-auto lg:max-h-screen lg:pb-4'
+    ]}
+>
+    <ol>
+        {canonicalHeadings.map(heading => <TOCItem heading={heading} />)}
+    </ol>
+</aside>

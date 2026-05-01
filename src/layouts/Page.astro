@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+
+import IconLink from '../components/IconLink.astro';
+import Base from './Base.astro';
+import { HEADER_ID } from '../consts';
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const { props } = Astro;
+
+const getBackPath = () => {
+    const pathname = Astro.url.pathname;
+
+    const parts = pathname.split('/').filter(Boolean); // remove the ""
+    parts.pop();
+
+    return '/' + parts.join('/') || '/';
+};
+
+const hasInfo = props.title ?? props.description;
+---
+
+<Base {...props}>
+    <div class="mb-2">
+        <IconLink icon="arrow-left-thin" url={getBackPath()} text="go back" />
+    </div>
+    {
+        hasInfo && (
+            <div class="mb-2">
+                <h1 class="font-bold text-2xl text-ctp-pink" id={HEADER_ID}>{props.title}</h1>
+                <p class="font-semibold text-xl text-ctp-subtext1">{props.description}</p>
+            </div>
+        )
+    }
+    <slot />
+</Base>

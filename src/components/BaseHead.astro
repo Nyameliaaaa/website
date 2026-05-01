@@ -1,0 +1,46 @@
+---
+import { SITE_TITLE } from '../consts';
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalTitle = `${SITE_TITLE} - ${title ?? 'a page'}`;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="icon" href="/favicon.png" />
+
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{canonicalTitle}</title>
+<meta name="title" content={canonicalTitle} />
+<meta name="description" content={description} />
+
+<!-- Fediverse -->
+<meta name="fediverse:creator" content="@nyameliaaaa@tech.lgbt" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={canonicalTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL('/pfp.jpg', Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={canonicalTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL('/pfp.jpg', Astro.url)} />
