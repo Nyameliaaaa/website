@@ -1,4 +1,4 @@
-export const RSS_TITLE = "amelia :3's ramblings :3";
+export const RSS_TITLE = "amelia's ramblings :3";
 export const RSS_DESCRIPTION =
     'i sometimes bark i mean think i mean bark and i think some people would like to hear that. i think (i dont)';
 

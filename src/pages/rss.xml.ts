@@ -17,6 +17,7 @@ export async function GET(context: APIContext) {
             pubDate: rambling.data.pubDate,
             link: `/ramblings/${rambling.id}/`,
             categories: rambling.data.tags
-        }))
+        })),
+        stylesheet: '/feed.xsl'
     });
 }

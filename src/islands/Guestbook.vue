@@ -43,6 +43,7 @@
         </div>
         <div class="col-span-3">
             <TransitionGroup
+                tag="div"
                 enter-active-class="transition-opacity duration-200"
                 enter-from-class="opacity-0"
                 enter-to-class="opacity-100"
@@ -93,7 +94,7 @@ const props = defineProps<{
 }>();
 
 import { onMounted, ref, TransitionGroup } from 'vue';
-import IconLink from '@components/VueIconLink.vue';
+import IconLink from '@islands/VueIconLink.vue';
 
 interface GuestbookEntry {
     name: string;
@@ -123,13 +124,9 @@ const fetchEntries = async () => {
         const res = await fetch(`${WORKERS_URL}/guestbook`);
         const json = await res.json();
 
-        console.log(props.isHomepage);
-        console.log(json);
-
         if (props.isHomepage === true) {
             data.value = { entries: json.entries.slice(0, 5) };
         } else {
-            console.log(json);
             data.value = json;
         }
     } catch (e) {
@@ -153,8 +150,6 @@ const submit = async () => {
     if (email.value) {
         json.email = email.value;
     }
-
-    console.log(json);
 
     await fetch(`${WORKERS_URL}/guestbook`, {
         method: 'POST',

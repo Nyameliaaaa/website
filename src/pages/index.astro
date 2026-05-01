@@ -1,7 +1,9 @@
 ---
 import { HOME_LINKS } from '@/consts';
+import Recents from '@/islands/Recents.vue';
 import pfp from '@assets/pfp.jpg';
-import Guestbook from '@components/Guestbook.vue';
+import IconLink from '@components/IconLink.astro';
+import Guestbook from '@islands/Guestbook.vue';
 import Base from '@layouts/Base.astro';
 import { Image } from 'astro:assets';
 
@@ -74,6 +76,17 @@ const sub = 'font-medium text-ctp-subtext1 mb-2';
                     </div>
                 ))
             }
+        </div>
+    </div>
+
+    <div class="mb-2">
+        <h2 class={h2}>recent songs</h2>
+        <p class={sub}>heres what ive been listening to lately :o</p>
+
+        <Recents client:load preview />
+
+        <div class="mt-1">
+            <IconLink text="see more music :p" url="/music" icon="arrow-right-thin" />
         </div>
     </div>
 

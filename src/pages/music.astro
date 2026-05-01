@@ -1,0 +1,43 @@
+---
+import Albums from '@/islands/Albums.vue';
+import Artists from '@/islands/Artists.vue';
+import Recents from '@/islands/Recents.vue';
+import Page from '@layouts/Page.astro';
+
+const h2 = 'text-ctp-pink font-bold text-2xl';
+const musich2 = `${h2} mb-2`;
+const sub = 'font-medium text-ctp-subtext1 mb-3';
+---
+
+<Page title="music :P" description="please enjoy staring at my music taste">
+    <p>
+        check out my <a
+            class="hover:text-ctp-pink hover:underline hover:underline-offset-2 transition-colors duration-500 cursor-pointer"
+            href="https://www.last.fm/user/nyamelia">last.fm profile</a
+        > ^^
+    </p>
+
+    <div class="my-4">
+        <h2 class={musich2}>recent songs</h2>
+
+        <Recents client:load />
+    </div>
+
+    <div class="my-4">
+        <h2 class={musich2}>top artists (7 days)</h2>
+
+        <Artists client:load />
+    </div>
+
+    <div class="mt-5 mb-3">
+        <h2 class={musich2}>top albums (30 days)</h2>
+
+        <Albums client:load />
+    </div>
+
+    <p class="text-ctp-subtext0">
+        music cards from <a class="hover:underline hover:underline-offset-2" href="https://sapphic.moe"
+            >sapphic angels</a
+        >
+    </p>
+</Page>

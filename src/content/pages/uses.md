@@ -11,7 +11,7 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 
 - **OS:**
     - Windows 11 (yes. i know. i have destiny 2 to play)
-    - Arch Linux in WSL
+    - Arch Linux in WSL (hostname _nicole_)
 - **CPU:** Intel Core i7-14650HX (8P8E) @ 2.2GHz
 - **RAM:** 16GiB DDR5 @ 5600 MT/s
 - **GPU:** NVIDIA GeForce RTX 5050 (8GiB GDDR7 VRAM)
