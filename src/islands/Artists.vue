@@ -23,14 +23,10 @@
                             :href="artist.url"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="group relative block aspect-square overflow-hidden rounded-md border-2 border-transparent hover:border-ctp-pink focus:outline-none focus:ring-2 focus:ring-ctp-pink bg-ctp-base"
+                            class="group rounded-md transition p-2 duration-300 border-2 border-transparent hover:border-ctp-pink focus:outline-none focus:ring-2 focus:ring-ctp-pink bg-ctp-base"
                             :aria-label="artist.name"
                         >
-                            <div
-                                class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-ctp-mantle/60 p-4 text-center transition-opacity duration-300"
-                            >
-                                <p class="line-clamp-2 w-full text-xl font-bold text-ctp-text">{{ artist.name }}</p>
-                            </div>
+                            <p class="line-clamp-2 w-full text-xl font-bold text-ctp-text">{{ artist.name }}</p>
                         </a>
                     </div>
                 </template>
