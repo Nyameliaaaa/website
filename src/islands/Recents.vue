@@ -32,6 +32,7 @@
                                 active === track.url ? 'is-active' : ''
                             ]"
                             :aria-label="`${track.name} by ${track.artist}`"
+                            @click="handleClick($event, track.url)"
                         >
                             <img
                                 v-if="track.image"
