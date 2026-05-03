@@ -1,7 +1,7 @@
 ---
 import { RSS_DESCRIPTION, RSS_TITLE } from '@/consts';
-import IconLink from '@components/IconLink.astro';
-import Rambling from '@components/RamblingCard.astro';
+import IconLink from '@components/link/IconLink.astro';
+import Rambling from '@components/rambling/RamblingCard.astro';
 import Page from '@layouts/Page.astro';
 import { getCollection } from 'astro:content';
 
@@ -15,8 +15,8 @@ const ramblings = (await getCollection('ramblings')).sort(
         <IconLink text="view by tags" icon="label" url="/ramblings/tags/" />
     </div>
     <section>
-        <ul class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            {[...ramblings].map(rambling => <Rambling rambling={rambling} />)}
+        <ul class="flex flex-col md:grid-cols-2 gap-2">
+            {ramblings.map(rambling => <Rambling rambling={rambling} />)}
         </ul>
     </section>
 </Page>

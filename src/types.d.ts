@@ -14,8 +14,8 @@ export interface Recent {
 
 export interface Artist {
     name: string;
-    image: string;
     url: string;
+    playcount: number;
 }
 
 export interface Album {

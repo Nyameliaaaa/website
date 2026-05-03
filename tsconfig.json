@@ -9,8 +9,8 @@
             "@components/*": ["./src/components/*"],
             "@assets/*": ["./src/assets/*"],
             "@layouts/*": ["./src/layouts/*"],
-            "@/*": ["./src/*"],
-            "@islands/*": ["./src/islands/*"]
+            "@client/*": ["./src/client/*"],
+            "@/*": ["./src/*"]
         }
     }
 }
