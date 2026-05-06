@@ -1,5 +1,6 @@
 ---
 import IconLink from '@components/link/IconLink.astro';
+import PixelieImg from '@components/PixelieImg.astro';
 import { caption, text } from '@lib/classes';
 import { container } from '@lib/classes';
 import { type PixelieEntry } from '@lib/types';
@@ -23,8 +24,9 @@ export const pixelies: PixelieEntry[] = [
         url: 'https://git.gay',
         img: 'https://git.gay/assets/img/button.svg',
         alt: 'git.gay'
-    }
-    // { img: 'https://maia.crimew.gay/badges/acab.gif', alt: 'ACAB' }
+    },
+    { url: 'https://firefox.com', img: 'https://88x31.nl/gifs/firefox4.gif', alt: 'tested on firefox' },
+    { img: 'https://88x31.nl/gifs/miku.gif', alt: 'this site is miku approved' }
 ];
 ---
 
@@ -49,31 +51,7 @@ export const pixelies: PixelieEntry[] = [
             </div>
         </div>
         <ul class="flex flex-row flex-wrap justify-start gap-2">
-            {
-                pixelies.map(pixelie => (
-                    <li>
-                        {pixelie.url ? (
-                            <a href={pixelie.url}>
-                                <Image
-                                    src={pixelie.img}
-                                    width="88"
-                                    height="31"
-                                    alt={pixelie.alt ?? ''}
-                                    style="image-rendering: pixelated;"
-                                />
-                            </a>
-                        ) : (
-                            <Image
-                                src={pixelie.img}
-                                width="88"
-                                height="31"
-                                alt={pixelie.alt ?? ''}
-                                style="image-rendering: pixelated;"
-                            />
-                        )}
-                    </li>
-                ))
-            }
+            {pixelies.map(pixelie => <PixelieImg pixelie={pixelie} />)}
         </ul>
     </div>
 </footer>

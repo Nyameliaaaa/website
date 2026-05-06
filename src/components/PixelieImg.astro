@@ -1,0 +1,27 @@
+---
+import type { PixelieEntry } from '@lib/types';
+
+type Props = { pixelie: PixelieEntry };
+const { pixelie } = Astro.props;
+const alt = pixelie.alt ?? '';
+const hasVariants = pixelie.gif && pixelie.img;
+const defaultUrl = pixelie.gif ?? pixelie.img;
+---
+
+<li>
+    {
+        pixelie.url ? (
+            <a href={pixelie.url}>
+                <picture>
+                    {hasVariants && <source srcset={pixelie.img} media="(prefers-reduced-motion: reduce)" />}
+                    <img src={defaultUrl} width="88" height="31" alt={alt} style="image-rendering: pixelated;" />
+                </picture>
+            </a>
+        ) : (
+            <picture>
+                {hasVariants && <source srcset={pixelie.img} media="(prefers-reduced-motion: reduce)" />}
+                <img src={defaultUrl} width="88" height="31" alt={alt} style="image-rendering: pixelated;" />
+            </picture>
+        )
+    }
+</li>

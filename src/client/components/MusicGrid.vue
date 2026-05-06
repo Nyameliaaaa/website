@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Album, MusicGridItem, Recent } from '@lib/types';
+import type { MusicGridItem } from '@lib/types';
 import { onUnmounted, ref } from 'vue';
 
 defineProps<{ data: MusicGridItem[] }>();

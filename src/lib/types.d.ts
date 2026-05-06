@@ -2,6 +2,7 @@ export interface PixelieEntry {
     img: string;
     url?: string;
     alt?: string;
+    gif?: string;
 }
 
 export interface MusicGridItem {
@@ -40,4 +41,3 @@ export interface Album {
     artist: string;
     playcount: string;
 }
-
