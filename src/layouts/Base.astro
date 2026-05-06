@@ -1,5 +1,5 @@
 ---
-import { AUTO_MARGIN } from '@/consts';
+import { container } from '@lib/consts';
 import '@/styles/global.css';
 
 import BaseHead from '@components/base/BaseHead.astro';
@@ -20,17 +20,22 @@ interface Props {
         <slot name="head" />
     </head>
     <body
-        class="min-h-screen w-screen bg-linear-to-br from-ctp-mantle via-ctp-crust to-ctp-mantle selection:bg-ctp-pink selection:text-ctp-crust"
+        class="min-h-dvh w-screen bg-linear-to-br from-ctp-mantle via-ctp-crust to-ctp-mantle selection:bg-ctp-pink selection:text-ctp-crust"
     >
         <TransFlag />
-        <div class="h-full macchiato text-ctp-text text-lg font-display pt-2 pb-7">
+        <div class="h-full macchiato pt-2">
             <Header />
 
-            <main class:list={[AUTO_MARGIN, 'my-4']}>
-                <div class="bg-ctp-mantle p-3 rounded-lg border-2 border-dashed border-ctp-pink">
+            <div class="grid grid-cols-[1fr_min(calc(100%-1rem),72rem)_1fr] px-2 md:px-0 py-4">
+                <slot name="left" />
+                <main
+                    class="bg-ctp-mantle p-3 rounded-lg border-2 border-dashed border-ctp-pink col-start-2"
+                    transition:animate="fade"
+                >
                     <slot />
-                </div>
-            </main>
+                </main>
+                <slot name="right" />
+            </div>
 
             <Footer />
         </div>

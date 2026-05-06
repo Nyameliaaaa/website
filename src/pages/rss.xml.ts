@@ -1,4 +1,4 @@
-import { RSS_DESCRIPTION, RSS_TITLE } from '@/consts';
+import { RSS_DESCRIPTION, RSS_TITLE } from '@lib/consts';
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
 import { getCollection } from 'astro:content';

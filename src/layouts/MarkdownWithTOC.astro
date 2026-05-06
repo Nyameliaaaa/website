@@ -1,0 +1,42 @@
+---
+import BackLink from '@components/link/BackLink.astro';
+import MarkdownProse from '@components/markdown/MarkdownProse.astro';
+import MarkdownTableOfContents from '@components/markdown/MarkdownTableOfContents.astro';
+import Base from '@layouts/Base.astro';
+import { pageSubtitle, pageTitle, text } from '@lib/classes';
+import { HEADER_ID } from '@lib/consts';
+import type { MarkdownHeading } from 'astro';
+
+type Props = {
+    title: string;
+    description: string;
+    headings: MarkdownHeading[];
+};
+
+const props = Astro.props;
+---
+
+<Base title={props.title} description={props.description}>
+    <aside slot="left" class:list={['max-xl:hidden']}>
+        <MarkdownTableOfContents headings={props.headings} />
+    </aside>
+    <section>
+        <div class="mb-2">
+            <BackLink />
+
+            <h1 class={pageTitle}>
+                {props.title}
+            </h1>
+            <p class={pageSubtitle}>
+                {props.description}
+            </p>
+
+            <slot name="extra" />
+        </div>
+
+        <aside class="xl:hidden">
+            <MarkdownTableOfContents headings={props.headings} />
+        </aside>
+        <MarkdownProse><slot /></MarkdownProse>
+    </section>
+</Base>

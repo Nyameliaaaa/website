@@ -1,0 +1,16 @@
+---
+import IconLink from '@components/link/IconLink.astro';
+
+const getBackPath = () => {
+    const pathname = Astro.url.pathname;
+
+    const parts = pathname.split('/').filter(Boolean); // remove the ""
+    parts.pop();
+
+    return '/' + parts.join('/') || '/';
+};
+---
+
+<div class="mb-2">
+    <IconLink icon="arrow-left-thin" url={getBackPath()} text="go back" />
+</div>

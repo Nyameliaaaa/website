@@ -1,17 +1,21 @@
 <template>
-    <div class="group flex flex-row gap-2 transition-all duration-400 items-center">
-        <Icon
-            :icon="`mdi:${icon}`"
-            class="transition-all duration-400 text-ctp-subtext-0 group-hover:text-ctp-pink"
-            size="16"
-        />
+    <a
+        :class="[
+            'group flex flex-row gap-2 transition-all duration-300 items-center hover:text-ctp-pink',
+            outline,
+            'w-fit'
+        ]"
+        :href="url"
+    >
+        <Icon :icon="`mdi:${icon}`" :class="iconButton" size="16" />
 
-        <a class="transition-all duration-400 text-ctp-subtext0 group-hover:text-ctp-pink" :href="url">{{ text }}</a>
-    </div>
+        <p :class="iconButton">{{ text }}</p>
+    </a>
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
+import { iconButton, outline } from '@lib/classes';
 
 defineProps<{
     url: string;

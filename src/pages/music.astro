@@ -1,43 +1,42 @@
 ---
 import Albums from '@client/music/Albums.vue';
 import Artists from '@client/music/Artists.vue';
+import Playlists from '@client/music/Playlists.vue';
 import Recents from '@client/music/Recents.vue';
 import Page from '@layouts/Page.astro';
-
-const h2 = 'text-ctp-pink font-bold text-2xl';
-const musich2 = `${h2} mb-2`;
-const sub = 'font-medium text-ctp-subtext1 mb-3';
+import { caption, heading, leadText, link } from '@lib/classes';
 ---
 
 <Page title="music :P" description="please enjoy staring at my music taste">
-    <p>
-        check out my <a
-            class="hover:text-ctp-pink hover:underline hover:underline-offset-2 transition-colors duration-500 cursor-pointer"
-            href="https://www.last.fm/user/nyamelia">last.fm profile</a
-        > ^^
+    <p class={leadText}>
+        check out my <a class={link} href="https://www.last.fm/user/nyamelia">last.fm profile</a> ^^
     </p>
 
-    <div class="my-4">
-        <h2 class={musich2}>recent songs</h2>
+    <section class="my-4">
+        <h2 class={heading}>recent songs</h2>
 
         <Recents client:load />
-    </div>
+    </section>
 
-    <div class="my-4">
-        <h2 class={musich2}>top albums (30 days)</h2>
+    <section class="my-4">
+        <h2 class={heading}>top albums (30 days)</h2>
 
         <Albums client:load />
-    </div>
+    </section>
 
-    <div class="mt-5 mb-3">
-        <h2 class={musich2}>top artists (7 days)</h2>
+    <section class="my-4">
+        <h2 class={heading}>top artists (7 days)</h2>
 
         <Artists client:load />
-    </div>
+    </section>
 
-    <p class="text-ctp-subtext0">
-        music cards from <a class="hover:underline hover:underline-offset-2" href="https://sapphic.moe"
-            >sapphic angels</a
-        >
+    <section class="mt-5 mb-3">
+        <h2 class={heading}>playlists</h2>
+
+        <Playlists client:load />
+    </section>
+
+    <p class={caption}>
+        music cards from <a class={link} href="https://sapphic.moe">sapphic angels</a>
     </p>
 </Page>

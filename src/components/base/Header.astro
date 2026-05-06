@@ -1,38 +1,59 @@
 ---
-import { AUTO_MARGIN } from '@/consts';
-import HeaderLink from '@components/link/HeaderLink.astro';
+import { container, headerName, text } from '@lib/classes';
 
 const links = [
     { name: ':3', url: '/' },
     { name: 'ramblings', url: '/ramblings' },
     { name: 'uses', url: '/uses' }
 ];
+
+const isActiveURL = (href: string) => {
+    const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+    const subpath = pathname.match(/[^\/]+/g);
+    const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+
+    return isActive;
+};
 ---
 
 <header>
-    <nav class:list={[AUTO_MARGIN, 'flex flex-col gap-2 items-center justify-center select-none']}>
+    <nav
+        class:list={[
+            container,
+            'flex flex-col gap-2 items-center justify-center select-none lg:flex-row lg:justify-between lg:items-center'
+        ]}
+    >
         <h2>
-            <a href="/" class="text-xl md:text-3xl text-ctp-pink font-bold text-shadow-ctp-crust">amelia :3</a>
+            <a href="/" class={headerName}>amelia :3</a>
         </h2>
-        <div class="flex flex-row p-2 rounded-md bg-ctp-mantle border border-dashed border-ctp-subtext0">
-            <span>[</span>
-            <ul class="flex flex-row divide-x-2 divide-ctp-subtext0 divide-dashed">
-                {
-                    links.map(url => (
+        <ul
+            class="flex flex-row p-2 rounded-md bg-ctp-mantle border border-dashed border-ctp-subtext0 divide-x-2 divide-ctp-subtext0 divide-dashed"
+        >
+            {
+                links.map((url, index) => {
+                    const active = isActiveURL(url.url);
+
+                    return (
                         <li>
-                            <HeaderLink
+                            <a
                                 href={url.url}
-                                inactiveClass="text-ctp-subtext0 font-semibold"
-                                class="hover:text-ctp-subtext1 transition-colors transition-400 p-2"
-                                activeClass="text-ctp-pink font-bold"
+                                class={text({
+                                    color: active ? 'accent' : 'primary',
+                                    weight: 'medium',
+                                    hover: 'underline',
+                                    size: 'lg',
+                                    class: 'px-2',
+                                    customOutline: true
+                                })}
+                                transition:name={`header-link-${index}`}
+                                transition:animate="fade"
                             >
                                 {url.name}
-                            </HeaderLink>
+                            </a>
                         </li>
-                    ))
-                }
-            </ul>
-            <span>]</span>
-        </div>
+                    );
+                })
+            }
+        </ul>
     </nav>
 </header>

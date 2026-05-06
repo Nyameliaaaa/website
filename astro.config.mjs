@@ -11,7 +11,7 @@ import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://amelia.is-immensely.gay",
+    site: "https://nyamelia.is-immensely.gay",
     integrations: [mdx(), sitemap(), icon(), vue()],
 
     markdown: {

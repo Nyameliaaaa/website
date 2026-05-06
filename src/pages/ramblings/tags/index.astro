@@ -1,5 +1,6 @@
 ---
 import Page from '@layouts/Page.astro';
+import { body, link } from '@lib/classes';
 import { getCollection } from 'astro:content';
 
 const ramblings = await getCollection('ramblings');
@@ -11,7 +12,7 @@ const tags = [...new Set(ramblings.flatMap(p => p.data.tags))];
         <ul class="mt-4 list-disc list-inside">
             {
                 tags.map(tag => (
-                    <li class="text-xl font-medium hover:text-ctp-pink duration-400 transition-all hover:underline underline-offset-2">
+                    <li class={`${body} ${link}`}>
                         <a href={`/ramblings/tags/${tag}`}>{tag}</a>
                     </li>
                 ))

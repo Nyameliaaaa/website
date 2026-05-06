@@ -1,14 +1,12 @@
 ---
-import { HOME_LINKS } from '@/consts';
-import Recents from '@client/music/Recents.vue';
-import pfp from '@assets/pfp.jpg';
-import IconLink from '@components/link/IconLink.astro';
+import pfp from '@/../public/pfp.jpg';
 import Guestbook from '@client/Guestbook.vue';
+import Recents from '@client/music/Recents.vue';
+import IconLink from '@components/link/IconLink.astro';
 import Base from '@layouts/Base.astro';
+import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
+import { HOME_LINKS } from '@lib/consts';
 import { Image } from 'astro:assets';
-
-const h2 = 'text-ctp-pink font-bold text-2xl';
-const sub = 'font-medium text-ctp-subtext1 mb-2';
 ---
 
 <Base
@@ -28,47 +26,52 @@ const sub = 'font-medium text-ctp-subtext1 mb-2';
         </div>
         <div class="order-last md:order-first">
             <div class="mb-6">
-                <h1 class="text-ctp-pink font-extrabold text-3xl">hiiiiiiii ^^</h1>
-                <p class="text-xl font-medium text-ctp-subtext1">
+                <h1 class={pageTitle}>hiiiiiiii ^^</h1>
+                <p class={pageSubtitle}>
                     hiiiiiiiiiiiiiiiiiii im amelia. i uhhhhh suck at writing actually pretend im good at this please /j.
                     anyway im a trans girlie and uhm i like miku i guess uh ok woof
                 </p>
             </div>
 
-            <h2 class="text-ctp-pink font-bold text-2xl">pronouns</h2>
-            <div class="flex flex-col gap-1 font-medium">
-                <p>
-                    i use it/she/xe pronouns btw :3 theres more <a
-                        class="hover:underline hover:underline-offset-2"
-                        href="https://pronouns.cc/@nyamelia">here</a
-                    > :p
-                </p>
-            </div>
+            <h2 class={heading}>pronouns</h2>
+            <p class={body}>
+                i use it/she/xe pronouns btw :3 theres more <a
+                    class={text({ hover: 'accent', transition: true, customOutline: true })}
+                    href="https://pronouns.cc/@nyamelia">here</a
+                > :p
+            </p>
         </div>
     </div>
 
     <div class="my-4">
-        <h2 class={h2}>contact i guess</h2>
-        <p class={sub}>locations where the cryptid known as amelia has been found on the interwebs</p>
+        <div class="mb-3">
+            <h2 class={heading}>contact i guess</h2>
+            <p class={leadText}>locations where the cryptid known as amelia has been found on the interwebs</p>
+        </div>
         <div class:list={['grid grid-cols-1 max-lg:divide-y-2 divide-ctp-base gap-3', 'lg:grid-cols-2  lg:divide-x-2']}>
             {
                 HOME_LINKS.map(section => (
                     <div>
-                        <h2 class="text-ctp-subtext0 font-semibold text-xl">{section.name}</h2>
+                        <h3 class={subHeading}>{section.name}</h3>
                         <div class="grid grid-cols-3 mt-2">
-                            {section.links.map(link => (
+                            {section.links.map(linkItem => (
                                 <>
-                                    <p class="font-medium text-ctp-pink col-span-1">{link.label}</p>
-                                    {link.url ? (
-                                        <a
-                                            href={link.url}
-                                            rel="me"
-                                            class="hover:underline underline-offset-2 col-span-2"
-                                        >
-                                            {link.handle}
+                                    <p
+                                        class={text({
+                                            color: 'accent',
+                                            font: 'sans',
+                                            weight: 'medium',
+                                            tracking: 'tight'
+                                        })}
+                                    >
+                                        {linkItem.label}
+                                    </p>
+                                    {linkItem.url ? (
+                                        <a href={linkItem.url} rel="me" class={`${body} ${link} col-span-2`}>
+                                            {linkItem.handle}
                                         </a>
                                     ) : (
-                                        <p class="col-span-2">{link.handle}</p>
+                                        <p class={`${body} col-span-2`}>{linkItem.handle}</p>
                                     )}
                                 </>
                             ))}
@@ -80,19 +83,21 @@ const sub = 'font-medium text-ctp-subtext1 mb-2';
     </div>
 
     <div class="mb-2">
-        <h2 class={h2}>recent songs</h2>
-        <p class={sub}>heres what ive been listening to lately :o</p>
+        <div class="mb-4">
+            <h2 class={heading}>recent songs</h2>
+            <p class={leadText}>heres what ive been listening to lately :o</p>
+        </div>
 
         <Recents client:load preview />
 
-        <div class="mt-1">
+        <div class="mt-4">
             <IconLink text="see more music :p" url="/music" icon="arrow-right-thin" />
         </div>
     </div>
 
     <div class="mb-2">
-        <h2 class={h2}>guestbook :3</h2>
-        <p class={sub}>u should put smth here once uve looked at everything ^w^</p>
+        <h2 class={heading}>guestbook :3</h2>
+        <p class={leadText}>u should put smth here once uve looked at everything ^w^</p>
 
         <Guestbook client:load isHomepage={true} />
     </div>

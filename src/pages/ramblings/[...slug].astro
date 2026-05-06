@@ -1,9 +1,7 @@
 ---
-import { TOC_SIDEBAR_CLASSES } from '@/consts';
-import MarkdownProse from '@components/markdown/MarkdownProse.astro';
-import MarkdownTableOfContents from '@components/markdown/MarkdownTableOfContents.astro';
 import RamblingDate from '@components/rambling/RamblingDate.astro';
-import Page from '@layouts/Page.astro';
+import Tag from '@components/rambling/Tag.astro';
+import MarkdownWithTOC from '@layouts/MarkdownWithTOC.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -20,26 +18,18 @@ const rambling = Astro.props;
 const { Content, headings } = await render(rambling);
 ---
 
-<Page title={rambling.data.title} description={rambling.data.description}>
-    <section>
-        <div class="mb-5">
+<MarkdownWithTOC title={rambling.data.title} description={rambling.data.description} headings={headings}>
+    <div class="mb-5" slot="extra">
+        <div class="mt-2">
             <RamblingDate {...rambling} />
-            <div class="mt-3 flex flex-row gap-2">
-                {
-                    rambling.data.tags?.map(tag => (
-                        <a
-                            href={`/ramblings/tags/${tag}`}
-                            class="border border-ctp-subtext0 px-1 border-dashed rounded-sm hover:bg-ctp-surface0 transition-colors duration-500"
-                        >
-                            #{tag}
-                        </a>
-                    ))
-                }
-            </div>
         </div>
-        <div class:list={TOC_SIDEBAR_CLASSES}>
-            <MarkdownTableOfContents headings={headings} />
-            <MarkdownProse><Content /></MarkdownProse>
+        <div class="mt-3 flex flex-row gap-2">
+            {
+                rambling.data.tags?.map(tag => (
+                    <Tag tag={tag} />
+                ))
+            }
         </div>
-    </section>
-</Page>
+    </div>
+    <Content />
+</MarkdownWithTOC>

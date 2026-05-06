@@ -1,9 +1,10 @@
 ---
-import { TOC_SIDEBAR_CLASSES } from '@/consts';
+import { TOC_SIDEBAR_CLASSES } from '@lib/consts';
 import MarkdownProse from '@components/markdown/MarkdownProse.astro';
 import MarkdownTableOfContents from '@components/markdown/MarkdownTableOfContents.astro';
 import Page from '@layouts/Page.astro';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
+import MarkdownWithTOC from '@layouts/MarkdownWithTOC.astro';
 
 export async function getStaticPaths() {
     const pages = await getCollection('pages');
@@ -19,11 +20,6 @@ const page = Astro.props;
 const { Content, headings } = await render(page);
 ---
 
-<Page title={page.data.title} description={page.data.description}>
-    <section>
-        <div class:list={TOC_SIDEBAR_CLASSES}>
-            <MarkdownTableOfContents headings={headings} articleTitle="uses" />
-            <MarkdownProse><Content /></MarkdownProse>
-        </div>
-    </section>
-</Page>
+<MarkdownWithTOC title={page.data.title} description={page.data.description} headings={headings}>
+    <Content />
+</MarkdownWithTOC>

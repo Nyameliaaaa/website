@@ -2,7 +2,8 @@
 title: 'hi :3'
 description: 'what if rambling'
 pubDate: 'May 1 2026'
-tags: [hi]
+updatedDate: 'May 5 2026'
+tags: [hi, test]
 ---
 
 hi so this is just me rambling on about stuff this "blog" is very cool actually

@@ -9,14 +9,15 @@
         leave-to-class="opacity-0"
         mode="out-in"
     >
-        <p v-if="loading" :class="[text, minHeightAndSize ?? '']">loading {{ '<3' }}</p>
-        <p v-else-if="error" :class="[text, minHeightAndSize ?? '']">something went wrong {{ '<\/3' }}</p>
-        <p v-else-if="empty" :class="[text, minHeightAndSize ?? '']">no entries {{ '<\/3' }}</p>
+        <p v-if="loading" :class="[body, minHeightAndSize ?? '']">loading {{ '<3' }}</p>
+        <p v-else-if="error" :class="[body, minHeightAndSize ?? '']">something went wrong {{ '<\/3' }}</p>
+        <p v-else-if="empty" :class="[body, minHeightAndSize ?? '']">no entries {{ '<\/3' }}</p>
         <slot v-else />
     </TransitionGroup>
 </template>
 
 <script setup lang="ts">
+import { body } from '@lib/classes';
 import { TransitionGroup } from 'vue';
 
 defineProps<{
@@ -25,6 +26,4 @@ defineProps<{
     empty?: boolean;
     minHeightAndSize?: string;
 }>();
-
-const text = 'text-ctp-subtext0 font-semibold text-center';
 </script>

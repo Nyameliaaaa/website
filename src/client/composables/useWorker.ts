@@ -1,4 +1,4 @@
-import { WORKERS_URL } from '@/consts';
+import { WORKERS_URL } from '@lib/consts';
 import { ref } from 'vue';
 
 export const useWorker = <T>() => {

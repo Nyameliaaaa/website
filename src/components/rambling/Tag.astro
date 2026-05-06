@@ -1,0 +1,14 @@
+---
+import { label } from '@lib/classes';
+
+interface Props {
+    tag: string;
+}
+---
+
+<a
+    href={`/ramblings/tags/${Astro.props.tag}`}
+    class="border border-ctp-subtext0 px-1 border-dashed rounded-sm hover:bg-ctp-surface0 transition-colors duration-300"
+>
+    <p class={label}>#{Astro.props.tag}</p>
+</a>

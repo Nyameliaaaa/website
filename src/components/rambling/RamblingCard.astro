@@ -1,34 +1,34 @@
 ---
-import FormattedDate from '@components/rambling/FormattedDate.astro';
+import RamblingDate from '@components/rambling/RamblingDate.astro';
+import Tag from '@components/rambling/Tag.astro';
+import { body, heading, link } from '@lib/classes';
 import { type CollectionEntry } from 'astro:content';
-import RamblingDate from './RamblingDate.astro';
 
 type Props = { rambling: CollectionEntry<'ramblings'> };
 const { rambling } = Astro.props;
 ---
 
 <li class="rounded-md py-2">
-    <a href={`/ramblings/${rambling.id}/`}>
+    <div>
         <div class="mb-2">
-            <h2 class="font-semibold text-xl md:text-2xl text-ctp-pink">
-                {rambling.data.title}
-            </h2>
-            <div class="text-xl"><RamblingDate {...rambling} /></div>
+            <a href={`/ramblings/${rambling.id}/`}>
+                <h2 class={`${heading} ${link}`} transition:name={rambling.data.title}>
+                    {rambling.data.title}
+                </h2>
+            </a>
+            <p class={body}>
+                {rambling.data.description}
+            </p>
         </div>
+        <RamblingDate {...rambling} />
         {
             rambling.data.tags && (
-                <div class="flex flex-row flex-wrap gap-2">
+                <div class="flex flex-row flex-wrap gap-2 mt-2">
                     {rambling.data.tags.map(tag => (
-                        <a
-                            href={`/ramblings/tags/${tag}`}
-                            class="border border-ctp-subtext0 px-1 border-dashed rounded-sm hover:bg-ctp-surface0 transition-colors duration-500"
-                        >
-                            #{tag}
-                        </a>
+                        <Tag tag={tag} />
                     ))}
                 </div>
             )
         }
-        <p class="font-semibold text-xl text-ctp-subtext1">{rambling.data.description}</p>
-    </a>
+    </div>
 </li>

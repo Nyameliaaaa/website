@@ -4,10 +4,25 @@ export interface PixelieEntry {
     alt?: string;
 }
 
+export interface MusicGridItem {
+    name: string;
+    image: string;
+    url: string;
+    secondaryText: string;
+    tertiaryText?: string;
+}
+
 export interface Recent {
     name: string;
     artist: string;
     album: string;
+    image: string;
+    url: string;
+}
+
+export interface Playlist {
+    name: string;
+    content: string;
     image: string;
     url: string;
 }

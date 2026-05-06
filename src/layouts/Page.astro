@@ -1,7 +1,7 @@
 ---
-import { HEADER_ID } from '@/consts';
-import IconLink from '@components/link/IconLink.astro';
 import Base from '@layouts/Base.astro';
+import { pageSubtitle, pageTitle } from '@lib/classes';
+import BackLink from '@components/link/BackLink.astro';
 
 interface Props {
     title?: string;
@@ -10,29 +10,18 @@ interface Props {
 
 const { props } = Astro;
 
-const getBackPath = () => {
-    const pathname = Astro.url.pathname;
-
-    const parts = pathname.split('/').filter(Boolean); // remove the ""
-    parts.pop();
-
-    return '/' + parts.join('/') || '/';
-};
-
 const hasInfo = props.title ?? props.description;
 ---
 
 <Base {...props}>
-    <div class="mb-2">
-        <IconLink icon="arrow-left-thin" url={getBackPath()} text="go back" />
-    </div>
+    <BackLink />
     {
         hasInfo && (
             <div class="mb-2">
-                <h1 class="font-bold text-2xl text-ctp-pink" id={HEADER_ID}>
-                    {props.title}
-                </h1>
-                <p class="font-semibold text-xl text-ctp-subtext1">{props.description}</p>
+                <h1 class={pageTitle}>{props.title}</h1>
+                <p class={pageSubtitle}>
+                    <slot name="description">{props.description}</slot>
+                </p>
             </div>
         )
     }

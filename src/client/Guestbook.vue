@@ -1,19 +1,24 @@
 <template>
     <div :class="{ ['grid grid-cols-1 gap-3 lg:grid-cols-5']: isHomepage }">
         <div class="col-span-2">
-            <label class="text-ctp-subtext0 font-semibold" for="name">name</label>
+            <label :class="label" for="name">name</label>
             <input
-                class="block w-full bg-ctp-base border-none mb-2 rounded-sm focus:ring-2 focus:ring-ctp-pink placeholder-ctp-subtext1 text-ctp-text"
+                :class="[
+                    'block w-full bg-ctp-base border-none mb-2 rounded-smplaceholder-ctp-subtext1 text-ctp-text',
+                    outline
+                ]"
                 v-model="form.name"
                 placeholder="anonymous"
                 id="name"
             />
 
-            <label class="text-ctp-subtext0 font-semibold" for="message"
-                >message <span class="text-ctp-pink">*</span></label
-            >
+            <label :class="label" for="message">message <span>*</span></label>
             <textarea
-                class="block w-full h-20 resize-none bg-ctp-base border-none mb-2 rounded-sm focus:ring-2 focus:ring-ctp-pink placeholder-ctp-subtext1 text-ctp-text"
+                :class="[
+                    'h-20 resize-none',
+                    'block w-full bg-ctp-base border-none mb-2 rounded-smplaceholder-ctp-subtext1 text-ctp-text',
+                    outline
+                ]"
                 v-model="form.message"
                 placeholder="dont be a meanie ^^"
                 required="true"
@@ -21,10 +26,13 @@
                 id="message"
             />
 
-            <label class="text-ctp-subtext0 font-semibold" for="email">email</label>
-            <p class="text-ctp-subtext1">only visible to amelia, u dont have to include this :p</p>
+            <label :class="label" for="email">email</label>
+            <p :class="label">only visible to amelia, u dont have to include this :p</p>
             <input
-                class="block w-full bg-ctp-base border-none mb-2 rounded-sm focus:ring-2 focus:ring-ctp-pink placeholder-ctp-subtext1 text-ctp-text"
+                :class="[
+                    'block w-full bg-ctp-base border-none mb-2 rounded-smplaceholder-ctp-subtext1 text-ctp-text',
+                    outline
+                ]"
                 v-model="form.email"
                 autocomplete="nope"
                 placeholder="hi@example.com"
@@ -34,7 +42,12 @@
 
             <button
                 @click="submit"
-                class="bg-ctp-base text-ctp-subtext0 transition-colors duration-500 hover:bg-ctp-pink hover:text-ctp-crust py-1 px-5 rounded-sm cursor-pointer"
+                :class="[
+                    'transition-colors duration-300',
+                    'bg-ctp-base py-1 px-5 rounded-sm text-ctp-subtext0',
+                    outline,
+                    'hover:bg-ctp-pink hover:text-ctp-crust cursor-pointer'
+                ]"
             >
                 sign :3
             </button>
@@ -45,8 +58,8 @@
             <AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
                 <div v-for="entry in data" class="bg-ctp-base rounded-sm p-2 mb-2 w-full">
                     <div class="flex flex-row justify-between">
-                        <p class="text-ctp-subtext1">{{ entry.name }}</p>
-                        <time class="text-ctp-subtext1" :datetime="entry.createdAt">
+                        <p :class="caption">{{ entry.name }}</p>
+                        <time :class="caption" :datetime="entry.createdAt">
                             {{
                                 new Date(entry.createdAt)
                                     .toLocaleDateString('en-us', {
@@ -58,7 +71,7 @@
                             }}
                         </time>
                     </div>
-                    <p class="text-lg font-semibold">{{ entry.message }}</p>
+                    <p :class="leadText">{{ entry.message }}</p>
                 </div>
 
                 <IconLink v-if="isHomepage" url="/guestbook" icon="arrow-right" text="see all entries" />
@@ -72,11 +85,12 @@ const props = defineProps<{
     isHomepage: boolean;
 }>();
 
-import { WORKERS_URL } from '@/consts';
+import { WORKERS_URL } from '@lib/consts';
 import AsyncState from '@client/components/AsyncState.vue';
-import { useWorker } from '@/client/composables/useWorker';
+import { useWorker } from '@client/composables/useWorker';
 import IconLink from '@client/components/VueIconLink.vue';
 import { onMounted, reactive } from 'vue';
+import { body, caption, label, leadText, outline } from '@lib/classes';
 
 interface GuestbookEntry {
     name: string;

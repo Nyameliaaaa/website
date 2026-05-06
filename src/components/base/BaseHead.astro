@@ -1,5 +1,6 @@
 ---
-import { RSS_TITLE } from '@/consts';
+import { RSS_TITLE } from '@lib/consts';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
     title?: string;
@@ -44,3 +45,5 @@ const canonicalTitle = `${title ?? 'a page'} | amelia :3`;
 <meta property="twitter:title" content={canonicalTitle} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL('/pfp.jpg', Astro.url)} />
+
+<ClientRouter />

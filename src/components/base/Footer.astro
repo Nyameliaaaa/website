@@ -1,7 +1,8 @@
 ---
-import { AUTO_MARGIN } from '@/consts';
-import { type PixelieEntry } from '@/types';
 import IconLink from '@components/link/IconLink.astro';
+import { caption, text } from '@lib/classes';
+import { container } from '@lib/classes';
+import { type PixelieEntry } from '@lib/types';
 import { Image } from 'astro:assets';
 
 const urls = [
@@ -22,13 +23,31 @@ export const pixelies: PixelieEntry[] = [
         url: 'https://git.gay',
         img: 'https://git.gay/assets/img/button.svg',
         alt: 'git.gay'
-    },
-    { img: 'https://maia.crimew.gay/badges/acab.gif', alt: 'ACAB' }
+    }
+    // { img: 'https://maia.crimew.gay/badges/acab.gif', alt: 'ACAB' }
 ];
 ---
 
 <footer class="py-3">
-    <div class:list={[AUTO_MARGIN, 'grid grid-cols-1 md:grid-cols-2 select-none']}>
+    <div class:list={[container, 'grid grid-cols-1 md:grid-cols-2 select-none']}>
+        <div class="flex flex-col gap-2 items-left justify-between p-2">
+            <div class="group flex flex-row gap-2 transition-all duration-400 items-center">
+                <p class={caption}>
+                    made with <span class={text({ color: 'accent', weight: 'medium' })}>{'<3'}</span> and <span
+                        class={text({ color: 'accent', weight: 'medium' })}>:3</span
+                    > by amelia
+                </p>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:gap-3">
+                {
+                    urls.map((url, index) => (
+                        <div class:list={[{ 'xl:col-span-1': index % 2 === 0, 'xl:col-span-2': index % 2 === 1 }]}>
+                            <IconLink {...url} />
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
         <ul class="flex flex-row flex-wrap justify-start gap-2">
             {
                 pixelies.map(pixelie => (
@@ -56,21 +75,5 @@ export const pixelies: PixelieEntry[] = [
                 ))
             }
         </ul>
-        <div class="flex flex-col gap-2 items-left justify-between p-2">
-            <div class="group flex flex-row gap-2 transition-all duration-400 items-center">
-                <p class="text-ctp-subtext0 md:text-lg">
-                    made with <span class="text-ctp-pink font-semibold">{'<3'} and :3</span> by amelia
-                </p>
-            </div>
-            <div class="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:gap-3">
-                {
-                    urls.map((url, index) => (
-                        <div class:list={[{ 'xl:col-span-1': index % 2 === 0, 'xl:col-span-2': index % 2 === 1 }]}>
-                            <IconLink {...url} />
-                        </div>
-                    ))
-                }
-            </div>
-        </div>
     </div>
 </footer>
