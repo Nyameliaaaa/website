@@ -97,5 +97,5 @@ details #initial > * {
 }
 
 img {
-    @apply text-ctp-text;
+    @apply flex text-ctp-text items-center justify-center;
 }
