@@ -23,6 +23,5 @@ export default defineConfig({
         plugins: [tailwindcss()]
     },
 
-    output: 'static',
-    adapter: cloudflare()
+    output: 'static'
 });
