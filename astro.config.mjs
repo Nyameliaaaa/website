@@ -9,18 +9,22 @@ import tailwindcss from "@tailwindcss/vite";
 
 import vue from "@astrojs/vue";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
-    site: "https://nyamelia.is-immensely.gay",
-    integrations: [mdx(), sitemap(), icon(), vue()],
+  site: "https://nyamelia.is-immensely.gay",
+  integrations: [mdx(), sitemap(), icon(), vue()],
 
-    markdown: {
-        shikiConfig: {
-            theme: "catppuccin-macchiato",
-        },
-    },
+  markdown: {
+      shikiConfig: {
+          theme: "catppuccin-macchiato",
+      },
+  },
 
-    vite: {
-        plugins: [tailwindcss()],
-    },
+  vite: {
+      plugins: [tailwindcss()],
+  },
+
+  adapter: cloudflare(),
 });
