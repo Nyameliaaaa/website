@@ -95,3 +95,7 @@ details[open] #initial {
 details #initial > * {
     overflow: hidden;
 }
+
+img {
+    @apply text-ctp-text;
+}

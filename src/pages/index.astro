@@ -1,12 +1,10 @@
 ---
-import pfp from '@/../public/pfp.jpg';
 import Guestbook from '@client/Guestbook.vue';
 import Recents from '@client/music/Recents.vue';
 import IconLink from '@components/link/IconLink.astro';
 import Base from '@layouts/Base.astro';
 import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
 import { HOME_LINKS } from '@lib/consts';
-import { Image } from 'astro:assets';
 ---
 
 <Base
@@ -15,8 +13,8 @@ import { Image } from 'astro:assets';
 >
     <div class="mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
         <div class="order-first md:order-last md:self-start md:mr-5 rounded-md">
-            <Image
-                src={pfp}
+            <img
+                src="./public/pfp.jpg"
                 alt="amelia :3"
                 width={200}
                 height={200}
