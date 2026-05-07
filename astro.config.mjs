@@ -1,6 +1,5 @@
 // @ts-check
 
-import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import vue from '@astrojs/vue';
@@ -21,7 +20,5 @@ export default defineConfig({
 
     vite: {
         plugins: [tailwindcss()]
-    },
-
-    output: 'static'
+    }
 });
