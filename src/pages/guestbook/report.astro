@@ -1,0 +1,8 @@
+---
+import GuestbookReport from '@client/guestbook/GuestbookReport.vue';
+import Page from '@layouts/Page.astro';
+---
+
+<Page title="report a message" description="some people are assholes yk">
+    <GuestbookReport client:only />
+</Page>

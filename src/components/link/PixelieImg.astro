@@ -11,7 +11,7 @@ const defaultUrl = pixelie.gif ?? pixelie.img;
 <li>
     {
         pixelie.url ? (
-            <a href={pixelie.url}>
+            <a href={pixelie.url} target="_blank" rel="noopener noreferrer">
                 <picture>
                     {hasVariants && <source srcset={pixelie.img} media="(prefers-reduced-motion: reduce)" />}
                     <img src={defaultUrl} width="88" height="31" alt={alt} style="image-rendering: pixelated;" />

@@ -1,5 +1,5 @@
 ---
-import { label } from '@lib/classes';
+import { formFieldLabel } from '@lib/classes';
 
 interface Props {
     tag: string;
@@ -10,5 +10,5 @@ interface Props {
     href={`/ramblings/tags/${Astro.props.tag}`}
     class="border border-ctp-subtext0 px-1 border-dashed rounded-sm hover:bg-ctp-surface0 transition-colors duration-300"
 >
-    <p class={label}>#{Astro.props.tag}</p>
+    <p class={formFieldLabel}>#{Astro.props.tag}</p>
 </a>

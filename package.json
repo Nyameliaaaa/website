@@ -14,6 +14,7 @@
     "@astrojs/mdx": "^5.0.4",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/vue": "^6.0.1",
+    "@headlessui/vue": "^1.7.23",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify/vue": "^5.0.0",
     "@tailwindcss/vite": "^4.2.4",

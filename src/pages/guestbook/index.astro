@@ -1,0 +1,13 @@
+---
+import GuestbookView from '@client/guestbook/GuestbookView.vue';
+import SignGuestbook from '@components/link/SignGuestbook.astro';
+import Page from '@layouts/Page.astro';
+---
+
+<Page title="guestbook :3" description="u should put smth here once uve looked at everything ^w^">
+    <div><SignGuestbook /></div>
+
+    <hr class="border border-dashed border-ctp-crust my-2" />
+
+    <GuestbookView client:load />
+</Page>

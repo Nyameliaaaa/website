@@ -4,7 +4,7 @@ import { type PixelieEntry } from '@lib/types';
 import Page from '../layouts/Page.astro';
 import { codeToHtml } from 'shiki';
 import MarkdownProse from '@components/markdown/MarkdownProse.astro';
-import PixelieImg from '@components/PixelieImg.astro';
+import PixelieImg from '@components/link/PixelieImg.astro';
 
 const html = await codeToHtml(
     [
@@ -69,7 +69,7 @@ const pixelies: Gallery[] = [
             },
             { url: 'https://bitwarden.com', img: 'https://88x31.nl/gifs/bitwarden.gif', alt: 'bitwarden' },
             { url: 'https://firefox.com', img: 'https://88x31.nl/gifs/firefox4.gif', alt: 'tested on firefox' },
-            { url: 'https://qbittorrent.org', img: 'https://sapphic.moe/buttons/other/qbittorrent.png'}
+            { url: 'https://qbittorrent.org', img: 'https://sapphic.moe/buttons/other/qbittorrent.png' }
         ]
     },
     {
@@ -82,7 +82,7 @@ const pixelies: Gallery[] = [
     {
         name: 'beliefs',
         pixelies: [
-            { img: 'https://88x31.nl/gifs/chrome.gif', alt: 'chrome to ie is just same shit different asshole'},
+            { img: 'https://88x31.nl/gifs/chrome.gif', alt: 'chrome to ie is just same shit different asshole' },
             {
                 url: 'https://archive.org/donate',
                 img: 'https://88x31.nl/gifs/internetarchive.gif',

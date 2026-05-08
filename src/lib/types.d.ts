@@ -1,3 +1,5 @@
+import type { string } from 'astro:schema';
+
 export interface PixelieEntry {
     img: string;
     url?: string;
@@ -43,13 +45,21 @@ export interface Album {
 }
 
 export interface GuestbookItem {
+    id?: number;
     name: string;
     message: string;
     createdAt: string;
     borderColor?: string;
     url?: string;
+    ameliaReply?: string;
 }
 
-export interface GuestbookPayload extends Omit<GuestbookItem, 'createdAt'> {
+export interface GuestbookPayload extends Omit<GuestbookItem, 'createdAt' | 'id' | 'ameliaReply'> {
     email?: string;
+}
+
+export interface MessagePayload {
+    message: string;
+    name: string;
+    email: string;
 }

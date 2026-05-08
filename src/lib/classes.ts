@@ -8,8 +8,10 @@ export const text = cva('', {
         color: {
             accent: 'text-ctp-pink',
             primary: 'text-ctp-text',
-            secondary: 'text-ctp-subtext0',
-            tertiary: 'text-ctp-subtext1'
+            secondary: 'text-ctp-subtext1',
+            tertiary: 'text-ctp-subtext0',
+            error: 'text-ctp-red',
+            success: 'text-ctp-green'
         },
         size: {
             sm: 'text-sm',
@@ -106,8 +108,12 @@ export const leadText = text({
 
 export const body = text({ font: 'sans', weight: 'normal', size: 'base', leading: 'relaxed', color: 'primary' });
 export const link = text({ hover: 'underline', customOutline: true });
-export const label = text({ size: 'sm', color: 'secondary', weight: 'medium' });
 export const caption = text({ size: 'sm', color: 'tertiary', weight: 'normal' });
+
+export const formFieldLabel = text({ color: 'secondary', weight: 'medium' });
+export const formFieldDesc = text({ size: 'sm', color: 'tertiary' });
+export const formFieldRequired = text({ color: 'accent', weight: 'medium' });
+export const formFieldOptional = text({ color: 'tertiary', weight: 'medium' });
 
 export const iconButton = text({
     color: 'tertiary',

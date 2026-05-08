@@ -1,7 +1,8 @@
 ---
-import Guestbook from '@client/Guestbook.vue';
+import Guestbook from '@client/guestbook/GuestbookView.vue';
 import Recents from '@client/music/Recents.vue';
 import IconLink from '@components/link/IconLink.astro';
+import SignGuestbook from '@components/link/SignGuestbook.astro';
 import Base from '@layouts/Base.astro';
 import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
 import { HOME_LINKS } from '@lib/consts';
@@ -80,7 +81,7 @@ import { HOME_LINKS } from '@lib/consts';
         </div>
     </div>
 
-    <div class="mb-2">
+    <div class="my-3">
         <div class="mb-4">
             <h2 class={heading}>recent songs</h2>
             <p class={leadText}>heres what ive been listening to lately :o</p>
@@ -89,14 +90,23 @@ import { HOME_LINKS } from '@lib/consts';
         <Recents client:load preview />
 
         <div class="mt-4">
-            <IconLink text="see more music :p" url="/music" icon="arrow-right-thin" />
+            <IconLink text="see more music :p" url="/music" icon="chevron-right" />
         </div>
     </div>
 
-    <div class="mb-2">
-        <h2 class={heading}>guestbook :3</h2>
-        <p class={leadText}>u should put smth here once uve looked at everything ^w^</p>
-
-        <Guestbook client:load isHomepage={true} />
+    <div class="mb-2 grid grid-cols-1 lg:grid-cols-2">
+        <div>
+            <h2 class={heading}>guestbook :3</h2>
+            <p class={leadText}>u should put smth here once uve looked at everything ^w^</p>
+            <div class="mt-3">
+                <SignGuestbook />
+            </div>
+        </div>
+        <div>
+            <Guestbook client:load limitItems />
+            <div class="mt-3 flex justify-center">
+                <IconLink text="view all" icon="chevron-right" url="/guestbook" />
+            </div>
+        </div>
     </div>
 </Base>

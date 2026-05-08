@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon/components';
+import { outline, iconButton } from '@lib/classes';
+---
+
+<a
+    class:list={[
+        'transition-colors duration-300',
+        'block bg-ctp-base py-2 px-5 rounded-sm text-ctp-subtext0 w-fit',
+        outline,
+        'hover:bg-ctp-pink hover:text-ctp-crust cursor-pointer'
+    ]}
+    href="/guestbook/sign"
+>
+    <div class="flex flex-row items-center gap-2">
+        <Icon name="mdi:pencil" size="24" />
+        <p>sign the guestbook :3</p>
+    </div>
+</a>
