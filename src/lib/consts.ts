@@ -43,3 +43,20 @@ export const HOME_LINKS: LinkSection[] = [
         links: [{ label: 'twitter', handle: '@Nyameliaaaa', url: 'https://twitter.com/Nyameliaaaa' }]
     }
 ];
+
+export const CATPPUCCIN_MACCHIATO_COLORS = [
+    'rosewater',
+    'flamingo',
+    'pink',
+    'mauve',
+    'red',
+    'maroon',
+    'peach',
+    'yellow',
+    'green',
+    'teal',
+    'sky',
+    'sapphire',
+    'blue',
+    'lavender'
+];

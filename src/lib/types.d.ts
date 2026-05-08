@@ -41,3 +41,15 @@ export interface Album {
     artist: string;
     playcount: string;
 }
+
+export interface GuestbookItem {
+    name: string;
+    message: string;
+    createdAt: string;
+    borderColor?: string;
+    url?: string;
+}
+
+export interface GuestbookPayload extends Omit<GuestbookItem, 'createdAt'> {
+    email?: string;
+}
