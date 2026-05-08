@@ -5,7 +5,7 @@ import IconLink from '@components/link/IconLink.astro';
 import SignGuestbook from '@components/link/SignGuestbook.astro';
 import Base from '@layouts/Base.astro';
 import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
-import { HOME_LINKS } from '@lib/consts';
+import { homeLinks } from '@lib/data';
 ---
 
 <Base
@@ -49,7 +49,7 @@ import { HOME_LINKS } from '@lib/consts';
         </div>
         <div class:list={['grid grid-cols-1 max-lg:divide-y-2 divide-ctp-base gap-3', 'lg:grid-cols-2  lg:divide-x-2']}>
             {
-                HOME_LINKS.map(section => (
+                homeLinks.map(section => (
                     <div>
                         <h3 class={subHeading}>{section.name}</h3>
                         <div class="grid grid-cols-3 mt-2">

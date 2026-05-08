@@ -63,3 +63,17 @@ export interface MessagePayload {
     name: string;
     email: string;
 }
+
+export interface Gallery {
+    name: string;
+    pixelies: PixelieEntry[];
+}
+
+export interface LinkSection {
+    name: string;
+    links: Array<{
+        label: string;
+        handle: string;
+        url?: string;
+    }>;
+}

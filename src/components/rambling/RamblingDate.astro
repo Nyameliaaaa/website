@@ -6,22 +6,24 @@ import type { CollectionEntry } from 'astro:content';
 
 type Props = CollectionEntry<'ramblings'>;
 
-const rambling = Astro.props;
+const {
+    data: { pubDate, updatedDate }
+} = Astro.props;
 ---
 
 <div class="flex flex-row max-lg:gap-1 lg:gap-4 items-center">
     <div class="flex flex-row gap-2 items-center">
         <Icon name="mdi:calendar-clock" size="16" class={caption} />
-        <p class={caption}><FormattedDate date={rambling.data.pubDate} /></p>
+        <p class={caption}><FormattedDate date={pubDate} /></p>
     </div>
     {
-        rambling.data.updatedDate && (
+        updatedDate && (
             <>
                 <p class={caption}>|</p>
                 <div class="flex flex-row gap-2 items-center">
                     <Icon name="mdi:calendar-edit" class={caption} size="16" />
                     <p class={caption}>
-                        <FormattedDate date={rambling.data.updatedDate} />
+                        <FormattedDate date={updatedDate} />
                     </p>
                 </div>
             </>

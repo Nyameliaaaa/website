@@ -1,10 +1,11 @@
 ---
-import { body, heading, subHeading } from '@lib/classes';
-import { type PixelieEntry } from '@lib/types';
-import Page from '../layouts/Page.astro';
-import { codeToHtml } from 'shiki';
-import MarkdownProse from '@components/markdown/MarkdownProse.astro';
 import PixelieImg from '@components/link/PixelieImg.astro';
+import MarkdownProse from '@components/markdown/MarkdownProse.astro';
+import { body, heading, link, subHeading } from '@lib/classes';
+import { type Gallery } from '@lib/types';
+import { codeToHtml } from 'shiki';
+import Page from '../layouts/Page.astro';
+import { pixelies } from '@lib/data';
 
 const html = await codeToHtml(
     [
@@ -27,96 +28,12 @@ const html = await codeToHtml(
         theme: 'catppuccin-macchiato'
     }
 );
-
-interface Gallery {
-    name: string;
-    pixelies: PixelieEntry[];
-}
-
-const pixelies: Gallery[] = [
-    {
-        name: 'gf <3',
-        pixelies: [{ url: 'https://gayspace.fr', img: 'https://gayspace.fr/images/buttons/button.gif', alt: 'lori <3' }]
-    },
-    {
-        name: 'friends',
-        pixelies: [
-            { url: 'https://hazelthats.me/', img: 'https://hazelthats.me/badges/hazelthatsme.gif', alt: 'hazel' }
-        ]
-    },
-    {
-        name: 'website inspo',
-        pixelies: [
-            {
-                url: 'https://sapphic.moe',
-                img: 'https://sapphic.moe/buttons/sapphic.png',
-                alt: 'sapphic angels'
-            },
-            {
-                url: 'https://maia.crimew.gay',
-                img: 'https://maia.crimew.gay/badges/maia.crimew.gay.png',
-                alt: 'maia arson crimew'
-            }
-        ]
-    },
-    {
-        name: 'tools/software',
-        pixelies: [
-            {
-                url: 'https://astro.build',
-                img: 'https://sapphic.moe/buttons/other/astro.png',
-                alt: Astro.generator.replace(/^A/, 'a')
-            },
-            { url: 'https://bitwarden.com', img: 'https://88x31.nl/gifs/bitwarden.gif', alt: 'bitwarden' },
-            { url: 'https://firefox.com', img: 'https://88x31.nl/gifs/firefox4.gif', alt: 'tested on firefox' },
-            { url: 'https://qbittorrent.org', img: 'https://sapphic.moe/buttons/other/qbittorrent.png' }
-        ]
-    },
-    {
-        name: 'pride',
-        pixelies: [
-            { img: 'https://88x31.nl/gifs/autismacceptnow.jpg', alt: 'autism acceptance now' },
-            { img: 'https://88x31.nl/gifs/girlsnow.png', alt: 'girls now' }
-        ]
-    },
-    {
-        name: 'beliefs',
-        pixelies: [
-            { img: 'https://88x31.nl/gifs/chrome.gif', alt: 'chrome to ie is just same shit different asshole' },
-            {
-                url: 'https://archive.org/donate',
-                img: 'https://88x31.nl/gifs/internetarchive.gif',
-                alt: 'donate to the internet archive <3'
-            },
-            { img: 'https://88x31.nl/gifs/internetprivacy.gif', alt: 'internet privacy NOW' },
-            { img: 'https://88x31.nl/gifs/letscrushcapitalism.png', alt: "let's crush capitalism" },
-            { img: 'https://88x31.nl/gifs/f_ckfb.gif', alt: 'fuck facebook' },
-            {
-                url: 'https://joinmastodon.org',
-                img: 'https://88x31.nl/gifs/mastodon_button_2.gif',
-                alt: 'join mastodon'
-            },
-            { img: 'https://88x31.nl/gifs/nft.gif', alt: 'nft? no fucking thanks' },
-            { url: 'https://aboutfeeds.com', img: 'https://88x31.nl/gifs/rss-button.gif', alt: 'rss feed' },
-            { img: 'https://88x31.nl/gifs/microsoft_stop.gif', alt: 'stop microsoft' },
-
-            { img: 'https://cyber.dabamos.de/88x31/antinazi.gif', alt: 'no nazi, no fascism, no racism' }
-        ]
-    },
-    {
-        name: 'other',
-        pixelies: [
-            { img: 'https://88x31.nl/gifs/youre_telling_me.png', alt: "you're telling me a queer coded this" },
-            { img: 'https://88x31.nl/gifs/miku.gif', alt: 'this site is miku approved' }
-        ]
-    }
-];
 ---
 
 <Page title="the museum" description="a wall of 88x31's, obviously">
     <div class="flex flex-col divide-y-2 divide-ctp-base">
         {
-            pixelies.map(pixelie => (
+            pixelies(Astro.generator).map(pixelie => (
                 <section class="py-3">
                     <h2 class={`${subHeading} mb-2`}>{pixelie.name}</h2>
                     <ul class="flex flex-row gap-2 flex-wrap">
@@ -135,6 +52,12 @@ const pixelies: Gallery[] = [
                 <img src="/88x31/button.png" width="88" height="31" alt="" style="image-rendering: pixelated;" />
                 <img src="/88x31/button.gif" width="88" height="31" alt="" style="image-rendering: pixelated;" />
             </ul>
+            <div class="mt-2">
+                <p class={body}>
+                    if you add it, you can tell me <a href="/message" class={link}>here</a>! no garuantee ill add you
+                    back however :p
+                </p>
+            </div>
         </section>
     </div>
 </Page>

@@ -1,40 +1,36 @@
 ---
+import TableOfContents from '@client/tableOfContents/TableOfContents.vue';
 import BackLink from '@components/link/BackLink.astro';
 import MarkdownProse from '@components/markdown/MarkdownProse.astro';
-import MarkdownTableOfContents from '@components/markdown/MarkdownTableOfContents.astro';
 import Base from '@layouts/Base.astro';
 import { pageSubtitle, pageTitle, text } from '@lib/classes';
 import type { MarkdownHeading } from 'astro';
 
-type Props = {
+interface Props {
     title: string;
     description: string;
     headings: MarkdownHeading[];
-};
+}
 
-const props = Astro.props;
+const { title, headings, description } = Astro.props;
 ---
 
-<Base title={props.title} description={props.description}>
+<Base title={title} description={description}>
     <aside slot="left" class:list={['max-xl:hidden']}>
-        <MarkdownTableOfContents headings={props.headings} />
+        <TableOfContents client:only headings={headings} />
     </aside>
     <section>
         <div class="mb-2">
             <BackLink />
 
-            <h1 class={pageTitle}>
-                {props.title}
-            </h1>
-            <p class={pageSubtitle}>
-                {props.description}
-            </p>
+            <h1 class={pageTitle}>{title}</h1>
+            <p class={pageSubtitle}>{description}</p>
 
             <slot name="extra" />
         </div>
 
-        <aside class="xl:hidden">
-            <MarkdownTableOfContents headings={props.headings} />
+        <aside class="xl:hidden w-full">
+            <TableOfContents client:only headings={headings} />
         </aside>
         <MarkdownProse><slot /></MarkdownProse>
     </section>

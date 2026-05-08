@@ -1,11 +1,6 @@
 ---
 import { container, headerName, text } from '@lib/classes';
-
-const links = [
-    { name: ':3', url: '/' },
-    { name: 'ramblings', url: '/ramblings' },
-    { name: 'uses', url: '/uses' }
-];
+import { headerLinks } from '@lib/data';
 
 const isActiveURL = (href: string) => {
     const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
@@ -30,7 +25,7 @@ const isActiveURL = (href: string) => {
             class="flex flex-row p-2 rounded-md bg-ctp-mantle border border-dashed border-ctp-subtext0 divide-x-2 divide-ctp-subtext0 divide-dashed"
         >
             {
-                links.map((url, index) => {
+                headerLinks.map((url, index) => {
                     const active = isActiveURL(url.url);
 
                     return (

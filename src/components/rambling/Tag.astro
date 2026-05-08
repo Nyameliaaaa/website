@@ -4,11 +4,13 @@ import { formFieldLabel } from '@lib/classes';
 interface Props {
     tag: string;
 }
+
+const { tag } = Astro.props;
 ---
 
 <a
-    href={`/ramblings/tags/${Astro.props.tag}`}
+    href={`/ramblings/tags/${tag}`}
     class="border border-ctp-subtext0 px-1 border-dashed rounded-sm hover:bg-ctp-surface0 transition-colors duration-300"
 >
-    <p class={formFieldLabel}>#{Astro.props.tag}</p>
+    <p class={formFieldLabel}>#{tag}</p>
 </a>

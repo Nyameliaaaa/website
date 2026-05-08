@@ -6,7 +6,7 @@
         </div>
 
         <div class="w-full">
-            <Listbox v-model="form.borderColor">
+            <Listbox v-model="form.borderColor" v-slot="{ open }">
                 <div class="relative mt-1">
                     <div>
                         <label :class="[formFieldLabel, 'mb-1']" for="colors"
@@ -22,7 +22,15 @@
                                 >{{ form.borderColor }}</span
                             >
                             <span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                                <Icon icon="mdi:chevron-down" class="h-5 w-5 text-subtext-1" aria-hidden="true" />
+                                <Icon
+                                    icon="mdi:chevron-down"
+                                    :class="[
+                                        'transition-all duration-300 text-ctp-text',
+                                        open ? 'rotate-180' : 'rotate-0'
+                                    ]"
+                                    size="28"
+                                    id="toc-chevron"
+                                />
                             </span>
                         </ListboxButton>
                     </div>
