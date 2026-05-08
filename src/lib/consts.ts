@@ -2,7 +2,7 @@ export const RSS_TITLE = "amelia's ramblings :3";
 export const RSS_DESCRIPTION =
     'i sometimes bark i mean think i mean bark and i think some people would like to hear that. i think (i dont)';
 
-export const WORKERS_URL = 'http://localhost:8787/api';
+export const WORKERS_URL = 'https://nyamelia-services.nyamelia.workers.dev/api';
 
 interface LinkSection {
     name: string;
