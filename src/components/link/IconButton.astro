@@ -1,0 +1,27 @@
+---
+import { Icon } from 'astro-icon/components';
+import { outline } from '@lib/classes';
+
+interface Props {
+    text: string;
+    icon: string;
+    url: string;
+}
+
+const { text, icon, url } = Astro.props;
+---
+
+<a
+    class:list={[
+        'transition-colors duration-300',
+        'block bg-ctp-base py-2 px-5 rounded-lg text-ctp-subtext0 w-fit',
+        outline,
+        'hover:bg-ctp-pink hover:text-ctp-crust cursor-pointer'
+    ]}
+    href={url}
+>
+    <div class:list={['flex flex-row items-center gap-2', { 'flex-row-reverse': icon === 'chevron-right' }]}>
+        <Icon name={`mdi:${icon}`} size="24" />
+        <p>{text}</p>
+    </div>
+</a>

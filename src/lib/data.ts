@@ -72,7 +72,12 @@ export const pixelies = (generator: string): Gallery[] => {
         {
             name: 'friends',
             pixelies: [
-                { url: 'https://hazelthats.me/', img: 'https://hazelthats.me/badges/hazelthatsme.gif', alt: 'hazel' }
+                { url: 'https://hazelthats.me/', img: 'https://hazelthats.me/badges/hazelthatsme.gif', alt: 'hazel' },
+                {
+                    url: 'https://mayaqq.dev',
+                    img: 'https://mayaqq.dev/assets/88x31/me.gif',
+                    alt: 'mayaqq (ty for the domain <3)'
+                }
             ]
         },
         {

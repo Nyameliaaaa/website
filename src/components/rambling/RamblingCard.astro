@@ -8,11 +8,11 @@ type Props = { rambling: CollectionEntry<'ramblings'> };
 const { rambling } = Astro.props;
 ---
 
-<li class="rounded-md py-2">
-    <div>
+<li class="rounded-lg py-2">
+    <div transition:name={rambling.id}>
         <div class="mb-2">
             <a href={`/ramblings/${rambling.id}/`}>
-                <h2 class={`${heading} ${link}`} transition:name={rambling.data.title}>
+                <h2 class={`${heading} ${link}`}>
                     {rambling.data.title}
                 </h2>
             </a>

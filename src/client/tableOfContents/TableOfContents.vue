@@ -1,11 +1,11 @@
 <template>
     <div v-if="headings.length" class="w-full px-4 pt-4">
-        <div class="mx-auto w-full max-w-md rounded-md bg-ctp-mantle border-2 border-ctp-pink">
+        <div class="mx-auto w-full max-w-md rounded-lg bg-ctp-mantle border-2 border-ctp-pink">
             <Disclosure v-slot="{ open }">
                 <DisclosureButton
                     :class="[
                         'flex w-full justify-between items-center px-2 py-2 text-left text-ctp-crust font-medium bg-ctp-pink cursor-pointer',
-                        outline.replace('rounded-md ', '')
+                        outline.replace('rounded-lg ', '')
                     ]"
                 >
                     <div class="flex gap-2 items-center">

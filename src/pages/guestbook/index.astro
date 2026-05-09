@@ -1,11 +1,11 @@
 ---
 import GuestbookView from '@client/guestbook/GuestbookView.vue';
-import SignGuestbook from '@components/link/SignGuestbook.astro';
+import IconButton from '@components/link/IconButton.astro';
 import Page from '@layouts/Page.astro';
 ---
 
 <Page title="guestbook :3" description="u should put smth here once uve looked at everything ^w^">
-    <div><SignGuestbook /></div>
+    <div><IconButton icon="pencil" text="sign the guestbook :3" url="/guestbook/sign" /></div>
 
     <hr class="border border-dashed border-ctp-crust my-2" />
 

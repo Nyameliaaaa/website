@@ -37,5 +37,5 @@ defineProps<{
 }>();
 
 const duringBox =
-    'bg-ctp-crust p-2 border-2 border-dashed border-ctp-base rounded-md flex flex-row items-center justify-center gap-4';
+    'bg-ctp-crust p-2 border-2 border-dashed border-ctp-base rounded-lg flex flex-row items-center justify-center gap-4';
 </script>

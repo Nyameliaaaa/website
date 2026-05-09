@@ -2,18 +2,25 @@
 import Guestbook from '@client/guestbook/GuestbookView.vue';
 import Recents from '@client/music/Recents.vue';
 import IconLink from '@components/link/IconLink.astro';
-import SignGuestbook from '@components/link/SignGuestbook.astro';
+import IconButton from '@components/link/IconButton.astro';
 import Base from '@layouts/Base.astro';
-import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
-import { homeLinks } from '@lib/data';
+import { body, heading, leadText, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
+import { RSS_DESCRIPTION } from '@lib/consts';
+import { getCollection } from 'astro:content';
+import RamblingCard from '@components/rambling/RamblingCard.astro';
+
+const homeTitle = 'hiiiiiiii ^^';
+const homeSub =
+    'hiiiiiiiiiiiiiiiiiii im amelia. im a trans girlie and uhm i like miku. this is my lil corner of the interwebs. feel free to look around and say hi';
+
+const ramblings = (await getCollection('ramblings')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
-<Base
-    title="hiiiiiiii ^^"
-    description="hiiiiiiiiiiiiiiiiiii im amelia. i uhhhhh suck at writing actually pretend im good at this please /j. anyway im a trans girlie and uhm i like miku i guess uh ok woof"
->
-    <div class="mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
-        <div class="order-first md:order-last md:self-start md:mr-5 rounded-md">
+<Base title={homeTitle} description={homeSub}>
+    <section class="mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
+        <div class="order-first md:order-last md:self-start md:mr-5 rounded-lg">
             <img
                 src="/pfp.jpg"
                 alt="amelia :3"
@@ -25,63 +32,50 @@ import { homeLinks } from '@lib/data';
         </div>
         <div class="order-last md:order-first">
             <div class="mb-6">
-                <h1 class={pageTitle}>hiiiiiiii ^^</h1>
-                <p class={pageSubtitle}>
-                    hiiiiiiiiiiiiiiiiiii im amelia. i uhhhhh suck at writing actually pretend im good at this please /j.
-                    anyway im a trans girlie and uhm i like miku i guess uh ok woof
-                </p>
+                <h1 class={pageTitle}>{homeTitle}</h1>
+                <p class={pageSubtitle}>{homeSub}</p>
             </div>
 
             <h2 class={heading}>pronouns</h2>
-            <p class={body}>
-                i use it/she/xe pronouns btw :3 theres more <a
-                    class={text({ hover: 'accent', transition: true, customOutline: true })}
-                    href="https://pronouns.cc/@nyamelia">here</a
-                > :p
-            </p>
-        </div>
-    </div>
+            <p class={leadText}>i use it/she/xe pronouns btw :3</p>
 
-    <div class="my-4">
-        <div class="mb-3">
-            <h2 class={heading}>contact i guess</h2>
-            <p class={leadText}>locations where the cryptid known as amelia has been found on the interwebs</p>
+            <div class="mt-3">
+                <IconButton icon="chevron-right" text="more of me" url="/about" />
+            </div>
         </div>
-        <div class:list={['grid grid-cols-1 max-lg:divide-y-2 divide-ctp-base gap-3', 'lg:grid-cols-2  lg:divide-x-2']}>
-            {
-                homeLinks.map(section => (
-                    <div>
-                        <h3 class={subHeading}>{section.name}</h3>
-                        <div class="grid grid-cols-3 mt-2">
-                            {section.links.map(linkItem => (
-                                <>
-                                    <p
-                                        class={text({
-                                            color: 'accent',
-                                            font: 'sans',
-                                            weight: 'medium',
-                                            tracking: 'tight'
-                                        })}
-                                    >
-                                        {linkItem.label}
-                                    </p>
-                                    {linkItem.url ? (
-                                        <a href={linkItem.url} rel="me" class={`${body} ${link} col-span-2`}>
-                                            {linkItem.handle}
-                                        </a>
-                                    ) : (
-                                        <p class={`${body} col-span-2`}>{linkItem.handle}</p>
-                                    )}
-                                </>
-                            ))}
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
-    </div>
+    </section>
 
-    <div class="my-3">
+    <hr class="border border-dashed border-ctp-crust my-4" />
+
+    <section>
+        <h2 class={heading}>contact</h2>
+        <p class={leadText}>locations where the cryptid known as amelia has been found on the interwebs</p>
+        <div class="mt-3">
+            <IconButton icon="at" text="contact" url="/contact" />
+        </div>
+    </section>
+
+    <hr class="border border-dashed border-ctp-crust my-4" />
+
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+        <div>
+            <h2 class={heading}>ramblings</h2>
+            <p class={leadText}>{RSS_DESCRIPTION}</p>
+            <div class="mt-3">
+                <IconButton icon="note-multiple" text="read all" url="/ramblings" />
+            </div>
+        </div>
+        <div>
+            <h3 class={subHeading}>latest article</h3>
+            <ul class="mt-2 bg-ctp-base rounded-md p-2 border-2 border-ctp-crust border-dashed">
+                <RamblingCard rambling={ramblings[0]} />
+            </ul>
+        </div>
+    </section>
+
+    <hr class="border border-dashed border-ctp-crust my-4" />
+
+    <section class="my-4">
         <div class="mb-4">
             <h2 class={heading}>recent songs</h2>
             <p class={leadText}>heres what ive been listening to lately :o</p>
@@ -92,14 +86,15 @@ import { homeLinks } from '@lib/data';
         <div class="mt-4">
             <IconLink text="see more music :p" url="/music" icon="chevron-right" />
         </div>
-    </div>
+    </section>
+    <hr class="border border-dashed border-ctp-crust my-4" />
 
-    <div class="mb-2 grid grid-cols-1 lg:grid-cols-2 gap-2">
+    <section class="mb-2 grid grid-cols-1 lg:grid-cols-2 gap-2">
         <div>
             <h2 class={heading}>guestbook :3</h2>
             <p class={leadText}>u should put smth here once uve looked at everything ^w^</p>
             <div class="mt-3">
-                <SignGuestbook />
+                <IconButton icon="pencil" text="sign the guestbook :3" url="/guestbook/sign" />
             </div>
         </div>
         <div>
@@ -108,5 +103,5 @@ import { homeLinks } from '@lib/data';
                 <IconLink text="view all" icon="chevron-right" url="/guestbook" />
             </div>
         </div>
-    </div>
+    </section>
 </Base>

@@ -1,7 +1,7 @@
 import { cva } from 'cva';
 
 export const outline =
-    'rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctp-pink focus-visible:ring-offset-2 focus-visible:ring-offset-ctp-base';
+    'rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctp-pink focus-visible:ring-offset-2 focus-visible:ring-offset-ctp-base';
 
 export const text = cva('', {
     variants: {
@@ -60,7 +60,7 @@ export const text = cva('', {
 });
 
 export const container = 'mx-auto md:max-w-6xl px-2 md:px-0';
-export const formField = 'block w-full bg-ctp-base border-none rounded-sm placeholder-ctp-subtext0 text-ctp-text';
+export const formField = 'block w-full bg-ctp-base border-none rounded-lg placeholder-ctp-subtext0 text-ctp-text';
 export const headerName = text({
     font: 'display',
     weight: 'semibold',

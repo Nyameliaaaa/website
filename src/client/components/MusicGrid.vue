@@ -10,7 +10,7 @@
             target="_blank"
             rel="noopener noreferrer"
             :class="[
-                'group relative block aspect-square overflow-hidden rounded-md transition duration-300 border-2 border-transparent hover:border-ctp-pink focus:outline-none focus:ring-2 focus:ring-ctp-pink focus:ring-offset-ctp-base text-ctp-text',
+                'group relative block aspect-square overflow-hidden rounded-lg transition duration-300 border-2 border-transparent hover:border-ctp-pink focus:outline-none focus:ring-2 focus:ring-ctp-pink focus:ring-offset-ctp-base text-ctp-text',
                 activeItem === `${index}/${item.url}` ? 'is-active' : ''
             ]"
             :aria-label="$emit('aria', item)"

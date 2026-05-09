@@ -7,7 +7,7 @@
                     :href="artist.url"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="rounded-md transition p-2 duration-300 border-2 border-transparent hover:border-ctp-pink focus:outline-none focus:ring-2 focus:ring-ctp-pink bg-ctp-base"
+                    class="rounded-lg transition p-2 duration-300 border-2 border-transparent hover:border-ctp-pink focus:outline-none focus:ring-2 focus:ring-ctp-pink bg-ctp-base"
                     :aria-label="artist.name"
                 >
                     <p class="line-clamp-2 w-full text-xl font-bold text-ctp-text">{{ artist.name }}</p>

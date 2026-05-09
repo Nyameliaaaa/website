@@ -11,7 +11,8 @@ const { icon, url, text } = Astro.props;
     class:list={[
         'group flex flex-row gap-2 transition-all duration-300 items-center hover:text-ctp-pink',
         outline,
-        'w-fit'
+        'w-fit',
+        { 'flex-row-reverse': icon === 'chevron-right' }
     ]}
     href={url}
 >

@@ -1,6 +1,6 @@
 <template>
     <div
-        class="bg-ctp-base rounded-sm p-3 mb-2 w-full border-2"
+        class="bg-ctp-base rounded-lg p-3 mb-2 w-full border-2"
         :style="{ borderColor: `var(--catppuccin-color-${entry.borderColor})` }"
     >
         <div class="flex flex-row justify-between items-center">
@@ -23,7 +23,7 @@
             <p :class="leadText">{{ entry.message }}</p>
         </div>
 
-        <div v-if="entry.ameliaReply" class="my-2 bg-ctp-mantle p-2 rounded-md">
+        <div v-if="entry.ameliaReply" class="my-2 bg-ctp-mantle p-2 rounded-lg">
             <div class="flex flex-row gap-2 items-center">
                 <Icon icon="mdi:reply" :class="caption" size="24" />
                 <p :class="caption">amelia replied</p>

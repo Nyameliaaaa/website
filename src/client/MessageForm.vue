@@ -91,7 +91,7 @@ const submit = useSubmitWrap(
     },
     async () => await mutate(form),
     async () => {
-        setTimeout(() => (window.location.href = '/'), 3000);
+        setTimeout(() => (window.location.href = '/contact'), 3000);
     }
 );
 </script>

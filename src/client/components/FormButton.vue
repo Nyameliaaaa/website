@@ -3,7 +3,7 @@
         @click="() => $emit('submit')"
         :class="[
             'transition-all duration-300',
-            'py-1 px-5 rounded-sm text-ctp-subtext0',
+            'py-1 px-5 rounded-lg text-ctp-subtext0',
             outline,
             {
                 'bg-ctp-base hover:bg-ctp-pink hover:text-ctp-crust cursor-pointer': !isMutating && !mutationError,

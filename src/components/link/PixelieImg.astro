@@ -11,14 +11,14 @@ const defaultUrl = pixelie.gif ?? pixelie.img;
 <li>
     {
         pixelie.url ? (
-            <a href={pixelie.url} target="_blank" rel="noopener noreferrer">
+            <a href={pixelie.url} target="_blank" rel="noopener noreferrer" title={alt}>
                 <picture>
                     {hasVariants && <source srcset={pixelie.img} media="(prefers-reduced-motion: reduce)" />}
                     <img src={defaultUrl} width="88" height="31" alt={alt} style="image-rendering: pixelated;" />
                 </picture>
             </a>
         ) : (
-            <picture>
+            <picture title={alt}>
                 {hasVariants && <source srcset={pixelie.img} media="(prefers-reduced-motion: reduce)" />}
                 <img src={defaultUrl} width="88" height="31" alt={alt} style="image-rendering: pixelated;" />
             </picture>

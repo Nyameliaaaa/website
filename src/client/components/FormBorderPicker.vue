@@ -34,7 +34,7 @@
                     mode="out-in"
                 >
                     <ListboxOptions
-                        class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md py-1 text-base shadow-md ring-1 ring-black/5 focus:outline-none"
+                        class="absolute mt-1 max-h-60 w-full overflow-auto rounded-lg py-1 text-base shadow-md ring-1 ring-black/5 focus:outline-none"
                     >
                         <ListboxOption
                             v-slot="{ selected }"
