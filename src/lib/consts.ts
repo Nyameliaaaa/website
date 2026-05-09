@@ -7,8 +7,6 @@ const prodUrl = 'https://nyamelia-services.nyamelia.workers.dev/api';
 const devUrl = 'http://localhost:8787/api';
 export const WORKERS_URL = isDev ? devUrl : prodUrl;
 
-
-
 export const CATPPUCCIN_MACCHIATO_COLORS = [
     'rosewater',
     'flamingo',

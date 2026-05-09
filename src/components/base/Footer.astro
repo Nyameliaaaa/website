@@ -16,15 +16,10 @@ import { footerPixelies, footerUrls } from '@lib/data';
                     > by amelia
                 </p>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 xl:gap-3">
+            <div class="grid grid-cols-2 lg:grid-cols-2 xl:gap-3">
                 {
                     footerUrls.map((url, index) => (
-                        <div
-                            class:list={[
-                                'mb-2',
-                                { 'xl:col-span-1': index % 2 === 0, 'xl:col-span-2': index % 2 === 1 }
-                            ]}
-                        >
+                        <div class="mb-2">
                             <IconLink {...url} />
                         </div>
                     ))

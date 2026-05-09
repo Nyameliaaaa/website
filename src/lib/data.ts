@@ -78,11 +78,7 @@ export const pixelies = (generator: string): Gallery[] => {
         {
             name: 'website inspo',
             pixelies: [
-                {
-                    url: 'https://sapphic.moe',
-                    img: 'https://sapphic.moe/buttons/sapphic.png',
-                    alt: 'sapphic angels'
-                },
+                { url: 'https://sapphic.moe', img: 'https://sapphic.moe/buttons/sapphic.png', alt: 'sapphic angels' },
                 {
                     url: 'https://maia.crimew.gay',
                     img: 'https://maia.crimew.gay/badges/maia.crimew.gay.png',

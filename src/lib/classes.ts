@@ -60,7 +60,7 @@ export const text = cva('', {
 });
 
 export const container = 'mx-auto md:max-w-6xl px-2 md:px-0';
-
+export const formField = 'block w-full bg-ctp-base border-none rounded-sm placeholder-ctp-subtext0 text-ctp-text';
 export const headerName = text({
     font: 'display',
     weight: 'semibold',
