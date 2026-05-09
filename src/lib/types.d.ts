@@ -69,11 +69,13 @@ export interface Gallery {
     pixelies: PixelieEntry[];
 }
 
+export interface Link {
+    label: string;
+    handle: string;
+    url?: string;
+}
+
 export interface LinkSection {
     name: string;
-    links: Array<{
-        label: string;
-        handle: string;
-        url?: string;
-    }>;
+    links: Link[];
 }

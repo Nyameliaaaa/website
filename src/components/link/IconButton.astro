@@ -20,8 +20,13 @@ const { text, icon, url } = Astro.props;
     ]}
     href={url}
 >
-    <div class:list={['flex flex-row items-center gap-2', { 'flex-row-reverse': icon === 'chevron-right' }]}>
-        <Icon name={`mdi:${icon}`} size="24" />
+    <div
+        class:list={[
+            'flex flex-row items-center justify-center   gap-2',
+            { 'flex-row-reverse': icon === 'chevron-right' }
+        ]}
+    >
+        <Icon name={`mdi:${icon}`} size="16" />
         <p>{text}</p>
     </div>
 </a>

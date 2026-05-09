@@ -66,7 +66,7 @@ const ramblings = (await getCollection('ramblings')).sort(
             </div>
         </div>
         <div>
-            <h3 class={subHeading}>latest article</h3>
+            <h3 class={subHeading}>latest rambling</h3>
             <ul class="mt-2 bg-ctp-base rounded-md p-2 border-2 border-ctp-crust border-dashed">
                 <RamblingCard rambling={ramblings[0]} />
             </ul>
@@ -75,7 +75,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 
     <hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section class="my-4">
+    <section>
         <div class="mb-4">
             <h2 class={heading}>recent songs</h2>
             <p class={leadText}>heres what ive been listening to lately :o</p>
@@ -87,6 +87,17 @@ const ramblings = (await getCollection('ramblings')).sort(
             <IconLink text="see more music :p" url="/music" icon="chevron-right" />
         </div>
     </section>
+
+    <hr class="border border-dashed border-ctp-crust my-4" />
+
+    <section>
+        <h2 class={heading}>games</h2>
+        <p class={leadText}>fact of the day: amelia is not a playstation 5 and thus has games!</p>
+        <div class="mt-3">
+            <IconButton icon="chevron-right" text="SEE the games!" url="https://backloggd.com/u/nyameliaaaa" />
+        </div>
+    </section>
+
     <hr class="border border-dashed border-ctp-crust my-4" />
 
     <section class="mb-2 grid grid-cols-1 lg:grid-cols-2 gap-2">

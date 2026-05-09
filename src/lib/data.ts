@@ -1,4 +1,4 @@
-import type { Gallery, LinkSection, PixelieEntry } from '@lib/types';
+import type { Gallery, Link, LinkSection, PixelieEntry } from '@lib/types';
 
 export const headerLinks = [
     { name: ':3', url: '/' },
@@ -30,34 +30,57 @@ export const footerPixelies: PixelieEntry[] = [
     { img: 'https://88x31.nl/gifs/miku.gif', alt: 'this site is miku approved' }
 ];
 
+export const links: Link[] = [
+    {
+        label: 'mastodon',
+        handle: '@nyameliaaaa@tech.lgbt',
+        url: 'https://tech.lgbt/@nyameliaaaa'
+    },
+    { label: 'twitter', handle: '@Nyameliaaaa', url: 'https://twitter.com/Nyameliaaaa' },
+    {
+        label: 'bluesky',
+        handle: '@nyamelia.is-immensely.gay',
+        url: 'https://bsky.app/profile/nyamelia.is-immensely.gay'
+    },
+    { label: 'instagram', handle: '@Nyameliaaaa', url: 'https://instagram.com/Nyameliaaaa' },
+    { label: 'steam', handle: '@nyameliaaaa', url: 'https://steamcommunity.com/id/nyameliaaaa/' },
+    { label: 'last.fm', handle: '@nyamelia', url: 'https://last.fm/user/nyamelia' },
+    { label: 'backloggd', handle: '@nyameliaaaa', url: 'https://backloggd.com/u/nyameliaaaa/' }
+];
+
 export const homeLinks: LinkSection[] = [
     {
-        name: 'cool places',
+        name: 'fediverse',
         links: [
             {
                 label: 'mastodon',
                 handle: '@nyameliaaaa@tech.lgbt',
                 url: 'https://tech.lgbt/@nyameliaaaa'
             },
-            {
-                label: 'git.gay',
-                handle: '@nyamelia',
-                url: 'https://git.gay/nyamelia'
-            },
-            {
-                label: 'matrix',
-                handle: '@nyameliaaaa:matrix.org',
-                url: 'https://matrix.to/#/@nyameliaaaa:matrix.org'
-            },
-            {
-                label: 'mail',
-                handle: 'nyameliaaaa (AT) proton (DOT) me'
-            }
+            { label: 'steam', handle: '@nyameliaaaa', url: 'https://steamcommunity.com/id/nyameliaaaa/' }
         ]
     },
     {
         name: 'fiefdoms of palantir',
-        links: [{ label: 'twitter', handle: '@Nyameliaaaa', url: 'https://twitter.com/Nyameliaaaa' }]
+        links: [
+            { label: 'twitter', handle: '@Nyameliaaaa', url: 'https://twitter.com/Nyameliaaaa' },
+            {
+                label: 'bluesky',
+                handle: 'nyamelia.is-immensely.gay',
+                url: 'https://bsky.app/profile/nyamelia.is-immensely.gay'
+            }
+        ]
+    },
+    {
+        name: 'scrobblign go brrrr',
+        links: [
+            { label: 'last.fm', handle: '@nyamelia', url: 'https://last.fm/user/nyamelia' },
+            { label: 'backloggd', handle: '@nyameliaaaa', url: 'https://backloggd.com/u/nyameliaaaa/' }
+        ]
+    },
+    {
+        name: 'purgatory',
+        links: [{ label: 'instagram', handle: '@Nyameliaaaa', url: 'https://instagram.com/Nyameliaaaa' }]
     }
 ];
 

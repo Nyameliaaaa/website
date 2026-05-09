@@ -3,7 +3,7 @@ import BackLink from '@components/link/BackLink.astro';
 import IconButton from '@components/link/IconButton.astro';
 import Base from '@layouts/Base.astro';
 import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
-import { homeLinks } from '@lib/data';
+import { links } from '@lib/data';
 
 const contactTitle = 'contact';
 const contactSub =
@@ -13,7 +13,7 @@ const contactSub =
 <Base title={contactTitle} description={contactSub}>
     <BackLink />
 
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
+    <section class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
         <div class="order-first md:order-last md:self-start md:mr-5 rounded-lg">
             <img
                 src="/pfp.jpg"
@@ -24,72 +24,137 @@ const contactSub =
                 loading="eager"
             />
         </div>
-        <div class="order-last md:order-first">
+        <section class="order-last md:order-first">
             <div class="mb-6">
                 <h1 class={pageTitle}>{contactTitle}</h1>
                 <p class={pageSubtitle}>{contactSub}</p>
             </div>
 
             <h2 class={heading}>message</h2>
-            <p class={body}>you can message me through this site lmao. or rather bark at me</p>
+            <p class={leadText}>you can message me through this site lmao. or rather bark at me</p>
             <div class="mt-2">
                 <IconButton text="message" icon="message" url="/message" />
             </div>
-        </div>
-    </div>
+        </section>
+    </section>
 
-    <div class="my-4">
-        <h2 class={heading}>mail</h2>
-        <p class={leadText}>
-            that'd be {' '}<span class="bg-ctp-crust px-2 rounded-md text-ctp-pink"
-                >nyameliaaaa (AT) proton (DOT) me</span
-            >
-        </p>
-    </div>
+    <hr class="border border-dashed border-ctp-crust my-4" />
 
-    <div class="my-4">
+    <section>
         <h2 class={heading}>public keys</h2>
         <p class={leadText}>
             you can find my public keys <a href="/pubkeys.txt" class={link}>here</a>
         </p>
-    </div>
+    </section>
 
-    <div class="my-4">
-        <div class="mb-3">
-            <h2 class={heading}>contact</h2>
-            <p class={leadText}>locations where the cryptid known as amelia has been found on the interwebs</p>
+    <hr class="border border-dashed border-ctp-crust my-4" />
+
+    <section>
+        <h2 class={heading}>contact</h2>
+        <div class="my-3">
+            <h2 class={subHeading}>mail</h2>
+            <p class={body}>
+                <span class="bg-ctp-crust px-2 rounded-md text-ctp-pink">nyameliaaaa (AT) proton (DOT) me</span>. for
+                non-proton gpg, see <span class="bg-ctp-crust px-2 rounded-md">public keys</span>
+            </p>
         </div>
-        <div class:list={['grid grid-cols-1 max-lg:divide-y-2 divide-ctp-base gap-3', 'lg:grid-cols-2  lg:divide-x-2']}>
+        <div class="my-3">
+            <h2 class={subHeading}>matrix</h2>
+            <p class={body}>
+                <a
+                    href="https://matrix.to/#/@nyameliaaaa:matrix.org"
+                    class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
+                    >@nyameliaaaa:matrix.org</a
+                >
+            </p>
+        </div>
+        <div class="my-3">
+            <h2 class={subHeading}>discord</h2>
+            <p class={body}>
+                <a
+                    href="https://matrix.to/#/@nyameliaaaa:matrix.org"
+                    class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
+                    >@nyameliaaaa</a
+                > thoo id prefer you use matrix instead
+            </p>
+        </div>
+        <div class="my-3">
+            <h2 class={subHeading}>signal</h2>
+            <p class={body}>i don't give out my signal username unless i vibe with you tbh</p>
+        </div>
+    </section>
+
+    <hr class="border border-dashed border-ctp-crust my-4" />
+
+    <section>
+        <h2 class={heading}>git forge</h2>
+        <div class="my-3">
+            <h2 class={subHeading}>git.gay</h2>
+            <p
+                class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
+            >
+                <a href="https://git.gay/nyamelia">@nyamelia</a>
+            </p>
+            <p class={body}>primary git forge</p>
+        </div>
+        <div class="my-3">
+            <h2 class={subHeading}>github</h2>
+            <p
+                class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
+            >
+                <a href="https://github.com/nyameliaaaa">@nyameliaaaa</a>
+            </p>
+            <p class={body}>
+                used only as a mirror and for contributing to projects still on github, <a
+                    class={link}
+                    href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</a
+                >
+            </p>
+        </div>
+    </section>
+
+    <hr class="border border-dashed border-ctp-crust my-4" />
+
+    <section class="my-4">
+        <div class="mb-3">
+            <h2 class={heading}>links</h2>
+            <p class={leadText}>
+                where else can the amelia be found. you did not ask that question or you did but im answering it
+            </p>
+        </div>
+        <ul>
             {
-                homeLinks.map(section => (
-                    <div>
-                        <h3 class={subHeading}>{section.name}</h3>
-                        <div class="grid grid-cols-3 mt-2">
-                            {section.links.map(linkItem => (
-                                <>
-                                    <p
-                                        class={text({
-                                            color: 'accent',
-                                            font: 'sans',
-                                            weight: 'medium',
-                                            tracking: 'tight'
-                                        })}
-                                    >
-                                        {linkItem.label}
-                                    </p>
-                                    {linkItem.url ? (
-                                        <a href={linkItem.url} rel="me" class={`${body} ${link} col-span-2`}>
-                                            {linkItem.handle}
-                                        </a>
-                                    ) : (
-                                        <p class={`${body} col-span-2`}>{linkItem.handle}</p>
-                                    )}
-                                </>
-                            ))}
+                links.map(linkItem => (
+                    <li class="grid grid-cols-2 w-full lg:grid-cols-3 xl:grid-cols-4">
+                        <div>
+                            <p
+                                class={text({
+                                    color: 'accent',
+                                    font: 'sans',
+                                    weight: 'medium',
+                                    tracking: 'tight'
+                                })}
+                            >
+                                {linkItem.label}
+                            </p>
                         </div>
-                    </div>
+                        <div>
+                            {linkItem.url ? (
+                                <a
+                                    href={linkItem.url}
+                                    target="_blank"
+                                    rel="me noopener noreferrer"
+                                    class={`${body} ${link} col-span-2`}
+                                >
+                                    {linkItem.handle}
+                                </a>
+                            ) : (
+                                <p class={`${body} col-span-2`}>{linkItem.handle}</p>
+                            )}
+                        </div>
+                    </li>
                 ))
             }
-        </div>
-    </div>
+        </ul>
+    </section>
 </Base>
