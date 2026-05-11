@@ -3,10 +3,10 @@
         <Paginator v-if="data" :items="data">
             <template #default="{ item }">
                 <div
-                    class="bg-ctp-base py-2 px-4 border-2 border-ctp-crust rounded-lg flex flex-row items-center justify-between my-3"
+                    class="bg-ctp-base py-2 px-4 border-2 border-ctp-crust rounded-lg flex flex-col md:flex-row items-center justify-between my-3"
                 >
                     <p :class="leadText">{{ item.text }}</p>
-                    <p :class="caption">
+                    <p :class="[caption, 'text-right']">
                         <time :datetime="item.createdAt">
                             {{
                                 new Date(item.createdAt)
