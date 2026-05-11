@@ -19,7 +19,6 @@
                         size="16"
                         id="toc-chevron"
                     />
-                    <!-- <ChevronUpIcon :class="open ? 'rotate-180 transform' : ''" class="h-5 w-5 text-purple-500" /> -->
                 </DisclosureButton>
                 <Transition
                     tag="div"
@@ -35,7 +34,7 @@
                         <ul>
                             <li v-for="(heading, i) in headings" :key="i">
                                 <a
-                                    :href="heading.slug"
+                                    :href="`#${heading.slug}`"
                                     :class="[body, link]"
                                     :style="{
                                         marginLeft: `calc(2rem * ${hasH1 ? heading.depth - 1 : heading.depth - 2})`

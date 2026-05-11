@@ -44,6 +44,12 @@ export interface Album {
     playcount: string;
 }
 
+export interface StatusItem {
+    id?: number;
+    text: string;
+    createdAt: string;
+}
+
 export interface GuestbookItem {
     id?: number;
     name: string;

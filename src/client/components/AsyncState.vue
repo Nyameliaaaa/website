@@ -10,15 +10,15 @@
         mode="out-in"
     >
         <div v-if="loading" :class="duringBox">
-            <Icon icon="mdi:loading" :class="[body, 'animate-spin']" size="22" />
+            <Icon icon="mdi:loading" :class="[body, 'animate-spin']" size="18" />
             <p :class="body">loading {{ '<3' }}</p>
         </div>
         <div v-else-if="error" :class="duringBox">
-            <Icon icon="mdi:alert-circle-outline" :class="body" size="22" />
+            <Icon icon="mdi:alert-circle-outline" :class="body" size="18" />
             <div :class="body">something went wrong {{ '<\/3' }}</div>
         </div>
         <div v-else-if="empty" :class="duringBox">
-            <Icon icon="mdi:cup-outline" :class="body" size="22" />
+            <Icon icon="mdi:cup-outline" :class="body" size="18" />
             <div :class="body">no entries {{ '<\/3' }}</div>
         </div>
         <slot v-else />

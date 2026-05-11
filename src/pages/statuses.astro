@@ -1,0 +1,14 @@
+---
+import AllStatuses from '@client/statuses/AllStatuses.vue';
+import IconLink from '@components/link/IconLink.astro';
+import Page from '@layouts/Page.astro';
+import { WORKERS_URL } from '@lib/consts';
+---
+
+<Page title="statuses" description="sometimes i say shit">
+    <IconLink url={`${WORKERS_URL}/statuses/rss.xml`} icon="rss" text="subscribe via rss" />
+
+    <hr class="border border-dashed border-ctp-crust my-2" />
+
+    <AllStatuses client:load />
+</Page>
