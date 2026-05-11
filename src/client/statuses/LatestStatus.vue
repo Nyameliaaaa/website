@@ -5,7 +5,7 @@
             class="bg-ctp-crust py-2 px-4 border-2 border-dashed border-ctp-base rounded-lg flex flex-col md:flex-row items-center justify-between"
         >
             <p :class="leadText">{{ data.text }}</p>
-            <p :class="[caption, 'align-right']">
+            <p :class="[caption, 'text-right']">
                 <time :datetime="data.createdAt">
                     {{
                         new Date(data.createdAt)
