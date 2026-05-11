@@ -2,7 +2,7 @@
     <AsyncState :loading="loading" :error="error" :empty="false">
         <div
             v-if="data"
-            class="bg-ctp-crust py-2 px-4 border-2 border-dashed border-ctp-base rounded-lg flex flex-row items-center justify-between"
+            class="bg-ctp-crust py-2 px-4 border-2 border-dashed border-ctp-base rounded-lg flex flex-col md:flex-row items-center justify-between"
         >
             <p :class="leadText">{{ data.text }}</p>
             <p :class="caption">
