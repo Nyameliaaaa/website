@@ -1,5 +1,6 @@
 ---
-import { container, headerName, text } from '@lib/classes';
+import WrapLink from '@components/link/WrapLink.astro';
+import { headerName, text } from '@lib/classes';
 import { headerLinks } from '@lib/data';
 
 const isActiveURL = (href: string) => {
@@ -14,23 +15,23 @@ const isActiveURL = (href: string) => {
 <header>
     <nav
         class:list={[
-            container,
-            'flex flex-col gap-2 items-center justify-center select-none lg:flex-row lg:justify-between lg:items-center'
+            'flex flex-col gap-2 items-center justify-center select-none',
+            'lg:flex-row lg:justify-between lg:items-center'
         ]}
     >
         <h2>
-            <a href="/" class={headerName}>amelia :3</a>
+            <WrapLink href="/" class={headerName}>amelia :3</WrapLink>
         </h2>
         <ul
-            class="flex flex-row p-2 rounded-lg bg-ctp-mantle border border-dashed border-ctp-subtext0 divide-x-2 divide-ctp-subtext0 divide-dashed"
+            class="flex flex-row p-2 rounded-lg bg-ctp-crust border-2 border-dashed border-ctp-mantle divide-x-2 divide-ctp-base divide-dashed"
         >
             {
                 headerLinks.map((url, index) => {
                     const active = isActiveURL(url.url);
 
                     return (
-                        <li>
-                            <a
+                        <li transition:name={`header-link-${index}`} transition:animate="fade">
+                            <WrapLink
                                 href={url.url}
                                 class={text({
                                     color: active ? 'accent' : 'primary',
@@ -40,11 +41,9 @@ const isActiveURL = (href: string) => {
                                     class: 'px-2',
                                     customOutline: true
                                 })}
-                                transition:name={`header-link-${index}`}
-                                transition:animate="fade"
                             >
                                 {url.name}
-                            </a>
+                            </WrapLink>
                         </li>
                     );
                 })

@@ -2,13 +2,12 @@
 import IconLink from '@components/link/IconLink.astro';
 import PixelieImg from '@components/link/PixelieImg.astro';
 import { caption, text } from '@lib/classes';
-import { container } from '@lib/classes';
 import { footerPixelies, footerUrls } from '@lib/data';
 ---
 
-<footer class="pt-3 pb-5">
-    <div class:list={[container, 'grid grid-cols-1 md:grid-cols-2 select-none']}>
-        <div class="flex flex-col gap-2 items-left justify-between p-2">
+<footer>
+    <div class="grid grid-cols-1 md:grid-cols-2 select-none">
+        <div class="flex flex-col gap-2 items-left justify-between">
             <div class="group flex flex-row gap-2 transition-all duration-400 items-center">
                 <p class={caption}>
                     made with <span class={text({ color: 'accent', weight: 'medium' })}>{'<3'}</span> and <span

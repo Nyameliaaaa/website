@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'a'> {}
+const props = Astro.props;
+let rel: string | null | undefined = '';
+let target: string | null | undefined = '';
+
+const ogRel = props.rel ? props.rel.replace('noopener', '').replace('noreferrer', '') : '';
+
+if (props.href?.toString().startsWith('https://')) {
+    target = '_blank';
+    rel = `noopener noreferrer ${ogRel}`;
+} else {
+    target = (props.target === '_blank' ? '_self' : props?.target) ?? '_self';
+    rel = ogRel;
+}
+---
+
+<a {...props} rel={rel} target={target}><slot /></a>

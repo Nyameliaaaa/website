@@ -1,10 +1,11 @@
 ---
 import PixelieImg from '@components/link/PixelieImg.astro';
-import MarkdownProse from '@components/markdown/MarkdownProse.astro';
+import MarkdownProse from '@components/formatting/MarkdownProse.astro';
 import { body, heading, link, subHeading } from '@lib/classes';
 import { codeToHtml } from 'shiki';
 import Page from '../layouts/Page.astro';
 import { pixelies } from '@lib/data';
+import WrapLink from '@components/link/WrapLink.astro';
 
 const html = await codeToHtml(
     [
@@ -53,7 +54,7 @@ const html = await codeToHtml(
             </ul>
             <div class="mt-2">
                 <p class={body}>
-                    if you add it, you can tell me <a href="/message" class={link}>here</a>! no garuantee ill add you
+                    if you add it, you can tell me <WrapLink href="/message" class={link}>here</WrapLink>! no garuantee ill add you
                     back however :p
                 </p>
             </div>

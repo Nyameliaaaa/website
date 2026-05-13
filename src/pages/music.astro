@@ -3,40 +3,44 @@ import Albums from '@client/music/Albums.vue';
 import Artists from '@client/music/Artists.vue';
 import Playlists from '@client/music/Playlists.vue';
 import Recents from '@client/music/Recents.vue';
+import WrapLink from '@components/link/WrapLink.astro';
 import Page from '@layouts/Page.astro';
 import { caption, heading, leadText, link } from '@lib/classes';
 ---
 
 <Page title="music :P" description="please enjoy staring at my music taste">
-    <p class={leadText}>
-        check out my <a class={link} href="https://www.last.fm/user/nyamelia">last.fm profile</a> ^^
-    </p>
+    <span slot="description">
+        please enjoy staring at my music taste. check out my <WrapLink
+            class={link}
+            href="https://www.last.fm/user/nyamelia">last.fm profile</WrapLink
+        > ^^
+    </span>
 
     <section class="my-4">
         <h2 class={heading}>recent songs</h2>
 
-        <Recents client:load />
+        <Recents client:only />
     </section>
 
     <section class="my-4">
         <h2 class={heading}>top albums (30 days)</h2>
 
-        <Albums client:load />
+        <Albums client:only />
     </section>
 
     <section class="my-4">
         <h2 class={heading}>top artists (7 days)</h2>
 
-        <Artists client:load />
+        <Artists client:only />
     </section>
 
     <section class="mt-5 mb-3">
         <h2 class={heading}>playlists</h2>
 
-        <Playlists client:load />
+        <Playlists client:only />
     </section>
 
     <p class={caption}>
-        music cards from <a class={link} href="https://sapphic.moe">sapphic angels</a>
+        music cards from <WrapLink class={link} href="https://sapphic.moe">sapphic angels</WrapLink>
     </p>
 </Page>

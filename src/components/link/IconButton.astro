@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { outline } from '@lib/classes';
+import WrapLink from '@components/link/WrapLink.astro';
 
 interface Props {
     text: string;
@@ -11,7 +12,7 @@ interface Props {
 const { text, icon, url } = Astro.props;
 ---
 
-<a
+<WrapLink
     class:list={[
         'transition-colors duration-300',
         'block bg-ctp-base py-2 px-5 rounded-lg text-ctp-subtext0 w-fit',
@@ -29,4 +30,4 @@ const { text, icon, url } = Astro.props;
         <Icon name={`mdi:${icon}`} size="16" />
         <p>{text}</p>
     </div>
-</a>
+</WrapLink>

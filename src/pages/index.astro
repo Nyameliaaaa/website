@@ -20,9 +20,9 @@ const ramblings = (await getCollection('ramblings')).sort(
 
 <Base title={homeTitle} description={homeSub}>
     <section class="mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
-        <div class="order-first md:order-last md:self-start md:mr-5 rounded-lg">
+        <div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
             <img
-                src="/pfp.jpg"
+                src="/about/pfp.jpg"
                 alt="amelia :3"
                 width={200}
                 height={200}
@@ -36,8 +36,8 @@ const ramblings = (await getCollection('ramblings')).sort(
                 <p class={pageSubtitle}>{homeSub}</p>
             </div>
 
-            <h2 class={heading}>pronouns</h2>
-            <p class={leadText}>i use it/she/xe pronouns btw :3</p>
+            <h2 class={heading}>me</h2>
+            <p class={leadText}>i use it/she/fae/xe pronouns btw :3</p>
 
             <div class="mt-3">
                 <IconButton icon="chevron-right" text="more of me" url="/about" />
@@ -81,7 +81,7 @@ const ramblings = (await getCollection('ramblings')).sort(
             <p class={leadText}>heres what ive been listening to lately :o</p>
         </div>
 
-        <Recents client:load preview />
+        <Recents client:only preview />
 
         <div class="mt-4">
             <IconLink text="see more music :p" url="/music" icon="chevron-right" />
@@ -109,7 +109,7 @@ const ramblings = (await getCollection('ramblings')).sort(
             </div>
         </div>
         <div>
-            <Guestbook client:load limitItems />
+            <Guestbook client:only limitItems />
             <div class="mt-3 flex justify-center">
                 <IconLink text="view all" icon="chevron-right" url="/guestbook" />
             </div>

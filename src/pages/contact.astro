@@ -1,9 +1,11 @@
 ---
 import BackLink from '@components/link/BackLink.astro';
 import IconButton from '@components/link/IconButton.astro';
+import LinkSection from '@components/formatting/LinkSection.astro';
 import Base from '@layouts/Base.astro';
 import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
 import { links } from '@lib/data';
+import WrapLink from '@components/link/WrapLink.astro';
 
 const contactTitle = 'contact';
 const contactSub =
@@ -14,14 +16,13 @@ const contactSub =
     <BackLink />
 
     <section class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
-        <div class="order-first md:order-last md:self-start md:mr-5 rounded-lg">
+        <div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
             <img
-                src="/pfp.jpg"
+                src="/about/pfp.jpg"
                 alt="amelia :3"
                 width={200}
                 height={200}
                 class="border-2 border-dashed border-ctp-mauve"
-                loading="eager"
             />
         </div>
         <section class="order-last md:order-first">
@@ -43,7 +44,7 @@ const contactSub =
     <section>
         <h2 class={heading}>public keys</h2>
         <p class={leadText}>
-            you can find my public keys <a href="/pubkeys.txt" class={link}>here</a>
+            you can find my public keys <WrapLink href="/pubkeys.txt" class={link}>here</WrapLink>
         </p>
     </section>
 
@@ -93,7 +94,7 @@ const contactSub =
             <p
                 class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
             >
-                <a href="https://git.gay/nyamelia">@nyamelia</a>
+                <WrapLink href="https://git.gay/nyamelia">@nyamelia</WrapLink>
             </p>
             <p class={body}>primary git forge</p>
         </div>
@@ -102,7 +103,7 @@ const contactSub =
             <p
                 class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
             >
-                <a href="https://github.com/nyameliaaaa">@nyameliaaaa</a>
+                <WrapLink href="https://github.com/nyameliaaaa">@nyameliaaaa</WrapLink>
             </p>
             <p class={body}>
                 used only as a mirror and for contributing to projects still on github, <a
@@ -122,39 +123,6 @@ const contactSub =
                 where else can the amelia be found. you did not ask that question or you did but im answering it
             </p>
         </div>
-        <ul>
-            {
-                links.map(linkItem => (
-                    <li class="grid w-full grid-cols-3 xl:grid-cols-4">
-                        <div class="col-span-1">
-                            <p
-                                class={text({
-                                    color: 'accent',
-                                    font: 'sans',
-                                    weight: 'medium',
-                                    tracking: 'tight'
-                                })}
-                            >
-                                {linkItem.label}
-                            </p>
-                        </div>
-                        <div class="col-span-2 xl:col-span-3">
-                            {linkItem.url ? (
-                                <a
-                                    href={linkItem.url}
-                                    target="_blank"
-                                    rel="me noopener noreferrer"
-                                    class={`${body} ${link} col-span-2`}
-                                >
-                                    {linkItem.handle}
-                                </a>
-                            ) : (
-                                <p class={`${body} col-span-2`}>{linkItem.handle}</p>
-                            )}
-                        </div>
-                    </li>
-                ))
-            }
-        </ul>
+        <LinkSection links={links} />
     </section>
 </Base>
