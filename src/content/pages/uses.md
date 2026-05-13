@@ -36,6 +36,18 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 
 ### apps
 
-- [bitwarden](https://bitwarden.com): password manager
+- [Bitwarden](https://bitwarden.com): password manager
 - [2FAS](https://2fas.com/auth): TOTP 2FA
-- [firefox](https://firefox.com): web browser (the only valid one)
+- [Firefox](https://firefox.com): web browser (the only valid one)
+
+### dev tooling
+
+- [VSCodium](https://vscodium.com/): a libre build of VS Code with all MS telemetry and AI features removed, and a libre extension marketplace (OpenVSX)
+
+### extensions
+
+
+### other
+
+- [Start11](https://www.stardock.com/products/start11/): because the w11 preinstalled start menu sucks balls
+- 
