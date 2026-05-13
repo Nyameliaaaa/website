@@ -4,6 +4,7 @@ import IconLink from '@components/link/IconLink.astro';
 import Rambling from '@components/rambling/RamblingCard.astro';
 import Page from '@layouts/Page.astro';
 import { getCollection } from 'astro:content';
+import { caption } from '@lib/classes';
 
 const ramblings = (await getCollection('ramblings')).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -11,8 +12,10 @@ const ramblings = (await getCollection('ramblings')).sort(
 ---
 
 <Page title={RSS_TITLE} description={RSS_DESCRIPTION}>
-    <div class="my-2">
+    <div class="my-2 flex flex-col lg:flex-row gap-2 lg:items-center">
         <IconLink text="view by tags" icon="label" url="/ramblings/tags/" />
+        <p class={caption}>•</p>
+        <IconLink text="subscribe via rss" icon="rss" url="/rss.xml" />
     </div>
     <section>
         <ul class="flex flex-col md:grid-cols-2 gap-2">

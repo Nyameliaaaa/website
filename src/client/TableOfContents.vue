@@ -1,5 +1,5 @@
 <template>
-    <div v-if="headings.length" class="w-full px-4 pt-4">
+    <div v-if="headings.length" class="w-full px-4 pt-4 lg:sticky lg:top-4">
         <div class="mx-auto w-full max-w-md rounded-lg bg-ctp-mantle border-2 border-ctp-pink">
             <Disclosure v-slot="{ open }">
                 <DisclosureButton
@@ -30,7 +30,7 @@
                     leave-to-class="opacity-0"
                     mode="out-in"
                 >
-                    <DisclosurePanel :class="['px-4 pb-2 pt-4 bg-ctp-mantle max-h-128 overflow-y-scroll', outline]">
+                    <DisclosurePanel :class="['p-4 bg-ctp-mantle max-h-128 overflow-y-scroll', outline]">
                         <ul>
                             <li v-for="(heading, i) in headings" :key="i">
                                 <a
