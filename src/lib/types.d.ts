@@ -13,6 +13,10 @@ export interface MusicGridItem {
     url: string;
     secondaryText: string;
     tertiaryText?: string;
+    cardItem?: {
+        alt?: string;
+        aria?: string;
+    };
 }
 
 export interface Recent {
@@ -75,7 +79,7 @@ export interface Gallery {
     pixelies: PixelieEntry[];
 }
 
-export interface Link {
+export interface LinkEntry {
     label: string;
     handle: string;
     url?: string;
@@ -83,5 +87,5 @@ export interface Link {
 
 export interface LinkSection {
     name: string;
-    links: Link[];
+    links: LinkEntry[];
 }

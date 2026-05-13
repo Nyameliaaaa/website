@@ -1,4 +1,4 @@
-import type { Gallery, Link, LinkSection, PixelieEntry } from '@lib/types';
+import type { Gallery, LinkEntry, LinkSection, PixelieEntry } from '@lib/types';
 
 export const headerLinks = [
     { name: ':3', url: '/' },
@@ -30,7 +30,7 @@ export const footerPixelies: PixelieEntry[] = [
     { img: 'https://88x31.nl/gifs/miku.gif', alt: 'this site is miku approved' }
 ];
 
-export const links: Link[] = [
+export const links: LinkEntry[] = [
     {
         label: 'mastodon',
         handle: '@nyameliaaaa@tech.lgbt',

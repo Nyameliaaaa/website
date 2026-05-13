@@ -11,7 +11,8 @@ export const text = cva('', {
             secondary: 'text-ctp-subtext1',
             tertiary: 'text-ctp-subtext0',
             error: 'text-ctp-red',
-            success: 'text-ctp-green'
+            success: 'text-ctp-green',
+            link: 'text-ctp-blue'
         },
         size: {
             sm: 'text-sm',
@@ -59,7 +60,6 @@ export const text = cva('', {
     }
 });
 
-export const container = 'mx-auto md:max-w-6xl px-2 md:px-0';
 export const formField = 'block w-full bg-ctp-base border-none rounded-lg placeholder-ctp-subtext0 text-ctp-text';
 export const headerName = text({
     font: 'display',
@@ -107,7 +107,7 @@ export const leadText = text({
 });
 
 export const body = text({ font: 'sans', weight: 'normal', size: 'base', leading: 'relaxed', color: 'primary' });
-export const link = text({ hover: 'underline', customOutline: true });
+export const link = text({ color: 'link', hover: 'underline', customOutline: true });
 export const caption = text({ size: 'sm', color: 'tertiary', weight: 'normal' });
 
 export const formFieldLabel = text({ color: 'secondary', weight: 'medium' });
