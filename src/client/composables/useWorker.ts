@@ -1,18 +1,20 @@
 import { WORKERS_URL } from '@lib/consts';
 import { ref } from 'vue';
 
-export const useWorker = <T>() => {
+type InnerFetchOptions<T> = Partial<{
+    handler: (data: T) => T;
+}>;
+
+export const useWorker = <T>(endpoint: string) => {
     const data = ref<T | null>(null);
     const loading = ref(true);
     const error = ref(false);
 
-    const useFetch = async (endpoint: string, handleData: (data: T) => T = data => data) => {
+    const useFetch = async (options: InnerFetchOptions<T> = {}) => {
+        const { handler = d => d } = options;
+
         if (!loading.value) {
             loading.value = true;
-        }
-
-        if (data.value) {
-            data.value = null;
         }
 
         try {
@@ -24,7 +26,7 @@ export const useWorker = <T>() => {
                 error.value = true;
             }
 
-            data.value = handleData(json as T);
+            data.value = handler(json as T);
         } catch (e) {
             console.error(e);
             error.value = true;

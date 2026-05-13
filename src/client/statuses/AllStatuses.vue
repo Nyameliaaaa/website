@@ -3,7 +3,7 @@
         <Paginator v-if="data" :items="data">
             <template #default="{ item }">
                 <div
-                    class="bg-ctp-base py-2 px-4 border-2 border-ctp-crust rounded-lg flex flex-col md:flex-row items-center justify-between my-3"
+                    class="bg-ctp-base py-2 px-4 border-2 border-ctp-crust rounded-lg flex flex-col md:flex-row md:items-center md:justify-between my-3"
                 >
                     <p :class="leadText">{{ item.text }}</p>
                     <p :class="[caption, 'text-right']">
@@ -20,8 +20,8 @@
                         </time>
                     </p>
                 </div>
-            </template></Paginator
-        >
+            </template>
+        </Paginator>
     </AsyncState>
 </template>
 
@@ -33,11 +33,11 @@ const props = defineProps<{
 import AsyncState from '@client/components/AsyncState.vue';
 import Paginator from '@client/components/Paginator.vue';
 import { useWorker } from '@client/composables/useWorker';
-import { body, caption, leadText, link } from '@lib/classes';
+import { caption, leadText } from '@lib/classes';
 import type { StatusItem } from '@lib/types';
 import { onMounted } from 'vue';
 
-const { loading, error, data, useFetch } = useWorker<StatusItem[]>();
+const { loading, error, data, useFetch } = useWorker<StatusItem[]>('statuses');
 
-onMounted(() => useFetch('statuses'));
+onMounted(() => useFetch());
 </script>

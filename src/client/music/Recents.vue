@@ -1,13 +1,13 @@
 <template>
     <div class="mt-3">
         <AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
-            <MusicGrid v-if="data" :data="migrateDataFormat(data)" @aria="createAria" @alt="createAlt" />
+            <MusicGrid v-if="data" :data="migrateDataFormat(data)" />
         </AsyncState>
     </div>
 </template>
 
 <script setup lang="ts">
-import type { Album, MusicGridItem, Recent } from '@lib/types';
+import type { MusicGridItem, Recent } from '@lib/types';
 import AsyncState from '@client/components/AsyncState.vue';
 import MusicGrid from '@client/components/MusicGrid.vue';
 import { useWorker } from '@client/composables/useWorker';
@@ -23,19 +23,15 @@ const migrateDataFormat = (data: Recent[]): MusicGridItem[] => {
         image: track.image,
         url: track.url,
         secondaryText: track.artist,
-        tertiaryText: track.album
+        tertiaryText: track.album,
+        cardItem: {
+            aria: `${track.name} by ${track.artist}`,
+            alt: `${track.name} by ${track.artist}`
+        }
     }));
 };
 
-const createAria = (item: MusicGridItem) => {
-    return `${item.name} by ${item.secondaryText}`;
-};
+const { loading, error, data, useFetch } = useWorker<Recent[]>('lastfm/recent');
 
-const createAlt = (item: MusicGridItem) => {
-    return `${item.name} by ${item.secondaryText}`;
-};
-
-const { loading, error, data, useFetch } = useWorker<Recent[]>();
-
-onMounted(() => useFetch('lastfm/recent', data => (props.preview ? data.slice(0, 5) : data)));
+onMounted(() => useFetch({ handler: data => (props.preview ? data.slice(0, 5) : data) }));
 </script>

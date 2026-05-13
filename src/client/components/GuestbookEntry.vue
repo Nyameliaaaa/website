@@ -15,6 +15,7 @@
                     'w-fit'
                 ]"
                 :href="entry.url"
+                :aria-label="`${entry.name}'s website'`"
             >
                 <Icon icon="mdi:link-variant" :class="iconButton" size="16" />
             </a>
@@ -51,6 +52,7 @@
                     'w-fit'
                 ]"
                 :href="`/guestbook/report?id=${entry.id}`"
+                aria-label="report this entry"
             >
                 <Icon icon="mdi:flag" :class="iconButton" size="16" />
             </a>

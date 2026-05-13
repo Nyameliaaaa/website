@@ -1,6 +1,6 @@
 <template>
     <div class="mt-3">
-        <MusicGrid v-if="data" :data="migrateDataFormat(data)" @aria="createAria" @alt="createAlt" />
+        <MusicGrid v-if="data" :data="migrateDataFormat(data)" />
     </div>
 </template>
 
@@ -13,17 +13,14 @@ const migrateDataFormat = (data: Playlist[]): MusicGridItem[] => {
         name: playlist.name,
         image: playlist.image,
         url: playlist.url,
-        secondaryText: playlist.content
+        secondaryText: playlist.content,
+        cardItem: {
+            aria: `${playlist.name} (${playlist.content})`,
+            alt: `${playlist.name} (${playlist.content})`
+        }
     }));
 };
 
-const createAria = (item: MusicGridItem) => {
-    return `${item.name} by ${item.secondaryText}`;
-};
-
-const createAlt = (item: MusicGridItem) => {
-    return `${item.name} by ${item.secondaryText}`;
-};
 
 const data: Playlist[] = [
     {

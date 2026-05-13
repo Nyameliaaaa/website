@@ -43,8 +43,11 @@ import { useSubmitHelpers } from '@client/composables/useSubmitHelpers';
 import FormField from '@client/components/FormField.vue';
 
 const id = new URLSearchParams(window.location.search).get('id');
-const { loading, error, data, useFetch } = useWorker<GuestbookItem>();
-const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers({ message: '' }, { message: '' });
+const { loading, error, data, useFetch } = useWorker<GuestbookItem>(`guestbook/${id}`);
+const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers(
+    { message: '' },
+    { message: '' }
+);
 
 const { mutate, mutationError } = useMutation<typeof form>(`guestbook/${id}/report`);
 
@@ -62,5 +65,5 @@ const submit = useSubmitWrap(
     }
 );
 
-onMounted(() => useFetch(`guestbook/${id}`));
+onMounted(() => useFetch());
 </script>

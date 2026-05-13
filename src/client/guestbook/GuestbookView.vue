@@ -20,8 +20,8 @@ import type { GuestbookItem } from '@lib/types';
 import { onMounted } from 'vue';
 import Paginator from '@client/components/Paginator.vue';
 
-const { loading, error, data, useFetch } = useWorker<GuestbookItem[]>();
+const { loading, error, data, useFetch } = useWorker<GuestbookItem[]>('guestbook');
 const handler = (data: GuestbookItem[]) => (props.limitItems ? data.slice(0, 5) : data);
 
-onMounted(() => useFetch('guestbook', handler));
+onMounted(() => useFetch({ handler }));
 </script>

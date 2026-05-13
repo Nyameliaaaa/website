@@ -13,15 +13,14 @@
                 'group relative block aspect-square overflow-hidden rounded-lg transition duration-300 border-2 border-transparent hover:border-ctp-pink focus:outline-none focus:ring-2 focus:ring-ctp-pink focus:ring-offset-ctp-base text-ctp-text',
                 activeItem === `${index}/${item.url}` ? 'is-active' : ''
             ]"
-            :aria-label="$emit('aria', item)"
+            :aria-label="item.cardItem?.aria ?? ''"
             @click="handleClick($event, item.url, index)"
         >
             <img
                 v-if="item.image"
                 :src="item.image"
-                :alt="$emit('alt', item)"
-                class="h-full w-full object-cover transition duration-300 group-hover:opacity-90 group-[.is-active]:opacity-90 group-hover:blur-sm bg-ctp-crust"
-                loading="lazy"
+                :alt="item.cardItem?.alt ?? ''"
+                class="h-full w-full object-cover transition duration-300 group-hover:opacity-90 group-[.is-active]:opacity-90 group-hover:blur-sm bg-ctp-crust"    
             />
             <div
                 class="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-ctp-mantle/60 p-4 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-[.is-active]:opacity-100"
@@ -41,7 +40,6 @@ import type { MusicGridItem } from '@lib/types';
 import { onUnmounted, ref } from 'vue';
 
 defineProps<{ data: MusicGridItem[] }>();
-defineEmits<{ (e: 'aria', item: MusicGridItem): string; (e: 'alt', item: MusicGridItem): string }>();
 
 const activeItem = ref<string | null>(null);
 let timeout: ReturnType<typeof setTimeout>;
