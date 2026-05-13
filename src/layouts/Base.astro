@@ -1,12 +1,11 @@
 ---
-import '@/styles/fonts.css';
 import '@/styles/global.css';
 import LatestStatus from '@client/statuses/LatestStatus.vue';
+import Container from '@components/formatting/Container.astro';
 
 import BaseHead from '@components/base/BaseHead.astro';
 import Footer from '@components/base/Footer.astro';
 import Header from '@components/base/Header.astro';
-import { container } from '@lib/classes';
 
 interface Props {
     title?: string;
@@ -23,7 +22,7 @@ interface Props {
     <body
         class="min-h-dvh w-screen bg-linear-to-br from-ctp-mantle via-ctp-crust to-ctp-mantle selection:bg-ctp-pink selection:text-ctp-crust"
     >
-        <div class="drop-shadow-md">
+        <div class="drop-shadow-md macchiato">
             <div class="grid grid-cols-5">
                 <div class="h-4 bg-ctp-sapphire"></div>
                 <div class="h-4 bg-ctp-pink"></div>
@@ -33,25 +32,29 @@ interface Props {
             </div>
         </div>
 
-        <div class="h-full macchiato pt-3">
-            <Header />
+        <div class="h-full macchiato">
+            <Container class="my-3" transition:persist>
+                <Header />
+            </Container>
 
-            <div class:list={[container, 'my-3']}>
-                <LatestStatus client:load />
-            </div>
+            <Container transition:persist>
+                <LatestStatus client:only />
+            </Container>
 
-            <div class="grid grid-cols-[1fr_min(calc(100%-1rem),72rem)_1fr] px-2 md:px-0">
-                <slot name="left" />
+            <Container class="mt-3 mb-5">
+                <slot name="left" slot="left" />
                 <main
-                    class="bg-ctp-mantle p-3 rounded-lg border-2 border-dashed border-ctp-pink col-start-2"
+                    class="bg-ctp-mantle px-3 py-2 rounded-lg border-2 border-dashed border-ctp-pink"
                     transition:animate="fade"
                 >
                     <slot />
                 </main>
-                <slot name="right" />
-            </div>
+                <slot name="right" slot="right" />
+            </Container>
 
-            <Footer />
+            <Container>
+                <Footer />
+            </Container>
         </div>
     </body>
 </html>
