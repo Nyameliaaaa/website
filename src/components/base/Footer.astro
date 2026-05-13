@@ -29,7 +29,10 @@ import { version } from 'vue';
                     astro {Astro.generator.replace('Astro ', '')}, vue v{version}
                 </p>
                 <p class={caption}>
-                    commit {import.meta.env.CF_PAGES_COMMIT_SHA}
+                    commit <WrapLink
+                        href={`https://git.gay/nyamelia/website/commit/${import.meta.env.CF_PAGES_COMMIT_SHA}`}
+                        class={link}>{import.meta.env.CF_PAGES_COMMIT_SHA}</WrapLink
+                    >
                 </p>
                 <p class={caption}>
                     tested using <WrapLink href="https://firefox.com" class={link}> firefox</WrapLink>
