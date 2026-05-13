@@ -6,7 +6,7 @@ type Props = { pixelie: PixelieEntry };
 const { pixelie } = Astro.props;
 const alt = pixelie.alt ?? '';
 const hasVariants = pixelie.gif && pixelie.img;
-const defaultUrl = pixelie.gif ?? pixelie.img;
+const defaultUrl = pixelie.gif || pixelie.img;
 ---
 
 <li>

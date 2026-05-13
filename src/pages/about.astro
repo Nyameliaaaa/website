@@ -11,24 +11,22 @@ const aboutTitle = 'about';
 const aboutSub = 'this page is kinda about me AND this site but this site IS me so it works';
 
 const links: LinkEntry[] = [
-    {
-        label: 'website',
-        handle: 'nyamelia/website',
-        url: 'https://git.gay/nyamelia/website'
-    },
-    {
-        label: 'helper',
-        handle: 'nyamelia/nyamelia-services',
-        url: 'https://git.gay/nyamelia/nyamelia-services'
-    }
+    { label: 'pronouns.cc', handle: '@nyamelia', url: 'https://pronouns.cc/@nyamelia' },
+    { label: 'attraction layer cake', handle: 'rC6', url: 'https://cake.avris.it/rC6' },
+    { label: 'arvis.it spectrum', handle: 'F4Q2', url: 'https://spectrum.avris.it/F4Q2' }
+];
+
+const sourceLinks: LinkEntry[] = [
+    { label: 'website', handle: 'nyamelia/website', url: 'https://git.gay/nyamelia/website' },
+    { label: 'helper', handle: 'nyamelia/nyamelia-services', url: 'https://git.gay/nyamelia/nyamelia-services' }
 ];
 ---
 
 <Base title={aboutTitle} description={aboutSub}>
     <BackLink />
 
-    <div class="grid grid-cols-1 xl:grid-cols-6 gap-4">
-        <section class="xl:col-span-4">
+    <div class="flex gap-4">
+        <section>
             <div class="mb-4">
                 <h1 class={pageTitle}>{aboutTitle}</h1>
                 <p class={pageSubtitle}>{aboutSub}</p>
@@ -41,16 +39,46 @@ const links: LinkEntry[] = [
                     <h2 class={heading}>me</h2>
                     <p class={leadText}>
                         i am a transfemme lesbian who uses she/it/fae/xe pronouns ^^ also i am a puppygirl (woof) and
-                        also i MIGHT be butch or masc idfk LMAO. gay
+                        also i MIGHT be butch or masc idfk LMAO. i am also AuDHD gang wooo #RedInstead. also my vision
+                        sucks ASS.
                     </p>
-                    <div class="mt-2">
-                        <IconButton text="more" icon="chevron-right" url="https://pronouns.cc/@nyamelia" />
-                    </div>
                 </div>
-                <!-- 
+
                 <section>
-                    <h3 class={subHeading}></h3>
-                </section> -->
+                    <h3 class={subHeading}>tastes</h3>
+                    <p class={body}></p>
+                    <ul class:list={['list-disc list-inside mt-1', body]}>
+                        <li>
+                            <WrapLink href="/music" class={link}>music</WrapLink>
+                        </li>
+                        <li>
+                            <WrapLink href="https://backloggd.com/u/nyameliaaaa" class={link}
+                                >games (backloggd)</WrapLink
+                            >
+                        </li>
+                        <li>
+                            <WrapLink href="https://letterboxd.com/nyamelia/" class={link}>films (letterboxd)</WrapLink>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>beliefs</h3>
+                    <p class={body}>
+                        i think the web should be weird, free, open, federated, and YOURS. i am an advocate for internet
+                        privacy, federated protocols, and libre software. you should be able to own your device, your
+                        website, your feed, your communications, your media, your source code, and your files, free from
+                        any glowie or corporate interests. i am mostly NEGATIVE towards LLMs and other post-2022
+                        generative AI ventures. specifically, i do not support image, video, audio (NOT TTS!!), or music
+                        generative AI in any form. i also support the preservation of media bc no cultural work can
+                        belong to capitalism, it is of the commons
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>links</h3>
+                    <LinkSection links={links} />
+                </section>
             </section>
 
             <hr class="border border-dashed border-ctp-crust my-4" />
@@ -68,6 +96,11 @@ const links: LinkEntry[] = [
                         webapp on vercel with a skills section with "what i know" and theres always git and just eugh.
                         please understand a personal website is for YOU not a persona. goddamnit i hate that garbage
                     </p>
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>the web should weird</h3>
+                    <p class={body}></p>
                 </section>
 
                 <section>
@@ -161,7 +194,7 @@ const links: LinkEntry[] = [
 
                 <section>
                     <h3 class={subHeading}>source code</h3>
-                    <LinkSection links={links} />
+                    <LinkSection links={sourceLinks} />
                 </section>
 
                 <section>
@@ -175,11 +208,21 @@ const links: LinkEntry[] = [
                 </section>
             </section>
         </section>
-        <div class="xl:col-span-2 bg-ctp-base p-2 pb-0 inset-shadow-sm inset-shadow-ctp-mantle" transition:persist>
+        <div class="xl:hidden bg-ctp-base p-2 pb-0 inset-shadow-sm inset-shadow-ctp-mantle" transition:persist>
             <p class="text-ctp-pink font-medium text-sm text-center">what i look like (real)</p>
             <div class="w-full h-full flex flex-col justify-center items-center">
                 <img src="/about/arlecchino.png" alt="arlecchino" class="aspect-2/3" />
             </div>
+        </div>
+    </div>
+    <div
+        slot="right"
+        class="max-xl:hidden sticky top-5 bg-ctp-mantle border-2 border-dashed border-ctp-base h-fit p-2 m-3 rounded-lg inset-shadow-ctp-mantle"
+        transition:persist
+    >
+        <p class="text-ctp-pink font-medium text-sm text-center">what i look like (real)</p>
+        <div class="w-full h-full flex flex-col justify-center items-center">
+            <img src="/about/arlecchino.png" alt="arlecchino" class="aspect-2/3" />
         </div>
     </div>
 </Base>

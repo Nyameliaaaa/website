@@ -1,5 +1,5 @@
 <template>
-    <div v-if="headings.length" class="w-full px-4 pt-4 lg:sticky lg:top-4">
+    <div v-if="headings.length" class="w-full px-4 pt-4 xl:sticky xl:top-4">
         <div class="mx-auto w-full max-w-md rounded-lg bg-ctp-mantle border-2 border-ctp-pink">
             <Disclosure v-slot="{ open }">
                 <DisclosureButton
