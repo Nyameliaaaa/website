@@ -1,28 +1,185 @@
 ---
+import LinkSection from '@components/formatting/LinkSection.astro';
 import BackLink from '@components/link/BackLink.astro';
 import IconButton from '@components/link/IconButton.astro';
+import WrapLink from '@components/link/WrapLink.astro';
 import Base from '@layouts/Base.astro';
 import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
+import type { LinkEntry } from '@lib/types';
 
 const aboutTitle = 'about';
-const aboutSub = 'huh';
+const aboutSub = 'this page is kinda about me AND this site but this site IS me so it works';
+
+const links: LinkEntry[] = [
+    {
+        label: 'website',
+        handle: 'nyamelia/website',
+        url: 'https://git.gay/nyamelia/website'
+    },
+    {
+        label: 'helper',
+        handle: 'nyamelia/nyamelia-services',
+        url: 'https://git.gay/nyamelia/nyamelia-services'
+    }
+];
 ---
 
 <Base title={aboutTitle} description={aboutSub}>
     <BackLink />
 
     <div class="grid grid-cols-1 xl:grid-cols-6 gap-4">
-        <div class="xl:col-span-4">
-            <div class="mb-6">
+        <section class="xl:col-span-4">
+            <div class="mb-4">
                 <h1 class={pageTitle}>{aboutTitle}</h1>
                 <p class={pageSubtitle}>{aboutSub}</p>
             </div>
-        </div>
-        <div
-            class="xl:col-span-2 bg-ctp-base p-2 pb-0 inset-shadow-sm inset-shadow-ctp-mantle w-full flex flex-col justify-center items-center"
-        >
-            <p class="text-ctp-pink font-medium text-sm">what i look like</p>
-            <img src="/arlecchino.png" alt="meeeeee :3" class="min-w-xs max-w-sm" />
+
+            <hr class="border border-dashed border-ctp-crust my-4" />
+
+            <section class="flex flex-col gap-3">
+                <div>
+                    <h2 class={heading}>me</h2>
+                    <p class={leadText}>
+                        i am a transfemme lesbian who uses she/it/fae/xe pronouns ^^ also i am a puppygirl (woof) and
+                        also i MIGHT be butch or masc idfk LMAO. gay
+                    </p>
+                    <div class="mt-2">
+                        <IconButton text="more" icon="chevron-right" url="https://pronouns.cc/@nyamelia" />
+                    </div>
+                </div>
+                <!-- 
+                <section>
+                    <h3 class={subHeading}></h3>
+                </section> -->
+            </section>
+
+            <hr class="border border-dashed border-ctp-crust my-4" />
+
+            <section class="flex flex-col gap-4">
+                <div>
+                    <h2 class={heading}>manifesto</h2>
+                    <p class={leadText}>why did i make this site :p</p>
+                </div>
+
+                <section>
+                    <h3 class={subHeading}>i hate cv websites</h3>
+                    <p class={body}>
+                        ive fuckign had enough of the "people" who think a personal website means a nextjs app dir
+                        webapp on vercel with a skills section with "what i know" and theres always git and just eugh.
+                        please understand a personal website is for YOU not a persona. goddamnit i hate that garbage
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>forgive me for i have sinned</h3>
+                    <p class={body}>
+                        my <WrapLink
+                            href="https://git.gay/nyamelia-archives/nyameliaaaa_nyameliaaaa.github.io/src/branch/main/old"
+                            class={link}>previous website</WrapLink
+                        > was in fact one of those atrocious cv websites i just mentioned. i made it in 2022 then literally
+                        never updated it. my attempts to save it are as follows:
+                    </p>
+                    <ul class:list={['list-disc list-inside my-1', body]}>
+                        <li>
+                            <WrapLink
+                                href="https://git.gay/nyamelia-archives/nyameliaaaa_nyameliaaaa.github.io/"
+                                class={link}>nuxt rewrite</WrapLink
+                            > (2023)
+                        </li>
+                        <li>
+                            <WrapLink href="https://git.gay/nyamelia-archives/nyamelia_pages" class={link}
+                                >raw html pages.gay site. turns out raw html SUCKS</WrapLink
+                            > (2024)
+                        </li>
+                        <li>
+                            <WrapLink
+                                href="https://git.gay/nyamelia-archives/Nyameliaaaa_website/src/branch/main"
+                                class={link}
+                                >next app dir rewrite. i somehow made it worse trying to make it better</WrapLink
+                            > (2025)
+                        </li>
+                    </ul>
+                    <p class={body}>
+                        <b>fyi:</b> i had a website during 2020-2022 as well however all the source code for THOSE is gone
+                        because the repo had some commits w the deadname :( HOWEVER i do have <WrapLink
+                            href="/about/flutter-site.png"
+                            class={link}>this image</WrapLink
+                        > of my 2022 flutter site, which preceeded the 2022 nextjs site directly
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>also because i could</h3>
+                    <p class={body}>the best reason to do this actually</p>
+                </section>
+            </section>
+            <hr class="border border-dashed border-ctp-crust my-4" />
+            <section class="flex flex-col gap-3">
+                <div>
+                    <h2 class={heading}>colophon</h2>
+                    <p class={leadText}>the website for this website. websites now come with websites</p>
+                </div>
+
+                <section>
+                    <h3 class={subHeading}>what'd i use :p</h3>
+                    <p class={body}>
+                        generated using <WrapLink href="https://astro.build" class={link}>astro</WrapLink> and themed using
+                        <WrapLink href="https://tailwindcss.com" class={link}>tailwind</WrapLink> along w/ <WrapLink
+                            href="https://vuejs.org"
+                            class={link}>vue</WrapLink
+                        > for the dynamic portions
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>theme & fonts</h3>
+                    <p class={body}>
+                        <WrapLink href="https://catppuccin.com" class={link}>catppuccin macchiato theme</WrapLink>,
+                        specifically the <span class="text-ctp-pink"> pink accent </span> along w/ ibm plex sans, ibm plex
+                        mono, and jetbrains mono for the fonts
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>helper</h3>
+                    <p class={body}>a little cloudflare worker helps with the following:</p>
+                    <ul class:list={['list-disc list-inside mt-1', body]}>
+                        <li>last.fm data</li>
+                        <li>status bar & status page</li>
+                        <li>guestbook</li>
+                        <li>contact form</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>why cloudflare</h3>
+                    <p class={body}>
+                        YEA ik calm down before you go full Richard Stallman on me, its because i cant currently get a
+                        hetzner vps :( but yea i do want to move this website and helper to hetzner + bunny. probably
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>source code</h3>
+                    <LinkSection links={links} />
+                </section>
+
+                <section>
+                    <h3 class={subHeading}>smth is broken</h3>
+                    <p class={body}>
+                        :( you could <WrapLink href="https://git.gay/nyamelia/website/issues" class={link}
+                            >file an issue</WrapLink
+                        > or just
+                        <WrapLink href="/contact" class={link}>contact</WrapLink> me lmao. your choice i dont mind tbh
+                    </p>
+                </section>
+            </section>
+        </section>
+        <div class="xl:col-span-2 bg-ctp-base p-2 pb-0 inset-shadow-sm inset-shadow-ctp-mantle" transition:persist>
+            <p class="text-ctp-pink font-medium text-sm text-center">what i look like (real)</p>
+            <div class="w-full h-full flex flex-col justify-center items-center">
+                <img src="/about/arlecchino.png" alt="arlecchino" class="aspect-2/3" />
+            </div>
         </div>
     </div>
 </Base>
