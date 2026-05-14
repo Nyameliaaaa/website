@@ -3,16 +3,16 @@ import IconLink from '@components/link/IconLink.astro';
 import PixelieImg from '@components/link/PixelieImg.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import { caption, link } from '@lib/classes';
-import { footerUrls } from '@lib/data';
+import { footerPixelies, footerUrls } from '@lib/data';
 import { version } from 'vue';
 ---
 
 <footer>
-	<div class="grid grid-cols-1 md:grid-cols-2 items-start">
+	<div class="grid grid-cols-1 md:grid-cols-2 items-start gap-2">
 		<div class="flex flex-col gap-3">
 			<div>
 				<p class={caption}>
-					&copy; copyright 2017-{new Date().getFullYear()} amelia rose
+					&copy; copyright 2017-{new Date().getFullYear()} amelia isabel rose
 				</p>
 				<p class={caption}>
 					article content (ramblings) licensed under <WrapLink
@@ -26,7 +26,7 @@ import { version } from 'vue';
 
 			<div>
 				<p class={caption}>
-					astro {Astro.generator.replace('Astro ', '')}, vue v{version}
+					{Astro.generator.replace('A', 'a')}, vue v{version}
 				</p>
 				<p class={caption}>
 					commit <WrapLink
@@ -39,18 +39,23 @@ import { version } from 'vue';
 				</p>
 			</div>
 
-			<ul>
-				<PixelieImg pixelie={{ img: '/88x31/button.png', alt: 'nyamelia', gif: '/88x31/button.gif' }} />
+			<ul class="flex flex-row gap-2 max-md:hidden">
+				{footerPixelies.map(pixelie => <PixelieImg pixelie={pixelie} />)}
 			</ul>
 		</div>
-		<div class="grid grid-cols-2 lg:grid-cols-2 xl:gap-3 select-none">
-			{
-				footerUrls.map(url => (
-					<div class="mb-2">
-						<IconLink {...url} />
-					</div>
-				))
-			}
+		<div>
+			<div class="grid grid-cols-2 lg:grid-cols-2 xl:gap-3 select-none">
+				{
+					footerUrls.map(url => (
+						<div class="mb-2">
+							<IconLink {...url} />
+						</div>
+					))
+				}
+			</div>
+			<ul class="mt-2 flex flex-row-gap-2 md:hidden">
+				{footerPixelies.map(pixelie => <PixelieImg pixelie={pixelie} />)}
+			</ul>
 		</div>
 	</div>
 </footer>

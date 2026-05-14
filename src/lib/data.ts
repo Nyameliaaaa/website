@@ -16,18 +16,12 @@ export const footerUrls = [
 ];
 
 export const footerPixelies: PixelieEntry[] = [
+	{ img: '/88x31/button.png', alt: 'nyamelia (me)'},
 	{
 		url: 'https://gayspace.fr',
 		img: 'https://gayspace.fr/images/buttons/button.gif',
-		alt: 'lori <3'
-	},
-	{
-		url: 'https://git.gay',
-		img: 'https://git.gay/assets/img/button.svg',
-		alt: 'git.gay'
-	},
-	{ url: 'https://firefox.com', img: 'https://88x31.nl/gifs/firefox4.gif', alt: 'tested on firefox' },
-	{ img: 'https://88x31.nl/gifs/miku.gif', alt: 'this site is miku approved' }
+		alt: 'gf lori <3'
+	}
 ];
 
 export const links: LinkEntry[] = [
