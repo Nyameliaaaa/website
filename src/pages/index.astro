@@ -8,6 +8,7 @@ import { body, heading, leadText, pageSubtitle, pageTitle, subHeading, text } fr
 import { RSS_DESCRIPTION } from '@lib/consts';
 import { getCollection } from 'astro:content';
 import RamblingCard from '@components/rambling/RamblingCard.astro';
+import Divider from '@components/formatting/Divider.astro';
 
 const homeTitle = 'hiiiiiiii ^^';
 const homeSub =
@@ -45,7 +46,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 		</div>
 	</section>
 
-	<hr class="border border-dashed border-ctp-crust my-4" />
+	<Divider />
 
 	<section>
 		<h2 class={heading}>contact</h2>
@@ -55,7 +56,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 		</div>
 	</section>
 
-	<hr class="border border-dashed border-ctp-crust my-4" />
+	<Divider />
 
 	<section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
 		<div>
@@ -73,7 +74,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 		</div>
 	</section>
 
-	<hr class="border border-dashed border-ctp-crust my-4" />
+	<Divider />
 
 	<section>
 		<div class="mb-4">
@@ -88,7 +89,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 		</div>
 	</section>
 
-	<hr class="border border-dashed border-ctp-crust my-4" />
+	<Divider />
 
 	<section>
 		<h2 class={heading}>games</h2>
@@ -98,7 +99,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 		</div>
 	</section>
 
-	<hr class="border border-dashed border-ctp-crust my-4" />
+	<Divider />
 
 	<section class="mb-2 grid grid-cols-1 lg:grid-cols-2 gap-2">
 		<div>

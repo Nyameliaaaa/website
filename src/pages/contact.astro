@@ -6,6 +6,7 @@ import Base from '@layouts/Base.astro';
 import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
 import { links } from '@lib/data';
 import WrapLink from '@components/link/WrapLink.astro';
+import Divider from '@components/formatting/Divider.astro';
 
 const contactTitle = 'contact';
 const contactSub =
@@ -39,7 +40,7 @@ const contactSub =
 		</section>
 	</section>
 
-	<hr class="border border-dashed border-ctp-crust my-4" />
+	<Divider />
 
 	<section>
 		<h2 class={heading}>public keys</h2>
@@ -48,7 +49,7 @@ const contactSub =
 		</p>
 	</section>
 
-	<hr class="border border-dashed border-ctp-crust my-4" />
+	<Divider />
 
 	<section>
 		<h2 class={heading}>contact</h2>
@@ -85,7 +86,7 @@ const contactSub =
 		</div>
 	</section>
 
-	<hr class="border border-dashed border-ctp-crust my-4" />
+	<Divider />
 
 	<section>
 		<h2 class={heading}>git forge</h2>
@@ -114,7 +115,7 @@ const contactSub =
 		</div>
 	</section>
 
-	<hr class="border border-dashed border-ctp-crust my-4" />
+	<Divider />
 
 	<section class="my-4">
 		<div class="mb-3">
