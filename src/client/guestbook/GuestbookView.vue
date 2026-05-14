@@ -1,16 +1,16 @@
 <template>
-    <AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
-        <Paginator v-if="data" :items="data">
-            <template #default="{ item }">
-                <GuestbookEntry :entry="item" />
-            </template>
-        </Paginator>
-    </AsyncState>
+	<AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
+		<Paginator v-if="data" :items="data">
+			<template #default="{ item }">
+				<GuestbookEntry :entry="item" />
+			</template>
+		</Paginator>
+	</AsyncState>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
-    limitItems?: boolean;
+	limitItems?: boolean;
 }>();
 
 import AsyncState from '@client/components/AsyncState.vue';

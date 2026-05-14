@@ -5,27 +5,27 @@ import { text } from '@lib/classes';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-    const ramblings = await getCollection('ramblings');
-    const tags = [...new Set(ramblings.flatMap(rambling => rambling.data.tags))];
-    return tags.map(tag => ({
-        params: { tag },
-        props: {
-            tag,
-            ramblings: ramblings.filter(rambling => rambling.data.tags && rambling.data.tags.includes(tag ?? ''))
-        }
-    }));
+	const ramblings = await getCollection('ramblings');
+	const tags = [...new Set(ramblings.flatMap(rambling => rambling.data.tags))];
+	return tags.map(tag => ({
+		params: { tag },
+		props: {
+			tag,
+			ramblings: ramblings.filter(rambling => rambling.data.tags && rambling.data.tags.includes(tag ?? ''))
+		}
+	}));
 }
 
 const { tag, ramblings } = Astro.props;
 ---
 
 <Page title="amelia's ramblings">
-    <span slot="description"
-        >viewing details for tag <span class={text({ weight: 'semibold', color: 'accent' })}>{tag}</span></span
-    >
-    <section>
-        <ul class="flex flex-col gap-2">
-            {ramblings.map(rambling => <Rambling rambling={rambling} />)}
-        </ul>
-    </section>
+	<span slot="description"
+		>viewing details for tag <span class={text({ weight: 'semibold', color: 'accent' })}>{tag}</span></span
+	>
+	<section>
+		<ul class="flex flex-col gap-2">
+			{ramblings.map(rambling => <Rambling rambling={rambling} />)}
+		</ul>
+	</section>
 </Page>

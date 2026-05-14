@@ -11,221 +11,215 @@ const aboutTitle = 'about';
 const aboutSub = 'this page is kinda about me AND this site but this site IS me so it works';
 
 const links: LinkEntry[] = [
-    { label: 'pronouns.cc', handle: '@nyamelia', url: 'https://pronouns.cc/@nyamelia' },
-    { label: 'attraction layer cake', handle: 'rC6', url: 'https://cake.avris.it/rC6' },
-    { label: 'arvis.it spectrum', handle: 'F4Q2', url: 'https://spectrum.avris.it/F4Q2' }
+	{ label: 'pronouns.cc', handle: '@nyamelia', url: 'https://pronouns.cc/@nyamelia' },
+	{ label: 'attraction layer cake', handle: 'rC6', url: 'https://cake.avris.it/rC6' },
+	{ label: 'arvis.it spectrum', handle: 'F4Q2', url: 'https://spectrum.avris.it/F4Q2' }
 ];
 
 const sourceLinks: LinkEntry[] = [
-    { label: 'website', handle: 'nyamelia/website', url: 'https://git.gay/nyamelia/website' },
-    { label: 'helper', handle: 'nyamelia/nyamelia-services', url: 'https://git.gay/nyamelia/nyamelia-services' }
+	{ label: 'website', handle: 'nyamelia/website', url: 'https://git.gay/nyamelia/website' },
+	{ label: 'helper', handle: 'nyamelia/nyamelia-services', url: 'https://git.gay/nyamelia/nyamelia-services' }
 ];
 ---
 
 <Base title={aboutTitle} description={aboutSub}>
-    <BackLink />
+	<BackLink />
 
-    <div class="flex gap-4">
-        <section>
-            <div class="mb-4">
-                <h1 class={pageTitle}>{aboutTitle}</h1>
-                <p class={pageSubtitle}>{aboutSub}</p>
-            </div>
+	<div class="flex gap-4">
+		<section>
+			<div class="mb-4">
+				<h1 class={pageTitle}>{aboutTitle}</h1>
+				<p class={pageSubtitle}>{aboutSub}</p>
+			</div>
 
-            <hr class="border border-dashed border-ctp-crust my-4" />
+			<hr class="border border-dashed border-ctp-crust my-4" />
 
-            <section class="flex flex-col gap-3">
-                <div>
-                    <h2 class={heading}>me</h2>
-                    <p class={leadText}>
-                        i am a transfemme lesbian who uses she/it/fae/xe pronouns ^^ also i am a puppygirl (woof) and
-                        also i MIGHT be butch or masc idfk LMAO. i am also AuDHD gang wooo #RedInstead. also my vision
-                        sucks ASS.
-                    </p>
-                </div>
+			<section class="flex flex-col gap-3">
+				<div>
+					<h2 class={heading}>me</h2>
+					<p class={leadText}>
+						i am a transfemme lesbian who uses she/it/fae/xe pronouns ^^ also i am a puppygirl (woof) and also i MIGHT
+						be butch or masc idfk LMAO. i am also AuDHD gang wooo #RedInstead. also my vision sucks ASS.
+					</p>
+				</div>
 
-                <section>
-                    <h3 class={subHeading}>tastes</h3>
-                    <p class={body}></p>
-                    <ul class:list={['list-disc list-inside mt-1', body]}>
-                        <li>
-                            <WrapLink href="/music" class={link}>music</WrapLink>
-                        </li>
-                        <li>
-                            <WrapLink href="https://backloggd.com/u/nyameliaaaa" class={link}
-                                >games (backloggd)</WrapLink
-                            >
-                        </li>
-                        <li>
-                            <WrapLink href="https://letterboxd.com/nyamelia/" class={link}>films (letterboxd)</WrapLink>
-                        </li>
-                    </ul>
-                </section>
+				<section>
+					<h3 class={subHeading}>tastes</h3>
+					<p class={body}></p>
+					<ul class:list={['list-disc list-inside mt-1', body]}>
+						<li>
+							<WrapLink href="/music" class={link}>music</WrapLink>
+						</li>
+						<li>
+							<WrapLink href="https://backloggd.com/u/nyameliaaaa" class={link}>games (backloggd)</WrapLink>
+						</li>
+						<li>
+							<WrapLink href="https://letterboxd.com/nyamelia/" class={link}>films (letterboxd)</WrapLink>
+						</li>
+					</ul>
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>beliefs</h3>
-                    <p class={body}>
-                        i think the web should be weird, free, open, federated, and YOURS. i am an advocate for internet
-                        privacy, federated protocols, and libre software. you should be able to own your device, your
-                        website, your feed, your communications, your media, your source code, and your files, free from
-                        any glowie or corporate interests. i am mostly NEGATIVE towards LLMs and other post-2022
-                        generative AI ventures. specifically, i do not support image, video, audio (NOT TTS!!), or music
-                        generative AI in any form. i also support the preservation of media bc no cultural work can
-                        belong to capitalism, it is of the commons
-                    </p>
-                </section>
+				<section>
+					<h3 class={subHeading}>beliefs</h3>
+					<p class={body}>
+						i think the web should be weird, free, open, federated, and YOURS. i am an advocate for internet privacy,
+						federated protocols, and libre software. you should be able to own your device, your website, your feed,
+						your communications, your media, your source code, and your files, free from any glowie or corporate
+						interests. i am mostly NEGATIVE towards LLMs and other post-2022 generative AI ventures. specifically, i do
+						not support image, video, audio (NOT TTS!!), or music generative AI in any form. i also support the
+						preservation of media bc no cultural work can belong to capitalism, it is of the commons
+					</p>
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>links</h3>
-                    <LinkSection links={links} />
-                </section>
-            </section>
+				<section>
+					<h3 class={subHeading}>links</h3>
+					<LinkSection links={links} />
+				</section>
+			</section>
 
-            <hr class="border border-dashed border-ctp-crust my-4" />
+			<hr class="border border-dashed border-ctp-crust my-4" />
 
-            <section class="flex flex-col gap-4">
-                <div>
-                    <h2 class={heading}>manifesto</h2>
-                    <p class={leadText}>why did i make this site :p</p>
-                </div>
+			<section class="flex flex-col gap-4">
+				<div>
+					<h2 class={heading}>manifesto</h2>
+					<p class={leadText}>why did i make this site :p</p>
+				</div>
 
-                <section>
-                    <h3 class={subHeading}>i hate cv websites</h3>
-                    <p class={body}>
-                        ive fuckign had enough of the "people" who think a personal website means a nextjs app dir
-                        webapp on vercel with a skills section with "what i know" and theres always git and just eugh.
-                        please understand a personal website is for YOU not a persona. goddamnit i hate that garbage
-                    </p>
-                </section>
+				<section>
+					<h3 class={subHeading}>i hate cv websites</h3>
+					<p class={body}>
+						ive fuckign had enough of the "people" who think a personal website means a nextjs app dir webapp on vercel
+						with a skills section with "what i know" and theres always git and just eugh. please understand a personal
+						website is for YOU not a persona. goddamnit i hate that garbage
+					</p>
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>the web should weird</h3>
-                    <p class={body}>
-                        i think everyones had enough of this "investor friendly" internet atp. we're going full
-                        neocities again I DONT CARE about your paul graham he can eat shit
-                    </p>
-                </section>
+				<section>
+					<h3 class={subHeading}>the web should weird</h3>
+					<p class={body}>
+						i think everyones had enough of this "investor friendly" internet atp. we're going full neocities again I
+						DONT CARE about your paul graham he can eat shit
+					</p>
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>forgive me for i have sinned</h3>
-                    <p class={body}>
-                        my <WrapLink
-                            href="https://git.gay/nyamelia-archives/nyameliaaaa_nyameliaaaa.github.io/src/branch/main/old"
-                            class={link}>previous website</WrapLink
-                        > was in fact one of those atrocious cv websites i just mentioned. i made it in 2022 then literally
-                        never updated it. my attempts to save it are as follows:
-                    </p>
-                    <ul class:list={['list-disc list-inside my-1', body]}>
-                        <li>
-                            <WrapLink
-                                href="https://git.gay/nyamelia-archives/nyameliaaaa_nyameliaaaa.github.io/"
-                                class={link}>nuxt rewrite</WrapLink
-                            > (2023)
-                        </li>
-                        <li>
-                            <WrapLink href="https://git.gay/nyamelia-archives/nyamelia_pages" class={link}
-                                >raw html pages.gay site. turns out raw html SUCKS</WrapLink
-                            > (2024)
-                        </li>
-                        <li>
-                            <WrapLink
-                                href="https://git.gay/nyamelia-archives/Nyameliaaaa_website/src/branch/main"
-                                class={link}
-                                >next app dir rewrite. i somehow made it worse trying to make it better</WrapLink
-                            > (2025)
-                        </li>
-                    </ul>
-                    <p class={body}>
-                        <b>fyi:</b> i had a website during 2020-2022 as well however all the source code for THOSE is gone
-                        because the repo had some commits w the deadname :( HOWEVER i do have <WrapLink
-                            href="/about/flutter-site.png"
-                            class={link}>this image</WrapLink
-                        > of my 2022 flutter site, which preceeded the 2022 nextjs site directly
-                    </p>
-                </section>
+				<section>
+					<h3 class={subHeading}>forgive me for i have sinned</h3>
+					<p class={body}>
+						my <WrapLink
+							href="https://git.gay/nyamelia-archives/nyameliaaaa_nyameliaaaa.github.io/src/branch/main/old"
+							class={link}>previous website</WrapLink
+						> was in fact one of those atrocious cv websites i just mentioned. i made it in 2022 then literally never updated
+						it. my attempts to save it are as follows:
+					</p>
+					<ul class:list={['list-disc list-inside my-1', body]}>
+						<li>
+							<WrapLink href="https://git.gay/nyamelia-archives/nyameliaaaa_nyameliaaaa.github.io/" class={link}
+								>nuxt rewrite</WrapLink
+							> (2023)
+						</li>
+						<li>
+							<WrapLink href="https://git.gay/nyamelia-archives/nyamelia_pages" class={link}
+								>raw html pages.gay site. turns out raw html SUCKS</WrapLink
+							> (2024)
+						</li>
+						<li>
+							<WrapLink href="https://git.gay/nyamelia-archives/Nyameliaaaa_website/src/branch/main" class={link}
+								>next app dir rewrite. i somehow made it worse trying to make it better</WrapLink
+							> (2025)
+						</li>
+					</ul>
+					<p class={body}>
+						<b>fyi:</b> i had a website during 2020-2022 as well however all the source code for THOSE is gone because the
+						repo had some commits w the deadname :( HOWEVER i do have <WrapLink
+							href="/about/flutter-site.png"
+							class={link}>this image</WrapLink
+						> of my 2022 flutter site, which preceeded the 2022 nextjs site directly
+					</p>
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>also because i could</h3>
-                    <p class={body}>the best reason to do this actually</p>
-                </section>
-            </section>
-            <hr class="border border-dashed border-ctp-crust my-4" />
-            <section class="flex flex-col gap-3">
-                <div>
-                    <h2 class={heading}>colophon</h2>
-                    <p class={leadText}>the website for this website. websites now come with websites</p>
-                </div>
+				<section>
+					<h3 class={subHeading}>also because i could</h3>
+					<p class={body}>the best reason to do this actually</p>
+				</section>
+			</section>
+			<hr class="border border-dashed border-ctp-crust my-4" />
+			<section class="flex flex-col gap-3">
+				<div>
+					<h2 class={heading}>colophon</h2>
+					<p class={leadText}>the website for this website. websites now come with websites</p>
+				</div>
 
-                <section>
-                    <h3 class={subHeading}>what'd i use :p</h3>
-                    <p class={body}>
-                        generated using <WrapLink href="https://astro.build" class={link}>astro</WrapLink> and themed using
-                        <WrapLink href="https://tailwindcss.com" class={link}>tailwind</WrapLink> along w/ <WrapLink
-                            href="https://vuejs.org"
-                            class={link}>vue</WrapLink
-                        > for the dynamic portions
-                    </p>
-                </section>
+				<section>
+					<h3 class={subHeading}>what'd i use :p</h3>
+					<p class={body}>
+						generated using <WrapLink href="https://astro.build" class={link}>astro</WrapLink> and themed using
+						<WrapLink href="https://tailwindcss.com" class={link}>tailwind</WrapLink> along w/ <WrapLink
+							href="https://vuejs.org"
+							class={link}>vue</WrapLink
+						> for the dynamic portions
+					</p>
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>theme & fonts</h3>
-                    <p class={body}>
-                        <WrapLink href="https://catppuccin.com" class={link}>catppuccin macchiato theme</WrapLink>,
-                        specifically the <span class="text-ctp-pink"> pink accent </span> along w/ ibm plex sans, ibm plex
-                        mono, and jetbrains mono for the fonts
-                    </p>
-                </section>
+				<section>
+					<h3 class={subHeading}>theme & fonts</h3>
+					<p class={body}>
+						<WrapLink href="https://catppuccin.com" class={link}>catppuccin macchiato theme</WrapLink>, specifically the <span
+							class="text-ctp-pink"
+						>
+							pink accent
+						</span> along w/ ibm plex sans, ibm plex mono, and jetbrains mono for the fonts
+					</p>
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>helper</h3>
-                    <p class={body}>a little cloudflare worker helps with the following:</p>
-                    <ul class:list={['list-disc list-inside mt-1', body]}>
-                        <li>last.fm data</li>
-                        <li>status bar & status page</li>
-                        <li>guestbook</li>
-                        <li>contact form</li>
-                    </ul>
-                </section>
+				<section>
+					<h3 class={subHeading}>helper</h3>
+					<p class={body}>a little cloudflare worker helps with the following:</p>
+					<ul class:list={['list-disc list-inside mt-1', body]}>
+						<li>last.fm data</li>
+						<li>status bar & status page</li>
+						<li>guestbook</li>
+						<li>contact form</li>
+					</ul>
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>why cloudflare</h3>
-                    <p class={body}>
-                        YEA ik calm down before you go full Richard Stallman on me, its because i cant currently get a
-                        hetzner vps :( but yea i do want to move this website and helper to hetzner + bunny. probably
-                    </p>
-                </section>
+				<section>
+					<h3 class={subHeading}>why cloudflare</h3>
+					<p class={body}>
+						YEA ik calm down before you go full Richard Stallman on me, its because i cant currently get a hetzner vps
+						:( but yea i do want to move this website and helper to hetzner + bunny. probably
+					</p>
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>source code</h3>
-                    <LinkSection links={sourceLinks} />
-                </section>
+				<section>
+					<h3 class={subHeading}>source code</h3>
+					<LinkSection links={sourceLinks} />
+				</section>
 
-                <section>
-                    <h3 class={subHeading}>smth is broken</h3>
-                    <p class={body}>
-                        :( you could <WrapLink href="https://git.gay/nyamelia/website/issues" class={link}
-                            >file an issue</WrapLink
-                        > or just
-                        <WrapLink href="/contact" class={link}>contact</WrapLink> me lmao. your choice i dont mind tbh
-                    </p>
-                </section>
-            </section>
-        </section>
-        <div class="xl:hidden bg-ctp-base p-2 pb-0 inset-shadow-sm inset-shadow-ctp-mantle" transition:persist>
-            <p class="text-ctp-pink font-medium text-sm text-center">what i look like (real)</p>
-            <div class="w-full h-full flex flex-col justify-center items-center">
-                <img src="/about/arlecchino.png" alt="arlecchino" class="aspect-2/3" />
-            </div>
-        </div>
-    </div>
-    <div
-        slot="right"
-        class="max-xl:hidden sticky top-5 bg-ctp-mantle border-2 border-dashed border-ctp-base h-fit p-2 m-3 rounded-lg inset-shadow-ctp-mantle"
-        transition:persist
-    >
-        <p class="text-ctp-pink font-medium text-sm text-center">what i look like (real)</p>
-        <div class="w-full h-full flex flex-col justify-center items-center">
-            <img src="/about/arlecchino.png" alt="arlecchino" class="aspect-2/3" />
-        </div>
-    </div>
+				<section>
+					<h3 class={subHeading}>smth is broken</h3>
+					<p class={body}>
+						:( you could <WrapLink href="https://git.gay/nyamelia/website/issues" class={link}>file an issue</WrapLink> or
+						just
+						<WrapLink href="/contact" class={link}>contact</WrapLink> me lmao. your choice i dont mind tbh
+					</p>
+				</section>
+			</section>
+		</section>
+		<div class="xl:hidden bg-ctp-base p-2 pb-0 inset-shadow-sm inset-shadow-ctp-mantle" transition:persist>
+			<p class="text-ctp-pink font-medium text-sm text-center">what i look like (real)</p>
+			<div class="w-full h-full flex flex-col justify-center items-center">
+				<img src="/about/arlecchino.png" alt="arlecchino" class="aspect-2/3" />
+			</div>
+		</div>
+	</div>
+	<div
+		slot="right"
+		class="max-xl:hidden sticky top-5 bg-ctp-mantle border-2 border-dashed border-ctp-base h-fit p-2 m-3 rounded-lg inset-shadow-ctp-mantle"
+		transition:persist
+	>
+		<p class="text-ctp-pink font-medium text-sm text-center">what i look like (real)</p>
+		<div class="w-full h-full flex flex-col justify-center items-center">
+			<img src="/about/arlecchino.png" alt="arlecchino" class="aspect-2/3" />
+		</div>
+	</div>
 </Base>

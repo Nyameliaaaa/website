@@ -1,33 +1,33 @@
 <template>
-    <AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
-        <Paginator v-if="data" :items="data">
-            <template #default="{ item }">
-                <div
-                    class="bg-ctp-base py-2 px-4 border-2 border-ctp-crust rounded-lg flex flex-col md:flex-row md:items-center md:justify-between my-3"
-                >
-                    <p :class="leadText">{{ item.text }}</p>
-                    <p :class="[caption, 'text-right']">
-                        <time :datetime="item.createdAt">
-                            {{
-                                new Date(item.createdAt)
-                                    .toLocaleDateString('en-us', {
-                                        year: 'numeric',
-                                        month: 'short',
-                                        day: 'numeric'
-                                    })
-                                    .toLowerCase()
-                            }}
-                        </time>
-                    </p>
-                </div>
-            </template>
-        </Paginator>
-    </AsyncState>
+	<AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
+		<Paginator v-if="data" :items="data">
+			<template #default="{ item }">
+				<div
+					class="bg-ctp-base border-ctp-crust my-3 flex flex-col rounded-lg border-2 px-4 py-2 md:flex-row md:items-center md:justify-between"
+				>
+					<p :class="leadText">{{ item.text }}</p>
+					<p :class="[caption, 'text-right']">
+						<time :datetime="item.createdAt">
+							{{
+								new Date(item.createdAt)
+									.toLocaleDateString('en-us', {
+										year: 'numeric',
+										month: 'short',
+										day: 'numeric'
+									})
+									.toLowerCase()
+							}}
+						</time>
+					</p>
+				</div>
+			</template>
+		</Paginator>
+	</AsyncState>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
-    limitItems?: boolean;
+	limitItems?: boolean;
 }>();
 
 import AsyncState from '@client/components/AsyncState.vue';

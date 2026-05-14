@@ -10,19 +10,19 @@ const defaultUrl = pixelie.gif || pixelie.img;
 ---
 
 <li>
-    {
-        pixelie.url ? (
-            <WrapLink href={pixelie.url} title={alt}>
-                <picture>
-                    {hasVariants && <source srcset={pixelie.img} media="(prefers-reduced-motion: reduce)" />}
-                    <img src={defaultUrl} width="88" height="31" alt={alt} style="image-rendering: pixelated;" />
-                </picture>
-            </WrapLink>
-        ) : (
-            <picture title={alt}>
-                {hasVariants && <source srcset={pixelie.img} media="(prefers-reduced-motion: reduce)" />}
-                <img src={defaultUrl} width="88" height="31" alt={alt} style="image-rendering: pixelated;" />
-            </picture>
-        )
-    }
+	{
+		pixelie.url ? (
+			<WrapLink href={pixelie.url} title={alt}>
+				<picture>
+					{hasVariants && <source srcset={pixelie.img} media="(prefers-reduced-motion: reduce)" />}
+					<img src={defaultUrl} width="88" height="31" alt={alt} style="image-rendering: pixelated;" />
+				</picture>
+			</WrapLink>
+		) : (
+			<picture title={alt}>
+				{hasVariants && <source srcset={pixelie.img} media="(prefers-reduced-motion: reduce)" />}
+				<img src={defaultUrl} width="88" height="31" alt={alt} style="image-rendering: pixelated;" />
+			</picture>
+		)
+	}
 </li>

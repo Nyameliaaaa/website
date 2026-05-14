@@ -4,8 +4,8 @@ import { pageSubtitle, pageTitle } from '@lib/classes';
 import BackLink from '@components/link/BackLink.astro';
 
 interface Props {
-    title?: string;
-    description?: string;
+	title?: string;
+	description?: string;
 }
 
 const { props } = Astro;
@@ -14,16 +14,16 @@ const hasInfo = props.title ?? props.description;
 ---
 
 <Base {...props}>
-    <BackLink />
-    {
-        hasInfo && (
-            <div class="mb-2">
-                <h1 class={pageTitle}>{props.title}</h1>
-                <p class={pageSubtitle}>
-                    <slot name="description">{props.description}</slot>
-                </p>
-            </div>
-        )
-    }
-    <slot />
+	<BackLink />
+	{
+		hasInfo && (
+			<div class="mb-2">
+				<h1 class={pageTitle}>{props.title}</h1>
+				<p class={pageSubtitle}>
+					<slot name="description">{props.description}</slot>
+				</p>
+			</div>
+		)
+	}
+	<slot />
 </Base>

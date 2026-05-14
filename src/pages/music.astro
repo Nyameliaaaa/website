@@ -9,38 +9,37 @@ import { caption, heading, leadText, link } from '@lib/classes';
 ---
 
 <Page title="music :P" description="please enjoy staring at my music taste">
-    <span slot="description">
-        please enjoy staring at my music taste. check out my <WrapLink
-            class={link}
-            href="https://www.last.fm/user/nyamelia">last.fm profile</WrapLink
-        > ^^
-    </span>
+	<span slot="description">
+		please enjoy staring at my music taste. check out my <WrapLink class={link} href="https://www.last.fm/user/nyamelia"
+			>last.fm profile</WrapLink
+		> ^^
+	</span>
 
-    <section class="my-4">
-        <h2 class={heading}>recent songs</h2>
+	<section class="my-4">
+		<h2 class={heading}>recent songs</h2>
 
-        <Recents client:only />
-    </section>
+		<Recents client:only />
+	</section>
 
-    <section class="my-4">
-        <h2 class={heading}>top albums (30 days)</h2>
+	<section class="my-4">
+		<h2 class={heading}>top albums (30 days)</h2>
 
-        <Albums client:only />
-    </section>
+		<Albums client:only />
+	</section>
 
-    <section class="my-4">
-        <h2 class={heading}>top artists (7 days)</h2>
+	<section class="my-4">
+		<h2 class={heading}>top artists (7 days)</h2>
 
-        <Artists client:only />
-    </section>
+		<Artists client:only />
+	</section>
 
-    <section class="mt-5 mb-3">
-        <h2 class={heading}>playlists</h2>
+	<section class="mt-5 mb-3">
+		<h2 class={heading}>playlists</h2>
 
-        <Playlists client:only />
-    </section>
+		<Playlists client:only />
+	</section>
 
-    <p class={caption}>
-        music cards from <WrapLink class={link} href="https://sapphic.moe">sapphic angels</WrapLink>
-    </p>
+	<p class={caption}>
+		music cards from <WrapLink class={link} href="https://sapphic.moe">sapphic angels</WrapLink>
+	</p>
 </Page>

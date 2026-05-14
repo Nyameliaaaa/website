@@ -8,16 +8,16 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://nyamelia.is-immensely.gay',
-    integrations: [mdx(), icon(), vue()],
+	site: 'https://nyamelia.is-immensely.gay',
+	integrations: [mdx(), icon(), vue()],
 
-    markdown: {
-        shikiConfig: {
-            theme: 'catppuccin-macchiato'
-        }
-    },
+	markdown: {
+		shikiConfig: {
+			theme: 'catppuccin-macchiato'
+		}
+	},
 
-    vite: {
-        plugins: [tailwindcss()]
-    }
+	vite: {
+		plugins: [tailwindcss()]
+	}
 });

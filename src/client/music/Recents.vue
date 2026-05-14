@@ -1,9 +1,9 @@
 <template>
-    <div class="mt-3">
-        <AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
-            <MusicGrid v-if="data" :data="migrateDataFormat(data)" />
-        </AsyncState>
-    </div>
+	<div class="mt-3">
+		<AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
+			<MusicGrid v-if="data" :data="migrateDataFormat(data)" />
+		</AsyncState>
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -14,21 +14,21 @@ import { useWorker } from '@client/composables/useWorker';
 import { onMounted } from 'vue';
 
 const props = defineProps<{
-    preview?: boolean;
+	preview?: boolean;
 }>();
 
 const migrateDataFormat = (data: Recent[]): MusicGridItem[] => {
-    return data.map(track => ({
-        name: track.name,
-        image: track.image,
-        url: track.url,
-        secondaryText: track.artist,
-        tertiaryText: track.album,
-        cardItem: {
-            aria: `${track.name} by ${track.artist}`,
-            alt: `${track.name} by ${track.artist}`
-        }
-    }));
+	return data.map(track => ({
+		name: track.name,
+		image: track.image,
+		url: track.url,
+		secondaryText: track.artist,
+		tertiaryText: track.album,
+		cardItem: {
+			aria: `${track.name} by ${track.artist}`,
+			alt: `${track.name} by ${track.artist}`
+		}
+	}));
 };
 
 const { loading, error, data, useFetch } = useWorker<Recent[]>('lastfm/recent');

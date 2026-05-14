@@ -4,50 +4,50 @@ import { headerName, text } from '@lib/classes';
 import { headerLinks } from '@lib/data';
 
 const isActiveURL = (href: string) => {
-    const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
-    const subpath = pathname.match(/[^\/]+/g);
-    const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
+	const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+	const subpath = pathname.match(/[^\/]+/g);
+	const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 
-    return isActive;
+	return isActive;
 };
 ---
 
 <header>
-    <nav
-        class:list={[
-            'flex flex-col gap-2 items-center justify-center select-none',
-            'lg:flex-row lg:justify-between lg:items-center'
-        ]}
-    >
-        <h2>
-            <WrapLink href="/" class={headerName}>amelia :3</WrapLink>
-        </h2>
-        <ul
-            class="flex flex-row p-2 rounded-lg bg-ctp-crust border-2 border-dashed border-ctp-mantle divide-x-2 divide-ctp-base divide-dashed"
-        >
-            {
-                headerLinks.map((url, index) => {
-                    const active = isActiveURL(url.url);
+	<nav
+		class:list={[
+			'flex flex-col gap-2 items-center justify-center select-none',
+			'lg:flex-row lg:justify-between lg:items-center'
+		]}
+	>
+		<h2>
+			<WrapLink href="/" class={headerName}>amelia :3</WrapLink>
+		</h2>
+		<ul
+			class="flex flex-row p-2 rounded-lg bg-ctp-crust border-2 border-dashed border-ctp-mantle divide-x-2 divide-ctp-base divide-dashed"
+		>
+			{
+				headerLinks.map((url, index) => {
+					const active = isActiveURL(url.url);
 
-                    return (
-                        <li transition:name={`header-link-${index}`} transition:animate="fade">
-                            <WrapLink
-                                href={url.url}
-                                class={text({
-                                    color: active ? 'accent' : 'primary',
-                                    weight: 'medium',
-                                    hover: 'underline',
-                                    size: 'lg',
-                                    class: 'px-2',
-                                    customOutline: true
-                                })}
-                            >
-                                {url.name}
-                            </WrapLink>
-                        </li>
-                    );
-                })
-            }
-        </ul>
-    </nav>
+					return (
+						<li transition:name={`header-link-${index}`} transition:animate="fade">
+							<WrapLink
+								href={url.url}
+								class={text({
+									color: active ? 'accent' : 'primary',
+									weight: 'medium',
+									hover: 'underline',
+									size: 'lg',
+									class: 'px-2',
+									customOutline: true
+								})}
+							>
+								{url.name}
+							</WrapLink>
+						</li>
+					);
+				})
+			}
+		</ul>
+	</nav>
 </header>

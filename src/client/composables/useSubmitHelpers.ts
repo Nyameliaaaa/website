@@ -1,59 +1,59 @@
 import { computed, onUnmounted, reactive, ref } from 'vue';
 
 export const useSubmitHelpers = <Form extends Record<any, any>, Errors extends Record<any, any>>(
-    formObj: Form,
-    errorsObj: Errors
+	formObj: Form,
+	errorsObj: Errors
 ) => {
-    const isMutating = ref(false);
-    const justMutated = ref(false);
+	const isMutating = ref(false);
+	const justMutated = ref(false);
 
-    const originalForm = { ...formObj };
-    const originalErrors = { ...errorsObj };
+	const originalForm = { ...formObj };
+	const originalErrors = { ...errorsObj };
 
-    const form = reactive(formObj);
-    const errors = reactive(errorsObj);
-    const hasErrors = computed(() => Object.values(errors).some(x => x !== null && x !== ''));
+	const form = reactive(formObj);
+	const errors = reactive(errorsObj);
+	const hasErrors = computed(() => Object.values(errors).some(x => x !== null && x !== ''));
 
-    const resetForm = () => {
-        Object.assign(form, originalForm);
-    };
+	const resetForm = () => {
+		Object.assign(form, originalForm);
+	};
 
-    const resetErrors = () => {
-        Object.assign(errors, originalErrors);
-    };
+	const resetErrors = () => {
+		Object.assign(errors, originalErrors);
+	};
 
-    const useSubmitWrap = (
-        handleErrors: () => Promise<void>,
-        handleMutate: () => Promise<boolean>,
-        handleOk: () => Promise<void>
-    ) => {
-        return async () => {
-            justMutated.value = false;
-            isMutating.value = true;
-            resetErrors();
+	const useSubmitWrap = (
+		handleErrors: () => Promise<void>,
+		handleMutate: () => Promise<boolean>,
+		handleOk: () => Promise<void>
+	) => {
+		return async () => {
+			justMutated.value = false;
+			isMutating.value = true;
+			resetErrors();
 
-            await handleErrors();
+			await handleErrors();
 
-            if (hasErrors.value) {
-                isMutating.value = false;
-                return;
-            }
+			if (hasErrors.value) {
+				isMutating.value = false;
+				return;
+			}
 
-            const ok = await handleMutate();
+			const ok = await handleMutate();
 
-            if (ok) {
-                isMutating.value = false;
-                justMutated.value = true;
-                await handleOk();
-            } else {
-                isMutating.value = false;
-            }
-        };
-    };
+			if (ok) {
+				isMutating.value = false;
+				justMutated.value = true;
+				await handleOk();
+			} else {
+				isMutating.value = false;
+			}
+		};
+	};
 
-    onUnmounted(() => {
-        justMutated.value = false;
-    });
+	onUnmounted(() => {
+		justMutated.value = false;
+	});
 
-    return { isMutating, form, errors, hasErrors, justMutated, resetForm, resetErrors, useSubmitWrap };
+	return { isMutating, form, errors, hasErrors, justMutated, resetForm, resetErrors, useSubmitWrap };
 };

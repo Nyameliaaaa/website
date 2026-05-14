@@ -10,26 +10,26 @@ const { rambling } = Astro.props;
 ---
 
 <li class="rounded-lg py-2">
-    <div transition:name={rambling.id}>
-        <div class="mb-2">
-            <WrapLink href={`/ramblings/${rambling.id}/`}>
-                <h2 class={`${heading} ${link}`}>
-                    {rambling.data.title}
-                </h2>
-            </WrapLink>
-            <p class={body}>
-                {rambling.data.description}
-            </p>
-        </div>
-        <RamblingDate {...rambling} />
-        {
-            rambling.data.tags && (
-                <div class="flex flex-row flex-wrap gap-2 mt-2">
-                    {rambling.data.tags.map(tag => (
-                        <Tag tag={tag} />
-                    ))}
-                </div>
-            )
-        }
-    </div>
+	<div transition:name={rambling.id}>
+		<div class="mb-2">
+			<WrapLink href={`/ramblings/${rambling.id}/`}>
+				<h2 class={`${heading} ${link}`}>
+					{rambling.data.title}
+				</h2>
+			</WrapLink>
+			<p class={body}>
+				{rambling.data.description}
+			</p>
+		</div>
+		<RamblingDate {...rambling} />
+		{
+			rambling.data.tags && (
+				<div class="flex flex-row flex-wrap gap-2 mt-2">
+					{rambling.data.tags.map(tag => (
+						<Tag tag={tag} />
+					))}
+				</div>
+			)
+		}
+	</div>
 </li>

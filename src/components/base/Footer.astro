@@ -8,57 +8,49 @@ import { version } from 'vue';
 ---
 
 <footer>
-    <div class="grid grid-cols-1 md:grid-cols-2 mb-5 items-start">
-        <div class="flex flex-col gap-3">
-            <div>
-                <p class={caption}>
-                    &copy; copyright 2017-{new Date().getFullYear()} amelia rose
-                </p>
-                <p class={caption}>
-                    article content (ramblings) licensed under <WrapLink
-                        href="https://creativecommons.org/licenses/by-nc/4.0/"
-                        class={link}
-                    >
-                        CC BY-NC 4.0</WrapLink
-                    >
-                </p>
-            </div>
+	<div class="grid grid-cols-1 md:grid-cols-2 items-start">
+		<div class="flex flex-col gap-3">
+			<div>
+				<p class={caption}>
+					&copy; copyright 2017-{new Date().getFullYear()} amelia rose
+				</p>
+				<p class={caption}>
+					article content (ramblings) licensed under <WrapLink
+						href="https://creativecommons.org/licenses/by-nc/4.0/"
+						class={link}
+					>
+						CC BY-NC 4.0</WrapLink
+					>
+				</p>
+			</div>
 
-            <div>
-                <p class={caption}>
-                    astro {Astro.generator.replace('Astro ', '')}, vue v{version}
-                </p>
-                <p class={caption}>
-                    commit <WrapLink
-                        href={`https://git.gay/nyamelia/website/commit/${import.meta.env.CF_PAGES_COMMIT_SHA}`}
-                        class={link}>{import.meta.env.CF_PAGES_COMMIT_SHA}</WrapLink
-                    >
-                </p>
-                <p class={caption}>
-                    tested using <WrapLink href="https://firefox.com" class={link}> firefox</WrapLink>
-                </p>
-            </div>
+			<div>
+				<p class={caption}>
+					astro {Astro.generator.replace('Astro ', '')}, vue v{version}
+				</p>
+				<p class={caption}>
+					commit <WrapLink
+						href={`https://git.gay/nyamelia/website/commit/${import.meta.env.CF_PAGES_COMMIT_SHA}`}
+						class={link}>{import.meta.env.CF_PAGES_COMMIT_SHA}</WrapLink
+					>
+				</p>
+				<p class={caption}>
+					tested using <WrapLink href="https://firefox.com" class={link}> firefox</WrapLink>
+				</p>
+			</div>
 
-            <ul>
-                <PixelieImg pixelie={{ img: '/88x31/button.png', alt: 'nyamelia', gif: '/88x31/button.gif' }} />
-            </ul>
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-2 xl:gap-3 select-none">
-            {
-                footerUrls.map(url => (
-                    <div class="mb-2">
-                        <IconLink {...url} />
-                    </div>
-                ))
-            }
-        </div>
-    </div>
-
-    <div class="mt-2 h-2 rounded-t-lg overflow-hidden w-full grid grid-cols-5 macchiato">
-        <div class="bg-ctp-peach"></div>
-        <div class="bg-ctp-red"></div>
-        <div class="bg-ctp-base latte"></div>
-        <div class="bg-ctp-pink"></div>
-        <div class="bg-ctp-mauve"></div>
-    </div>
+			<ul>
+				<PixelieImg pixelie={{ img: '/88x31/button.png', alt: 'nyamelia', gif: '/88x31/button.gif' }} />
+			</ul>
+		</div>
+		<div class="grid grid-cols-2 lg:grid-cols-2 xl:gap-3 select-none">
+			{
+				footerUrls.map(url => (
+					<div class="mb-2">
+						<IconLink {...url} />
+					</div>
+				))
+			}
+		</div>
+	</div>
 </footer>

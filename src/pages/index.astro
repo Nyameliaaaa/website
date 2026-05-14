@@ -11,108 +11,108 @@ import RamblingCard from '@components/rambling/RamblingCard.astro';
 
 const homeTitle = 'hiiiiiiii ^^';
 const homeSub =
-    'hiiiiiiiiiiiiiiiiiii im amelia. im a trans girlie and uhm i like miku. this is my lil corner of the interwebs. feel free to look around and say hi';
+	'hiiiiiiiiiiiiiiiiiii im amelia. im a trans girlie and uhm i like miku. this is my lil corner of the interwebs. feel free to look around and say hi';
 
 const ramblings = (await getCollection('ramblings')).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 ---
 
 <Base title={homeTitle} description={homeSub}>
-    <section class="mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
-        <div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
-            <img
-                src="/about/pfp.jpg"
-                alt="amelia :3"
-                width={200}
-                height={200}
-                class="border-2 border-dashed border-ctp-mauve"
-                loading="eager"
-            />
-        </div>
-        <div class="order-last md:order-first">
-            <div class="mb-6">
-                <h1 class={pageTitle}>{homeTitle}</h1>
-                <p class={pageSubtitle}>{homeSub}</p>
-            </div>
+	<section class="mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
+		<div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
+			<img
+				src="/about/pfp.jpg"
+				alt="amelia :3"
+				width={200}
+				height={200}
+				class="border-2 border-dashed border-ctp-mauve"
+				loading="eager"
+			/>
+		</div>
+		<div class="order-last md:order-first">
+			<div class="mb-6">
+				<h1 class={pageTitle}>{homeTitle}</h1>
+				<p class={pageSubtitle}>{homeSub}</p>
+			</div>
 
-            <h2 class={heading}>me</h2>
-            <p class={leadText}>i use it/she/fae/xe pronouns btw :3</p>
+			<h2 class={heading}>me</h2>
+			<p class={leadText}>i use it/she/fae/xe pronouns btw :3</p>
 
-            <div class="mt-3">
-                <IconButton icon="chevron-right" text="more of me" url="/about" />
-            </div>
-        </div>
-    </section>
+			<div class="mt-3">
+				<IconButton icon="chevron-right" text="more of me" url="/about" />
+			</div>
+		</div>
+	</section>
 
-    <hr class="border border-dashed border-ctp-crust my-4" />
+	<hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section>
-        <h2 class={heading}>contact</h2>
-        <p class={leadText}>locations where the cryptid known as amelia has been found on the interwebs</p>
-        <div class="mt-3">
-            <IconButton icon="at" text="contact" url="/contact" />
-        </div>
-    </section>
+	<section>
+		<h2 class={heading}>contact</h2>
+		<p class={leadText}>locations where the cryptid known as amelia has been found on the interwebs</p>
+		<div class="mt-3">
+			<IconButton icon="at" text="contact" url="/contact" />
+		</div>
+	</section>
 
-    <hr class="border border-dashed border-ctp-crust my-4" />
+	<hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        <div>
-            <h2 class={heading}>ramblings</h2>
-            <p class={leadText}>{RSS_DESCRIPTION}</p>
-            <div class="mt-3">
-                <IconButton icon="note-multiple" text="read all" url="/ramblings" />
-            </div>
-        </div>
-        <div>
-            <h3 class={subHeading}>latest rambling</h3>
-            <ul class="mt-2 bg-ctp-base rounded-md p-2 border-2 border-ctp-crust border-dashed">
-                <RamblingCard rambling={ramblings[0]} />
-            </ul>
-        </div>
-    </section>
+	<section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+		<div>
+			<h2 class={heading}>ramblings</h2>
+			<p class={leadText}>{RSS_DESCRIPTION}</p>
+			<div class="mt-3">
+				<IconButton icon="note-multiple" text="read all" url="/ramblings" />
+			</div>
+		</div>
+		<div>
+			<h3 class={subHeading}>latest rambling</h3>
+			<ul class="mt-2 bg-ctp-base rounded-md p-2 border-2 border-ctp-crust border-dashed">
+				<RamblingCard rambling={ramblings[0]} />
+			</ul>
+		</div>
+	</section>
 
-    <hr class="border border-dashed border-ctp-crust my-4" />
+	<hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section>
-        <div class="mb-4">
-            <h2 class={heading}>recent songs</h2>
-            <p class={leadText}>heres what ive been listening to lately :o</p>
-        </div>
+	<section>
+		<div class="mb-4">
+			<h2 class={heading}>recent songs</h2>
+			<p class={leadText}>heres what ive been listening to lately :o</p>
+		</div>
 
-        <Recents client:only preview />
+		<Recents client:only preview />
 
-        <div class="mt-4">
-            <IconLink text="see more music :p" url="/music" icon="chevron-right" />
-        </div>
-    </section>
+		<div class="mt-4">
+			<IconLink text="see more music :p" url="/music" icon="chevron-right" />
+		</div>
+	</section>
 
-    <hr class="border border-dashed border-ctp-crust my-4" />
+	<hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section>
-        <h2 class={heading}>games</h2>
-        <p class={leadText}>fact of the day: amelia is not a playstation 5 and thus has games!</p>
-        <div class="mt-3">
-            <IconButton icon="chevron-right" text="SEE the games!" url="https://backloggd.com/u/nyameliaaaa" />
-        </div>
-    </section>
+	<section>
+		<h2 class={heading}>games</h2>
+		<p class={leadText}>fact of the day: amelia is not a playstation 5 and thus has games!</p>
+		<div class="mt-3">
+			<IconButton icon="chevron-right" text="SEE the games!" url="https://backloggd.com/u/nyameliaaaa" />
+		</div>
+	</section>
 
-    <hr class="border border-dashed border-ctp-crust my-4" />
+	<hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section class="mb-2 grid grid-cols-1 lg:grid-cols-2 gap-2">
-        <div>
-            <h2 class={heading}>guestbook :3</h2>
-            <p class={leadText}>u should put smth here once uve looked at everything ^w^</p>
-            <div class="mt-3">
-                <IconButton icon="pencil" text="sign the guestbook :3" url="/guestbook/sign" />
-            </div>
-        </div>
-        <div>
-            <Guestbook client:only limitItems />
-            <div class="mt-3 flex justify-center">
-                <IconLink text="view all" icon="chevron-right" url="/guestbook" />
-            </div>
-        </div>
-    </section>
+	<section class="mb-2 grid grid-cols-1 lg:grid-cols-2 gap-2">
+		<div>
+			<h2 class={heading}>guestbook :3</h2>
+			<p class={leadText}>u should put smth here once uve looked at everything ^w^</p>
+			<div class="mt-3">
+				<IconButton icon="pencil" text="sign the guestbook :3" url="/guestbook/sign" />
+			</div>
+		</div>
+		<div>
+			<Guestbook client:only limitItems />
+			<div class="mt-3 flex justify-center">
+				<IconLink text="view all" icon="chevron-right" url="/guestbook" />
+			</div>
+		</div>
+	</section>
 </Base>

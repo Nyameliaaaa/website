@@ -7,31 +7,31 @@ import { pageSubtitle, pageTitle, text } from '@lib/classes';
 import type { MarkdownHeading } from 'astro';
 
 interface Props {
-    title: string;
-    description: string;
-    headings: MarkdownHeading[];
+	title: string;
+	description: string;
+	headings: MarkdownHeading[];
 }
 
 const { title, headings, description } = Astro.props;
 ---
 
 <Base title={title} description={description}>
-    <aside slot="left" class:list={['max-xl:hidden']}>
-        <TableOfContents client:only headings={headings} />
-    </aside>
-    <section>
-        <div class="mb-2">
-            <BackLink />
+	<aside slot="left" class:list={['max-xl:hidden']}>
+		<TableOfContents client:only headings={headings} />
+	</aside>
+	<section>
+		<div class="mb-2">
+			<BackLink />
 
-            <h1 class={pageTitle}>{title}</h1>
-            <p class={pageSubtitle}>{description}</p>
+			<h1 class={pageTitle}>{title}</h1>
+			<p class={pageSubtitle}>{description}</p>
 
-            <slot name="extra" />
-        </div>
+			<slot name="extra" />
+		</div>
 
-        <aside class="xl:hidden w-full">
-            <TableOfContents client:only headings={headings} />
-        </aside>
-        <MarkdownProse><slot /></MarkdownProse>
-    </section>
+		<aside class="xl:hidden w-full">
+			<TableOfContents client:only headings={headings} />
+		</aside>
+		<MarkdownProse><slot /></MarkdownProse>
+	</section>
 </Base>

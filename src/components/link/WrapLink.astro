@@ -9,11 +9,11 @@ let target: string | null | undefined = '';
 const ogRel = props.rel ? props.rel.replace('noopener', '').replace('noreferrer', '') : '';
 
 if (props.href?.toString().startsWith('https://')) {
-    target = '_blank';
-    rel = `noopener noreferrer ${ogRel}`;
+	target = '_blank';
+	rel = `noopener noreferrer ${ogRel}`;
 } else {
-    target = (props.target === '_blank' ? '_self' : props?.target) ?? '_self';
-    rel = ogRel;
+	target = (props.target === '_blank' ? '_self' : props?.target) ?? '_self';
+	rel = ogRel;
 }
 ---
 

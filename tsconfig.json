@@ -1,17 +1,17 @@
 {
-    "extends": "astro/tsconfigs/strict",
-    "include": [".astro/types.d.ts", "**/*"],
-    "exclude": ["dist"],
-    "compilerOptions": {
-        "strictNullChecks": true,
-        "jsx": "preserve",
-        "paths": {
-            "@components/*": ["./src/components/*"],
-            "@assets/*": ["./src/assets/*"],
-            "@layouts/*": ["./src/layouts/*"],
-            "@client/*": ["./src/client/*"],
-            "@lib/*": ["./src/lib/*"],
-            "@/*": ["./src/*"]
-        }
-    }
+	"extends": "astro/tsconfigs/strict",
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": ["dist"],
+	"compilerOptions": {
+		"strictNullChecks": true,
+		"jsx": "preserve",
+		"paths": {
+			"@components/*": ["./src/components/*"],
+			"@assets/*": ["./src/assets/*"],
+			"@layouts/*": ["./src/layouts/*"],
+			"@client/*": ["./src/client/*"],
+			"@lib/*": ["./src/lib/*"],
+			"@/*": ["./src/*"]
+		}
+	}
 }

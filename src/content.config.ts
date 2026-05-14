@@ -3,24 +3,24 @@ import { z } from 'astro/zod';
 import { defineCollection } from 'astro:content';
 
 const ramblings = defineCollection({
-    loader: glob({ base: './src/content/ramblings', pattern: '**/*.{md,mdx}' }),
-    schema: () =>
-        z.object({
-            title: z.string(),
-            description: z.string(),
-            pubDate: z.coerce.date(),
-            updatedDate: z.coerce.date().optional(),
-            tags: z.array(z.string()).optional()
-        })
+	loader: glob({ base: './src/content/ramblings', pattern: '**/*.{md,mdx}' }),
+	schema: () =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			pubDate: z.coerce.date(),
+			updatedDate: z.coerce.date().optional(),
+			tags: z.array(z.string()).optional()
+		})
 });
 
 const pages = defineCollection({
-    loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
-    schema: () =>
-        z.object({
-            title: z.string(),
-            description: z.string()
-        })
+	loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
+	schema: () =>
+		z.object({
+			title: z.string(),
+			description: z.string()
+		})
 });
 
 export const collections = { ramblings, pages };

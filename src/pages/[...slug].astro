@@ -3,11 +3,11 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import MarkdownWithTOC from '@layouts/MarkdownWithTOC.astro';
 
 export async function getStaticPaths() {
-    const pages = await getCollection('pages');
-    return pages.map(page => ({
-        params: { slug: page.id },
-        props: page
-    }));
+	const pages = await getCollection('pages');
+	return pages.map(page => ({
+		params: { slug: page.id },
+		props: page
+	}));
 }
 
 type Props = CollectionEntry<'pages'>;
@@ -17,5 +17,5 @@ const { Content, headings } = await render(page);
 ---
 
 <MarkdownWithTOC title={page.data.title} description={page.data.description} headings={headings}>
-    <Content />
+	<Content />
 </MarkdownWithTOC>

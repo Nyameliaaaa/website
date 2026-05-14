@@ -4,38 +4,38 @@ import { body, link, text } from '@lib/classes';
 import type { LinkEntry } from '@lib/types';
 
 interface Props {
-    links: LinkEntry[];
+	links: LinkEntry[];
 }
 
 const { links } = Astro.props;
 ---
 
 <ul>
-    {
-        links.map(linkItem => (
-            <li class="grid w-full grid-cols-3 xl:grid-cols-4">
-                <div class="col-span-1">
-                    <p
-                        class={text({
-                            color: 'accent',
-                            font: 'sans',
-                            weight: 'medium',
-                            tracking: 'tight'
-                        })}
-                    >
-                        {linkItem.label}
-                    </p>
-                </div>
-                <div class="col-span-2 xl:col-span-3">
-                    {linkItem.url ? (
-                        <WrapLink href={linkItem.url} class={`${body} ${link} col-span-2`}>
-                            {linkItem.handle}
-                        </WrapLink>
-                    ) : (
-                        <p class={`${body} col-span-2`}>{linkItem.handle}</p>
-                    )}
-                </div>
-            </li>
-        ))
-    }
+	{
+		links.map(linkItem => (
+			<li class="grid w-full grid-cols-3 xl:grid-cols-4">
+				<div class="col-span-1">
+					<p
+						class={text({
+							color: 'accent',
+							font: 'sans',
+							weight: 'medium',
+							tracking: 'tight'
+						})}
+					>
+						{linkItem.label}
+					</p>
+				</div>
+				<div class="col-span-2 xl:col-span-3">
+					{linkItem.url ? (
+						<WrapLink href={linkItem.url} class={`${body} ${link} col-span-2`}>
+							{linkItem.handle}
+						</WrapLink>
+					) : (
+						<p class={`${body} col-span-2`}>{linkItem.handle}</p>
+					)}
+				</div>
+			</li>
+		))
+	}
 </ul>

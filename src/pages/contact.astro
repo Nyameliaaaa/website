@@ -9,120 +9,120 @@ import WrapLink from '@components/link/WrapLink.astro';
 
 const contactTitle = 'contact';
 const contactSub =
-    'locations where the cryptid known as amelia has been found on the interwebs. reports say she was barking, or being barked at, idk';
+	'locations where the cryptid known as amelia has been found on the interwebs. reports say she was barking, or being barked at, idk';
 ---
 
 <Base title={contactTitle} description={contactSub}>
-    <BackLink />
+	<BackLink />
 
-    <section class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
-        <div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
-            <img
-                src="/about/pfp.jpg"
-                alt="amelia :3"
-                width={200}
-                height={200}
-                class="border-2 border-dashed border-ctp-mauve"
-            />
-        </div>
-        <section class="order-last md:order-first">
-            <div class="mb-6">
-                <h1 class={pageTitle}>{contactTitle}</h1>
-                <p class={pageSubtitle}>{contactSub}</p>
-            </div>
+	<section class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
+		<div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
+			<img
+				src="/about/pfp.jpg"
+				alt="amelia :3"
+				width={200}
+				height={200}
+				class="border-2 border-dashed border-ctp-mauve"
+			/>
+		</div>
+		<section class="order-last md:order-first">
+			<div class="mb-6">
+				<h1 class={pageTitle}>{contactTitle}</h1>
+				<p class={pageSubtitle}>{contactSub}</p>
+			</div>
 
-            <h2 class={heading}>message</h2>
-            <p class={leadText}>you can message me through this site lmao. or rather bark at me</p>
-            <div class="mt-2">
-                <IconButton text="message" icon="message" url="/message" />
-            </div>
-        </section>
-    </section>
+			<h2 class={heading}>message</h2>
+			<p class={leadText}>you can message me through this site lmao. or rather bark at me</p>
+			<div class="mt-2">
+				<IconButton text="message" icon="message" url="/message" />
+			</div>
+		</section>
+	</section>
 
-    <hr class="border border-dashed border-ctp-crust my-4" />
+	<hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section>
-        <h2 class={heading}>public keys</h2>
-        <p class={leadText}>
-            you can find my public keys <WrapLink href="/pubkeys.txt" class={link}>here</WrapLink>
-        </p>
-    </section>
+	<section>
+		<h2 class={heading}>public keys</h2>
+		<p class={leadText}>
+			you can find my public keys <WrapLink href="/pubkeys.txt" class={link}>here</WrapLink>
+		</p>
+	</section>
 
-    <hr class="border border-dashed border-ctp-crust my-4" />
+	<hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section>
-        <h2 class={heading}>contact</h2>
-        <div class="my-3">
-            <h2 class={subHeading}>mail</h2>
-            <p class={body}>
-                <span class="bg-ctp-crust px-2 rounded-md text-ctp-pink">nyameliaaaa (AT) proton (DOT) me</span>. for
-                non-proton gpg, see <span class="bg-ctp-crust px-2 rounded-md">public keys</span>
-            </p>
-        </div>
-        <div class="my-3">
-            <h2 class={subHeading}>matrix</h2>
-            <p class={body}>
-                <a
-                    href="https://matrix.to/#/@nyameliaaaa:matrix.org"
-                    class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
-                    >@nyameliaaaa:matrix.org</a
-                >
-            </p>
-        </div>
-        <div class="my-3">
-            <h2 class={subHeading}>discord</h2>
-            <p class={body}>
-                <a
-                    href="https://matrix.to/#/@nyameliaaaa:matrix.org"
-                    class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
-                    >@nyameliaaaa</a
-                > thoo id prefer you use matrix instead
-            </p>
-        </div>
-        <div class="my-3">
-            <h2 class={subHeading}>signal</h2>
-            <p class={body}>i don't give out my signal username unless i vibe with you tbh</p>
-        </div>
-    </section>
+	<section>
+		<h2 class={heading}>contact</h2>
+		<div class="my-3">
+			<h2 class={subHeading}>mail</h2>
+			<p class={body}>
+				<span class="bg-ctp-crust px-2 rounded-md text-ctp-pink">nyameliaaaa (AT) proton (DOT) me</span>. for non-proton
+				gpg, see <span class="bg-ctp-crust px-2 rounded-md">public keys</span>
+			</p>
+		</div>
+		<div class="my-3">
+			<h2 class={subHeading}>matrix</h2>
+			<p class={body}>
+				<a
+					href="https://matrix.to/#/@nyameliaaaa:matrix.org"
+					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
+					>@nyameliaaaa:matrix.org</a
+				>
+			</p>
+		</div>
+		<div class="my-3">
+			<h2 class={subHeading}>discord</h2>
+			<p class={body}>
+				<a
+					href="https://matrix.to/#/@nyameliaaaa:matrix.org"
+					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
+					>@nyameliaaaa</a
+				> thoo id prefer you use matrix instead
+			</p>
+		</div>
+		<div class="my-3">
+			<h2 class={subHeading}>signal</h2>
+			<p class={body}>i don't give out my signal username unless i vibe with you tbh</p>
+		</div>
+	</section>
 
-    <hr class="border border-dashed border-ctp-crust my-4" />
+	<hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section>
-        <h2 class={heading}>git forge</h2>
-        <div class="my-3">
-            <h2 class={subHeading}>git.gay</h2>
-            <p
-                class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
-            >
-                <WrapLink href="https://git.gay/nyamelia">@nyamelia</WrapLink>
-            </p>
-            <p class={body}>primary git forge</p>
-        </div>
-        <div class="my-3">
-            <h2 class={subHeading}>github</h2>
-            <p
-                class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
-            >
-                <WrapLink href="https://github.com/nyameliaaaa">@nyameliaaaa</WrapLink>
-            </p>
-            <p class={body}>
-                used only as a mirror and for contributing to projects still on github, <a
-                    class={link}
-                    href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</a
-                >
-            </p>
-        </div>
-    </section>
+	<section>
+		<h2 class={heading}>git forge</h2>
+		<div class="my-3">
+			<h2 class={subHeading}>git.gay</h2>
+			<p
+				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
+			>
+				<WrapLink href="https://git.gay/nyamelia">@nyamelia</WrapLink>
+			</p>
+			<p class={body}>primary git forge</p>
+		</div>
+		<div class="my-3">
+			<h2 class={subHeading}>github</h2>
+			<p
+				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
+			>
+				<WrapLink href="https://github.com/nyameliaaaa">@nyameliaaaa</WrapLink>
+			</p>
+			<p class={body}>
+				used only as a mirror and for contributing to projects still on github, <a
+					class={link}
+					href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</a
+				>
+			</p>
+		</div>
+	</section>
 
-    <hr class="border border-dashed border-ctp-crust my-4" />
+	<hr class="border border-dashed border-ctp-crust my-4" />
 
-    <section class="my-4">
-        <div class="mb-3">
-            <h2 class={heading}>links</h2>
-            <p class={leadText}>
-                where else can the amelia be found. you did not ask that question or you did but im answering it
-            </p>
-        </div>
-        <LinkSection links={links} />
-    </section>
+	<section class="my-4">
+		<div class="mb-3">
+			<h2 class={heading}>links</h2>
+			<p class={leadText}>
+				where else can the amelia be found. you did not ask that question or you did but im answering it
+			</p>
+		</div>
+		<LinkSection links={links} />
+	</section>
 </Base>
