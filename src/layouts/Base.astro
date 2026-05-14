@@ -6,6 +6,7 @@ import Container from '@components/formatting/Container.astro';
 import BaseHead from '@components/base/BaseHead.astro';
 import Footer from '@components/base/Footer.astro';
 import Header from '@components/base/Header.astro';
+import BraveBlocker from '@client/BraveBlocker.vue';
 
 interface Props {
 	title?: string;
@@ -26,7 +27,7 @@ interface Props {
 			'overflow-x-hidden'
 		]}
 	>
-		<div class="sticky top-0 z-10000 drop-shadow-md">
+		<div class="sticky top-0 z-10 drop-shadow-md">
 			<div class="grid grid-cols-5 h-3">
 				<div class="bg-[#5bcefa]"></div>
 				<div class="bg-[#f5a9b8]"></div>
@@ -35,6 +36,8 @@ interface Props {
 				<div class="bg-[#5bcefa]"></div>
 			</div>
 		</div>
+
+		<BraveBlocker client:load />
 
 		<div class="h-full macchiato">
 			<Container class="my-3" transition:persist>
