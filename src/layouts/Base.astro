@@ -8,59 +8,65 @@ import Footer from '@components/base/Footer.astro';
 import Header from '@components/base/Header.astro';
 
 interface Props {
-    title?: string;
-    description?: string;
+	title?: string;
+	description?: string;
 }
 ---
 
 <!doctype html>
 <html lang="en" class="mocha selection:bg-ctp-pink selection:text-ctp-crust">
-    <head>
-        <BaseHead {...Astro.props} />
-        <slot name="head" />
-    </head>
-    <body class:list={['min-h-dvh w-screen', 'bg-linear-to-br from-ctp-mantle via-ctp-crust to-ctp-mantle']}>
-        <div class="sticky top-0 z-10000 drop-shadow-md macchiato">
-            <div class="grid grid-cols-5 h-3">
-                <div class="bg-ctp-sapphire"></div>
-                <div class="bg-ctp-pink"></div>
-                <div class="bg-ctp-base latte"></div>
-                <div class="bg-ctp-pink"></div>
-                <div class="bg-ctp-sapphire"></div>
-            </div>
-        </div>
+	<head>
+		<BaseHead {...Astro.props} />
+		<slot name="head" />
+	</head>
+	<body
+		class:list={[
+			'min-h-dvh w-screen',
+			'bg-linear-to-br from-ctp-mantle via-ctp-crust to-ctp-mantle',
+			'overflow-x-hidden'
+		]}
+	>
+		<div class="sticky top-0 z-10000 drop-shadow-md">
+			<div class="grid grid-cols-5 h-3">
+				<div class="bg-[#5bcefa]"></div>
+				<div class="bg-[#f5a9b8]"></div>
+				<div class="bg-[#ffffff]"></div>
+				<div class="bg-[#f5a9b8]"></div>
+				<div class="bg-[#5bcefa]"></div>
+			</div>
+		</div>
 
-        <div class="h-full macchiato">
-            <Container class="my-3" transition:persist>
-                <Header />
-            </Container>
+		<div class="h-full macchiato">
+			<Container class="my-3" transition:persist>
+				<Header />
+			</Container>
 
-            <Container transition:persist>
-                <LatestStatus client:only />
-            </Container>
+			<Container transition:persist>
+				<LatestStatus client:only />
+			</Container>
 
-            <Container class="mt-3 mb-5">
-                <slot name="left" slot="left" />
-                <main
-                    class="bg-ctp-mantle px-3 py-2 rounded-lg border-2 border-dashed border-ctp-pink"
-                    transition:animate="fade"
-                >
-                    <slot />
-                </main>
-                <slot name="right" slot="right" />
-            </Container>
+			<Container class="mt-3 mb-5">
+				<slot name="left" slot="left" />
+				<main
+					class="bg-ctp-mantle px-3 py-2 rounded-lg border-2 border-dashed border-ctp-pink"
+					transition:animate="fade"
+				>
+					<slot />
+				</main>
+				<slot name="right" slot="right" />
+			</Container>
 
-            <Container>
-                <Footer />
-            </Container>
+			<Container>
+				<Footer />
+			</Container>
 
-            <Container class="mt-5 h-2 rounded-t-lg overflow-hidden w-full grid grid-cols-5">
-                <div class="bg-ctp-peach"></div>
-                <div class="bg-ctp-red"></div>
-                <div class="bg-ctp-base latte"></div>
-                <div class="bg-ctp-pink"></div>
-                <div class="bg-ctp-mauve"></div>
-            </Container>
-        </div>
-    </body>
+			<Container class="mt-5 h-2 rounded-t-lg overflow-hidden w-full grid grid-cols-5">
+				<div class="bg-[#d72803]"></div>
+				<div class="bg-[#ff9a56]"></div>
+				<div class="bg-[#ffffff]"></div>
+				<div class="bg-[#d364a5]"></div>
+				<div class="bg-[#a40365]"></div>
+			</Container>
+		</div>
+	</body>
 </html>

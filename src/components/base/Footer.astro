@@ -1,4 +1,6 @@
 ---
+import CopyrightEnd from '@client/CopyrightEnd.vue';
+import FormattedDate from '@components/formatting/FormattedDate.astro';
 import IconLink from '@components/link/IconLink.astro';
 import PixelieImg from '@components/link/PixelieImg.astro';
 import WrapLink from '@components/link/WrapLink.astro';
@@ -12,10 +14,10 @@ import { version } from 'vue';
 		<div class="flex flex-col gap-3">
 			<div>
 				<p class={caption}>
-					&copy; copyright 2017-{new Date().getFullYear()} amelia isabel rose
+					&copy; copyright 2017-<CopyrightEnd client:load /> amelia isabel rose
 				</p>
 				<p class={caption}>
-					article content (ramblings) licensed under <WrapLink
+					ramblings licensed under <WrapLink
 						href="https://creativecommons.org/licenses/by-nc/4.0/"
 						class={link}
 					>
@@ -35,13 +37,12 @@ import { version } from 'vue';
 					>
 				</p>
 				<p class={caption}>
+					last updated <b><FormattedDate date={new Date()} /></b>
+				</p>
+				<p class={caption}>
 					tested using <WrapLink href="https://firefox.com" class={link}> firefox</WrapLink>
 				</p>
 			</div>
-
-			<ul class="flex flex-row gap-2 max-md:hidden">
-				{footerPixelies.map(pixelie => <PixelieImg pixelie={pixelie} />)}
-			</ul>
 		</div>
 		<div>
 			<div class="grid grid-cols-2 lg:grid-cols-2 xl:gap-3 select-none">
@@ -53,9 +54,10 @@ import { version } from 'vue';
 					))
 				}
 			</div>
-			<ul class="mt-2 flex flex-row gap-2 md:hidden">
-				{footerPixelies.map(pixelie => <PixelieImg pixelie={pixelie} />)}
-			</ul>
 		</div>
 	</div>
+
+	<ul class="mt-3 flex flex-row justify-around gap-2">
+		{footerPixelies.map(pixelie => <PixelieImg pixelie={pixelie} />)}
+	</ul>
 </footer>

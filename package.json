@@ -6,7 +6,7 @@
 		"node": ">=22.12.0"
 	},
 	"scripts": {
-		"dev": "astro dev",
+		"dev": "CF_PAGES_COMMIT_SHA=$(git rev-parse HEAD) astro dev",
 		"build": "astro build",
 		"astro": "astro"
 	},

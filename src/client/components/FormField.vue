@@ -16,7 +16,7 @@
 		/>
 		<input
 			v-else
-			:class="[formField, outline, { 'my-1': hasErrors || description, 'mt-1': !(hasErrors && description) }]"
+			:class="[formField, outline, { 'my-1': errors || description, 'mt-1': !(errors && description) }]"
 			v-model="model"
 			:id="id"
 			:type="type"
@@ -24,7 +24,8 @@
 			:aria-describedby="`${id}-description`"
 			:required="required"
 		/>
-		<p v-if="hasErrors ?? description" :id="`${id}-description`" :class="formFieldDesc">
+
+		<p :id="`${id}-description`" :class="formFieldDesc">
 			<span v-if="errors" class="text-ctp-maroon">{{ errors }}</span>
 			<span v-else-if="description">{{ description }}</span>
 		</p>
@@ -32,19 +33,17 @@
 </template>
 <script setup lang="ts">
 import { formFieldLabel, formFieldDesc, formFieldOptional, formFieldRequired, outline, formField } from '@lib/classes';
-import { computed, type InputTypeHTMLAttribute } from 'vue';
+import { type InputTypeHTMLAttribute } from 'vue';
 
 const model = defineModel<string>();
 const props = defineProps<{
 	label: string;
-	description?: string;
-	required?: boolean;
 	id: string;
-	type?: InputTypeHTMLAttribute;
-	errors?: string;
+	description?: string;
 	placeholder?: string;
+	errors?: string;
+	required?: boolean;
+	type?: InputTypeHTMLAttribute;
 	isTextArea?: boolean;
 }>();
-
-const hasErrors = computed(() => !!props.errors);
 </script>

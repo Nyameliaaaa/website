@@ -12,16 +12,14 @@ export const footerUrls = [
 	{ url: '/guestbook', text: 'guestbook', icon: 'pencil-box-multiple' },
 	{ url: '/message', text: 'message', icon: 'message' },
 	{ url: '/pixelies', text: 'the 88x31 museum', icon: 'link-box-variant' },
-	{ url: '/music', text: 'music', icon: 'music-box-multiple' }
+	{ url: '/music', text: 'music', icon: 'music-box-multiple' },
+	{ url: '/about', text: 'about', icon: 'info' }
 ];
 
 export const footerPixelies: PixelieEntry[] = [
-	{ img: '/88x31/button.png', alt: 'nyamelia (me)'},
-	{
-		url: 'https://gayspace.fr',
-		img: 'https://gayspace.fr/images/buttons/button.gif',
-		alt: 'gf lori <3'
-	}
+	{ img: '/88x31/button.png', alt: 'nyamelia (me)' },
+	{ url: 'https://gayspace.fr', img: 'https://gayspace.fr/images/buttons/button.gif', alt: 'gf lori <3' }
+	// { url: 'https://firefox.com', img: 'https://88x31.nl/gifs/firefox4.gif', alt: 'tested on firefox' }
 ];
 
 export const links: LinkEntry[] = [
