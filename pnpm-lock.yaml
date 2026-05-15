@@ -6,7 +6,17 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      prettier:
+        specifier: ^3.8.3
+        version: 3.8.3
+      prettier-plugin-astro:
+        specifier: ^0.14.1
+        version: 0.14.1
+      prettier-plugin-tailwindcss:
+        specifier: ^0.8.0
+        version: 0.8.0(prettier-plugin-astro@0.14.1)(prettier@3.8.3)
 
   apps/web:
     dependencies:
@@ -59,18 +69,6 @@ importers:
       '@tailwindcss/typography':
         specifier: ^0.5.19
         version: 0.5.19(tailwindcss@4.3.0)
-      '@website/prettier-config':
-        specifier: workspace:*
-        version: link:../../packages/prettier-config
-      prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
-      prettier-plugin-astro:
-        specifier: ^0.14.1
-        version: 0.14.1
-      prettier-plugin-tailwindcss:
-        specifier: ^0.8.0
-        version: 0.8.0(prettier-plugin-astro@0.14.1)(prettier@3.8.3)
 
   apps/worker:
     dependencies:
@@ -105,12 +103,6 @@ importers:
       wrangler:
         specifier: ^4.87.0
         version: 4.90.1
-
-  packages/prettier-config:
-    devDependencies:
-      prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
 
 packages:
 

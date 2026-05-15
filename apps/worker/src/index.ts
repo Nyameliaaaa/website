@@ -10,25 +10,25 @@ import { cors } from 'hono/cors';
 
 const app = new Hono<{ Bindings: Bindings }>();
 app.use(
-    '*',
-    cors({
-        origin: getOrigin,
-        allowMethods: ['GET', 'POST', 'OPTIONS'],
-        allowHeaders: ['Content-Type']
-    })
+	'*',
+	cors({
+		origin: getOrigin,
+		allowMethods: ['GET', 'POST', 'OPTIONS'],
+		allowHeaders: ['Content-Type'],
+	})
 );
 
 app.onError((err, c) => {
-    console.error(`${err}, ${err.stack}`);
+	console.error(`${err}, ${err.stack}`);
 
-    return c.json(
-        {
-            name: err.name,
-            msg: err.message,
-            tip: 'try checking for malformed JSON'
-        },
-        500
-    );
+	return c.json(
+		{
+			name: err.name,
+			msg: err.message,
+			tip: 'try checking for malformed JSON',
+		},
+		500
+	);
 });
 
 app.route('/api/guestbook', guestbook);
@@ -38,6 +38,6 @@ app.route('/api/discord', discord);
 app.route('/api/statuses', statuses);
 
 export default {
-    fetch: app.fetch,
-    queue
+	fetch: app.fetch,
+	queue,
 };

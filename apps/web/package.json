@@ -28,11 +28,7 @@
 	"devDependencies": {
 		"@catppuccin/tailwindcss": "^1.0.0",
 		"@tailwindcss/forms": "^0.5.11",
-		"@tailwindcss/typography": "^0.5.19",
-		"prettier": "^3.8.3",
-		"prettier-plugin-astro": "^0.14.1",
-		"prettier-plugin-tailwindcss": "^0.8.0",
-		"@website/prettier-config": "workspace:*"
+		"@tailwindcss/typography": "^0.5.19"
 	},
 	"overrides": {
 		"vite": "^7"

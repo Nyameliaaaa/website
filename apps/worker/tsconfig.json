@@ -1,12 +1,12 @@
 {
-    "extends": ["../../tsconfig.json"],
-    "compilerOptions": {
-        "lib": ["ESNext"],
-        "jsx": "react-jsx",
-        "jsxImportSource": "hono/jsx",
-        "types": ["./worker-configuration.d.ts", "node"],
-        "paths": {
-            "@/*": ["./src/*"]
-        }
-    }
+	"extends": ["../../tsconfig.json"],
+	"compilerOptions": {
+		"lib": ["ESNext"],
+		"jsx": "react-jsx",
+		"jsxImportSource": "hono/jsx",
+		"types": ["./worker-configuration.d.ts", "node"],
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	}
 }

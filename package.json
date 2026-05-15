@@ -11,5 +11,10 @@
 		"worker:deploy": "pnpm --filter worker deploy",
 		"worker:wrangler": "pnpm --filter worker wrangler",
 		"worker:types": "pnpm --filter worker types"
+	},
+	"devDependencies": {
+		"prettier": "^3.8.3",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-tailwindcss": "^0.8.0"
 	}
 }
