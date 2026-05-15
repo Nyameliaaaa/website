@@ -1,0 +1,27 @@
+{
+	"name": "worker",
+	"type": "module",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy --minify",
+		"types": "wrangler types --env-interface Bindings",
+		"wrangler": "wrangler",
+		"db:gen": "drizzle-kit generate",
+		"db:apply:local": "npx wrangler d1 migrations apply nyamelia-services --local",
+		"db:apply:remote": "npx wrangler d1 migrations apply nyamelia-services --remote"
+	},
+	"dependencies": {
+		"@discordjs/builders": "^1.14.1",
+		"@discordjs/rest": "^2.6.1",
+		"drizzle-orm": "^0.45.2",
+		"hono": "^4.12.15",
+		"hono-discord-verify": "^0.4.2"
+	},
+	"devDependencies": {
+		"@libsql/client": "^0.17.3",
+		"@types/node": "^25.6.0",
+		"discord-api-types": "^0.38.47",
+		"drizzle-kit": "^0.31.10",
+		"wrangler": "^4.87.0"
+	}
+}

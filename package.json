@@ -6,6 +6,10 @@
 	"scripts": {
 		"web:dev": "pnpm --filter web dev",
 		"web:build": "pnpm --filter web build",
-		"web:astro": "pnpm --filter web astro"
+		"web:astro": "pnpm --filter web astro",
+		"worker:dev": "pnpm --filter worker dev",
+		"worker:deploy": "pnpm --filter worker deploy",
+		"worker:wrangler": "pnpm --filter worker wrangler",
+		"worker:types": "pnpm --filter worker types"
 	}
 }

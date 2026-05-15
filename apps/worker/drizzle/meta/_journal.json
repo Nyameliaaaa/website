@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1777093112587,
+      "tag": "0000_light_beyonder",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1777094556212,
+      "tag": "0001_fat_corsair",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1778195706652,
+      "tag": "0002_hesitant_stepford_cuckoos",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1778257191036,
+      "tag": "0003_short_harpoon",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1778512882849,
+      "tag": "0004_windy_harrier",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1778513729180,
+      "tag": "0005_perfect_devos",
+      "breakpoints": true
+    }
+  ]
+}
