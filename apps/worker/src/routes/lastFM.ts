@@ -1,5 +1,6 @@
 import { LASTFM_BASE, LASTFM_USER, TTL } from '@/lib/consts';
 import { cachedFetch, getAlbumImage, getTrackImage } from '@/lib/lastFM';
+import { GETLastFMAlbum, GETLastFMArtist, GETLastFMRecent } from '@website/lib';
 import { Hono } from 'hono';
 
 const lastFM = new Hono<{ Bindings: Bindings }>();
@@ -12,18 +13,21 @@ lastFM.get('/recent', async c => {
 		TTL.LASTFM_RECENT
 	);
 
-	const clean = await Promise.all(
-		data.recenttracks.track.map(async (track: any) => ({
-			name: track.name,
-			artist: track.artist['#text'],
-			album: track.album['#text'],
-			image: await getTrackImage(
-				track.artist['#text'],
-				track.album['#text'] || track.album['#text'] === '' ? track.name : track.album,
-				track.image.find((i: any) => i.size === 'extralarge')?.['#text']
-			),
-			url: track.url,
-		}))
+	const clean: GETLastFMRecent[] = await Promise.all(
+		data.recenttracks.track.map(
+			async (track: any) =>
+				({
+					name: track.name,
+					artist: track.artist['#text'],
+					album: track.album['#text'],
+					image: await getTrackImage(
+						track.artist['#text'],
+						track.album['#text'] || track.album['#text'] === '' ? track.name : track.album,
+						track.image.find((i: any) => i.size === 'extralarge')?.['#text']
+					),
+					url: track.url,
+				}) as GETLastFMRecent
+		)
 	);
 
 	return c.json(clean);
@@ -37,11 +41,14 @@ lastFM.get('/artists', async c => {
 		TTL.LASTFM_TOP
 	);
 
-	const clean = data.topartists.artist.map((artist: any) => ({
-		name: artist.name,
-		url: artist.url,
-		playcount: artist.playcount,
-	}));
+	const clean: GETLastFMArtist[] = data.topartists.artist.map(
+		(artist: any) =>
+			({
+				name: artist.name,
+				url: artist.url,
+				playcount: artist.playcount,
+			}) as GETLastFMArtist
+	);
 
 	return c.json(clean);
 });
@@ -54,18 +61,21 @@ lastFM.get('/albums', async c => {
 		TTL.LASTFM_TOP
 	);
 
-	const clean = await Promise.all(
-		data.topalbums.album.map(async (album: any) => ({
-			name: album.name,
-			artist: album.artist.name,
-			playcount: album.playcount,
-			image: await getAlbumImage(
-				album.artist.name,
-				album.name,
-				album.image.find((i: any) => i.size === 'extralarge')?.['#text']
-			),
-			url: album.url,
-		}))
+	const clean: GETLastFMAlbum[] = await Promise.all(
+		data.topalbums.album.map(
+			async (album: any) =>
+				({
+					name: album.name,
+					artist: album.artist.name,
+					playcount: album.playcount,
+					image: await getAlbumImage(
+						album.artist.name,
+						album.name,
+						album.image.find((i: any) => i.size === 'extralarge')?.['#text']
+					),
+					url: album.url,
+				}) as GETLastFMAlbum
+		)
 	);
 
 	return c.json(clean);

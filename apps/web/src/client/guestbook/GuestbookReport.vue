@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 // entry
-import type { GuestbookItem } from '@lib/types';
+import type { GETGuestbook, POSTGuestbookIDReport } from '@website/lib';
 import { onMounted } from 'vue';
 import { useWorker } from '@client/composables/useWorker';
 import AsyncState from '@client/components/AsyncState.vue';
@@ -43,8 +43,8 @@ import { useSubmitHelpers } from '@client/composables/useSubmitHelpers';
 import FormField from '@client/components/FormField.vue';
 
 const id = new URLSearchParams(window.location.search).get('id');
-const { loading, error, data, useFetch } = useWorker<GuestbookItem>(`guestbook/${id}`);
-const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers(
+const { loading, error, data, useFetch } = useWorker<GETGuestbook>(`guestbook/${id}`);
+const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers<POSTGuestbookIDReport, POSTGuestbookIDReport>(
 	{ message: '' },
 	{ message: '' }
 );

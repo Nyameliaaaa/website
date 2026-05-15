@@ -1,5 +1,6 @@
-import { isValidEmail, sendDiscordPacket } from '@/lib/helpers';
-import { MessagePacket, QueuedMessageType } from '@/lib/types';
+import { sendDiscordPacket } from '@/lib/helpers';
+import { MessagePacket, PacketType } from '@/lib/types';
+import { isValidEmail } from '@website/lib';
 import { Hono } from 'hono';
 
 const message = new Hono<{ Bindings: Bindings }>();
@@ -45,7 +46,7 @@ message.post('/', async c => {
 		);
 	}
 
-	await sendDiscordPacket<MessagePacket>(c, { ...body, type: QueuedMessageType.Message });
+	await sendDiscordPacket<MessagePacket>(c, { ...body, type: PacketType.Message });
 	return c.json({ success: true }, 201);
 });
 

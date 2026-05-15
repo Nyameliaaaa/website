@@ -1,6 +1,6 @@
 <template>
 	<div class="flex flex-col gap-2 lg:flex-row">
-		<FormField label="name" id="name" v-model="form.name" type="text" placeholder="anonymous" />
+		<FormField label="name" id="name" v-model="form.name" type="text" placeholder="anonymous" :errors="null" />
 		<FormBorderPicker v-model="form.borderColor" />
 	</div>
 
@@ -52,10 +52,13 @@
 	<h2 :class="`${subHeading} mb-2`">preview</h2>
 	<GuestbookEntry
 		:entry="{
-			...form,
+			id: 0,
 			name: form.name || 'anonymous',
 			message: form.message || 'your message will appear here',
-			createdAt: date
+			createdAt: date,
+			ameliaReply: null,
+			url: form.url ?? null,
+			borderColor: form.borderColor ?? 'pink',
 		}"
 	/>
 </template>
@@ -68,16 +71,15 @@ import GuestbookEntry from '@client/components/GuestbookEntry.vue';
 import { useMutation } from '@client/composables/useMutation';
 import { useSubmitHelpers } from '@client/composables/useSubmitHelpers';
 import { subHeading } from '@lib/classes';
-import { isValidEmail } from '@lib/helpers';
-import type { GuestbookPayload } from '@lib/types';
+import { isValidEmail, type POSTGuestbook } from '@website/lib';
 
 const date = new Date().toISOString();
 
-const { mutate, mutationError } = useMutation<GuestbookPayload>('guestbook');
+const { mutate, mutationError } = useMutation<POSTGuestbook>('guestbook');
 
 const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers<
-	GuestbookPayload,
-	Partial<GuestbookPayload>
+	POSTGuestbook,
+	Partial<POSTGuestbook>
 >({ name: '', message: '', email: '', url: '', borderColor: 'pink' }, { name: '', message: '', email: '' });
 
 const submit = useSubmitWrap(
@@ -99,12 +101,9 @@ const submit = useSubmitWrap(
 		}
 	},
 	async () => {
-		const payload: GuestbookPayload = {
+		const payload: POSTGuestbook = {
+			...form,
 			name: form.name || 'anonymous',
-			message: form.message,
-			borderColor: form.borderColor ?? 'pink',
-			...(form.url && { url: form.url }),
-			...(form.email && { email: form.email })
 		};
 
 		return await mutate(payload);

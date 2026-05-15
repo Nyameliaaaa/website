@@ -1,10 +1,10 @@
-import { isMessage, isGuestbookEntry, isReport, QueuedMessage } from '@/lib/types';
+import { isMessage, isGuestbookEntry, isReport, Packet } from '@/lib/types';
 import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from '@discordjs/builders';
 import { REST } from '@discordjs/rest';
 import { ButtonStyle, Routes } from 'discord-api-types/v10';
 import { COLOR_VALUES, CONTACT_CHANNEL_ID, NEW_GUESTBOOK_ENTRY_CHANNEL_ID, REPORT_CHANNEL_ID } from './lib/consts';
 
-export const queue: ExportedHandlerQueueHandler<Bindings, QueuedMessage> = async (batch, env) => {
+export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch, env) => {
 	const rest = new REST({ version: '10' }).setToken(env.DISCORD_TOKEN);
 	for (const message of batch.messages) {
 		const { body } = message;

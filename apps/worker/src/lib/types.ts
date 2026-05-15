@@ -1,38 +1,32 @@
-import { schema } from '@/db';
+import { GuestbookRow, POSTGuestbookIDReport, POSTMessage } from '@website/lib';
 
-export enum QueuedMessageType {
+export enum PacketType {
 	Report,
 	GuestbookEntry,
 	Message,
 }
 
-type GuestbookEntry = typeof schema.guestbookEntries.$inferInsert;
-
-export interface QueuedMessage {
-	type: QueuedMessageType;
+export interface Packet {
+	type: PacketType;
 	workerUrl?: string;
 }
 
-export type GuestbookEntryPacket = GuestbookEntry & QueuedMessage;
-export interface ReportPacket extends QueuedMessage {
-	message: string;
-	offendingEntry: GuestbookEntry;
-}
+export type GuestbookEntryPacket = Packet & GuestbookRow;
+export type ReportPacket = Packet &
+	POSTGuestbookIDReport & {
+		offendingEntry: GuestbookRow;
+	};
 
-export interface MessagePacket extends QueuedMessage {
-	message: string;
-	name: string;
-	email: string;
-}
+export type MessagePacket = Packet & POSTMessage;
 
-export const isGuestbookEntry = (data: QueuedMessage): data is GuestbookEntryPacket => {
-	return data.type === QueuedMessageType.GuestbookEntry;
+export const isGuestbookEntry = (data: Packet): data is GuestbookEntryPacket => {
+	return data.type === PacketType.GuestbookEntry;
 };
 
-export const isReport = (data: QueuedMessage): data is ReportPacket => {
-	return data.type === QueuedMessageType.Report;
+export const isReport = (data: Packet): data is ReportPacket => {
+	return data.type === PacketType.Report;
 };
 
-export const isMessage = (data: QueuedMessage): data is MessagePacket => {
-	return data.type === QueuedMessageType.Message;
+export const isMessage = (data: Packet): data is MessagePacket => {
+	return data.type === PacketType.Message;
 };

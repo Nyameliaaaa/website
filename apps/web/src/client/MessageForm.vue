@@ -51,13 +51,12 @@ import FormButton from '@client/components/FormButton.vue';
 import FormField from '@client/components/FormField.vue';
 import { useMutation } from '@client/composables/useMutation';
 import { useSubmitHelpers } from '@client/composables/useSubmitHelpers';
-import { isValidEmail } from '@lib/helpers';
-import type { MessagePayload } from '@lib/types';
+import { isValidEmail, type POSTMessage } from '@website/lib';
 
-const { mutate, mutationError } = useMutation<MessagePayload>('message');
+const { mutate, mutationError } = useMutation<POSTMessage>('message');
 const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers<
-	MessagePayload,
-	MessagePayload
+	POSTMessage,
+	POSTMessage
 >(
 	{
 		name: '',

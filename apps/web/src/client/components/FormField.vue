@@ -33,15 +33,16 @@
 </template>
 <script setup lang="ts">
 import { formFieldLabel, formFieldDesc, formFieldOptional, formFieldRequired, outline, formField } from '@lib/classes';
+import type { IsNullable } from '@website/lib';
 import { type InputTypeHTMLAttribute } from 'vue';
 
-const model = defineModel<string>();
+const model = defineModel<IsNullable<string>>();
 const props = defineProps<{
 	label: string;
 	id: string;
 	description?: string;
 	placeholder?: string;
-	errors?: string;
+	errors: IsNullable<string>;
 	required?: boolean;
 	type?: InputTypeHTMLAttribute;
 	isTextArea?: boolean;

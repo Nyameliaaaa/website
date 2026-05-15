@@ -19,12 +19,12 @@
 </template>
 
 <script setup lang="ts">
-import type { Artist } from '@lib/types';
+import type { GETLastFMArtist } from '@website/lib';
 import AsyncState from '@client/components/AsyncState.vue';
 import { useWorker } from '@client/composables/useWorker';
 import { onMounted } from 'vue';
 
-const { loading, error, data, useFetch } = useWorker<Artist[]>('lastfm/artists');
+const { loading, error, data, useFetch } = useWorker<GETLastFMArtist[]>('lastfm/artists');
 
 onMounted(() => useFetch());
 </script>

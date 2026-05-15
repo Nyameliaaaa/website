@@ -63,9 +63,9 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
 import { caption, iconButton, leadText, outline } from '@lib/classes';
-import type { GuestbookItem } from '@lib/types';
+import type { GETGuestbook } from '@website/lib';
 
 defineProps<{
-	entry: GuestbookItem;
+	entry: GETGuestbook;
 }>();
 </script>

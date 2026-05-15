@@ -34,10 +34,10 @@ import AsyncState from '@client/components/AsyncState.vue';
 import Paginator from '@client/components/Paginator.vue';
 import { useWorker } from '@client/composables/useWorker';
 import { caption, leadText } from '@lib/classes';
-import type { StatusItem } from '@lib/types';
+import type { GETStatus } from '@website/lib';
 import { onMounted } from 'vue';
 
-const { loading, error, data, useFetch } = useWorker<StatusItem[]>('statuses');
+const { loading, error, data, useFetch } = useWorker<GETStatus[]>('statuses');
 
 onMounted(() => useFetch());
 </script>

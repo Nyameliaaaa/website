@@ -19,14 +19,6 @@ export interface MusicGridItem {
 	};
 }
 
-export interface Recent {
-	name: string;
-	artist: string;
-	album: string;
-	image: string;
-	url: string;
-}
-
 export interface Playlist {
 	name: string;
 	content: string;
@@ -34,47 +26,7 @@ export interface Playlist {
 	url: string;
 }
 
-export interface Artist {
-	name: string;
-	url: string;
-	playcount: number;
-}
-
-export interface Album {
-	name: string;
-	image: string;
-	url: string;
-	artist: string;
-	playcount: string;
-}
-
-export interface StatusItem {
-	id?: number;
-	text: string;
-	createdAt: string;
-}
-
-export interface GuestbookItem {
-	id?: number;
-	name: string;
-	message: string;
-	createdAt: string;
-	borderColor?: string;
-	url?: string;
-	ameliaReply?: string;
-}
-
-export interface GuestbookPayload extends Omit<GuestbookItem, 'createdAt' | 'id' | 'ameliaReply'> {
-	email?: string;
-}
-
-export interface MessagePayload {
-	message: string;
-	name: string;
-	email: string;
-}
-
-export interface Gallery {
+export interface PixelieSection {
 	name: string;
 	pixelies: PixelieEntry[];
 }

@@ -1,7 +1,8 @@
 import { createDb, schema } from '@/db';
 import { CATPPUCCIN_MACCHIATO_COLORS } from '@/lib/consts';
-import { isValidEmail, sendDiscordPacket } from '@/lib/helpers';
-import { GuestbookEntryPacket, QueuedMessageType, ReportPacket } from '@/lib/types';
+import { sendDiscordPacket } from '@/lib/helpers';
+import { GuestbookEntryPacket, PacketType, ReportPacket } from '@/lib/types';
+import { GETGuestbook, isValidEmail, POSTGuestbook } from '@website/lib';
 import { env } from 'cloudflare:workers';
 import { desc, eq, getTableColumns } from 'drizzle-orm';
 import { Hono } from 'hono';
@@ -13,23 +14,16 @@ const guestbookEntries = schema.guestbookEntries;
 guestbook.get('/', async c => {
 	const { email, ...publicFields } = getTableColumns(guestbookEntries);
 	const entries = await db.select(publicFields).from(guestbookEntries).orderBy(desc(guestbookEntries.createdAt));
+	const results: GETGuestbook[] = entries.map(e => ({
+		...e,
+		createdAt: e.createdAt?.toISOString(),
+	}));
 
-	return c.json(
-		entries.map(e => ({
-			...e,
-			createdAt: e.createdAt?.toISOString(),
-		}))
-	);
+	return c.json(results);
 });
 
 guestbook.post('/', async c => {
-	const body = await c.req.json<{
-		name?: string;
-		message: string;
-		email?: string;
-		borderColor?: string;
-		url?: string;
-	}>();
+	const body = await c.req.json<POSTGuestbook>();
 
 	if (!body.message) {
 		return c.json(
@@ -86,7 +80,7 @@ guestbook.post('/', async c => {
 		})
 		.returning();
 
-	await sendDiscordPacket<GuestbookEntryPacket>(c, { type: QueuedMessageType.GuestbookEntry, ...entry });
+	await sendDiscordPacket<GuestbookEntryPacket>(c, { type: PacketType.GuestbookEntry, ...entry });
 
 	return c.json({ success: true, id: entry.id }, 201);
 });
@@ -106,9 +100,9 @@ guestbook.get('/:id', async c => {
 	const id = Number(_id);
 	const { email, ...publicFields } = getTableColumns(guestbookEntries);
 
-	const entry = await db.selectDistinct(publicFields).from(guestbookEntries).where(eq(guestbookEntries.id, id));
+	const [entry] = await db.selectDistinct(publicFields).from(guestbookEntries).where(eq(guestbookEntries.id, id));
 
-	if (!entry.length) {
+	if (!entry) {
 		return c.json(
 			{
 				error: 'ENTRY_NOT_FOUND',
@@ -118,12 +112,8 @@ guestbook.get('/:id', async c => {
 		);
 	}
 
-	return c.json(
-		entry.map(e => ({
-			...e,
-			createdAt: e.createdAt?.toISOString(),
-		}))[0]
-	);
+	const results: GETGuestbook = { ...entry, createdAt: entry.createdAt?.toISOString() };
+	return c.json(results);
 });
 
 guestbook.post('/:id/report', async c => {
@@ -142,9 +132,9 @@ guestbook.post('/:id/report', async c => {
 
 	const id = Number(_id);
 
-	const entry = await db.selectDistinct().from(guestbookEntries).where(eq(guestbookEntries.id, id));
+	const [entry] = await db.selectDistinct().from(guestbookEntries).where(eq(guestbookEntries.id, id));
 
-	if (!entry.length) {
+	if (!entry) {
 		return c.json(
 			{
 				error: 'ENTRY_NOT_FOUND',
@@ -155,8 +145,8 @@ guestbook.post('/:id/report', async c => {
 	}
 
 	await sendDiscordPacket<ReportPacket>(c, {
-		type: QueuedMessageType.Report,
-		offendingEntry: entry[0],
+		type: PacketType.Report,
+		offendingEntry: entry,
 		message: body.message,
 	});
 

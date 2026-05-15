@@ -31,11 +31,11 @@ const props = defineProps<{
 
 import AsyncState from '@client/components/AsyncState.vue';
 import { useWorker } from '@client/composables/useWorker';
-import { body, caption, leadText, link } from '@lib/classes';
-import type { StatusItem } from '@lib/types';
+import { caption, leadText, link } from '@lib/classes';
+import type { GETStatus } from '@website/lib';
 import { onMounted } from 'vue';
 
-const { loading, error, data, useFetch } = useWorker<StatusItem>('statuses/latest');
+const { loading, error, data, useFetch } = useWorker<GETStatus>('statuses/latest');
 
 onMounted(() => useFetch());
 </script>

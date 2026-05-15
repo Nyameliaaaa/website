@@ -1,4 +1,4 @@
-import type { QueuedMessage } from '@/lib/types';
+import type { Packet } from '@/lib/types';
 import {
 	APIActionRowComponent,
 	APIButtonComponent,
@@ -32,15 +32,7 @@ export const getOrigin = (origin: string) => {
 	return null;
 };
 
-export const isValidEmail = (email: string) => {
-	return String(email)
-		.toLowerCase()
-		.match(
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-		);
-};
-
-export const sendDiscordPacket = async <T extends QueuedMessage>(c: Context<{ Bindings: Bindings }>, object: T) => {
+export const sendDiscordPacket = async <T extends Packet>(c: Context<{ Bindings: Bindings }>, object: T) => {
 	await c.env.DISCORD_SEND_QUEUE.send({
 		workerUrl: new URL(c.req.raw.url).origin,
 		...object,

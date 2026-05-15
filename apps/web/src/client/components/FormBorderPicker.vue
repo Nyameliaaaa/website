@@ -3,16 +3,12 @@
 		<Listbox v-model="model" v-slot="{ open }">
 			<div class="relative mt-1">
 				<div>
-					<label :class="[formFieldLabel, 'mb-1']" for="colors"
-						>color <span :class="formFieldRequired">*</span></label
-					>
+					<label :class="[formFieldLabel, 'mb-1']" for="colors">color <span :class="formFieldRequired">*</span></label>
 					<ListboxButton
 						:class="['cursor-pinter relative cursor-default py-2 pr-10 pl-3 text-left', formField, outline]"
 						id="colors"
 					>
-						<span class="block truncate" :style="{ color: `var(--catppuccin-color-${model})` }">{{
-							model
-						}}</span>
+						<span class="block truncate" :style="{ color: `var(--catppuccin-color-${model})` }">{{ model }}</span>
 						<span class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
 							<Icon
 								icon="mdi:chevron-down"
@@ -48,8 +44,8 @@
 									'relative py-2 pr-10 pl-3 select-none',
 									{
 										'bg-ctp-surface0': selected,
-										'bg-ctp-base hover:bg-ctp-mantle cursor-pointer': !selected
-									}
+										'bg-ctp-base hover:bg-ctp-mantle cursor-pointer': !selected,
+									},
 								]"
 								:style="{ color: `var(--catppuccin-color-${color})` }"
 							>
@@ -70,6 +66,7 @@ import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headless
 import { Icon } from '@iconify/vue';
 import { formField, formFieldLabel, formFieldRequired, outline } from '@lib/classes';
 import { CATPPUCCIN_MACCHIATO_COLORS } from '@lib/consts';
+import type { IsNullable } from '@website/lib';
 
-const model = defineModel<string>();
+const model = defineModel<IsNullable<string>>();
 </script>
