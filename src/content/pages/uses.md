@@ -10,8 +10,8 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 ### balatro (Katana 15 HX 2025)
 
 - **OS:**
-    - Windows 11 (yes. i know. i have destiny 2 to play)
-    - Arch Linux in WSL (hostname _nicole_)
+  - Windows 11 (yes. i know. i have destiny 2 to play)
+  - Arch Linux in WSL (hostname _nicole_)
 - **CPU:** Intel Core i7-14650HX (8P8E) @ 2.2GHz
 - **RAM:** 16GiB DDR5 @ 5600 MT/s
 - **GPU:** NVIDIA GeForce RTX 5050 (8GiB GDDR7 VRAM)
@@ -20,7 +20,7 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 
 ### destiny (Galaxy S23 FE)
 
-- **OS:** Android 16 (One Ui 8, yes i know)
+- **OS:** Android 16 (One UI 8, yes i know)
 - **CPU:** Exynos 2200
 - **RAM:** 8GiB LPDDR5
 - **GPU:** Xclipse 920
@@ -46,8 +46,15 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 
 ### extensions
 
+_nothing here yet_
 
-### other
+### utilities
+
+#### balatro
 
 - [Start11](https://www.stardock.com/products/start11/): because the w11 preinstalled start menu sucks balls
-- 
+- [BleachBit](https://www.bleachbit.org/): cleans up windows junk
+- [BCUninstaller](https://www.bcuninstaller.com/): actually uninstalls. novel concept
+- [Filelight](https://apps.kde.org/filelight/): disk usage visualizer
+- [OpenRGB](https://openrgb.org/): rgb utility
+- [PowerToys](https://learn.microsoft.com/en-us/windows/powertoys/): used to rebind copilot to right ctrl + the extra \ key
