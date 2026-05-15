@@ -1,0 +1,14 @@
+{
+	"name": "@website/schema",
+	"version": "0.0.1",
+	"type": "module",
+	"devDependencies": {
+		"drizzle-kit": "^0.31.10"
+	},
+	"dependencies": {
+		"drizzle-orm": "^0.45.2"
+	},
+	"exports": {
+		".": "./src/index.ts"
+	}
+}
