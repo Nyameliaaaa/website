@@ -22,16 +22,10 @@ export const getOrigin = (origin: string) => {
 	}
 
 	const allowed = ['http://localhost:4321', 'https://nyamelia.pages.dev', 'https://nyamelia.is-immensely.gay'];
+	const staging = /^https:\/\/[a-z0-9-]+\.nyamelia\.pages\.dev$/;
+	const tunnel = /^https:\/\/[a-z0-9-]+\.trycloudflare\.com$/;
 
-	if (allowed.includes(origin)) {
-		return origin;
-	}
-
-	if (/^https:\/\/[a-z0-9-]+\.nyamelia\.pages\.dev$/.test(origin)) {
-		return origin;
-	}
-
-	if (/^https:\/\/[a-z0-9-]+\.trycloudflare\.com$/.test(origin)) {
+	if (allowed.includes(origin) || tunnel.test(origin) || staging.test(origin)) {
 		return origin;
 	}
 
