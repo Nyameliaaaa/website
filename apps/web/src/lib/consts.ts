@@ -1,5 +1,5 @@
-export const RSS_TITLE = "amelia's ramblings :3";
-export const RSS_DESCRIPTION =
+export const RAMBLINGS_RSS_TITLE = "amelia's ramblings :3";
+export const RAMBLINGS_RSS_DESCRIPTION =
 	'i sometimes bark i mean think i mean bark and i think some people would like to hear that. i think (i dont)';
 
 const isDev = false;

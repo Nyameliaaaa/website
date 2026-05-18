@@ -4,9 +4,10 @@ import Divider from '@components/formatting/Divider.astro';
 import IconLink from '@components/link/IconLink.astro';
 import Page from '@layouts/Page.astro';
 import { WORKERS_URL } from '@lib/consts';
+import { STATUSES_RSS_DESCRIPTION, STATUSES_RSS_TITLE } from '@website/lib';
 ---
 
-<Page title="statuses" description="sometimes i say shit">
+<Page title={STATUSES_RSS_TITLE} description={STATUSES_RSS_DESCRIPTION}>
 	<IconLink url={`${WORKERS_URL}/statuses.xml`} icon="rss" text="subscribe via rss" />
 
 	<Divider />

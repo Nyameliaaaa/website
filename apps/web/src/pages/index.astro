@@ -1,14 +1,14 @@
 ---
 import Guestbook from '@client/guestbook/GuestbookView.vue';
 import Recents from '@client/music/Recents.vue';
-import IconLink from '@components/link/IconLink.astro';
-import IconButton from '@components/link/IconButton.astro';
-import Base from '@layouts/Base.astro';
-import { body, heading, leadText, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
-import { RSS_DESCRIPTION } from '@lib/consts';
-import { getCollection } from 'astro:content';
-import RamblingCard from '@components/rambling/RamblingCard.astro';
 import Divider from '@components/formatting/Divider.astro';
+import IconButton from '@components/link/IconButton.astro';
+import IconLink from '@components/link/IconLink.astro';
+import RamblingCard from '@components/rambling/RamblingCard.astro';
+import Base from '@layouts/Base.astro';
+import { heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
+import { RAMBLINGS_RSS_DESCRIPTION } from '@lib/consts';
+import { getCollection } from 'astro:content';
 
 const homeTitle = 'hiiiiiiii ^^';
 const homeSub =
@@ -61,7 +61,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 	<section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
 		<div>
 			<h2 class={heading}>ramblings</h2>
-			<p class={leadText}>{RSS_DESCRIPTION}</p>
+			<p class={leadText}>{RAMBLINGS_RSS_DESCRIPTION}</p>
 			<div class="mt-3">
 				<IconButton icon="note-multiple" text="read all" url="/ramblings" />
 			</div>

@@ -1,5 +1,5 @@
 ---
-import { RSS_TITLE } from '@lib/consts';
+import { RAMBLINGS_RSS_TITLE } from '@lib/consts';
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
@@ -21,7 +21,7 @@ const canonicalTitle = `${title ?? 'a page'} | amelia :3`;
 />
 <link rel="icon" href="/favicon.png" />
 
-<link rel="alternate" type="application/rss+xml" title={RSS_TITLE} href={new URL('rss.xml', Astro.site)} />
+<link rel="alternate" type="application/rss+xml" title={RAMBLINGS_RSS_TITLE} href={new URL('rss.xml', Astro.site)} />
 <meta name="generator" content={Astro.generator.replace(/^A/, 'a')} />
 
 <!-- Canonical URL -->

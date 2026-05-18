@@ -15,3 +15,6 @@ export const COLOR_VALUES: Record<string, number> = {
 	lavender: 0xb7bdf8,
 };
 export const CATPPUCCIN_MACCHIATO_COLORS = Object.keys(COLOR_VALUES);
+
+export const STATUSES_RSS_TITLE = 'statuses :p';
+export const STATUSES_RSS_DESCRIPTION = 'sometimes i think. here is said thinking :^)';

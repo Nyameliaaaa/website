@@ -1,5 +1,5 @@
 ---
-import { RSS_DESCRIPTION, RSS_TITLE } from '@lib/consts';
+import { RAMBLINGS_RSS_DESCRIPTION, RAMBLINGS_RSS_TITLE } from '@lib/consts';
 import IconLink from '@components/link/IconLink.astro';
 import Rambling from '@components/rambling/RamblingCard.astro';
 import Page from '@layouts/Page.astro';
@@ -12,7 +12,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 );
 ---
 
-<Page title={RSS_TITLE} description={RSS_DESCRIPTION}>
+<Page title={RAMBLINGS_RSS_TITLE} description={RAMBLINGS_RSS_DESCRIPTION}>
 	<div class="flex flex-col lg:flex-row gap-3 lg:gap-2 lg:items-center">
 		<IconLink text="view by tags" icon="label" url="/ramblings/tags/" />
 		<p class:list={[caption, 'max-lg:hidden']}>•</p>
