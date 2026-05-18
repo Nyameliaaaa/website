@@ -10,7 +10,7 @@ export const useMutation = <TBody>(endpoint: string) => {
 		mutationError.value = false;
 
 		try {
-			const res = await fetch(`${WORKERS_URL}/${endpoint}`, {
+			const res = await fetch(`${WORKERS_URL}/api/${endpoint}`, {
 				method: 'POST',
 				body: JSON.stringify(body)
 			});

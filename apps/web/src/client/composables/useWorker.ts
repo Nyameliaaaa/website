@@ -18,7 +18,7 @@ export const useWorker = <T>(endpoint: string) => {
 		}
 
 		try {
-			const res = await fetch(`${WORKERS_URL}/${endpoint}`);
+			const res = await fetch(`${WORKERS_URL}/api/${endpoint}`);
 			const json = await res.json();
 
 			if (!res.ok) {

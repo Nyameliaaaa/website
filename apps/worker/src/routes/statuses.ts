@@ -8,7 +8,7 @@ const statuses = new Hono<{ Bindings: Bindings }>();
 const db = createDb(env.NYAMELIA_SERVICES);
 const statusesDb = schema.statuses;
 
-statuses.get('/', async c => {
+statuses.get('/api/statuses', async c => {
 	const entries = await db.select().from(statusesDb).orderBy(desc(statusesDb.createdAt));
 	const result: GETStatus[] = entries.map(e => ({
 		...e,
@@ -28,7 +28,7 @@ statuses.get('/latest', async c => {
 	return c.json(result, 200, { 'Cache-Control': 'public, max-age=120' });
 });
 
-statuses.get('/rss.xml', async c => {
+statuses.get('/statuses.xml', async c => {
 	const entries = await db.select().from(statusesDb).orderBy(desc(statusesDb.createdAt));
 	const xml = [
 		'<?xml version="1.0" encoding="UTF-8"?>',

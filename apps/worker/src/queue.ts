@@ -7,6 +7,7 @@ import { CONTACT_CHANNEL_ID, NEW_GUESTBOOK_ENTRY_CHANNEL_ID, REPORT_CHANNEL_ID }
 
 export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch, env) => {
 	const rest = new REST({ version: '10' }).setToken(env.DISCORD_TOKEN);
+
 	for (const message of batch.messages) {
 		const { body } = message;
 
