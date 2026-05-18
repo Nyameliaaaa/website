@@ -1,6 +1,7 @@
 import { createDb, schema } from '@/db';
 import { EPHEMERAL } from '@/lib/consts';
-import { disableDelete, isLabel, isSlashCommand, isTextInput } from '@/lib/helpers';
+import { disableDelete } from '@/lib/helpers';
+import { isLabel, isSlashCommand, isTextInput } from '@/types/discord';
 import { LabelBuilder, ModalBuilder, SlashCommandBuilder } from '@discordjs/builders';
 import { REST } from '@discordjs/rest';
 import { env } from 'cloudflare:workers';

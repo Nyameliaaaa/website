@@ -6,18 +6,24 @@ export enum PacketType {
 	Message,
 }
 
-export interface Packet {
+export interface PacketBase<T extends PacketType, D> {
 	type: PacketType;
 	workerUrl?: string;
+	data: D;
 }
 
-export type GuestbookEntryPacket = Packet & GuestbookRow;
-export type ReportPacket = Packet &
-	POSTGuestbookIDReport & {
+export type GuestbookEntryPacket = PacketBase<PacketType.GuestbookEntry, GuestbookRow>;
+export type ReportPacket = PacketBase<
+	PacketType.Report,
+	{
+		report: POSTGuestbookIDReport;
 		offendingEntry: GuestbookRow;
-	};
+	}
+>;
 
-export type MessagePacket = Packet & POSTMessage;
+export type MessagePacket = PacketBase<PacketType.Message, POSTMessage>;
+
+export type Packet = GuestbookEntryPacket | ReportPacket | MessagePacket;
 
 export const isGuestbookEntry = (data: Packet): data is GuestbookEntryPacket => {
 	return data.type === PacketType.GuestbookEntry;

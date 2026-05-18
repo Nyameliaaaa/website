@@ -65,8 +65,7 @@
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import { Icon } from '@iconify/vue';
 import { formField, formFieldLabel, formFieldRequired, outline } from '@lib/classes';
-import { CATPPUCCIN_MACCHIATO_COLORS } from '@lib/consts';
-import type { IsNullable } from '@website/lib';
+import { CATPPUCCIN_MACCHIATO_COLORS, type IsNullable } from '@website/lib';
 
 const model = defineModel<IsNullable<string>>();
 </script>

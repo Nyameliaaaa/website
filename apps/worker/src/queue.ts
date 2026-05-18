@@ -1,47 +1,51 @@
-import { isMessage, isGuestbookEntry, isReport, Packet } from '@/lib/types';
+import { isGuestbookEntry, isMessage, isReport, Packet } from '@/types/packets';
 import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from '@discordjs/builders';
 import { REST } from '@discordjs/rest';
+import { COLOR_VALUES } from '@website/lib';
 import { ButtonStyle, Routes } from 'discord-api-types/v10';
-import { COLOR_VALUES, CONTACT_CHANNEL_ID, NEW_GUESTBOOK_ENTRY_CHANNEL_ID, REPORT_CHANNEL_ID } from './lib/consts';
+import { CONTACT_CHANNEL_ID, NEW_GUESTBOOK_ENTRY_CHANNEL_ID, REPORT_CHANNEL_ID } from './lib/consts';
 
 export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch, env) => {
 	const rest = new REST({ version: '10' }).setToken(env.DISCORD_TOKEN);
 	for (const message of batch.messages) {
 		const { body } = message;
-		// SECTION - Guestbook Entry
+
 		if (isGuestbookEntry(body)) {
+			// SECTION - Guestbook Entry
+			const { data } = body;
+
 			const embed = new EmbedBuilder()
-				.setTitle(body.name)
-				.setDescription(body.message)
+				.setTitle(data.name)
+				.setDescription(data.message)
 				.setAuthor({ name: 'new guestbook entry :3' })
-				.setFooter({ text: `#${body.id}` })
-				.setColor(COLOR_VALUES[body.borderColor ?? 'pink']);
+				.setFooter({ text: `#${data.id}` })
+				.setColor(COLOR_VALUES[data.borderColor ?? 'pink']);
 
 			const actionRow = new ActionRowBuilder().addComponents([
 				new ButtonBuilder()
-					.setCustomId(`guestbookEntry:reply:${body.id}`)
+					.setCustomId(`guestbookEntry:reply:${data.id}`)
 					.setLabel('reply')
 					.setStyle(ButtonStyle.Primary),
 				new ButtonBuilder()
-					.setCustomId(`guestbookEntry:delete:${body.id}`)
+					.setCustomId(`guestbookEntry:delete:${data.id}`)
 					.setLabel('delete')
 					.setStyle(ButtonStyle.Danger),
 			]);
 
-			if (body.url) {
-				embed.addFields([{ name: 'url', value: body.url }]);
+			if (data.url) {
+				embed.addFields([{ name: 'url', value: data.url }]);
 
-				actionRow.addComponents([new ButtonBuilder().setLabel('site').setStyle(ButtonStyle.Link).setURL(body.url)]);
+				actionRow.addComponents([new ButtonBuilder().setLabel('site').setStyle(ButtonStyle.Link).setURL(data.url)]);
 			}
 
-			if (body.email) {
-				embed.addFields([{ name: 'email', value: body.email }]);
+			if (data.email) {
+				embed.addFields([{ name: 'email', value: data.email }]);
 
 				actionRow.addComponents([
 					new ButtonBuilder()
 						.setLabel('mail')
 						.setStyle(ButtonStyle.Link)
-						.setURL(`${body.workerUrl}/api/message/mail?to=${body.email}`),
+						.setURL(`${body.workerUrl}/api/message/mail?to=${data.email}`),
 				]);
 			}
 
@@ -53,11 +57,11 @@ export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch
 			// !SECTION
 		} else if (isReport(body)) {
 			// SECTION - Report
-			const { offendingEntry } = body;
+			const { report, offendingEntry } = body.data;
 
 			const embed = new EmbedBuilder()
 				.setTitle('new report')
-				.setDescription(`${body.message}`)
+				.setDescription(`${report.message}`)
 				.addFields([
 					{ name: 'name', value: offendingEntry.name },
 					{ name: 'message', value: offendingEntry.message },
@@ -99,18 +103,20 @@ export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch
 			// !SECTION
 		} else if (isMessage(body)) {
 			// SECTION - Contact
+			const { data } = body;
+
 			const embed = new EmbedBuilder()
-				.setTitle(body.name)
-				.setDescription(body.message)
+				.setTitle(data.name)
+				.setDescription(data.message)
 				.setAuthor({ name: 'new message ^^' })
-				.setFields({ name: 'email', value: body.email })
+				.setFields({ name: 'email', value: data.email })
 				.setColor(COLOR_VALUES.pink);
 
 			const actionRow = new ActionRowBuilder().addComponents([
 				new ButtonBuilder()
 					.setLabel('reply')
 					.setStyle(ButtonStyle.Link)
-					.setURL(`${body.workerUrl}/api/message/mail?to=${body.email}`),
+					.setURL(`${body.workerUrl}/api/message/mail?to=${data.email}`),
 			]);
 
 			await rest.post(Routes.channelMessages(CONTACT_CHANNEL_ID), {

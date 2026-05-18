@@ -1,8 +1,13 @@
 import { createDb, schema } from '@/db';
-import { CATPPUCCIN_MACCHIATO_COLORS } from '@/lib/consts';
 import { sendDiscordPacket } from '@/lib/helpers';
-import { GuestbookEntryPacket, PacketType, ReportPacket } from '@/lib/types';
-import { GETGuestbook, isValidEmail, POSTGuestbook } from '@website/lib';
+import { type GuestbookEntryPacket, PacketType, type ReportPacket } from '@/types/packets';
+import {
+	CATPPUCCIN_MACCHIATO_COLORS,
+	type GETGuestbook,
+	isValidEmail,
+	type POSTGuestbook,
+	type POSTGuestbookIDReport,
+} from '@website/lib';
 import { env } from 'cloudflare:workers';
 import { desc, eq, getTableColumns } from 'drizzle-orm';
 import { Hono } from 'hono';
@@ -80,7 +85,7 @@ guestbook.post('/', async c => {
 		})
 		.returning();
 
-	await sendDiscordPacket<GuestbookEntryPacket>(c, { type: PacketType.GuestbookEntry, ...entry });
+	await sendDiscordPacket<GuestbookEntryPacket>(c, { type: PacketType.GuestbookEntry, data: entry });
 
 	return c.json({ success: true, id: entry.id }, 201);
 });
@@ -118,7 +123,7 @@ guestbook.get('/:id', async c => {
 
 guestbook.post('/:id/report', async c => {
 	const _id = c.req.param('id');
-	const body = await c.req.json<ReportPacket>();
+	const body = await c.req.json<POSTGuestbookIDReport>();
 
 	if (!Number.isFinite(Number(_id))) {
 		return c.json(
@@ -146,8 +151,10 @@ guestbook.post('/:id/report', async c => {
 
 	await sendDiscordPacket<ReportPacket>(c, {
 		type: PacketType.Report,
-		offendingEntry: entry,
-		message: body.message,
+		data: {
+			offendingEntry: entry,
+			report: { message: body.message },
+		},
 	});
 
 	return c.json({ success: true, id });

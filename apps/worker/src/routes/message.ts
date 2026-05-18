@@ -1,12 +1,12 @@
 import { sendDiscordPacket } from '@/lib/helpers';
-import { MessagePacket, PacketType } from '@/lib/types';
-import { isValidEmail } from '@website/lib';
+import { MessagePacket, PacketType } from '@/types/packets';
+import { isValidEmail, POSTMessage } from '@website/lib';
 import { Hono } from 'hono';
 
 const message = new Hono<{ Bindings: Bindings }>();
 
 message.post('/', async c => {
-	const body = await c.req.json<MessagePacket>();
+	const body = await c.req.json<POSTMessage>();
 
 	if (!body.name) {
 		c.status(422);
@@ -46,7 +46,7 @@ message.post('/', async c => {
 		);
 	}
 
-	await sendDiscordPacket<MessagePacket>(c, { ...body, type: PacketType.Message });
+	await sendDiscordPacket<MessagePacket>(c, { type: PacketType.Message, data: body });
 	return c.json({ success: true }, 201);
 });
 
