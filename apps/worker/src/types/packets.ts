@@ -7,7 +7,7 @@ export enum PacketType {
 }
 
 export interface PacketBase<T extends PacketType, D> {
-	type: PacketType;
+	type: T;
 	workerUrl?: string;
 	data: D;
 }
@@ -24,15 +24,3 @@ export type ReportPacket = PacketBase<
 export type MessagePacket = PacketBase<PacketType.Message, POSTMessage>;
 
 export type Packet = GuestbookEntryPacket | ReportPacket | MessagePacket;
-
-export const isGuestbookEntry = (data: Packet): data is GuestbookEntryPacket => {
-	return data.type === PacketType.GuestbookEntry;
-};
-
-export const isReport = (data: Packet): data is ReportPacket => {
-	return data.type === PacketType.Report;
-};
-
-export const isMessage = (data: Packet): data is MessagePacket => {
-	return data.type === PacketType.Message;
-};
