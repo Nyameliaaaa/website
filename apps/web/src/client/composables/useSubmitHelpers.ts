@@ -25,7 +25,8 @@ export const useSubmitHelpers = <Form extends Record<any, any>, Errors extends R
 	const useSubmitWrap = (
 		handleErrors: () => Promise<void>,
 		handleMutate: () => Promise<boolean>,
-		handleOk: () => Promise<void>
+		handleOk: () => Promise<void>,
+		handleFail?: () => Promise<void>
 	) => {
 		return async () => {
 			justMutated.value = false;
@@ -47,6 +48,7 @@ export const useSubmitHelpers = <Form extends Record<any, any>, Errors extends R
 				await handleOk();
 			} else {
 				isMutating.value = false;
+				await handleFail?.();
 			}
 		};
 	};
