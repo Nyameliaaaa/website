@@ -18,7 +18,7 @@ statuses.get('/api/statuses', async c => {
 	return c.json(result, 200, { 'Cache-Control': 'public, max-age=120' });
 });
 
-statuses.get('/latest', async c => {
+statuses.get('/api/statuses/latest', async c => {
 	const [entry] = await db.select().from(statusesDb).orderBy(desc(statusesDb.createdAt)).limit(1);
 	const result: GETStatus = {
 		...entry,
