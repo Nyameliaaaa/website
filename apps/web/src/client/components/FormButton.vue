@@ -6,11 +6,11 @@
 			'text-ctp-subtext0 rounded-lg px-5 py-1',
 			outline,
 			{
-				'bg-ctp-base hover:bg-ctp-pink hover:text-ctp-crust cursor-pointer': !isMutating && !mutationError,
-				'bg-ctp-crust': isMutating ?? mutationError
-			}
+				'bg-ctp-base hover:bg-ctp-pink hover:text-ctp-crust cursor-pointer': !isMutating && !errorState,
+				'bg-ctp-crust': isMutating ?? errorState,
+			},
 		]"
-		:disabled="isMutating ?? mutationError"
+		:disabled="isMutating ?? errorState"
 		id="submit"
 		aria-describedby="submit-desc"
 	>
@@ -51,11 +51,11 @@
 </template>
 
 <script setup lang="ts">
-import { Transition, TransitionGroup } from 'vue';
+import { computed, Transition, TransitionGroup } from 'vue';
 import { formFieldDesc, outline } from '@lib/classes';
 import { Icon } from '@iconify/vue';
 
-defineProps<{
+const props = defineProps<{
 	justMutated: boolean;
 	mutationError: boolean;
 	hasErrors: boolean;
@@ -64,5 +64,9 @@ defineProps<{
 	actionText: string;
 	doneText: string;
 }>();
+
 defineEmits<{ (e: 'submit'): void }>();
+
+const errorState = computed(() => props.hasErrors || props.mutationError )
+
 </script>

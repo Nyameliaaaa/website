@@ -41,13 +41,14 @@ import GuestbookEntry from '@client/components/GuestbookEntry.vue';
 import { useMutation } from '@client/composables/useMutation';
 import { useSubmitHelpers } from '@client/composables/useSubmitHelpers';
 import FormField from '@client/components/FormField.vue';
+import FormButton from '@client/components/FormButton.vue';
 
 const id = new URLSearchParams(window.location.search).get('id');
 const { loading, error, data, useFetch } = useWorker<GETGuestbook>(`guestbook/${id}`);
-const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers<POSTGuestbookIDReport, POSTGuestbookIDReport>(
-	{ message: '' },
-	{ message: '' }
-);
+const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers<
+	POSTGuestbookIDReport,
+	POSTGuestbookIDReport
+>({ message: '' }, { message: '' });
 
 const { mutate, mutationError } = useMutation<typeof form>(`guestbook/${id}/report`);
 
