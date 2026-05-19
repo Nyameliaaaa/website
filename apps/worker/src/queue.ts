@@ -2,7 +2,8 @@ import { Packet, PacketType } from '@/types/packets';
 import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from '@discordjs/builders';
 import { REST } from '@discordjs/rest';
 import { COLOR_VALUES } from '@website/lib';
-import { ButtonStyle, Routes } from 'discord-api-types/v10';
+import { ButtonStyle } from 'discord-api-types/payloads/v10';
+import { Routes } from 'discord-api-types/rest/v10';
 import { CONTACT_CHANNEL_ID, NEW_GUESTBOOK_ENTRY_CHANNEL_ID, REPORT_CHANNEL_ID } from './lib/consts';
 
 export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch, env) => {

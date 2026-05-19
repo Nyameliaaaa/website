@@ -1,18 +1,18 @@
 import {
-	APIActionRowComponent,
-	APIButtonComponent,
-	APIButtonComponentWithCustomId,
-	APIChatInputApplicationCommandInteraction,
-	APIComponentInMessageActionRow,
-	APIInteraction,
-	APIMessageTopLevelComponent,
-	APIModalSubmissionComponent,
-	APIModalSubmitTextInputComponent,
+	type APIActionRowComponent,
+	type APIButtonComponent,
+	type APIButtonComponentWithCustomId,
+	type APIChatInputApplicationCommandInteraction,
+	type APIComponentInMessageActionRow,
+	type APIInteraction,
+	type APIMessageTopLevelComponent,
+	type APIModalSubmissionComponent,
+	type APIModalSubmitTextInputComponent,
 	ComponentType,
 	InteractionType,
-	ModalSubmitComponent,
-	ModalSubmitLabelComponent,
-} from 'discord-api-types/v10';
+	type ModalSubmitComponent,
+	type ModalSubmitLabelComponent,
+} from 'discord-api-types/payloads/v10';
 
 export const isLabel = (data?: APIModalSubmissionComponent): data is ModalSubmitLabelComponent => {
 	return (data && 'type' in data && data.type === ComponentType.Label) ?? false;

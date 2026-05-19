@@ -11,14 +11,14 @@ import {
 	isModalSubmitInteraction,
 } from 'discord-api-types/utils/v10';
 import {
-	APIInteraction,
+	type APIInteraction,
 	ApplicationIntegrationType,
 	InteractionContextType,
 	InteractionResponseType,
 	InteractionType,
-	Routes,
 	TextInputStyle,
-} from 'discord-api-types/v10';
+} from 'discord-api-types/payloads/v10';
+import { Routes } from 'discord-api-types/rest/v10';
 import { eq } from 'drizzle-orm';
 import { Hono } from 'hono';
 import discordVerify from 'hono-discord-verify';

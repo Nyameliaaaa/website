@@ -1,6 +1,6 @@
 import { isActionRow, isButtonWithCustomID } from '@/types/discord';
 import type { Packet } from '@/types/packets';
-import { APIMessageTopLevelComponent } from 'discord-api-types/v10';
+import type { APIMessageTopLevelComponent } from 'discord-api-types/v10';
 import type { Context } from 'hono';
 
 export const getOrigin = (origin: string) => {
