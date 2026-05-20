@@ -4,6 +4,7 @@ import { type GuestbookEntryPacket, PacketType, type ReportPacket } from '@/type
 import {
 	CATPPUCCIN_MACCHIATO_COLORS,
 	type GETGuestbook,
+	GETGuestbookID,
 	isValidEmail,
 	type POSTGuestbook,
 	type POSTGuestbookIDReport,
@@ -19,10 +20,12 @@ const guestbookEntries = schema.guestbookEntries;
 guestbook.get('/', async c => {
 	const { email, ...publicFields } = getTableColumns(guestbookEntries);
 	const entries = await db.select(publicFields).from(guestbookEntries).orderBy(desc(guestbookEntries.createdAt));
-	const results: GETGuestbook[] = entries.map(e => ({
-		...e,
-		createdAt: e.createdAt?.toISOString(),
-	}));
+	const results: GETGuestbook = {
+		data: entries.map(e => ({
+			...e,
+			createdAt: e.createdAt?.toISOString(),
+		})),
+	};
 
 	return c.json(results);
 });
@@ -117,7 +120,7 @@ guestbook.get('/:id', async c => {
 		);
 	}
 
-	const results: GETGuestbook = { ...entry, createdAt: entry.createdAt?.toISOString() };
+	const results: GETGuestbookID = { ...entry, createdAt: entry.createdAt?.toISOString() };
 	return c.json(results);
 });
 

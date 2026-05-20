@@ -1,6 +1,6 @@
 <template>
-	<AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
-		<Paginator v-if="data" :items="data">
+	<AsyncState :loading="loading" :error="error" :empty="data?.data.length === 0">
+		<Paginator v-if="data" :items="data.data">
 			<template #default="{ item }">
 				<div
 					class="bg-ctp-base border-ctp-crust my-3 flex flex-col rounded-lg border-2 px-4 py-2 md:flex-row md:items-center md:justify-between"
@@ -13,7 +13,7 @@
 									.toLocaleDateString('en-us', {
 										year: 'numeric',
 										month: 'short',
-										day: 'numeric'
+										day: 'numeric',
 									})
 									.toLowerCase()
 							}}
@@ -37,7 +37,7 @@ import { caption, leadText } from '@lib/classes';
 import type { GETStatus } from '@website/lib';
 import { onMounted } from 'vue';
 
-const { loading, error, data, useFetch } = useWorker<GETStatus[]>('statuses');
+const { loading, error, data, useFetch } = useWorker<GETStatus>('statuses');
 
 onMounted(() => useFetch());
 </script>

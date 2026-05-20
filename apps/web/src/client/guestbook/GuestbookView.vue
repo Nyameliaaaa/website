@@ -1,6 +1,6 @@
 <template>
-	<AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
-		<Paginator v-if="data" :items="data">
+	<AsyncState :loading="loading" :error="error" :empty="data?.data.length === 0">
+		<Paginator v-if="data" :items="data.data">
 			<template #default="{ item }">
 				<GuestbookEntry :entry="item" />
 			</template>
@@ -20,8 +20,8 @@ import { onMounted } from 'vue';
 import Paginator from '@client/components/Paginator.vue';
 import type { GETGuestbook } from '@website/lib';
 
-const { loading, error, data, useFetch } = useWorker<GETGuestbook[]>('guestbook');
-const handler = (data: GETGuestbook[]) => (props.limitItems ? data.slice(0, 5) : data);
+const { loading, error, data, useFetch } = useWorker<GETGuestbook>('guestbook');
+const handler = (data: GETGuestbook) => (props.limitItems ? { ...data, data: data.data.slice(0, 5) } : data);
 
 onMounted(() => useFetch({ handler }));
 </script>

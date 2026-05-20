@@ -31,20 +31,20 @@
 
 <script setup lang="ts">
 // entry
-import type { GETGuestbook, POSTGuestbookIDReport } from '@website/lib';
-import { onMounted } from 'vue';
-import { useWorker } from '@client/composables/useWorker';
 import AsyncState from '@client/components/AsyncState.vue';
 import GuestbookEntry from '@client/components/GuestbookEntry.vue';
+import { useWorker } from '@client/composables/useWorker';
+import type { GETGuestbookID, POSTGuestbookIDReport } from '@website/lib';
+import { onMounted } from 'vue';
 
 // form
+import FormButton from '@client/components/FormButton.vue';
+import FormField from '@client/components/FormField.vue';
 import { useMutation } from '@client/composables/useMutation';
 import { useSubmitHelpers } from '@client/composables/useSubmitHelpers';
-import FormField from '@client/components/FormField.vue';
-import FormButton from '@client/components/FormButton.vue';
 
 const id = new URLSearchParams(window.location.search).get('id');
-const { loading, error, data, useFetch } = useWorker<GETGuestbook>(`guestbook/${id}`);
+const { loading, error, data, useFetch } = useWorker<GETGuestbookID>(`guestbook/${id}`);
 const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers<
 	POSTGuestbookIDReport,
 	POSTGuestbookIDReport
