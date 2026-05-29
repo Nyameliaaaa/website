@@ -2,7 +2,6 @@
 import Divider from '@components/formatting/Divider.astro';
 import LinkSection from '@components/formatting/LinkSection.astro';
 import BackLink from '@components/link/BackLink.astro';
-import IconButton from '@components/link/IconButton.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import Base from '@layouts/Base.astro';
 import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
@@ -18,8 +17,8 @@ const links: LinkEntry[] = [
 ];
 
 const sourceLinks: LinkEntry[] = [
-	{ label: 'website', handle: 'nyamelia/website', url: 'https://git.gay/nyamelia/website' },
-	{ label: 'helper', handle: 'nyamelia/nyamelia-services', url: 'https://git.gay/nyamelia/nyamelia-services' }
+	{ label: 'website', handle: 'nyamelia/website', url: 'https://git.gay/nyamelia/website/src/branch/main/apps/web' },
+	{ label: 'helper', handle: 'nyamelia/website', url: 'https://git.gay/nyamelia/website/src/branch/main/apps/worker' }
 ];
 ---
 

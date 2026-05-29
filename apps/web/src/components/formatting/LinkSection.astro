@@ -10,11 +10,11 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<ul>
+<ul class="flex flex-col gap-2 max-lg:mt-2">
 	{
 		links.map(linkItem => (
-			<li class="grid w-full grid-cols-3 xl:grid-cols-4">
-				<div class="col-span-1">
+			<li class="flex flex-col xl:grid xl:grid-cols-4">
+				<div class="xl:col-span-1">
 					<p
 						class={text({
 							color: 'accent',
@@ -26,13 +26,13 @@ const { links } = Astro.props;
 						{linkItem.label}
 					</p>
 				</div>
-				<div class="col-span-2 xl:col-span-3">
+				<div class="xl:col-span-3">
 					{linkItem.url ? (
-						<WrapLink href={linkItem.url} class={`${body} ${link} col-span-2`}>
+						<WrapLink href={linkItem.url} class={`${body} ${link}`}>
 							{linkItem.handle}
 						</WrapLink>
 					) : (
-						<p class={`${body} col-span-2`}>{linkItem.handle}</p>
+						<p class={body}>{linkItem.handle}</p>
 					)}
 				</div>
 			</li>
