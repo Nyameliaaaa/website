@@ -52,13 +52,13 @@ const ramblings = (await getCollection('ramblings')).sort(
 		<h2 class={heading}>contact</h2>
 		<p class={leadText}>locations where the cryptid known as amelia has been found on the interwebs</p>
 		<div class="mt-3">
-			<IconButton icon="at" text="contact" url="/contact" />
+			<IconButton icon="chevron-right" text="contact" url="/contact" />
 		</div>
 	</section>
 
 	<Divider />
 
-	<section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+	<section class="grid grid-cols-1 lg:grid-cols-2 max-lg:gap-3 gap-2">
 		<div>
 			<h2 class={heading}>ramblings</h2>
 			<p class={leadText}>{RAMBLINGS_RSS_DESCRIPTION}</p>

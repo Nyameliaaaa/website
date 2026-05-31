@@ -1,4 +1,4 @@
-import type { PixelieSection, LinkEntry, LinkSection, PixelieEntry } from '@lib/types';
+import type { LinkSection, PixelieEntry, PixelieSection } from '@lib/types';
 
 export const headerLinks = [
 	{ name: ':3', url: '/' },
@@ -22,23 +22,7 @@ export const footerPixelies: PixelieEntry[] = [
 	// { url: 'https://firefox.com', img: 'https://88x31.nl/gifs/firefox4.gif', alt: 'tested on firefox' }
 ];
 
-export const links: LinkEntry[] = [
-	{
-		label: 'mastodon',
-		handle: '@nyameliaaaa@tech.lgbt',
-		url: 'https://tech.lgbt/@nyameliaaaa',
-	},
-	{ label: 'twitter', handle: '@Nyameliaaaa', url: 'https://twitter.com/Nyameliaaaa' },
-	{
-		label: 'bluesky',
-		handle: '@nyamelia.is-immensely.gay',
-		url: 'https://bsky.app/profile/nyamelia.is-immensely.gay',
-	},
-	{ label: 'instagram', handle: '@Nyameliaaaa', url: 'https://instagram.com/Nyameliaaaa' },
-	{ label: 'steam', handle: '@nyameliaaaa', url: 'https://steamcommunity.com/id/nyameliaaaa/' },
-	{ label: 'last.fm', handle: '@nyamelia', url: 'https://last.fm/user/nyamelia' },
-	{ label: 'backloggd', handle: '@nyameliaaaa', url: 'https://backloggd.com/u/nyameliaaaa/' },
-];
+
 
 export const homeLinks: LinkSection[] = [
 	{

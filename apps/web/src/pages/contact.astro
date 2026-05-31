@@ -1,16 +1,34 @@
 ---
+import Divider from '@components/formatting/Divider.astro';
+import LinkSection from '@components/formatting/LinkSection.astro';
 import BackLink from '@components/link/BackLink.astro';
 import IconButton from '@components/link/IconButton.astro';
-import LinkSection from '@components/formatting/LinkSection.astro';
-import Base from '@layouts/Base.astro';
-import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading, text } from '@lib/classes';
-import { links } from '@lib/data';
 import WrapLink from '@components/link/WrapLink.astro';
-import Divider from '@components/formatting/Divider.astro';
+import Base from '@layouts/Base.astro';
+import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
+import type { LinkEntry } from '@lib/types';
 
 const contactTitle = 'contact';
 const contactSub =
 	'locations where the cryptid known as amelia has been found on the interwebs. reports say she was barking, or being barked at, idk';
+
+export const links: LinkEntry[] = [
+	{
+		label: 'mastodon',
+		handle: '@nyameliaaaa@tech.lgbt',
+		url: 'https://tech.lgbt/@nyameliaaaa',
+	},
+	{ label: 'twitter', handle: '@Nyameliaaaa', url: 'https://twitter.com/Nyameliaaaa' },
+	{
+		label: 'bluesky',
+		handle: '@nyamelia.is-immensely.gay',
+		url: 'https://bsky.app/profile/nyamelia.is-immensely.gay',
+	},
+	{ label: 'instagram', handle: '@Nyameliaaaa', url: 'https://instagram.com/Nyameliaaaa' },
+	{ label: 'steam', handle: '@nyameliaaaa', url: 'https://steamcommunity.com/id/nyameliaaaa/' },
+	{ label: 'last.fm', handle: '@nyamelia', url: 'https://last.fm/user/nyamelia' },
+	{ label: 'backloggd', handle: '@nyameliaaaa', url: 'https://backloggd.com/u/nyameliaaaa/' },
+];
 ---
 
 <Base title={contactTitle} description={contactSub}>
@@ -33,9 +51,9 @@ const contactSub =
 			</div>
 
 			<h2 class={heading}>message</h2>
-			<p class={leadText}>you can message me through this site lmao. or rather bark at me</p>
+			<p class={leadText}>you can message me through this site</p>
 			<div class="mt-2">
-				<IconButton text="message" icon="message" url="/message" />
+				<IconButton text="message" icon="chevron-right" url="/message" />
 			</div>
 		</section>
 	</section>
@@ -49,10 +67,22 @@ const contactSub =
 		</p>
 	</section>
 
+	<section>
+		<h2 class={heading}>keyoxide</h2>
+		<p class={leadText}>
+			you can find my keyoxide <WrapLink
+				href="https://keyoxide.org/09F4E5FAF8AB59385117ABE0204D9FACA1132556 "
+				class={link}>here</WrapLink
+			>
+		</p>
+	</section>
+
 	<Divider />
 
 	<section>
 		<h2 class={heading}>contact</h2>
+		<p class={leadText}>how to message me 101</p>
+
 		<div class="my-3">
 			<h2 class={subHeading}>mail</h2>
 			<p class={body}>
@@ -60,6 +90,7 @@ const contactSub =
 				gpg, see <span class="bg-ctp-crust px-2 rounded-md">public keys</span>
 			</p>
 		</div>
+
 		<div class="my-3">
 			<h2 class={subHeading}>matrix</h2>
 			<p class={body}>
@@ -70,6 +101,7 @@ const contactSub =
 				>
 			</p>
 		</div>
+
 		<div class="my-3">
 			<h2 class={subHeading}>discord</h2>
 			<p class={body}>
@@ -80,9 +112,15 @@ const contactSub =
 				> thoo id prefer you use matrix instead
 			</p>
 		</div>
+
 		<div class="my-3">
 			<h2 class={subHeading}>signal</h2>
 			<p class={body}>i don't give out my signal username unless i vibe with you tbh</p>
+		</div>
+
+		<div class="my-3">
+			<h2 class={subHeading}>telegram</h2>
+			<p class={body}>please seek immediate help. and possibly vodka</p>
 		</div>
 	</section>
 

@@ -10,7 +10,7 @@ interface Props {
 const { links } = Astro.props;
 ---
 
-<ul class="flex flex-col gap-2 max-lg:mt-2">
+<ul class="flex flex-col gap-2 xl:gap-1 mt-2">
 	{
 		links.map(linkItem => (
 			<li class="flex flex-col xl:grid xl:grid-cols-4">
@@ -20,7 +20,7 @@ const { links } = Astro.props;
 							color: 'accent',
 							font: 'sans',
 							weight: 'medium',
-							tracking: 'tight'
+							tracking: 'tight',
 						})}
 					>
 						{linkItem.label}
