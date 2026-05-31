@@ -13,7 +13,7 @@ message.post('/', async c => {
 
 		return c.json({
 			error: 'NO_NAME',
-			description: 'A name is required',
+			description: 'a name is required',
 		});
 	}
 
@@ -22,7 +22,7 @@ message.post('/', async c => {
 
 		return c.json({
 			error: 'NO_MESSAGE',
-			description: 'A message is required',
+			description: 'a message is required',
 		});
 	}
 
