@@ -82,7 +82,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 			<p class={leadText}>heres what ive been listening to lately :o</p>
 		</div>
 
-		<Recents client:only preview />
+		<Recents client:load preview />
 
 		<div class="mt-4">
 			<IconLink text="see more music :p" url="/music" icon="chevron-right" />
@@ -110,7 +110,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 			</div>
 		</div>
 		<div>
-			<Guestbook client:only limitItems />
+			<Guestbook client:load limitItems />
 			<div class="mt-3 flex justify-center">
 				<IconLink text="view all" icon="chevron-right" url="/guestbook" />
 			</div>

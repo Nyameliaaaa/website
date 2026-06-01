@@ -18,25 +18,25 @@ import { caption, heading, leadText, link } from '@lib/classes';
 	<section class="my-4">
 		<h2 class={heading}>recent songs</h2>
 
-		<Recents client:only />
+		<Recents client:load />
 	</section>
 
 	<section class="my-4">
 		<h2 class={heading}>top albums (30 days)</h2>
 
-		<Albums client:only />
+		<Albums client:load />
 	</section>
 
 	<section class="my-4">
 		<h2 class={heading}>top artists (7 days)</h2>
 
-		<Artists client:only />
+		<Artists client:load />
 	</section>
 
 	<section class="mt-5 mb-3">
 		<h2 class={heading}>playlists</h2>
 
-		<Playlists client:only />
+		<Playlists client:load />
 	</section>
 
 	<p class={caption}>
