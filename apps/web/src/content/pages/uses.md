@@ -18,7 +18,7 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 - **storage**: 1TB Micron NVMe
 - **display**: 15.6" 1920x1080 @ 144Hz IPS
 
-### destiny (Galaxy S23 FE) [dormant atm]
+### destiny (Galaxy S23 FE)
 
 - **OS:** Android 16 (One UI 8, yes i know)
 - **CPU:** Exynos 2200
@@ -40,6 +40,8 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 - [2FAS](https://2fas.com/auth): TOTP 2FA
 - [Firefox](https://firefox.com): web browser (the only valid one)
 - [qBitTorrent](https://www.qbittorrent.org/): libre BitTorrent client
+- [Proton Mail](https://mail.proton.me): E2EE private mail service. your invoices shouldnt be owned by google
+- [Ente Photos](https://ente.com): neither should your yuri
 
 ### dev tooling
 
@@ -66,6 +68,19 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 - [uBlock Origin](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/): of course
 - [Web Scrobbler](https://addons.mozilla.org/en-US/firefox/addon/web-scrobbler/): scrobblign :3 
 
+### shell/terminal
+
+#### balatro
+
+- [Windows Terminal](http://github.com/microsoft/terminal): its a terminal emulator. it exists
+
+#### nicole
+
+- [zsh](https://www.zsh.org/): shell
+- [starship](https://starship.rs/): rust-based shell prompt :3
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch/): idk what to say tbh
+- [hyfetch](https://github.com/hykilpikonna/hyfetch): gaeeeeee
+- [bottom](https://github.com/ClementTsang/bottom): tui sysmon
 
 ### utilities
 
