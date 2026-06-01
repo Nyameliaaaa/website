@@ -6,35 +6,17 @@ import IconButton from '@components/link/IconButton.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import Base from '@layouts/Base.astro';
 import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
-import type { LinkEntry } from '@lib/types';
+import { contactLinks } from '@lib/data';
 
 const contactTitle = 'contact';
 const contactSub =
 	'locations where the cryptid known as amelia has been found on the interwebs. reports say she was barking, or being barked at, idk';
-
-export const links: LinkEntry[] = [
-	{
-		label: 'mastodon',
-		handle: '@nyameliaaaa@tech.lgbt',
-		url: 'https://tech.lgbt/@nyameliaaaa',
-	},
-	{ label: 'twitter', handle: '@Nyameliaaaa', url: 'https://twitter.com/Nyameliaaaa' },
-	{
-		label: 'bluesky',
-		handle: '@nyamelia.is-immensely.gay',
-		url: 'https://bsky.app/profile/nyamelia.is-immensely.gay',
-	},
-	{ label: 'instagram', handle: '@Nyameliaaaa', url: 'https://instagram.com/Nyameliaaaa' },
-	{ label: 'steam', handle: '@nyameliaaaa', url: 'https://steamcommunity.com/id/nyameliaaaa/' },
-	{ label: 'last.fm', handle: '@nyamelia', url: 'https://last.fm/user/nyamelia' },
-	{ label: 'backloggd', handle: '@nyameliaaaa', url: 'https://backloggd.com/u/nyameliaaaa/' },
-];
 ---
 
 <Base title={contactTitle} description={contactSub}>
 	<BackLink />
 
-	<section class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
+	<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
 		<div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
 			<img
 				src="/about/pfp.jpg"
@@ -48,13 +30,15 @@ export const links: LinkEntry[] = [
 				<p class={pageSubtitle}>{contactSub}</p>
 			</div>
 
-			<h2 class={heading}>message</h2>
-			<p class={leadText}>you can message me through this site</p>
-			<div class="mt-2">
-				<IconButton text="message" icon="chevron-right" url="/message" />
-			</div>
+			<section>
+				<h2 class={heading}>message</h2>
+				<p class={leadText}>you can message me through this site</p>
+				<div class="mt-2">
+					<IconButton text="message" icon="chevron-right" url="/message" />
+				</div>
+			</section>
 		</section>
-	</section>
+	</div>
 
 	<Divider />
 
@@ -83,16 +67,16 @@ export const links: LinkEntry[] = [
 		<h2 class={heading}>contact</h2>
 		<p class={leadText}>how to message me 101</p>
 
-		<div class="my-3">
-			<h2 class={subHeading}>mail</h2>
+		<section class="my-3">
+			<h3 class={subHeading}>mail</h3>
 			<p class={body}>
 				<span class="bg-ctp-crust px-2 rounded-md text-ctp-pink">nyameliaaaa (AT) proton (DOT) me</span>. for non-proton
 				gpg, see <span class="bg-ctp-crust px-2 rounded-md">public keys</span>
 			</p>
-		</div>
+		</section>
 
-		<div class="my-3">
-			<h2 class={subHeading}>matrix</h2>
+		<section class="my-3">
+			<h3 class={subHeading}>matrix</h3>
 			<p class={body}>
 				<a
 					href="https://matrix.to/#/@nyameliaaaa:matrix.org"
@@ -100,10 +84,10 @@ export const links: LinkEntry[] = [
 					>@nyameliaaaa:matrix.org</a
 				>
 			</p>
-		</div>
+		</section>
 
-		<div class="my-3">
-			<h2 class={subHeading}>discord</h2>
+		<section class="my-3">
+			<h3 class={subHeading}>discord</h3>
 			<p class={body}>
 				<a
 					href="https://discord.com/users/348591272476540928"
@@ -111,34 +95,34 @@ export const links: LinkEntry[] = [
 					>@nyameliaaaa</a
 				> thoo id prefer you use matrix instead
 			</p>
-		</div>
+		</section>
 
-		<div class="my-3">
-			<h2 class={subHeading}>signal</h2>
+		<section class="my-3">
+			<h3 class={subHeading}>signal</h3>
 			<p class={body}>i don't give out my signal username unless i vibe with you tbh</p>
-		</div>
+		</section>
 
-		<div class="my-3">
-			<h2 class={subHeading}>telegram</h2>
+		<section class="my-3">
+			<h3 class={subHeading}>telegram</h3>
 			<p class={body}>please seek immediate help. and possibly vodka</p>
-		</div>
+		</section>
 	</section>
 
 	<Divider />
 
 	<section>
 		<h2 class={heading}>git forge</h2>
-		<div class="my-3">
-			<h2 class={subHeading}>git.gay</h2>
+		<section class="my-3">
+			<h3 class={subHeading}>git.gay</h3>
 			<p
 				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
 			>
 				<WrapLink href="https://git.gay/nyamelia">@nyamelia</WrapLink>
 			</p>
 			<p class={body}>primary git forge</p>
-		</div>
-		<div class="my-3">
-			<h2 class={subHeading}>github</h2>
+		</section>
+		<section class="my-3">
+			<h3 class={subHeading}>github</h3>
 			<p
 				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
 			>
@@ -150,7 +134,7 @@ export const links: LinkEntry[] = [
 					href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</a
 				>
 			</p>
-		</div>
+		</section>
 	</section>
 
 	<Divider />
@@ -162,6 +146,6 @@ export const links: LinkEntry[] = [
 				where else can the amelia be found. you did not ask that question or you did but im answering it
 			</p>
 		</div>
-		<LinkSection links={links} />
+		<LinkSection links={contactLinks} />
 	</section>
 </Base>
