@@ -22,14 +22,7 @@ const ramblings = (await getCollection('ramblings')).sort(
 <Base title={homeTitle} description={homeSub}>
 	<section class="mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
 		<div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
-			<img
-				src="/about/pfp.jpg"
-				alt="amelia :3"
-				width={200}
-				height={200}
-				class="border-2 border-dashed border-ctp-mauve"
-				loading="eager"
-			/>
+			<img src="/about/pfp.jpg" alt="amelia :3" class="border-2 border-dashed border-ctp-mauve aspect-square max-h-48" />
 		</div>
 		<div class="order-last md:order-first">
 			<div class="mb-6">
