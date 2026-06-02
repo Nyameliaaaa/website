@@ -23,7 +23,7 @@ rss.get('/statuses.xml', async c => {
 		xml.push(
 			...[
 				'		<item>',
-				`			<title>${entry.text}</title>`,
+				`			<title>${entry.text.replace('<', '\<').replace('/', '\/')}</title>`,
 				`			<pubDate>${entry.createdAt.toUTCString()}</pubDate>`,
 				`			<guid isPermaLink="false">${entry.id}</guid>`,
 				'		</item>',
