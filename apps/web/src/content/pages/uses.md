@@ -11,7 +11,7 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 
 - **OS:**
   - Windows 11 (yes. i know. i have destiny 2 to play)
-  - Arch Linux in WSL (hostname _nicole_)
+  - Arch Linux in WSL (hostname `nicole`)
 - **CPU:** Intel Core i7-14650HX (8p8e) @ 2.2GHz
 - **RAM:** 16GiB DDR5 @ 5600 MT/s
 - **GPU:** NVIDIA GeForce RTX 5050 (8GiB GDDR7 VRAM)
@@ -30,7 +30,7 @@ this `/uses` page was inspired from [sapphosys's /uses page](https://sapphic.moe
 ## peripherals
 
 - [Lenovo Legion M410](https://support.lenovo.com/us/en/solutions/acc500348-lenovo-legion-m410-wireless-rgb-gaming-mouse-overview-and-parts): my main mouse
-- **Huawei FreeLace (not listed):** my headphones, i hate them, if you have reccomendations please give them
+- [soundcore Life Q30](https://www.soundcore.com/products/A3028011): my main headphones
 
 ## software
 

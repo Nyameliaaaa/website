@@ -14,6 +14,7 @@ export const footerUrls = [
 	{ url: '/pixelies', text: 'the 88x31 museum', icon: 'link-box-variant' },
 	{ url: '/music', text: 'music', icon: 'music-box-multiple' },
 	{ url: '/about', text: 'about', icon: 'info' },
+	{ url: '/colophon', text: 'colophon', icon: 'web'}
 ];
 
 export const footerPixelies: PixelieEntry[] = [
