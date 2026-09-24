@@ -14,12 +14,14 @@ export const footerUrls = [
 	{ url: '/pixelies', text: 'the 88x31 museum', icon: 'link-box-variant' },
 	{ url: '/music', text: 'music', icon: 'music-box-multiple' },
 	{ url: '/about', text: 'about', icon: 'info' },
-	{ url: '/colophon', text: 'colophon', icon: 'web'}
+	{ url: '/colophon', text: 'colophon', icon: 'web' },
 ];
+
+// https://gayspace.fr/images/buttons/button.gif
 
 export const footerPixelies: PixelieEntry[] = [
 	{ img: '/88x31/button.png', alt: 'nyamelia (me)' },
-	{ url: 'https://gayspace.fr', img: 'https://gayspace.fr/images/buttons/button.gif', alt: 'gf lori <3' },
+	{ img: '/88x31/lori_button.gif', alt: 'lori <3' },
 	// { url: 'https://firefox.com', img: 'https://88x31.nl/gifs/firefox4.gif', alt: 'tested on firefox' }
 ];
 
@@ -40,7 +42,7 @@ export const contactLinks: LinkEntry[] = [
 		handle: '@nyameliaaaa@tech.lgbt',
 		url: 'https://tech.lgbt/@nyameliaaaa',
 	},
-	{ label: 'twitter', handle: '@Nyameliaaaa', url: 'https://twitter.com/Nyameliaaaa' },
+	{ label: 'twitter', handle: '@ameliascores', url: 'https://twitter.com/ameliascores' },
 	{
 		label: 'bluesky',
 		handle: '@nyamelia.is-immensely.gay',
@@ -113,13 +115,13 @@ export const playlists: Playlist[] = [
 		image: '/playlist-covers/yearning.jpg',
 		url: 'https://music.youtube.com/playlist?list=PLLkb4ldSNGRspMHSIA0ZpQB7PaONW7yri',
 	},
-]
+];
 
 export const pixelies = (generator: string): PixelieSection[] => {
 	return [
 		{
 			name: 'gf <3',
-			pixelies: [{ url: 'https://gayspace.fr', img: 'https://gayspace.fr/images/buttons/button.gif', alt: 'lori <3' }],
+			pixelies: [{ img: '/88x31/lori_button.gif', alt: 'lori <3' }],
 		},
 		{
 			name: 'friends',
