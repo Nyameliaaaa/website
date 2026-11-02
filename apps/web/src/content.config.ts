@@ -10,7 +10,8 @@ const ramblings = defineCollection({
 			description: z.string(),
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
-			tags: z.array(z.string()).optional()
+			tags: z.array(z.string()).optional(),
+			draft: z.coerce.boolean().default(false)
 		})
 });
 

@@ -11,8 +11,10 @@ export async function getStaticPaths() {
 		params: { tag },
 		props: {
 			tag,
-			ramblings: ramblings.filter(rambling => rambling.data.tags && rambling.data.tags.includes(tag ?? ''))
-		}
+			ramblings: ramblings.filter(
+				rambling => rambling.data.tags && rambling.data.tags.includes(tag ?? '') && !rambling.data.draft
+			),
+		},
 	}));
 }
 

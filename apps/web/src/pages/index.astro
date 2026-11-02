@@ -14,9 +14,9 @@ const homeTitle = 'hiiiiiiii ^^';
 const homeSub =
 	'hiiiiiiiiiiiiiiiiiii im amelia. im a trans girlie and uhm i like miku. this is my lil corner of the interwebs. feel free to look around and say hi';
 
-const ramblings = (await getCollection('ramblings')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const ramblings = (await getCollection('ramblings'))
+	.filter(a => !a.data.draft)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <Base title={homeTitle} description={homeSub}>

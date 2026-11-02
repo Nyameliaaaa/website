@@ -2,13 +2,14 @@
 import RamblingDate from '@components/rambling/RamblingDate.astro';
 import Tag from '@components/rambling/Tag.astro';
 import MarkdownWithTOC from '@layouts/MarkdownWithTOC.astro';
+import { body } from '@lib/classes';
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
 	const ramblings = await getCollection('ramblings');
 	return ramblings.map(rambling => ({
 		params: { slug: rambling.id },
-		props: rambling
+		props: rambling,
 	}));
 }
 
@@ -25,6 +26,9 @@ const { Content, headings } = await render(rambling);
 		</div>
 		<div class="mt-3 flex flex-row gap-2">
 			{rambling.data.tags?.map(tag => <Tag tag={tag} />)}
+		</div>
+		<div class="bg-ctp-crust text-center p-2 my-4 rounded-md border-ctp-red border-2 border-dashed">
+			<p class={body}>this rambling is a draft!</p>
 		</div>
 	</div>
 	<Content />

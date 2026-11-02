@@ -7,9 +7,9 @@ import { getCollection } from 'astro:content';
 import { caption } from '@lib/classes';
 import Divider from '@components/formatting/Divider.astro';
 
-const ramblings = (await getCollection('ramblings')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const ramblings = (await getCollection('ramblings'))
+	.filter(a => !a.data.draft)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <Page title={RAMBLINGS_RSS_TITLE} description={RAMBLINGS_RSS_DESCRIPTION}>
