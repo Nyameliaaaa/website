@@ -1,5 +1,5 @@
 ---
-import CopyrightEnd from '@client/CopyrightEnd.vue';
+import CopyrightEnd from '@client/base/CopyrightEnd.vue';
 import FormattedDate from '@components/formatting/FormattedDate.astro';
 import IconLink from '@components/link/IconLink.astro';
 import PixelieImg from '@components/link/PixelieImg.astro';
@@ -25,12 +25,18 @@ import { version } from 'vue';
 
 			<div>
 				<p class={caption}>
+					soundtrack: <a href="https://www.youtube.com/watch?v=ERo-sPa1a5g" class={link}>hachioji p - gimme x gimme</a>
+				</p>
+			</div>
+
+			<div>
+				<p class={caption}>
 					{Astro.generator.replace('A', 'a')}, vue v{version}
 				</p>
 				<p class={caption}>
 					commit <WrapLink
 						href={`https://git.gay/nyamelia/website/commit/${import.meta.env.CF_PAGES_COMMIT_SHA}`}
-						class={link}>{import.meta.env.CF_PAGES_COMMIT_SHA.slice(0,10)}</WrapLink
+						class={link}>{import.meta.env.CF_PAGES_COMMIT_SHA.slice(0, 10)}</WrapLink
 					>
 				</p>
 				<p class={caption}>
