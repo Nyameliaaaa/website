@@ -4,7 +4,7 @@ import { env } from 'cloudflare:workers';
 import { desc } from 'drizzle-orm';
 import { Hono } from 'hono';
 
-const statuses = new Hono<{ Bindings: Bindings }>();
+const statuses = new Hono<{ Bindings: Cloudflare.Env }>();
 const db = createDb(env.NYAMELIA_SERVICES);
 const statusesDb = schema.statuses;
 

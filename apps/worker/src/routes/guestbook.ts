@@ -8,12 +8,14 @@ import {
 	isValidEmail,
 	type POSTGuestbook,
 	type POSTGuestbookIDReport,
+	postGuestbookReportSchema,
+	postGuestbookSchema,
 } from '@website/lib';
 import { env } from 'cloudflare:workers';
 import { desc, eq, getTableColumns } from 'drizzle-orm';
 import { Hono } from 'hono';
 
-const guestbook = new Hono<{ Bindings: Bindings }>();
+const guestbook = new Hono<{ Bindings: Cloudflare.Env }>();
 const db = createDb(env.NYAMELIA_SERVICES);
 const guestbookEntries = schema.guestbookEntries;
 
@@ -31,51 +33,8 @@ guestbook.get('/', async c => {
 });
 
 guestbook.post('/', async c => {
-	const body = await c.req.json<POSTGuestbook>();
-
-	if (!body.message) {
-		return c.json(
-			{
-				error: 'NO_MESSAGE',
-				description: 'a message is required in the guestbook',
-			},
-			422
-		);
-	}
-
-	if (body.email && !isValidEmail(body.email)) {
-		return c.json(
-			{
-				error: 'INVALID_EMAIL',
-				description: 'that email is not a valid email',
-			},
-			422
-		);
-	}
-
-	if (body.url) {
-		try {
-			new URL(body.url);
-		} catch {
-			return c.json(
-				{
-					error: 'INVALID_URL',
-					description: 'that URL is not a valid URL',
-				},
-				422
-			);
-		}
-	}
-
-	if (body.borderColor && !CATPPUCCIN_MACCHIATO_COLORS.includes(body.borderColor)) {
-		return c.json(
-			{
-				error: 'INVALID_COLOR',
-				description: 'the border color is not a valid Catppuccin Macchiato color',
-			},
-			422
-		);
-	}
+	const data = await c.req.json<POSTGuestbook>();
+	const body = postGuestbookSchema.parse(data);
 
 	const [entry] = await db
 		.insert(guestbookEntries)
@@ -126,7 +85,8 @@ guestbook.get('/:id', async c => {
 
 guestbook.post('/:id/report', async c => {
 	const _id = c.req.param('id');
-	const body = await c.req.json<POSTGuestbookIDReport>();
+	const data = await c.req.json();
+	const body = await postGuestbookReportSchema.parse(data);
 
 	if (!Number.isFinite(Number(_id))) {
 		return c.json(
@@ -156,7 +116,7 @@ guestbook.post('/:id/report', async c => {
 		type: PacketType.Report,
 		data: {
 			offendingEntry: entry,
-			report: { message: body.message },
+			report: body,
 		},
 	});
 

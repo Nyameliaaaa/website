@@ -3,7 +3,7 @@ import { cachedFetch, getAlbumImage, getTrackImage } from '@/lib/lastFM';
 import { GETLastFMAlbum, GETLastFMArtist, GETLastFMRecent } from '@website/lib';
 import { Hono } from 'hono';
 
-const lastFM = new Hono<{ Bindings: Bindings }>();
+const lastFM = new Hono<{ Bindings: Cloudflare.Env }>();
 
 lastFM.get('/recent', async c => {
 	const data = await cachedFetch(

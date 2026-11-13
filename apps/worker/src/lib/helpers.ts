@@ -19,7 +19,7 @@ export const getOrigin = (origin: string) => {
 	return null;
 };
 
-export const sendDiscordPacket = async <T extends Packet>(c: Context<{ Bindings: Bindings }>, object: T) => {
+export const sendDiscordPacket = async <T extends Packet>(c: Context<{ Bindings: Cloudflare.Env }>, object: T) => {
 	await c.env.DISCORD_SEND_QUEUE.send({
 		workerUrl: new URL(c.req.raw.url).origin,
 		...object,

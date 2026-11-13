@@ -1,57 +1,21 @@
 import { sendDiscordPacket } from '@/lib/helpers';
 import { MessagePacket, PacketType } from '@/types/packets';
-import { isValidEmail, POSTMessage } from '@website/lib';
+import { contactSchema, isValidEmail, POSTMessage } from '@website/lib';
 import { Hono } from 'hono';
 
-const message = new Hono<{ Bindings: Bindings }>();
+const message = new Hono<{ Bindings: Cloudflare.Env }>();
 
 message.post('/', async c => {
 	const body = await c.req.json<POSTMessage>();
+	const data = contactSchema.parse(body);
 
-	if (!body.name) {
-		c.status(422);
-
-		return c.json({
-			error: 'NO_NAME',
-			description: 'a name is required',
-		});
-	}
-
-	if (!body.message) {
-		c.status(422);
-
-		return c.json({
-			error: 'NO_MESSAGE',
-			description: 'a message is required',
-		});
-	}
-
-	if (!body.email) {
-		return c.json(
-			{
-				error: 'NO_EMAIL',
-				description: 'an email is required',
-			},
-			422
-		);
-	}
-
-	if (!isValidEmail(body.email)) {
-		return c.json(
-			{
-				error: 'INVALID_EMAIL',
-				description: 'that email is not a valid email',
-			},
-			422
-		);
-	}
-
-	await sendDiscordPacket<MessagePacket>(c, { type: PacketType.Message, data: body });
+	await sendDiscordPacket<MessagePacket>(c, { type: PacketType.Message, data });
 	return c.json({ success: true }, 201);
 });
 
 message.get('/mail', async c => {
 	const email = c.req.query('to');
+	const subject = c.req.query('subject');
 
 	if (!email) {
 		return c.json(
@@ -73,7 +37,7 @@ message.get('/mail', async c => {
 		);
 	}
 
-	return c.redirect(`mailto:${email}`);
+	return c.redirect(`mailto:${email}?${new URLSearchParams({ subject: `RE: ${subject}` })}`);
 });
 
 export default message;

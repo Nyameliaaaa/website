@@ -9,7 +9,7 @@ import statuses from '@/routes/statuses';
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 
-const app = new Hono<{ Bindings: Bindings }>();
+const app = new Hono<{ Bindings: Cloudflare.Env }>();
 
 app.use(
 	'*',

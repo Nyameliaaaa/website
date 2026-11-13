@@ -23,7 +23,7 @@ import { eq } from 'drizzle-orm';
 import { Hono } from 'hono';
 import discordVerify from 'hono-discord-verify';
 
-const discord = new Hono<{ Bindings: Bindings }>();
+const discord = new Hono<{ Bindings: Cloudflare.Env }>();
 const db = createDb(env.NYAMELIA_SERVICES);
 const guestbookEntries = schema.guestbookEntries;
 const statuses = schema.statuses;
