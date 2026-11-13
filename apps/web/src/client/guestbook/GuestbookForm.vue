@@ -1,115 +1,115 @@
 <template>
-	<div class="flex flex-col gap-2 lg:flex-row">
-		<FormField label="name" id="name" v-model="form.name" type="text" placeholder="anonymous" :errors="null" />
-		<FormBorderPicker v-model="form.borderColor" />
-	</div>
+	<form novalidate @submit.prevent="submit">
+		<div class="flex flex-col gap-2 lg:flex-row">
+			<Field label="name" description="any name u want" name="name" type="text" placeholder="anonymous" required />
+			<SelectMenu
+				label="border color"
+				description="choose your message's color"
+				name="borderColor"
+				:options="CATPPUCCIN_MACCHIATO_COLORS.map(val => ({ label: val, value: val }))"
+				required
+			>
+				<template #selected="{ value }">
+					<span :style="{ color: `var(--catppuccin-color-${value})` }">{{ value }}</span>
+				</template>
+				<template #option="{ option, selected }">
+					<span :style="{ color: `var(--catppuccin-color-${option.label})` }">
+						{{ option.label }}
+					</span>
+				</template>
+			</SelectMenu>
+		</div>
 
-	<div class="my-3 flex flex-col gap-2 lg:flex-row">
-		<FormField
-			label="email"
-			id="email"
-			v-model="form.email"
-			type="email"
-			placeholder="hi@example.com"
-			:errors="errors.email"
-			description="only visible to amelia"
+		<div class="my-3 flex flex-col gap-2 lg:flex-row">
+			<Field
+				label="email"
+				description="this'll be visible only to amelia"
+				name="email"
+				type="email"
+				placeholder="hi@example.com"
+			/>
+			<Field
+				label="url"
+				description="any website or profile of yours!"
+				name="url"
+				type="text"
+				placeholder="https://gayspace.org"
+			/>
+		</div>
+
+		<div class="my-3 w-full">
+			<Field
+				label="message"
+				description="keep it nice :P i may delete ur message otherwise"
+				name="message"
+				placeholder="what do u wanna say :p"
+				is-text-area
+				required
+			/>
+		</div>
+
+		<SubmitButton
+			:mutation-status="mutationStatus"
+			action-text="sign :3"
+			loading-text="signing :3"
+			done-text="signed! sending u back in a bit ^^"
 		/>
-		<FormField
-			label="url"
-			id="url"
-			v-model="form.url"
-			type="text"
-			placeholder="https://gayspace.fr"
-			:errors="errors.url"
-		/>
-	</div>
 
-	<div class="my-3 w-full">
-		<FormField
-			label="message"
-			id="message"
-			placeholder="dont be a meanie ^^"
-			is-text-area
-			required
-			v-model="form.message"
-			:errors="errors.message"
-		/>
-	</div>
+		<hr class="border-ctp-crust my-2 border border-dashed" />
 
-	<FormButton
-		:justMutated="justMutated"
-		:mutation-error="mutationError"
-		:isMutating="isMutating"
-		:has-errors="hasErrors"
-		action-text="sign :3"
-		loading-text="signing :3"
-		done-text="signed! sending u back in a bit ^^"
-		@submit="submit"
-	/>
-
-	<hr class="border-ctp-crust my-2 border border-dashed" />
-
-	<h2 :class="`${subHeading} mb-2`">preview</h2>
-	<GuestbookEntry
-		:entry="{
-			id: 0,
-			name: form.name || 'anonymous',
-			message: form.message || 'your message will appear here',
-			createdAt: date,
-			ameliaReply: null,
-			url: form.url ?? null,
-			borderColor: form.borderColor ?? 'pink',
-		}"
-	/>
+		<h2 :class="`${subHeading} mb-2`">preview</h2>
+		<GuestbookEntry :entry="entry" />
+	</form>
 </template>
 
 <script setup lang="ts">
-import FormBorderPicker from '@client/components/FormBorderPicker.vue';
-import FormButton from '@client/components/FormButton.vue';
-import FormField from '@client/components/FormField.vue';
-import GuestbookEntry from '@client/components/GuestbookEntry.vue';
+import SubmitButton from '@client/components/forms/SubmitButton.vue';
+import Field from '@client/components/forms/Field.vue';
+import SelectMenu from '@client/components/forms/SelectMenu.vue';
 import { useMutation } from '@client/composables/useMutation';
-import { useSubmitHelpers } from '@client/composables/useSubmitHelpers';
+import { CATPPUCCIN_MACCHIATO_COLORS, postGuestbookSchema, type POSTGuestbook } from '@website/lib';
+import GuestbookEntry from '@client/components/GuestbookEntry.vue';
+
+import { useForm } from 'vee-validate';
+import { toTypedSchema } from '@vee-validate/zod';
+import { useFormSubmit } from '@client/composables/useFormSubmit';
 import { subHeading } from '@lib/classes';
-import { isValidEmail, type POSTGuestbook } from '@website/lib';
+import { computed } from 'vue';
 
-const date = new Date().toISOString();
+const { mutate } = useMutation<POSTGuestbook>('guestbook');
+const date = computed(() => new Date().toISOString());
+const entry = computed(() => {
+	return {
+		id: 0,
+		name: values.name || 'anonymous',
+		message: values.message || 'your message will appear here',
+		createdAt: date.value,
+		ameliaReply: null,
+		url: values.url ?? null,
+		borderColor: values.borderColor ?? 'pink',
+	};
+});
 
-const { mutate, mutationError } = useMutation<POSTGuestbook>('guestbook');
-
-const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers<
-	POSTGuestbook,
-	Partial<POSTGuestbook>
->({ name: '', message: '', email: '', url: '', borderColor: 'pink' }, { name: '', message: '', email: '' });
-
-const submit = useSubmitWrap(
-	async () => {
-		if (!form.message) {
-			errors.message = 'a message is required';
-		}
-
-		if (form.email && !isValidEmail(form.email)) {
-			errors.email = "that doesn't look like a valid email";
-		}
-
-		if (form.url) {
-			try {
-				new URL(form.url);
-			} catch {
-				errors.url = "that doesn't look like a valid url";
-			}
-		}
+const { handleSubmit, values } = useForm({
+	validationSchema: toTypedSchema(postGuestbookSchema),
+	initialValues: {
+		name: '',
+		email: '',
+		message: '',
+		url: '',
+		borderColor: 'pink',
 	},
-	async () => {
-		const payload: POSTGuestbook = {
-			...form,
-			name: form.name || 'anonymous',
-		};
+});
 
-		return await mutate(payload);
+const { status: mutationStatus, execute } = useFormSubmit<POSTGuestbook>(values => mutate(values), {
+	onSuccess: () => {
+		setTimeout(() => {
+			window.location.href = '/guestbook';
+		}, 3000);
 	},
-	async () => {
-		setTimeout(() => (window.location.href = '/guestbook'), 3000);
-	}
-);
+});
+
+const submit = handleSubmit(async values => {
+	await execute(values);
+});
 </script>

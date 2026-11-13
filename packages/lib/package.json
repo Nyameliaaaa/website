@@ -6,6 +6,8 @@
 		".": "./src/index.ts"
 	},
 	"dependencies": {
-		"@website/schema": "workspace:*"
+		"@website/schema": "workspace:*",
+		"drizzle-zod": "^0.8.3",
+		"zod": "^4.6.7"
 	}
 }

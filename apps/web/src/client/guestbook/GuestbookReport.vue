@@ -5,28 +5,26 @@
 
 	<hr class="border-ctp-crust my-2 border border-dashed" />
 
-	<div class="mb-4 w-full">
-		<FormField
-			label="message"
-			id="message"
-			placeholder="what's wrong w this message"
-			is-text-area
-			required
-			v-model="form.message"
-			:errors="errors.message"
-		/>
-	</div>
+	<form novalidate @submit.prevent="submit">
+		<div class="mb-4 w-full">
+			<Field
+				label="message"
+				id="message"
+				name="message"
+				placeholder="what's wrong w this message"
+				is-text-area
+				required
+			/>
+		</div>
 
-	<FormButton
-		:justMutated="justMutated"
-		:mutation-error="mutationError"
-		:isMutating="isMutating"
-		:has-errors="hasErrors"
-		action-text="report"
-		loading-text="reporting :3"
-		done-text="reported! sending u back in a bit ^^"
-		@submit="submit"
-	/>
+		<SubmitButton
+			:mutation-status="mutationStatus"
+			action-text="report"
+			loading-text="reporting :3"
+			done-text="reported! sending u back in a bit ^^"
+			@submit="submit"
+		/>
+	</form>
 </template>
 
 <script setup lang="ts">
@@ -34,37 +32,40 @@
 import AsyncState from '@client/components/AsyncState.vue';
 import GuestbookEntry from '@client/components/GuestbookEntry.vue';
 import { useWorker } from '@client/composables/useWorker';
-import type { GETGuestbookID, POSTGuestbookIDReport } from '@website/lib';
+import { postGuestbookReportSchema, type GETGuestbookID, type POSTGuestbookIDReport } from '@website/lib';
 import { onMounted } from 'vue';
 
 // form
-import FormButton from '@client/components/FormButton.vue';
-import FormField from '@client/components/FormField.vue';
+import Field from '@client/components/forms/Field.vue';
+import SubmitButton from '@client/components/forms/SubmitButton.vue';
+import { useFormSubmit } from '@client/composables/useFormSubmit';
 import { useMutation } from '@client/composables/useMutation';
-import { useSubmitHelpers } from '@client/composables/useSubmitHelpers';
+import { toTypedSchema } from '@vee-validate/zod';
+import { useForm } from 'vee-validate';
 
 const id = new URLSearchParams(window.location.search).get('id');
 const { loading, error, data, useFetch } = useWorker<GETGuestbookID>(`guestbook/${id}`);
-const { isMutating, form, errors, hasErrors, justMutated, useSubmitWrap } = useSubmitHelpers<
-	POSTGuestbookIDReport,
-	POSTGuestbookIDReport
->({ message: '' }, { message: '' });
 
-const { mutate, mutationError } = useMutation<typeof form>(`guestbook/${id}/report`);
+const { mutate } = useMutation<POSTGuestbookIDReport>(`guestbook/${id}/report`);
 
-const submit = useSubmitWrap(
-	async () => {
-		if (!form.message) {
-			errors.message = 'a message is required!';
-		}
+const { handleSubmit } = useForm({
+	validationSchema: toTypedSchema(postGuestbookReportSchema),
+	initialValues: {
+		message: '',
 	},
-	async () => {
-		return await mutate(form);
+});
+
+const { status: mutationStatus, execute } = useFormSubmit<POSTGuestbookIDReport>(values => mutate(values), {
+	onSuccess: () => {
+		setTimeout(() => {
+			window.location.href = '/guestbook';
+		}, 3000);
 	},
-	async () => {
-		setTimeout(() => (window.location.href = '/guestbook'), 3000);
-	}
-);
+});
+
+const submit = handleSubmit(async values => {
+	await execute(values);
+});
 
 onMounted(() => useFetch());
 </script>
