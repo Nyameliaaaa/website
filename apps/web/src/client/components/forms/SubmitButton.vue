@@ -1,5 +1,5 @@
 <template>
-	<flex class="flex flex-row gap-2">
+	<div class="flex flex-row gap-2">
 		<button
 			type="submit"
 			:class="[
@@ -35,7 +35,7 @@
 				</span>
 			</p>
 		</Transition>
-	</flex>
+	</div>
 </template>
 
 <script setup lang="ts">

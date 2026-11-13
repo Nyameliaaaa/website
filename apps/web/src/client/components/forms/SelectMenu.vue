@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full">
-		<Listbox v-model="value" @update:model-value="handleChange">
+		<Listbox v-model="value" @update:model-value="handleChange" v-slot="{ open }">
 			<div class="relative mt-1">
 				<label :class="formFieldLabel" :for="name">
 					{{ label }}
@@ -71,21 +71,13 @@
 				</Transition>
 			</div>
 		</Listbox>
-
-		<p :id="`${name}-description`" :class="formFieldDesc">
-			<span v-if="errorMessage" class="text-ctp-maroon">
-				{{ errorMessage }}
-			</span>
-		</p>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import { Icon } from '@iconify/vue';
-import { formField, formFieldLabel, formFieldDesc, formFieldRequired, outline, formFieldOptional } from '@lib/classes';
-import { CATPPUCCIN_MACCHIATO_COLORS } from '@website/lib';
+import { formField, formFieldDesc, formFieldLabel, formFieldOptional, formFieldRequired, outline } from '@lib/classes';
 import { useField } from 'vee-validate';
 
 const props = defineProps<{
@@ -97,6 +89,4 @@ const props = defineProps<{
 }>();
 
 const { value, errorMessage, handleChange } = useField<string>(() => props.name);
-
-const open = computed(() => false);
 </script>
