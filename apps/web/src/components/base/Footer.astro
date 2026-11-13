@@ -17,10 +17,7 @@ import { version } from 'vue';
 					&copy; copyright 2017-<CopyrightEnd client:load /> amelia cynthia winters
 				</p>
 				<p class={caption}>
-					ramblings licensed under <WrapLink
-						href="https://creativecommons.org/licenses/by-nc/4.0/"
-						class={link}
-					>
+					ramblings licensed under <WrapLink href="https://creativecommons.org/licenses/by-nc/4.0/" class={link}>
 						CC BY-NC 4.0</WrapLink
 					>
 				</p>
@@ -33,7 +30,7 @@ import { version } from 'vue';
 				<p class={caption}>
 					commit <WrapLink
 						href={`https://git.gay/nyamelia/website/commit/${import.meta.env.CF_PAGES_COMMIT_SHA}`}
-						class={link}>{import.meta.env.CF_PAGES_COMMIT_SHA}</WrapLink
+						class={link}>{import.meta.env.CF_PAGES_COMMIT_SHA.slice(0,10)}</WrapLink
 					>
 				</p>
 				<p class={caption}>

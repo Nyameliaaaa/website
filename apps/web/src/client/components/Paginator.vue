@@ -16,15 +16,16 @@
 								currentPage !== 1,
 							[outline]: currentPage !== 1,
 
-							'bg-ctp-mantle cursor-not-allowed': currentPage === 1
-						}
+							'bg-ctp-crust cursor-not-allowed': currentPage === 1,
+						},
 					]"
 					:disabled="currentPage === 1"
 					@click="currentPage--"
 				>
 					<Icon icon="mdi:chevron-left" size="24" />
 				</button>
-				<span class="bg-ctp-base text-ctp-text p-2 font-semibold">{{ currentPage }} / {{ totalPages }}</span>
+				<span class="bg-ctp-mantle text-ctp-subtext0 p-2 font-semibold">{{ currentPage }} / {{ totalPages }}</span>
+				<span class="bg-ctp-mantle text-ctp-subtext1 p-2">{{ startItems }}–{{ endItems }} of {{ items.length }}</span>
 				<button
 					:class="[
 						'text-ctp-subtext0 h-full p-2',
@@ -32,8 +33,8 @@
 							'bg-ctp-base hover:text-ctp-subtext1 hover:bg-ctp-surface0 cursor-pointer transition-all duration-300':
 								currentPage !== totalPages,
 							[outline]: currentPage !== totalPages,
-							'bg-ctp-mantle cursor-not-allowed': currentPage === totalPages
-						}
+							'bg-ctp-crust cursor-not-allowed': currentPage === totalPages,
+						},
 					]"
 					:disabled="currentPage === totalPages"
 					@click="currentPage++"
@@ -56,12 +57,17 @@ const props = defineProps<{
 }>();
 
 const currentPage = ref(1);
-const _perPage = props.perPage ?? 8;
+const amount = props.perPage ?? 8;
 
-const totalPages = computed(() => Math.ceil(props.items.length / _perPage));
+const totalPages = computed(() => Math.ceil(props.items.length / amount));
 
 const paginated = computed(() => {
-	const start = (currentPage.value - 1) * _perPage;
-	return props.items.slice(start, start + _perPage);
+	const start = (currentPage.value - 1) * amount;
+	return props.items.slice(start, start + amount);
 });
+
+const startItems = computed(() => amount * (currentPage.value - 1) + 1);
+const endItems = computed(() =>
+	props.items.length > amount * currentPage.value ? amount * currentPage.value : props.items.length
+);
 </script>
