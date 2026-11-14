@@ -1,12 +1,20 @@
 import { Packet, PacketType } from '@/types/packets';
-import { ActionRowBuilder, ButtonBuilder, EmbedBuilder } from '@discordjs/builders';
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ContainerBuilder,
+	EmbedBuilder,
+	SeparatorBuilder,
+	TextDisplayBuilder,
+} from '@discordjs/builders';
 import { REST } from '@discordjs/rest';
 import { COLOR_VALUES } from '@website/lib';
 import { ButtonStyle } from 'discord-api-types/payloads/v10';
 import { Routes } from 'discord-api-types/rest/v10';
-import { CONTACT_CHANNEL_ID, NEW_GUESTBOOK_ENTRY_CHANNEL_ID, REPORT_CHANNEL_ID } from './lib/consts';
+import { COMPONENTS_V2, CONTACT_CHANNEL_ID, NEW_GUESTBOOK_ENTRY_CHANNEL_ID, REPORT_CHANNEL_ID } from './lib/consts';
+import { Bindings } from 'hono/types';
 
-export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch, env) => {
+export const queue: ExportedHandlerQueueHandler<Cloudflare.Env, Packet> = async (batch, env) => {
 	const rest = new REST({ version: '10' }).setToken(env.DISCORD_TOKEN);
 
 	for (const message of batch.messages) {
@@ -16,43 +24,41 @@ export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch
 			case PacketType.GuestbookEntry: {
 				const { data } = body;
 
-				const embed = new EmbedBuilder()
-					.setTitle(data.name)
-					.setDescription(data.message)
-					.setAuthor({ name: 'new guestbook entry :3' })
-					.setFooter({ text: `#${data.id}` })
-					.setColor(COLOR_VALUES[data.borderColor ?? 'pink']);
-
-				const actionRow = new ActionRowBuilder().addComponents([
-					new ButtonBuilder()
-						.setCustomId(`guestbookEntry:reply:${data.id}`)
-						.setLabel('reply')
-						.setStyle(ButtonStyle.Primary),
-					new ButtonBuilder()
-						.setCustomId(`guestbookEntry:delete:${data.id}`)
-						.setLabel('delete')
-						.setStyle(ButtonStyle.Danger),
-				]);
-
-				if (data.url) {
-					embed.addFields([{ name: 'url', value: data.url }]);
-
-					actionRow.addComponents([new ButtonBuilder().setLabel('site').setStyle(ButtonStyle.Link).setURL(data.url)]);
-				}
-
-				if (data.email) {
-					embed.addFields([{ name: 'email', value: data.email }]);
-
-					actionRow.addComponents([
-						new ButtonBuilder()
-							.setLabel('mail')
-							.setStyle(ButtonStyle.Link)
-							.setURL(`${body.workerUrl}/api/message/mail?to=${data.email}`),
-					]);
-				}
+				const container = new ContainerBuilder()
+					.setAccentColor(COLOR_VALUES[data.borderColor ?? 'pink'])
+					.addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${data.name}\n${data.message}`))
+					.addSeparatorComponents(new SeparatorBuilder())
+					.addTextDisplayComponents(
+						new TextDisplayBuilder().setContent(
+							[data.url && `**url** ${data.url}`, data.email && `**email** ${data.email}`, `#${data.id}`]
+								.filter(Boolean)
+								.join('\n')
+						)
+					)
+					.addActionRowComponents(
+						new ActionRowBuilder<ButtonBuilder>().addComponents([
+							new ButtonBuilder()
+								.setCustomId(`guestbookEntry:reply:${data.id}`)
+								.setLabel('reply')
+								.setStyle(ButtonStyle.Primary),
+							new ButtonBuilder()
+								.setCustomId(`guestbookEntry:delete:${data.id}`)
+								.setLabel('delete')
+								.setStyle(ButtonStyle.Danger),
+							...(data.url ? [new ButtonBuilder().setLabel('site').setStyle(ButtonStyle.Link).setURL(data.url)] : []),
+							...(data.email
+								? [
+										new ButtonBuilder()
+											.setLabel('mail')
+											.setStyle(ButtonStyle.Link)
+											.setURL(`${body.workerUrl}/api/message/mail?to=${data.email}&subject=your%20guestbook%20signing`),
+									]
+								: []),
+						])
+					);
 
 				await rest.post(Routes.channelMessages(NEW_GUESTBOOK_ENTRY_CHANNEL_ID), {
-					body: { embeds: [embed], components: [actionRow] },
+					body: { components: [container], flags: COMPONENTS_V2 },
 				});
 
 				message.ack();
@@ -63,44 +69,44 @@ export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch
 				const { data } = body;
 				const { report, offendingEntry } = data;
 
-				const embed = new EmbedBuilder()
-					.setTitle('new report')
-					.setDescription(`${report.message}`)
-					.addFields([
-						{ name: 'name', value: offendingEntry.name },
-						{ name: 'message', value: offendingEntry.message },
-					])
-					.setFooter({ text: `#${offendingEntry.id}` })
-					.setColor(COLOR_VALUES[offendingEntry.borderColor ?? 'pink']);
-
-				const actionRow = new ActionRowBuilder().addComponents([
-					new ButtonBuilder()
-						.setCustomId(`guestbookEntry:delete:${offendingEntry.id}`)
-						.setLabel('delete')
-						.setStyle(ButtonStyle.Danger),
-				]);
-
-				if (offendingEntry.url) {
-					embed.addFields([{ name: 'url', value: offendingEntry.url }]);
-
-					actionRow.addComponents([
-						new ButtonBuilder().setLabel('site').setStyle(ButtonStyle.Link).setURL(offendingEntry.url),
-					]);
-				}
-
-				if (offendingEntry.email) {
-					embed.addFields([{ name: 'email', value: offendingEntry.email }]);
-
-					actionRow.addComponents([
-						new ButtonBuilder()
-							.setLabel('mail')
-							.setStyle(ButtonStyle.Link)
-							.setURL(`${body.workerUrl}/api/message/mail?to=${offendingEntry.email}`),
-					]);
-				}
+				const container = new ContainerBuilder()
+					.setAccentColor(COLOR_VALUES[offendingEntry.borderColor ?? 'pink'])
+					.addTextDisplayComponents(new TextDisplayBuilder().setContent(`## new report\n${report.message}`))
+					.addSeparatorComponents(new SeparatorBuilder())
+					.addTextDisplayComponents(
+						new TextDisplayBuilder().setContent(
+							[
+								`## ${offendingEntry.name}\n${offendingEntry.message}`,
+								offendingEntry.url && `**url** ${offendingEntry.url}`,
+								offendingEntry.email && `**email** ${offendingEntry.email}`,
+								`#${offendingEntry.id}`,
+							]
+								.filter(Boolean)
+								.join('\n')
+						)
+					)
+					.addActionRowComponents(
+						new ActionRowBuilder<ButtonBuilder>().addComponents([
+							new ButtonBuilder()
+								.setCustomId(`guestbookEntry:delete:${offendingEntry.id}`)
+								.setLabel('delete')
+								.setStyle(ButtonStyle.Danger),
+							...(offendingEntry.url
+								? [new ButtonBuilder().setLabel('site').setStyle(ButtonStyle.Link).setURL(offendingEntry.url)]
+								: []),
+							...(offendingEntry.email
+								? [
+										new ButtonBuilder()
+											.setLabel('mail')
+											.setStyle(ButtonStyle.Link)
+											.setURL(`${body.workerUrl}/api/message/mail?to=${offendingEntry.email}`),
+									]
+								: []),
+						])
+					);
 
 				await rest.post(Routes.channelMessages(REPORT_CHANNEL_ID), {
-					body: { embeds: [embed], components: [actionRow] },
+					body: { components: [container], flags: COMPONENTS_V2 },
 				});
 
 				message.ack();
@@ -124,8 +130,28 @@ export const queue: ExportedHandlerQueueHandler<Bindings, Packet> = async (batch
 						.setURL(`${body.workerUrl}/api/message/mail?to=${data.email}`),
 				]);
 
+				const container = new ContainerBuilder()
+					.setAccentColor(COLOR_VALUES['pink'])
+					.addTextDisplayComponents(new TextDisplayBuilder().setContent(`### new message`))
+					.addSeparatorComponents(new SeparatorBuilder())
+					.addTextDisplayComponents(new TextDisplayBuilder().setContent(`## ${data.subject}\n${data.message}`))
+					.addSeparatorComponents(new SeparatorBuilder())
+					.addTextDisplayComponents(
+						new TextDisplayBuilder().setContent(`**name**: ${data.name}\n**email**: ${data.email}`)
+					)
+					.addActionRowComponents(
+						new ActionRowBuilder<ButtonBuilder>().addComponents(
+							new ButtonBuilder()
+								.setLabel('reply')
+								.setStyle(ButtonStyle.Link)
+								.setURL(
+									`${body.workerUrl}/api/message/mail?to=${data.email}&subject=${encodeURIComponent(data.subject)}`
+								)
+						)
+					);
+
 				await rest.post(Routes.channelMessages(CONTACT_CHANNEL_ID), {
-					body: { embeds: [embed], components: [actionRow] },
+					body: { components: [container], flags: COMPONENTS_V2 },
 				});
 
 				message.ack();

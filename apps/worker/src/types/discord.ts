@@ -4,6 +4,7 @@ import {
 	type APIButtonComponentWithCustomId,
 	type APIChatInputApplicationCommandInteraction,
 	type APIComponentInMessageActionRow,
+	APIContainerComponent,
 	type APIInteraction,
 	type APIMessageTopLevelComponent,
 	type APIModalSubmissionComponent,
@@ -27,6 +28,10 @@ export const isActionRow = (
 ): data is APIActionRowComponent<APIComponentInMessageActionRow> => {
 	return data.type === ComponentType.ActionRow;
 };
+
+export const isContainer = (component: APIMessageTopLevelComponent): component is APIContainerComponent =>
+	component.type === ComponentType.Container;
+
 export const isButton = (data: APIComponentInMessageActionRow): data is APIButtonComponent => {
 	return data.type === ComponentType.Button;
 };

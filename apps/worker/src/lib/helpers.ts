@@ -1,4 +1,4 @@
-import { isActionRow, isButtonWithCustomID } from '@/types/discord';
+import { isActionRow, isButtonWithCustomID, isContainer } from '@/types/discord';
 import type { Packet } from '@/types/packets';
 import type { APIMessageTopLevelComponent } from 'discord-api-types/v10';
 import type { Context } from 'hono';
@@ -27,21 +27,42 @@ export const sendDiscordPacket = async <T extends Packet>(c: Context<{ Bindings:
 };
 
 export const disableDelete = (component: APIMessageTopLevelComponent) => {
-	if (!isActionRow(component)) {
-		return component;
+	if (isContainer(component)) {
+		return {
+			...component,
+			components: component.components.map(child => {
+				if (!isActionRow(child)) return child;
+
+				return {
+					...child,
+					components: child.components.map(button => {
+						if (isButtonWithCustomID(button)) {
+							const disabled =
+								button.custom_id.startsWith('guestbookEntry:delete') ||
+								button.custom_id.startsWith('guestbookEntry:reply');
+							return { ...button, disabled };
+						}
+						return button;
+					}),
+				};
+			}),
+		};
 	}
 
-	return {
-		...component,
-		components: component.components.map(button => {
-			if (isButtonWithCustomID(button)) {
-				const disabled =
-					button.custom_id.startsWith('guestbookEntry:delete') || button.custom_id.startsWith('guestbookEntry:reply');
+	// fallback for old non-v2 messages i guess
+	if (isActionRow(component)) {
+		return {
+			...component,
+			components: component.components.map(button => {
+				if (isButtonWithCustomID(button)) {
+					const disabled =
+						button.custom_id.startsWith('guestbookEntry:delete') || button.custom_id.startsWith('guestbookEntry:reply');
+					return { ...button, disabled };
+				}
+				return button;
+			}),
+		};
+	}
 
-				return { ...button, disabled };
-			}
-
-			return button;
-		}),
-	};
+	return component;
 };

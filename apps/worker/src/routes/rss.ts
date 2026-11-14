@@ -1,9 +1,9 @@
 import { createDb } from '@/db';
+import { STATUSES_RSS_DESCRIPTION, STATUSES_RSS_TITLE } from '@website/lib';
 import { statuses } from '@website/schema';
+import { env } from 'cloudflare:workers';
 import { desc } from 'drizzle-orm';
 import { Hono } from 'hono';
-import { env } from 'cloudflare:workers';
-import { STATUSES_RSS_DESCRIPTION, STATUSES_RSS_TITLE } from '@website/lib';
 
 const rss = new Hono<{ Bindings: Cloudflare.Env }>();
 const db = createDb(env.NYAMELIA_SERVICES);

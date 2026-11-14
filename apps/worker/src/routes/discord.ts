@@ -2,7 +2,13 @@ import { createDb, schema } from '@/db';
 import { EPHEMERAL } from '@/lib/consts';
 import { disableDelete } from '@/lib/helpers';
 import { isLabel, isSlashCommand, isTextInput } from '@/types/discord';
-import { LabelBuilder, ModalBuilder, SlashCommandBuilder } from '@discordjs/builders';
+import {
+	ContainerBuilder,
+	LabelBuilder,
+	ModalBuilder,
+	SlashCommandBuilder,
+	TextDisplayBuilder,
+} from '@discordjs/builders';
 import { REST } from '@discordjs/rest';
 import { env } from 'cloudflare:workers';
 import {
@@ -72,8 +78,12 @@ discord.post('/', discordVerify(env.DISCORD_PUBLIC_KEY), async c => {
 								Promise.all([
 									rest.patch(Routes.webhookMessage(body.application_id, body.token), {
 										body: {
-											content: 'this entry was deleted!',
-											components: body.message.components?.map(disableDelete),
+											components: [
+												new ContainerBuilder().addTextDisplayComponents(
+													new TextDisplayBuilder().setContent('this entry was deleted!')
+												),
+												...(body.message.components?.map(disableDelete) ?? []),
+											],
 										},
 									}),
 									rest.post(Routes.webhook(body.application_id, body.token), {

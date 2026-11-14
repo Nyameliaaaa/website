@@ -20,7 +20,11 @@
 		</div>
 
 		<div class="my-3 w-full">
-			<Field name="message" label="message" placeholder="what do u wanna say" is-text-area />
+			<Field name="subject" label="title" placeholder="what is the general Vibe(TM)" required />
+		</div>
+
+		<div class="my-3 w-full">
+			<Field name="message" label="message" placeholder="what do u wanna say" is-text-area required />
 		</div>
 
 		<SubmitButton

@@ -8,8 +8,8 @@ export const TTL = {
 	LASTFM_TOP: 1 * 60 * 60, // 1 hour
 };
 
-
 export const NEW_GUESTBOOK_ENTRY_CHANNEL_ID = '1501499421983244338';
 export const REPORT_CHANNEL_ID = '1501499446612066375';
 export const CONTACT_CHANNEL_ID = '1502303477806923787';
 export const EPHEMERAL = 1 << 6;
+export const COMPONENTS_V2 = 1 << 15;

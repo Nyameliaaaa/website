@@ -2,14 +2,11 @@ import { createDb, schema } from '@/db';
 import { sendDiscordPacket } from '@/lib/helpers';
 import { type GuestbookEntryPacket, PacketType, type ReportPacket } from '@/types/packets';
 import {
-	CATPPUCCIN_MACCHIATO_COLORS,
 	type GETGuestbook,
 	GETGuestbookID,
-	isValidEmail,
 	type POSTGuestbook,
-	type POSTGuestbookIDReport,
 	postGuestbookReportSchema,
-	postGuestbookSchema,
+	postGuestbookSchema
 } from '@website/lib';
 import { env } from 'cloudflare:workers';
 import { desc, eq, getTableColumns } from 'drizzle-orm';
@@ -86,7 +83,7 @@ guestbook.get('/:id', async c => {
 guestbook.post('/:id/report', async c => {
 	const _id = c.req.param('id');
 	const data = await c.req.json();
-	const body = await postGuestbookReportSchema.parse(data);
+	const body = postGuestbookReportSchema.parse(data);
 
 	if (!Number.isFinite(Number(_id))) {
 		return c.json(

@@ -37,7 +37,7 @@ message.get('/mail', async c => {
 		);
 	}
 
-	return c.redirect(`mailto:${email}?${new URLSearchParams({ subject: `RE: ${subject}` })}`);
+	return c.redirect(`mailto:${email}?subject=${encodeURIComponent(`RE: ${subject ?? 'N/A'}`)}`);
 });
 
 export default message;
