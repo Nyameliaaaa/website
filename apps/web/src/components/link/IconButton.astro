@@ -1,33 +1,30 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { outline } from '@lib/classes';
+import { outlineLg } from '@lib/classes';
 import WrapLink from '@components/link/WrapLink.astro';
 
 interface Props {
-    text: string;
-    icon: string;
-    url: string;
+	text: string;
+	icon: string;
+	url: string;
 }
 
 const { text, icon, url } = Astro.props;
 ---
 
 <WrapLink
-    class:list={[
-        'transition-colors duration-300',
-        'block bg-ctp-base py-2 px-5 rounded-lg text-ctp-subtext0 w-fit',
-        outline,
-        'hover:bg-ctp-pink hover:text-ctp-crust cursor-pointer'
-    ]}
-    href={url}
+	class:list={[
+		'transition-colors duration-300',
+		'block bg-ctp-base py-2 px-5 rounded-lg text-ctp-subtext0 w-fit',
+		outlineLg,
+		'hover:bg-ctp-pink hover:text-ctp-crust cursor-pointer',
+	]}
+	href={url}
 >
-    <div
-        class:list={[
-            'flex flex-row items-center justify-center gap-2',
-            { 'flex-row-reverse': icon === 'chevron-right' }
-        ]}
-    >
-        <Icon name={`mdi:${icon}`} size="16" />
-        <p>{text}</p>
-    </div>
+	<div
+		class:list={['flex flex-row items-center justify-center gap-2', { 'flex-row-reverse': icon === 'chevron-right' }]}
+	>
+		<Icon name={`mdi:${icon}`} size="16" />
+		<p>{text}</p>
+	</div>
 </WrapLink>

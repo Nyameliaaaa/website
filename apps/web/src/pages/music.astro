@@ -5,12 +5,12 @@ import Playlists from '@client/music/Playlists.vue';
 import Recents from '@client/music/Recents.vue';
 import WrapLink from '@components/link/WrapLink.astro';
 import Page from '@layouts/Page.astro';
-import { caption, heading, leadText, link } from '@lib/classes';
+import { caption, heading, leadText } from '@lib/classes';
 ---
 
 <Page title="music :P" description="please enjoy staring at my music taste">
 	<span slot="description">
-		please enjoy staring at my music taste. check out my <WrapLink class={link} href="https://www.last.fm/user/nyamelia"
+		please enjoy staring at my music taste. check out my <WrapLink href="https://www.last.fm/user/nyamelia"
 			>last.fm profile</WrapLink
 		> ^^
 	</span>
@@ -42,6 +42,6 @@ import { caption, heading, leadText, link } from '@lib/classes';
 	</section>
 
 	<p class={caption}>
-		music cards from <WrapLink class={link} href="https://sapphic.moe">sapphic angels</WrapLink>
+		music cards from <WrapLink href="https://sapphic.moe">sapphic angels</WrapLink>
 	</p>
 </Page>

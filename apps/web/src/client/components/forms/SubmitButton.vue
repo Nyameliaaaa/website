@@ -5,7 +5,7 @@
 			:class="[
 				'transition-all duration-300',
 				'text-ctp-subtext0 rounded-lg px-5 py-1',
-				outline,
+				outlineLg,
 				{
 					'bg-ctp-base hover:bg-ctp-pink hover:text-ctp-crust cursor-pointer': !isSubmitting,
 					'bg-ctp-crust': isSubmitting,
@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 import { useFormContext } from 'vee-validate';
-import { formFieldDesc, outline } from '@lib/classes';
+import { formFieldDesc, outlineLg } from '@lib/classes';
 import { Icon } from '@iconify/vue';
 
 defineProps<{

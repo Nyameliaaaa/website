@@ -1,5 +1,5 @@
 ---
-import { iconButton, outline } from '@lib/classes';
+import { iconButton, outlineLg } from '@lib/classes';
 import { Icon } from 'astro-icon/components';
 import WrapLink from '@components/link/WrapLink.astro';
 
@@ -11,9 +11,9 @@ const { icon, url, text } = Astro.props;
 <WrapLink
 	class:list={[
 		'group flex flex-row gap-2 transition-all duration-300 items-center hover:text-ctp-pink',
-		outline,
+		outlineLg,
 		'w-fit',
-		{ 'flex-row-reverse': icon === 'chevron-right' }
+		{ 'flex-row-reverse': icon === 'chevron-right' },
 	]}
 	href={url}
 >

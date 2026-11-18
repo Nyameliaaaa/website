@@ -86,3 +86,12 @@ img {
 .formField {
 	@apply bg-ctp-base placeholder-ctp-subtext0 text-ctp-text block w-full rounded-lg border-none;
 }
+
+.baseAccentOutline,
+.prose a {
+	@apply focus-visible:ring-ctp-pink focus-visible:ring-offset-ctp-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
+}
+
+.prose a {
+	@apply rounded-md;
+}

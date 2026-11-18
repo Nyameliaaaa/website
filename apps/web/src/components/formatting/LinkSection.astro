@@ -28,7 +28,7 @@ const { links } = Astro.props;
 				</div>
 				<div class="xl:col-span-3">
 					{linkItem.url ? (
-						<WrapLink href={linkItem.url} class={`${body} ${link}`}>
+						<WrapLink href={linkItem.url} class:list={[body, link]}>
 							{linkItem.handle}
 						</WrapLink>
 					) : (

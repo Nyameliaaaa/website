@@ -1,11 +1,11 @@
 ---
-import PixelieImg from '@components/link/PixelieImg.astro';
 import MarkdownProse from '@components/formatting/MarkdownProse.astro';
-import { body, heading, link, subHeading } from '@lib/classes';
+import PixelieImg from '@components/link/PixelieImg.astro';
+import WrapLink from '@components/link/WrapLink.astro';
+import { body, heading, subHeading } from '@lib/classes';
+import { pixelies } from '@lib/data';
 import { codeToHtml } from 'shiki';
 import Page from '../layouts/Page.astro';
-import { pixelies } from '@lib/data';
-import WrapLink from '@components/link/WrapLink.astro';
 
 const html = await codeToHtml(
 	[
@@ -21,11 +21,11 @@ const html = await codeToHtml(
 		'           width="88" height="31" alt="nyamelia" style="image-rendering: pixelated;"',
 		'       />',
 		'   </picture>',
-		'</a>'
+		'</a>',
 	].join('\n'),
 	{
 		lang: 'typescript',
-		theme: 'catppuccin-macchiato'
+		theme: 'catppuccin-macchiato',
 	}
 );
 ---
@@ -35,7 +35,7 @@ const html = await codeToHtml(
 		{
 			pixelies(Astro.generator).map(pixelie => (
 				<section class="py-3">
-					<h2 class={`${subHeading} mb-2`}>{pixelie.name}</h2>
+					<h2 class:list={[subHeading, 'mb-2']}>{pixelie.name}</h2>
 					<ul class="flex flex-row gap-2 flex-wrap">
 						{pixelie.pixelies.map(pixelie => (
 							<PixelieImg pixelie={pixelie} />
@@ -45,7 +45,7 @@ const html = await codeToHtml(
 			))
 		}
 		<section class="py-3">
-			<h2 class={`${heading} mb-2`}>88x31 button :3</h2>
+			<h2 class:list={[heading, 'mb-2']}>88x31 button :3</h2>
 			<p class={body}>i have one of my own too. here's how you add it lol</p>
 			<MarkdownProse><div set:html={html} /></MarkdownProse>
 			<ul class="flex flex-row gap-2">
@@ -54,8 +54,8 @@ const html = await codeToHtml(
 			</ul>
 			<div class="mt-2">
 				<p class={body}>
-					if you add it, you can tell me <WrapLink href="/message" class={link}>here</WrapLink>! no garuantee ill add
-					you back however :p
+					if you add it, you can tell me <WrapLink href="/message">here</WrapLink>! no garuantee ill add you back
+					however :p
 				</p>
 			</div>
 		</section>

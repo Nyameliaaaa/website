@@ -11,8 +11,8 @@
 				rel="noopener noreferrer"
 				:class="[
 					'group hover:text-ctp-pink flex flex-row items-center gap-2 transition-all duration-300',
-					outline,
-					'w-fit'
+					outlineLg,
+					'w-fit',
 				]"
 				:href="entry.url"
 				:aria-label="`${entry.name}'s website'`"
@@ -39,7 +39,7 @@
 						.toLocaleDateString('en-us', {
 							year: 'numeric',
 							month: 'short',
-							day: 'numeric'
+							day: 'numeric',
 						})
 						.toLowerCase()
 				}}
@@ -48,8 +48,8 @@
 				v-if="entry.id"
 				:class="[
 					'group hover:text-ctp-pink flex flex-row items-center gap-2 transition-all duration-300',
-					outline,
-					'w-fit'
+					outlineLg,
+					'w-fit',
 				]"
 				:href="`/guestbook/report?id=${entry.id}`"
 				aria-label="report this entry"
@@ -62,7 +62,7 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { caption, iconButton, leadText, outline } from '@lib/classes';
+import { caption, iconButton, leadText, outlineLg } from '@lib/classes';
 import type { GETGuestbookID } from '@website/lib';
 
 defineProps<{

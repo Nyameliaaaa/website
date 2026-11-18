@@ -4,7 +4,7 @@
 			<div class="relative mt-1">
 				<ListboxButton
 					:id="name"
-					:class="['formField relative cursor-pointer py-2 pr-10 pl-3 text-left', outline]"
+					:class="['formField relative cursor-pointer py-2 pr-10 pl-3 text-left', outlineLg]"
 					:aria-invalid="!!errorMessage"
 					:aria-describedby="`${name}-description`"
 				>
@@ -65,7 +65,7 @@
 <script setup lang="ts">
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import { Icon } from '@iconify/vue';
-import { outline } from '@lib/classes';
+import { outlineLg } from '@lib/classes';
 import { useField } from 'vee-validate';
 import FieldLabel from './FieldLabel.vue';
 

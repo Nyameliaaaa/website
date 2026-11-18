@@ -3,10 +3,7 @@
 		<div class="bg-ctp-mantle border-ctp-pink mx-auto w-full max-w-md rounded-lg border-2">
 			<Disclosure v-slot="{ open }">
 				<DisclosureButton
-					:class="[
-						'text-ctp-crust bg-ctp-pink flex w-full cursor-pointer items-center justify-between px-2 py-2 text-left font-medium',
-						outline.replace('rounded-lg', ''),
-					]"
+					class="text-ctp-crust bg-ctp-pink baseAccentOutline flex w-full cursor-pointer items-center justify-between px-2 py-2 text-left font-medium"
 				>
 					<div class="flex items-center gap-2">
 						<Icon icon="mdi:table-of-contents" class="text-ctp-crust" size="24" />
@@ -30,7 +27,7 @@
 					leave-to-class="opacity-0"
 					mode="out-in"
 				>
-					<DisclosurePanel :class="['bg-ctp-mantle max-h-128 overflow-y-scroll p-4', outline]">
+					<DisclosurePanel :class="['bg-ctp-mantle max-h-128 overflow-y-scroll p-4', outlineLg]">
 						<ul>
 							<li v-for="(heading, i) in headings" :key="i">
 								<a
@@ -54,7 +51,7 @@
 <script setup lang="ts">
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 import { Icon } from '@iconify/vue';
-import { body, link, outline } from '@lib/classes';
+import { body, link, outlineLg } from '@lib/classes';
 import type { MarkdownHeading } from 'astro';
 import { Transition } from 'vue';
 

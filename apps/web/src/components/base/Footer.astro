@@ -4,7 +4,7 @@ import FormattedDate from '@components/formatting/FormattedDate.astro';
 import IconLink from '@components/link/IconLink.astro';
 import PixelieImg from '@components/link/PixelieImg.astro';
 import WrapLink from '@components/link/WrapLink.astro';
-import { caption, link } from '@lib/classes';
+import { caption } from '@lib/classes';
 import { footerPixelies, footerUrls } from '@lib/data';
 import { version } from 'vue';
 ---
@@ -17,7 +17,7 @@ import { version } from 'vue';
 					&copy; copyright 2017-<CopyrightEnd client:load /> amelia cynthia winters
 				</p>
 				<p class={caption}>
-					ramblings licensed under <WrapLink href="https://creativecommons.org/licenses/by-nc/4.0/" class={link}>
+					ramblings licensed under <WrapLink href="https://creativecommons.org/licenses/by-nc/4.0/">
 						CC BY-NC 4.0</WrapLink
 					>
 				</p>
@@ -25,7 +25,7 @@ import { version } from 'vue';
 
 			<div>
 				<p class={caption}>
-					soundtrack: <a href="https://www.youtube.com/watch?v=ERo-sPa1a5g" class={link}>hachioji p - gimme x gimme</a>
+					soundtrack: <WrapLink href="https://www.youtube.com/watch?v=ERo-sPa1a5g">hachioji p - gimme x gimme</WrapLink>
 				</p>
 			</div>
 
@@ -34,16 +34,15 @@ import { version } from 'vue';
 					{Astro.generator.replace('A', 'a')}, vue v{version}
 				</p>
 				<p class={caption}>
-					commit <WrapLink
-						href={`https://git.gay/nyamelia/website/commit/${import.meta.env.CF_PAGES_COMMIT_SHA}`}
-						class={link}>{import.meta.env.CF_PAGES_COMMIT_SHA.slice(0, 10)}</WrapLink
+					commit <WrapLink href={`https://git.gay/nyamelia/website/commit/${import.meta.env.CF_PAGES_COMMIT_SHA}`}
+						>{import.meta.env.CF_PAGES_COMMIT_SHA.slice(0, 10)}</WrapLink
 					>
 				</p>
 				<p class={caption}>
 					last updated <b><FormattedDate date={new Date()} /></b>
 				</p>
 				<p class={caption}>
-					tested using <WrapLink href="https://firefox.com" class={link}> firefox</WrapLink>
+					tested using <WrapLink href="https://firefox.com"> firefox</WrapLink>
 				</p>
 			</div>
 		</div>

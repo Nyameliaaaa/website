@@ -1,7 +1,7 @@
 import { cva } from 'cva';
 
-export const outline =
-	'rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ctp-pink focus-visible:ring-offset-2 focus-visible:ring-offset-ctp-base';
+export const outlineLg = `rounded-lg baseAccentOutline`;
+export const outlineMd = `rounded-md baseAccentOutline`;
 
 export const text = cva('', {
 	variants: {
@@ -43,7 +43,7 @@ export const text = cva('', {
 			true: 'transition-all duration-300',
 		},
 		tracking: {
-			tighest: 'tracking-tighter',
+			tightest: 'tracking-tighter',
 			tight: 'tracking-tight',
 			normal: 'tracking-normal',
 			wide: 'tracking-wide',
@@ -54,8 +54,9 @@ export const text = cva('', {
 			normal: 'leading-normal',
 			relaxed: 'leading-relaxed',
 		},
-		customOutline: {
-			true: outline,
+		accentOutline: {
+			true: outlineLg,
+			md: outlineMd,
 		},
 	},
 });
@@ -66,7 +67,7 @@ export const websiteTitle = text({
 	color: 'accent',
 	size: '2xl',
 	hover: 'underline',
-	customOutline: true,
+	accentOutline: true,
 });
 
 export const pageTitle = text({
@@ -74,7 +75,7 @@ export const pageTitle = text({
 	weight: 'bold',
 	size: '4xl',
 	color: 'accent',
-	tracking: 'tighest',
+	tracking: 'tightest',
 	leading: 'tight',
 });
 
@@ -106,7 +107,7 @@ export const leadText = text({
 });
 
 export const body = text({ font: 'sans', weight: 'normal', size: 'base', leading: 'relaxed', color: 'primary' });
-export const link = text({ color: 'link', hover: 'underline', customOutline: true });
+export const link = text({ color: 'link', hover: 'underline', accentOutline: 'md' });
 export const caption = text({ size: 'sm', color: 'tertiary', weight: 'normal' });
 
 export const formFieldLabel = text({ color: 'secondary', weight: 'medium' });

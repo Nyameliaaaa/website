@@ -1,6 +1,9 @@
 <template>
 	<div class="macchiato fixed right-6 bottom-6 z-50">
-		<button class="bg-ctp-base text-ctp-text rounded-md p-2 text-lg drop-shadow-md" @click="() => toggle()">
+		<button
+			class="bg-ctp-base text-ctp-text baseAccentOutline rounded-md p-2 text-lg drop-shadow-md"
+			@click="() => toggle()"
+		>
 			<Icon
 				:icon="musicPlaying && confirmedPlayState ? 'mdi:pause' : 'mdi:play'"
 				size="48"

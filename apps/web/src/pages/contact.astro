@@ -5,7 +5,7 @@ import BackLink from '@components/link/BackLink.astro';
 import IconButton from '@components/link/IconButton.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import Base from '@layouts/Base.astro';
-import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
+import { body, heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
 import { contactLinks } from '@lib/data';
 
 const contactTitle = 'contact';
@@ -45,7 +45,7 @@ const contactSub =
 	<section>
 		<h2 class={heading}>public keys</h2>
 		<p class={leadText}>
-			you can find my public keys <WrapLink href="/pubkeys.txt" class={link}>here</WrapLink>
+			you can find my public keys <WrapLink href="/pubkeys.txt">here</WrapLink>
 		</p>
 	</section>
 
@@ -54,9 +54,8 @@ const contactSub =
 	<section>
 		<h2 class={heading}>keyoxide</h2>
 		<p class={leadText}>
-			you can find my keyoxide <WrapLink
-				href="https://keyoxide.org/09F4E5FAF8AB59385117ABE0204D9FACA1132556 "
-				class={link}>here</WrapLink
+			you can find my keyoxide <WrapLink href="https://keyoxide.org/09F4E5FAF8AB59385117ABE0204D9FACA1132556 "
+				>here</WrapLink
 			>
 		</p>
 	</section>
@@ -130,7 +129,6 @@ const contactSub =
 			</p>
 			<p class={body}>
 				used only as a mirror and for contributing to projects still on github, <a
-					class={link}
 					href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</a
 				>
 			</p>

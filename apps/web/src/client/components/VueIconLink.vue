@@ -2,8 +2,8 @@
 	<a
 		:class="[
 			'group hover:text-ctp-pink flex flex-row items-center gap-2 transition-all duration-300',
-			outline,
-			'w-fit'
+			outlineLg,
+			'w-fit',
 		]"
 		:href="url"
 	>
@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue';
-import { iconButton, outline } from '@lib/classes';
+import { iconButton, outlineLg } from '@lib/classes';
 
 defineProps<{
 	url: string;

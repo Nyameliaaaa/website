@@ -3,7 +3,7 @@ import Divider from '@components/formatting/Divider.astro';
 import LinkSection from '@components/formatting/LinkSection.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import Page from '@layouts/Page.astro';
-import { body, heading, leadText, link, subHeading } from '@lib/classes';
+import { body, heading, leadText, subHeading } from '@lib/classes';
 import { sourceLinks } from '@lib/data';
 
 const aboutTitle = 'about';
@@ -41,32 +41,31 @@ const aboutSub = 'the website for this website. websites now come with websites'
 					<p class={body}>
 						my <WrapLink
 							href="https://git.gay/nyamelia-archives/Nyameliaaaa_nyameliaaaa.github.io/src/commit/9d629c2d202355abbd7e5e67682f58eece10b1b2"
-							class={link}>previous website</WrapLink
+							>previous website</WrapLink
 						> was in fact one of those atrocious cv websites i just mentioned. i made it in 2022 then literally never updated
 						it. my attempts to save it are as follows:
 					</p>
 					<ul class:list={['list-disc list-inside my-1', body]}>
 						<li>
-							<WrapLink href="https://git.gay/nyamelia-archives/nyameliaaaa_nyameliaaaa.github.io/" class={link}
+							<WrapLink href="https://git.gay/nyamelia-archives/nyameliaaaa_nyameliaaaa.github.io/"
 								>nuxt rewrite</WrapLink
 							> (2023)
 						</li>
 						<li>
-							<WrapLink href="https://git.gay/nyamelia-archives/nyamelia_pages" class={link}
+							<WrapLink href="https://git.gay/nyamelia-archives/nyamelia_pages"
 								>raw html pages.gay site. turns out raw html SUCKS</WrapLink
 							> (2024)
 						</li>
 						<li>
-							<WrapLink href="https://git.gay/nyamelia-archives/Nyameliaaaa_website/src/branch/main" class={link}
+							<WrapLink href="https://git.gay/nyamelia-archives/Nyameliaaaa_website/src/branch/main"
 								>next app dir rewrite. i somehow made it worse trying to make it better</WrapLink
 							> (2025)
 						</li>
 					</ul>
 					<p class={body}>
 						<b>fyi:</b> i had a website during 2020-2022 as well however all the source code for THOSE is gone because the
-						repo had some commits w the deadname :( HOWEVER i do have <WrapLink
-							href="/about/flutter-site.png"
-							class={link}>this image</WrapLink
+						repo had some commits w the deadname :( HOWEVER i do have <WrapLink href="/about/flutter-site.png"
+							>this image</WrapLink
 						> of my 2022 flutter site, which preceeded the 2022 nextjs site directly
 					</p>
 				</section>
@@ -88,10 +87,9 @@ const aboutSub = 'the website for this website. websites now come with websites'
 				<section>
 					<h3 class={subHeading}>what'd i use :p</h3>
 					<p class={body}>
-						generated using <WrapLink href="https://astro.build" class={link}>astro</WrapLink> and themed using
-						<WrapLink href="https://tailwindcss.com" class={link}>tailwind</WrapLink> along w/ <WrapLink
-							href="https://vuejs.org"
-							class={link}>vue</WrapLink
+						generated using <WrapLink href="https://astro.build">astro</WrapLink> and themed using
+						<WrapLink href="https://tailwindcss.com">tailwind</WrapLink> along w/ <WrapLink href="https://vuejs.org"
+							>vue</WrapLink
 						> for the dynamic portions
 					</p>
 				</section>
@@ -99,7 +97,7 @@ const aboutSub = 'the website for this website. websites now come with websites'
 				<section>
 					<h3 class={subHeading}>theme & fonts</h3>
 					<p class={body}>
-						<WrapLink href="https://catppuccin.com" class={link}>catppuccin macchiato theme</WrapLink>, specifically the <span
+						<WrapLink href="https://catppuccin.com">catppuccin macchiato theme</WrapLink>, specifically the <span
 							class="text-ctp-pink"
 						>
 							pink accent
@@ -134,9 +132,9 @@ const aboutSub = 'the website for this website. websites now come with websites'
 				<section>
 					<h3 class={subHeading}>smth is broken</h3>
 					<p class={body}>
-						:( you could <WrapLink href="https://git.gay/nyamelia/website/issues" class={link}>file an issue</WrapLink> or
+						:( you could <WrapLink href="https://git.gay/nyamelia/website/issues">file an issue</WrapLink> or
 						just
-						<WrapLink href="/contact" class={link}>contact</WrapLink> me lmao. your choice i dont mind tbh
+						<WrapLink href="/contact">contact</WrapLink> me lmao. your choice i dont mind tbh
 					</p>
 				</section>
 			</section>

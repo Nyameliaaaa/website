@@ -4,7 +4,7 @@ import LinkSection from '@components/formatting/LinkSection.astro';
 import BackLink from '@components/link/BackLink.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import Base from '@layouts/Base.astro';
-import { body, heading, leadText, link, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
+import { body, heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
 import { meLinks } from '@lib/data';
 
 const aboutTitle = 'about';
@@ -37,13 +37,13 @@ const aboutSub = 'this page is kinda about me AND this site but this site IS me 
 					<h3 class={subHeading}>tastes</h3>
 					<ul class:list={['list-disc list-inside mt-1', body]}>
 						<li>
-							<WrapLink href="/music" class={link}>music</WrapLink>
+							<WrapLink href="/music">music</WrapLink>
 						</li>
 						<li>
-							<WrapLink href="https://backloggd.com/u/nyameliaaaa" class={link}>games (backloggd)</WrapLink>
+							<WrapLink href="https://backloggd.com/u/nyameliaaaa">games (backloggd)</WrapLink>
 						</li>
 						<li>
-							<WrapLink href="https://letterboxd.com/nyamelia/" class={link}>films (letterboxd)</WrapLink>
+							<WrapLink href="https://letterboxd.com/nyamelia/">films (letterboxd)</WrapLink>
 						</li>
 					</ul>
 				</section>
@@ -80,13 +80,13 @@ const aboutSub = 'this page is kinda about me AND this site but this site IS me 
 				</div>
 				<ul class:list={['list-disc list-inside', body]}>
 					<li>
-						<WrapLink href="/music" class={link}>music</WrapLink>
+						<WrapLink href="/music">music</WrapLink>
 					</li>
 					<li>
-						<WrapLink href="https://backloggd.com/u/nyameliaaaa" class={link}>games (backloggd)</WrapLink>
+						<WrapLink href="https://backloggd.com/u/nyameliaaaa">games (backloggd)</WrapLink>
 					</li>
 					<li>
-						<WrapLink href="https://letterboxd.com/nyamelia/" class={link}>films (letterboxd)</WrapLink>
+						<WrapLink href="https://letterboxd.com/nyamelia/">films (letterboxd)</WrapLink>
 					</li>
 				</ul>
 			</section>
