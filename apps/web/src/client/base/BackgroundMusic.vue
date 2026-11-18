@@ -2,9 +2,9 @@
 	<div class="macchiato fixed right-6 bottom-6 z-50">
 		<button class="bg-ctp-base text-ctp-text rounded-md p-2 text-lg drop-shadow-md" @click="() => toggle()">
 			<Icon
-				:icon="musicPlaying ? 'mdi:pause' : 'mdi:play'"
+				:icon="musicPlaying && confirmedPlayState ? 'mdi:pause' : 'mdi:play'"
 				size="48"
-				:title="musicPlaying ? 'pause the song' : 'play the song'"
+				:title="musicPlaying && confirmedPlayState ? 'pause the song' : 'play the song'"
 			/>
 		</button>
 	</div>
@@ -25,8 +25,15 @@ import { Icon } from '@iconify/vue';
 import { useStorage } from '@vueuse/core';
 
 const audioElement = ref<HTMLAudioElement | null>(null);
-const musicPlaying = useStorage('music-playing', false);
+const musicPlaying = useStorage('music-playing', true);
 const musicTime = useStorage('music-time', 0, sessionStorage);
+const confirmedPlayState = ref(false);
+
+const confirmPlaying = () => {
+	if (!confirmedPlayState.value) {
+		confirmedPlayState.value = true;
+	}
+};
 
 const saveTime = () => {
 	if (!audioElement.value) return;
@@ -62,11 +69,13 @@ const pause = () => {
 };
 
 const toggle = () => {
+	confirmPlaying();
 	musicPlaying.value ? pause() : play();
 };
 
 const handleFirstClick = (event: PointerEvent) => {
 	if (musicPlaying.value) {
+		confirmPlaying();
 		play();
 	}
 
@@ -76,10 +85,6 @@ const handleFirstClick = (event: PointerEvent) => {
 onMounted(() => {
 	if (audioElement.value) {
 		audioElement.value.currentTime = musicTime.value;
-
-		if (musicPlaying.value) {
-			play();
-		}
 	}
 
 	document.addEventListener('click', handleFirstClick);

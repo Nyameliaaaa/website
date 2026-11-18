@@ -5,7 +5,7 @@
 				<DisclosureButton
 					:class="[
 						'text-ctp-crust bg-ctp-pink flex w-full cursor-pointer items-center justify-between px-2 py-2 text-left font-medium',
-						outline.replace('rounded-lg', '')
+						outline.replace('rounded-lg', ''),
 					]"
 				>
 					<div class="flex items-center gap-2">
@@ -37,7 +37,7 @@
 									:href="`#${heading.slug}`"
 									:class="[body, link]"
 									:style="{
-										marginLeft: `calc(2rem * ${hasH1 ? heading.depth - 1 : heading.depth - 2})`
+										marginLeft: `calc(2rem * ${hasH1 ? heading.depth - 1 : heading.depth - 2})`,
 									}"
 								>
 									{{ heading.text === 'Footnotes' ? heading.text.toLowerCase() : heading.text }}

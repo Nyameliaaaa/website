@@ -12,7 +12,7 @@ export const text = cva('', {
 			tertiary: 'text-ctp-subtext0',
 			error: 'text-ctp-red',
 			success: 'text-ctp-green',
-			link: 'text-ctp-blue'
+			link: 'text-ctp-blue',
 		},
 		size: {
 			sm: 'text-sm',
@@ -20,54 +20,53 @@ export const text = cva('', {
 			lg: 'text-lg',
 			xl: 'text-xl',
 			['2xl']: 'text-2xl',
-			['4xl']: 'text-4xl'
+			['4xl']: 'text-4xl',
 		},
 		font: {
 			display: 'font-display',
 			sans: 'font-sans',
-			mono: 'font-mono'
+			mono: 'font-mono',
 		},
 		weight: {
 			normal: 'font-normal',
 			medium: 'font-medium',
 			semibold: 'font-semibold',
-			bold: 'font-bold'
+			bold: 'font-bold',
 		},
 		hover: {
 			accent: 'hover:text-ctp-pink',
 			groupAccent: 'group-hover:text-ctp-pink',
 			underline: 'hover:underline hover:underline-offset-2',
-			dim: 'hover:text-ctp-subtext1'
+			dim: 'hover:text-ctp-subtext1',
 		},
 		transition: {
-			true: 'transition-all duration-300'
+			true: 'transition-all duration-300',
 		},
 		tracking: {
 			tighest: 'tracking-tighter',
 			tight: 'tracking-tight',
 			normal: 'tracking-normal',
-			wide: 'tracking-wide'
+			wide: 'tracking-wide',
 		},
 		leading: {
 			tight: 'leading-tight',
 			snug: 'leading-snug',
 			normal: 'leading-normal',
-			relaxed: 'leading-relaxed'
+			relaxed: 'leading-relaxed',
 		},
 		customOutline: {
-			true: outline
-		}
-	}
+			true: outline,
+		},
+	},
 });
 
-export const formField = 'block w-full bg-ctp-base border-none rounded-lg placeholder-ctp-subtext0 text-ctp-text';
-export const headerName = text({
+export const websiteTitle = text({
 	font: 'display',
 	weight: 'semibold',
 	color: 'accent',
 	size: '2xl',
 	hover: 'underline',
-	customOutline: true
+	customOutline: true,
 });
 
 export const pageTitle = text({
@@ -76,7 +75,7 @@ export const pageTitle = text({
 	size: '4xl',
 	color: 'accent',
 	tracking: 'tighest',
-	leading: 'tight'
+	leading: 'tight',
 });
 
 export const pageSubtitle = text({
@@ -85,7 +84,7 @@ export const pageSubtitle = text({
 	size: '2xl',
 	color: 'primary',
 	tracking: 'tight',
-	leading: 'relaxed'
+	leading: 'relaxed',
 });
 
 export const heading = text({ font: 'display', weight: 'semibold', size: '2xl', color: 'accent' });
@@ -95,7 +94,7 @@ export const subHeading = text({
 	size: 'lg',
 	leading: 'snug',
 	tracking: 'tight',
-	color: 'secondary'
+	color: 'secondary',
 });
 
 export const leadText = text({
@@ -103,7 +102,7 @@ export const leadText = text({
 	weight: 'medium',
 	size: 'lg',
 	leading: 'relaxed',
-	color: 'secondary'
+	color: 'secondary',
 });
 
 export const body = text({ font: 'sans', weight: 'normal', size: 'base', leading: 'relaxed', color: 'primary' });
@@ -119,5 +118,5 @@ export const iconButton = text({
 	color: 'tertiary',
 	weight: 'normal',
 	transition: true,
-	hover: 'groupAccent'
+	hover: 'groupAccent',
 });

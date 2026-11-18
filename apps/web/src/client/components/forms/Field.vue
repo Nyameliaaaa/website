@@ -1,55 +1,37 @@
 <template>
-	<div class="w-full">
-		<label :class="formFieldLabel" :for="name">
-			{{ label }}
-			<span v-if="required" :class="formFieldRequired">*</span>
-			<span v-else :class="formFieldOptional">(optional)</span>
-		</label>
-
-		<p :id="`${name}-description`" :class="formFieldDesc">
-			<span v-if="description">
-				{{ description }}
-			</span>
-		</p>
-
-		<textarea
-			v-if="isTextArea"
-			v-model="value"
+	<FieldLabel :name="name" :label="label" :description="description" :error="errorMessage" :required="required">
+		<component
+			:is="isTextArea ? 'textarea' : 'input'"
+			:value="value"
+			@input="value = ($event.target as HTMLInputElement).value"
 			:id="name"
 			:name="name"
-			:class="['my-1 h-32 resize-none', formField, outline]"
+			:type="isTextArea ? undefined : type"
+			:class="[
+				'formField',
+				outline,
+				isTextArea
+					? 'my-1 h-32 resize-none'
+					: {
+							'my-1': errorMessage || description,
+							'mt-1': !(errorMessage && description),
+						},
+			]"
 			:placeholder="placeholder"
 			:aria-invalid="!!errorMessage"
-			:aria-describedby="`${name}-description`"
+			:aria-describedby="description && `${name}-description`"
+			:aria-errormessage="errorMessage && `${name}-error`"
 			@blur="handleBlur"
 		/>
-
-		<input
-			v-else
-			v-model="value"
-			:id="name"
-			:name="name"
-			:type="type"
-			:class="[formField, outline, { 'my-1': errorMessage || description, 'mt-1': !(errorMessage && description) }]"
-			:placeholder="placeholder"
-			:aria-invalid="!!errorMessage"
-			:aria-describedby="ariaDescribedBy"
-			@blur="handleBlur"
-		/>
-
-		<p :id="`${name}-error`" :class="formFieldDesc">
-			<span v-if="errorMessage" class="text-ctp-maroon">
-				{{ errorMessage }}
-			</span>
-		</p>
-	</div>
+	</FieldLabel>
 </template>
 
 <script setup lang="ts">
-import { formFieldLabel, formFieldDesc, formFieldOptional, formFieldRequired, outline, formField } from '@lib/classes';
+import { outline } from '@lib/classes';
 
 import { useField } from 'vee-validate';
 import { computed, type InputTypeHTMLAttribute } from 'vue';
+import FieldLabel from './FieldLabel.vue';
 
 const props = withDefaults(
 	defineProps<{
@@ -67,7 +49,7 @@ const props = withDefaults(
 	}
 );
 
-const { value, errorMessage, handleBlur, meta } = useField<string>(() => props.name);
+const { value, errorMessage, handleBlur } = useField<string>(() => props.name);
 
 const ariaDescribedBy = computed(() => {
 	return (

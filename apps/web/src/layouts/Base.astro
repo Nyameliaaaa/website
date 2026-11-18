@@ -6,7 +6,6 @@ import Container from '@components/formatting/Container.astro';
 import BaseHead from '@components/base/BaseHead.astro';
 import Footer from '@components/base/Footer.astro';
 import Header from '@components/base/Header.astro';
-import BraveBlocker from '@client/base/BraveBlocker.vue';
 import BackgroundMusic from '@client/base/BackgroundMusic.vue';
 
 interface Props {
@@ -38,7 +37,6 @@ interface Props {
 			</div>
 		</div>
 
-		<BraveBlocker client:load />
 		<BackgroundMusic client:only />
 
 		<div class="h-full macchiato">

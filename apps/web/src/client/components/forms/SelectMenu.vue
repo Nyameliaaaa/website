@@ -1,22 +1,10 @@
 <template>
-	<div class="w-full">
+	<FieldLabel :name="name" :label="label" :description="description" :error="errorMessage" :required="required">
 		<Listbox v-model="value" @update:model-value="handleChange" v-slot="{ open }">
 			<div class="relative mt-1">
-				<label :class="formFieldLabel" :for="name">
-					{{ label }}
-					<span v-if="required" :class="formFieldRequired">*</span>
-					<span v-else :class="formFieldOptional">(optional)</span>
-				</label>
-
-				<p :id="`${name}-description`" :class="formFieldDesc">
-					<span v-if="description">
-						{{ description }}
-					</span>
-				</p>
-
 				<ListboxButton
 					:id="name"
-					:class="['relative cursor-pointer py-2 pr-10 pl-3 text-left', formField, outline]"
+					:class="['formField relative cursor-pointer py-2 pr-10 pl-3 text-left', outline]"
 					:aria-invalid="!!errorMessage"
 					:aria-describedby="`${name}-description`"
 				>
@@ -71,14 +59,15 @@
 				</Transition>
 			</div>
 		</Listbox>
-	</div>
+	</FieldLabel>
 </template>
 
 <script setup lang="ts">
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import { Icon } from '@iconify/vue';
-import { formField, formFieldDesc, formFieldLabel, formFieldOptional, formFieldRequired, outline } from '@lib/classes';
+import { outline } from '@lib/classes';
 import { useField } from 'vee-validate';
+import FieldLabel from './FieldLabel.vue';
 
 const props = defineProps<{
 	name: string;

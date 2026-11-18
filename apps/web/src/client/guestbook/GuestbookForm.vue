@@ -12,7 +12,7 @@
 				<template #selected="{ value }">
 					<span :style="{ color: `var(--catppuccin-color-${value})` }">{{ value }}</span>
 				</template>
-				<template #option="{ option, selected }">
+				<template #option="{ option }">
 					<span :style="{ color: `var(--catppuccin-color-${option.label})` }">
 						{{ option.label }}
 					</span>
@@ -59,6 +59,7 @@
 
 		<h2 :class="`${subHeading} mb-2`">preview</h2>
 		<GuestbookEntry :entry="entry" />
+		<p class="text-ctp-text">{{ computed(() => JSON.stringify(values)) }}</p>
 	</form>
 </template>
 
