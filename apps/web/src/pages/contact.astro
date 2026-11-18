@@ -1,11 +1,10 @@
 ---
 import Divider from '@components/formatting/Divider.astro';
 import LinkSection from '@components/formatting/LinkSection.astro';
-import BackLink from '@components/link/BackLink.astro';
 import IconButton from '@components/link/IconButton.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import Base from '@layouts/Base.astro';
-import { body, heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
+import { heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
 import { contactLinks } from '@lib/data';
 
 const contactTitle = 'contact';
@@ -14,8 +13,6 @@ const contactSub =
 ---
 
 <Base title={contactTitle} description={contactSub}>
-	<BackLink />
-
 	<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
 		<div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
 			<img
@@ -68,7 +65,7 @@ const contactSub =
 
 		<section class="my-3">
 			<h3 class={subHeading}>mail</h3>
-			<p class={body}>
+			<p>
 				<span class="bg-ctp-crust px-2 rounded-md text-ctp-pink">nyameliaaaa (AT) proton (DOT) me</span>. for non-proton
 				gpg, see <span class="bg-ctp-crust px-2 rounded-md">public keys</span>
 			</p>
@@ -76,7 +73,7 @@ const contactSub =
 
 		<section class="my-3">
 			<h3 class={subHeading}>matrix</h3>
-			<p class={body}>
+			<p>
 				<a
 					href="https://matrix.to/#/@nyameliaaaa:matrix.org"
 					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
@@ -87,7 +84,7 @@ const contactSub =
 
 		<section class="my-3">
 			<h3 class={subHeading}>discord</h3>
-			<p class={body}>
+			<p>
 				<a
 					href="https://discord.com/users/348591272476540928"
 					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
@@ -98,12 +95,12 @@ const contactSub =
 
 		<section class="my-3">
 			<h3 class={subHeading}>signal</h3>
-			<p class={body}>i don't give out my signal username unless i vibe with you tbh</p>
+			<p>i don't give out my signal username unless i vibe with you tbh</p>
 		</section>
 
 		<section class="my-3">
 			<h3 class={subHeading}>telegram</h3>
-			<p class={body}>please seek immediate help. and possibly vodka</p>
+			<p>please seek immediate help. and possibly vodka</p>
 		</section>
 	</section>
 
@@ -118,7 +115,7 @@ const contactSub =
 			>
 				<WrapLink href="https://git.gay/nyamelia">@nyamelia</WrapLink>
 			</p>
-			<p class={body}>primary git forge</p>
+			<p>primary git forge</p>
 		</section>
 		<section class="my-3">
 			<h3 class={subHeading}>github</h3>
@@ -127,7 +124,7 @@ const contactSub =
 			>
 				<WrapLink href="https://github.com/nyameliaaaa">@nyameliaaaa</WrapLink>
 			</p>
-			<p class={body}>
+			<p>
 				used only as a mirror and for contributing to projects still on github, <a
 					href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</a
 				>

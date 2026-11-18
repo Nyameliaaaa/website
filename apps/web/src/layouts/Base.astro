@@ -3,10 +3,23 @@ import '@/styles/global.css';
 import LatestStatus from '@client/statuses/LatestStatus.vue';
 import Container from '@components/formatting/Container.astro';
 
+import BackgroundMusic from '@client/base/BackgroundMusic.vue';
 import BaseHead from '@components/base/BaseHead.astro';
 import Footer from '@components/base/Footer.astro';
 import Header from '@components/base/Header.astro';
-import BackgroundMusic from '@client/base/BackgroundMusic.vue';
+import { body } from '@lib/classes';
+import IconLink from '@components/link/IconLink.astro';
+
+const pathname = Astro.url.pathname;
+
+const getBackPath = () => {
+	const parts = pathname.split('/').filter(Boolean);
+	parts.pop();
+
+	return '/' + parts.join('/') || '/';
+};
+
+const isPage = pathname !== '/';
 
 interface Props {
 	title?: string;
@@ -51,9 +64,20 @@ interface Props {
 			<Container class="mt-3 mb-5">
 				<slot name="left" slot="left" />
 				<main
-					class="bg-ctp-mantle px-3 py-2 rounded-lg border-2 border-dashed border-ctp-pink drop-shadow-2xl drop-shadow-crust"
+					class:list={[
+						'bg-ctp-mantle px-3 py-2 rounded-lg border-2 border-dashed border-ctp-pink drop-shadow-2xl drop-shadow-crust',
+						body,
+					]}
 					transition:animate="fade"
 				>
+					{
+						isPage && (
+							<div class="mb-3">
+								<IconLink icon="chevron-left" url={getBackPath()} text="go back" />
+							</div>
+						)
+					}
+
 					<slot />
 				</main>
 				<slot name="right" slot="right" />

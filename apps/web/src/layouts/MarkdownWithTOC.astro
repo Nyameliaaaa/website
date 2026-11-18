@@ -1,9 +1,8 @@
 ---
 import TableOfContents from '@client/TableOfContents.vue';
-import BackLink from '@components/link/BackLink.astro';
 import MarkdownProse from '@components/formatting/MarkdownProse.astro';
 import Base from '@layouts/Base.astro';
-import { pageSubtitle, pageTitle, text } from '@lib/classes';
+import { pageSubtitle, pageTitle } from '@lib/classes';
 import type { MarkdownHeading } from 'astro';
 
 interface Props {
@@ -21,8 +20,6 @@ const { title, headings, description } = Astro.props;
 	</aside>
 	<section>
 		<div class="mb-2">
-			<BackLink />
-
 			<h1 class={pageTitle}>{title}</h1>
 			<p class={pageSubtitle}>{description}</p>
 

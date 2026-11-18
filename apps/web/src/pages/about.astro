@@ -1,10 +1,9 @@
 ---
 import Divider from '@components/formatting/Divider.astro';
 import LinkSection from '@components/formatting/LinkSection.astro';
-import BackLink from '@components/link/BackLink.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import Base from '@layouts/Base.astro';
-import { body, heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
+import { heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
 import { meLinks } from '@lib/data';
 
 const aboutTitle = 'about';
@@ -12,8 +11,6 @@ const aboutSub = 'this page is kinda about me AND this site but this site IS me 
 ---
 
 <Base title={aboutTitle} description={aboutSub}>
-	<BackLink />
-
 	<div class="flex max-xl:flex-col gap-4">
 		<article>
 			<div class="mb-4">
@@ -35,7 +32,7 @@ const aboutSub = 'this page is kinda about me AND this site but this site IS me 
 
 				<section>
 					<h3 class={subHeading}>tastes</h3>
-					<ul class:list={['list-disc list-inside mt-1', body]}>
+					<ul class="list-disc list-inside mt-1">
 						<li>
 							<WrapLink href="/music">music</WrapLink>
 						</li>
@@ -61,7 +58,7 @@ const aboutSub = 'this page is kinda about me AND this site but this site IS me 
 					<h2 class={heading}>beliefs</h2>
 					<p class={leadText}>i have opinions and i WILL be sharing them</p>
 				</div>
-				<p class={body}>
+				<p>
 					i think the web should be weird, free, open, federated, and YOURS. i am an advocate for internet privacy,
 					federated protocols, and libre software; as you should be able to own your devices, your website, your feed,
 					your communications, your media, your source code, and your files, free from any glowie or corporate
@@ -78,7 +75,7 @@ const aboutSub = 'this page is kinda about me AND this site but this site IS me 
 					<h2 class={heading}>more</h2>
 					<p class={leadText}>i am a little silly :3</p>
 				</div>
-				<ul class:list={['list-disc list-inside', body]}>
+				<ul class="list-disc list-inside mt-1">
 					<li>
 						<WrapLink href="/music">music</WrapLink>
 					</li>
