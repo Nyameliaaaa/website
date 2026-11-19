@@ -1,9 +1,9 @@
 <template>
 	<div class="mt-3">
-		<AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
+		<AsyncState :loading="loading" :error="error" :empty="data?.data.length === 0">
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
 				<a
-					v-for="artist in data"
+					v-for="artist in data?.data"
 					:href="artist.url"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -19,12 +19,12 @@
 </template>
 
 <script setup lang="ts">
-import type { GETLastFMArtist } from '@website/lib';
+import type { GETLastFMArtists } from '@website/lib';
 import AsyncState from '@client/components/AsyncState.vue';
 import { useWorker } from '@client/composables/useWorker';
 import { onMounted } from 'vue';
 
-const { loading, error, data, useFetch } = useWorker<GETLastFMArtist[]>('lastfm/artists');
+const { loading, error, data, useFetch } = useWorker<GETLastFMArtists>('lastfm/artists');
 
 onMounted(() => useFetch());
 </script>

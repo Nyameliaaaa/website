@@ -1,6 +1,13 @@
 import { LASTFM_BASE, LASTFM_USER, TTL } from '@/lib/consts';
 import { cachedFetch, getAlbumImage, getTrackImage } from '@/lib/lastFM';
-import { GETLastFMAlbum, GETLastFMArtist, GETLastFMRecent } from '@website/lib';
+import {
+	LastFMAlbum,
+	GETLastFMArtists,
+	GETLastFMRecent,
+	LastFMArtist,
+	LastFMRecent,
+	GETLastFMAlbums,
+} from '@website/lib';
 import { Hono } from 'hono';
 
 const lastFM = new Hono<{ Bindings: Cloudflare.Env }>();
@@ -13,22 +20,24 @@ lastFM.get('/recent', async c => {
 		TTL.LASTFM_RECENT
 	);
 
-	const clean: GETLastFMRecent[] = await Promise.all(
-		data.recenttracks.track.map(
-			async (track: any) =>
-				({
-					name: track.name,
-					artist: track.artist['#text'],
-					album: track.album['#text'],
-					image: await getTrackImage(
-						track.artist['#text'],
-						track.album['#text'] || track.album['#text'] === '' ? track.name : track.album,
-						track.image.find((i: any) => i.size === 'extralarge')?.['#text']
-					),
-					url: track.url,
-				}) as GETLastFMRecent
-		)
-	);
+	const clean: GETLastFMRecent = {
+		data: await Promise.all(
+			data.recenttracks.track.map(
+				async (track: any) =>
+					({
+						name: track.name,
+						artist: track.artist['#text'],
+						album: track.album['#text'],
+						image: await getTrackImage(
+							track.artist['#text'],
+							track.album['#text'] || track.album['#text'] === '' ? track.name : track.album,
+							track.image.find((i: any) => i.size === 'extralarge')?.['#text']
+						),
+						url: track.url,
+					}) as LastFMRecent
+			)
+		),
+	};
 
 	return c.json(clean);
 });
@@ -41,14 +50,16 @@ lastFM.get('/artists', async c => {
 		TTL.LASTFM_TOP
 	);
 
-	const clean: GETLastFMArtist[] = data.topartists.artist.map(
-		(artist: any) =>
-			({
-				name: artist.name,
-				url: artist.url,
-				playcount: artist.playcount,
-			}) as GETLastFMArtist
-	);
+	const clean: GETLastFMArtists = {
+		data: data.topartists.artist.map(
+			(artist: any) =>
+				({
+					name: artist.name,
+					url: artist.url,
+					playcount: artist.playcount,
+				}) as LastFMArtist
+		),
+	};
 
 	return c.json(clean);
 });
@@ -61,22 +72,24 @@ lastFM.get('/albums', async c => {
 		TTL.LASTFM_TOP
 	);
 
-	const clean: GETLastFMAlbum[] = await Promise.all(
-		data.topalbums.album.map(
-			async (album: any) =>
-				({
-					name: album.name,
-					artist: album.artist.name,
-					playcount: album.playcount,
-					image: await getAlbumImage(
-						album.artist.name,
-						album.name,
-						album.image.find((i: any) => i.size === 'extralarge')?.['#text']
-					),
-					url: album.url,
-				}) as GETLastFMAlbum
-		)
-	);
+	const clean: GETLastFMAlbums = {
+		data: await Promise.all(
+			data.topalbums.album.map(
+				async (album: any) =>
+					({
+						name: album.name,
+						artist: album.artist.name,
+						playcount: album.playcount,
+						image: await getAlbumImage(
+							album.artist.name,
+							album.name,
+							album.image.find((i: any) => i.size === 'extralarge')?.['#text']
+						),
+						url: album.url,
+					}) as LastFMAlbum
+			)
+		),
+	};
 
 	return c.json(clean);
 });

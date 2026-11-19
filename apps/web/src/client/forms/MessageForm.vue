@@ -44,13 +44,13 @@ import { type POSTMessage } from '@website/lib';
 
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
-import { contactSchema } from '@website/lib';
+import { messageSchema } from '@website/lib';
 import { useFormSubmit } from '@client/composables/useFormSubmit';
 
 const { mutate } = useMutation<POSTMessage>('message');
 
 const { handleSubmit } = useForm({
-	validationSchema: toTypedSchema(contactSchema),
+	validationSchema: toTypedSchema(messageSchema),
 	initialValues: {
 		name: '',
 		email: '',

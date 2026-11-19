@@ -59,7 +59,6 @@
 
 		<h2 :class="`${subHeading} mb-2`">preview</h2>
 		<GuestbookEntry :entry="entry" />
-		<p class="text-ctp-text">{{ computed(() => JSON.stringify(values)) }}</p>
 	</form>
 </template>
 

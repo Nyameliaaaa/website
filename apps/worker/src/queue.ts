@@ -12,7 +12,6 @@ import { COLOR_VALUES } from '@website/lib';
 import { ButtonStyle } from 'discord-api-types/payloads/v10';
 import { Routes } from 'discord-api-types/rest/v10';
 import { COMPONENTS_V2, CONTACT_CHANNEL_ID, NEW_GUESTBOOK_ENTRY_CHANNEL_ID, REPORT_CHANNEL_ID } from './lib/consts';
-import { Bindings } from 'hono/types';
 
 export const queue: ExportedHandlerQueueHandler<Cloudflare.Env, Packet> = async (batch, env) => {
 	const rest = new REST({ version: '10' }).setToken(env.DISCORD_TOKEN);

@@ -1,6 +1,6 @@
 <template>
 	<div class="mt-3">
-		<AsyncState :loading="loading" :error="error" :empty="data?.length === 0">
+		<AsyncState :loading="loading" :error="error" :empty="data?.data.length === 0">
 			<MusicGrid v-if="data" :data="migrateDataFormat(data)" />
 		</AsyncState>
 	</div>
@@ -18,8 +18,8 @@ const props = defineProps<{
 	preview?: boolean;
 }>();
 
-const migrateDataFormat = (data: GETLastFMRecent[]): MusicGridItem[] => {
-	return data.map(track => ({
+const migrateDataFormat = (data: GETLastFMRecent): MusicGridItem[] => {
+	return data.data.map(track => ({
 		name: track.name,
 		image: track.image,
 		url: track.url,
@@ -32,7 +32,7 @@ const migrateDataFormat = (data: GETLastFMRecent[]): MusicGridItem[] => {
 	}));
 };
 
-const { loading, error, data, useFetch } = useWorker<GETLastFMRecent[]>('lastfm/recent');
+const { loading, error, data, useFetch } = useWorker<GETLastFMRecent>('lastfm/recent');
 
-onMounted(() => useFetch({ handler: data => (props.preview ? data.slice(0, 5) : data) }));
+onMounted(() => useFetch({ handler: data => (props.preview ? { data: data.data.slice(0, 5) } : data) }));
 </script>

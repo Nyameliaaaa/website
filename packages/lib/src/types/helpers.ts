@@ -3,3 +3,7 @@ export type SerializedDate<T> = {
 };
 
 export type IsNullable<T> = T | null | undefined;
+
+export type GETArray<T> = {
+	data: T[];
+};

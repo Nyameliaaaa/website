@@ -12,6 +12,7 @@ rss.get('/statuses.xml', async c => {
 	const entries = await db.select().from(statuses).orderBy(desc(statuses.createdAt));
 	const xml = [
 		'<?xml version="1.0" encoding="UTF-8"?>',
+		'<?xml-stylesheet type="text/xsl" href="https://nyamelia.is-immensely.gay/feed.xsl" ?>',
 		'<rss version="2.0">',
 		'	<channel>',
 		`		<title>${STATUSES_RSS_TITLE}</title>`,
