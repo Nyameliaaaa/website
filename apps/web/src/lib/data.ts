@@ -8,7 +8,7 @@ export const headerLinks = [
 
 export const footerUrls = [
 	{ url: 'https://git.gay/nyamelia/website', text: 'view source', icon: 'git' },
-	{ url: '/rss.xml', text: 'rss feed', icon: 'rss' },
+	{ url: '/atom.xml', text: 'atom feed', icon: 'rss' },
 	{ url: '/guestbook', text: 'guestbook', icon: 'pencil-box-multiple' },
 	{ url: '/message', text: 'message', icon: 'message' },
 	{ url: '/pixelies', text: 'the 88x31 museum', icon: 'link-box-variant' },
