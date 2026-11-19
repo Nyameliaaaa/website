@@ -1,0 +1,6 @@
+# ssh public keys for: amelia winters
+# last updated: 2026-11-19
+# website: https://nyamelia.is-immensely.gay/keys/ssh.txt
+
+# purpose: git.gay + github.com authentication and commit signing (katana 15 hx)
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIf9B68ob4OO6YJhYmSLSS9GbjtyTE5/TejaP64tzJbW nyameliaaaa@proton.me

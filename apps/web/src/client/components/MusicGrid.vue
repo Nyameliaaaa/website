@@ -11,10 +11,11 @@
 			rel="noopener noreferrer"
 			:class="[
 				'group hover:border-ctp-pink focus:ring-ctp-pink focus:ring-offset-ctp-base text-ctp-text relative block aspect-square overflow-hidden rounded-lg border-2 border-transparent transition duration-300 focus:ring-2 focus:outline-none',
-				activeItem === `${index}/${item.url}` ? 'is-active' : ''
+				activeItem === `${index}/${item.url}` ? 'is-active' : '',
 			]"
 			:aria-label="item.cardItem?.aria ?? ''"
 			@click="handleClick($event, item.url, index)"
+			:key="`${index}/${item.url}`"
 		>
 			<img
 				v-if="item.image"

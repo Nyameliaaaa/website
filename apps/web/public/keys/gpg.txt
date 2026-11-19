@@ -1,10 +1,6 @@
-# public keys for: amelia rose
-# last updated: 2026-05-09
-# website: https://nyamelia.is-immensely.gay/pubkeys.txt
-
-## ssh public keys
-# purpose: git.gay + github authentication and commit signing (katana 15 hx)
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIf9B68ob4OO6YJhYmSLSS9GbjtyTE5/TejaP64tzJbW nyameliaaaa@proton.me
+# gpg public keys for: amelia winters
+# last updated: 2026-11-19
+# website: https://nyamelia.is-immensely.gay/keys/gpg.txt
 
 ## gpg public keys
 # purpose: keyoxide

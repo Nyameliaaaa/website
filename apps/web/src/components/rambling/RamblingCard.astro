@@ -2,7 +2,7 @@
 import WrapLink from '@components/link/WrapLink.astro';
 import RamblingDate from '@components/rambling/RamblingDate.astro';
 import Tag from '@components/rambling/Tag.astro';
-import { heading, leadText, link } from '@lib/classes';
+import { leadText, link, ramblingHeader } from '@lib/classes';
 import { type CollectionEntry } from 'astro:content';
 
 type Props = { rambling: CollectionEntry<'ramblings'> };
@@ -11,17 +11,21 @@ const { rambling } = Astro.props;
 
 <li class="rounded-lg py-2">
 	<article transition:name={rambling.id}>
-		<div class="mb-2">
-			<WrapLink href={`/ramblings/${rambling.id}/`}>
-				<h2 class:list={[heading, link]}>
+		<div class="mb-2.5">
+			<WrapLink class="mb-1.25" href={`/ramblings/${rambling.id}/`}>
+				<h2 class:list={[ramblingHeader, link]}>
 					{rambling.data.title}
 				</h2>
 			</WrapLink>
+			<RamblingDate {...rambling} />
+		</div>
+
+		<div class="mb-1 pl-2 border-l-2 border-ctp-surface0">
 			<p class={leadText}>
 				{rambling.data.description}
 			</p>
 		</div>
-		<RamblingDate {...rambling} />
+
 		{
 			rambling.data.tags && (
 				<div class="flex flex-row flex-wrap gap-2 mt-2">

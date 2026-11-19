@@ -16,7 +16,7 @@ const { title, headings, description } = Astro.props;
 
 <Base title={title} description={description}>
 	<aside slot="left" class:list={['max-xl:hidden']}>
-		<TableOfContents client:only headings={headings} />
+		<TableOfContents client:load headings={headings} />
 	</aside>
 	<section>
 		<div class="mb-2">
@@ -27,7 +27,7 @@ const { title, headings, description } = Astro.props;
 		</div>
 
 		<aside class="xl:hidden w-full">
-			<TableOfContents client:only headings={headings} />
+			<TableOfContents client:load headings={headings} />
 		</aside>
 		<MarkdownProse><slot /></MarkdownProse>
 	</section>

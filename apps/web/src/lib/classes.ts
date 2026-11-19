@@ -20,6 +20,7 @@ export const text = cva('', {
 			lg: 'text-lg',
 			xl: 'text-xl',
 			['2xl']: 'text-2xl',
+			['3xl']: 'text-[1.75rem]',
 			['4xl']: 'text-4xl',
 		},
 		font: {
@@ -55,11 +56,13 @@ export const text = cva('', {
 			relaxed: 'leading-relaxed',
 		},
 		accentOutline: {
-			true: outlineLg,
+			lg: outlineLg,
 			md: outlineMd,
 		},
 	},
 });
+
+// titles
 
 export const websiteTitle = text({
 	font: 'display',
@@ -67,7 +70,7 @@ export const websiteTitle = text({
 	color: 'accent',
 	size: '2xl',
 	hover: 'underline',
-	accentOutline: true,
+	accentOutline: 'lg',
 });
 
 export const pageTitle = text({
@@ -88,6 +91,7 @@ export const pageSubtitle = text({
 	leading: 'relaxed',
 });
 
+// headings
 export const heading = text({ font: 'display', weight: 'semibold', size: '2xl', color: 'accent' });
 export const subHeading = text({
 	font: 'display',
@@ -106,14 +110,27 @@ export const leadText = text({
 	color: 'secondary',
 });
 
+// prose
 export const body = text({ font: 'sans', weight: 'normal', size: 'base', leading: 'relaxed', color: 'primary' });
 export const link = text({ color: 'link', hover: 'underline', accentOutline: 'md' });
 export const caption = text({ size: 'sm', color: 'tertiary', weight: 'normal' });
 
+// forms
 export const formFieldLabel = text({ color: 'secondary', weight: 'medium' });
 export const formFieldDesc = text({ size: 'sm', color: 'tertiary' });
 export const formFieldRequired = text({ color: 'accent', weight: 'medium' });
 export const formFieldOptional = text({ color: 'tertiary', weight: 'medium' });
+
+// ramblings
+export const ramblingHeader = text({
+	font: 'display',
+	weight: 'semibold',
+	size: '3xl',
+	color: 'accent',
+	tracking: 'tight',
+});
+export const ramblingIcon = text({ color: 'accent' });
+export const ramblingLabel = text({ color: 'secondary' });
 
 export const iconButton = text({
 	color: 'tertiary',
