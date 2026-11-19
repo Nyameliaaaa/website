@@ -11,9 +11,9 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^5.0.4",
-		"@astrojs/rss": "^4.0.18",
-		"@astrojs/vue": "^6.0.1",
+		"@astrojs/mdx": "^8.1.6",
+		"@astrojs/rss": "^4.0.19",
+		"@astrojs/vue": "^7.1.6",
 		"@headlessui/vue": "^1.7.23",
 		"@iconify-json/mdi": "^1.2.3",
 		"@iconify/vue": "^5.0.0",
@@ -21,7 +21,7 @@
 		"@vee-validate/zod": "^4.15.1",
 		"@vueuse/core": "^15.0.0",
 		"@website/lib": "workspace:*",
-		"astro": "^6.1.9",
+		"astro": "^7.4.13",
 		"astro-icon": "^1.1.5",
 		"cva": "npm:class-variance-authority@^0.7.1",
 		"reading-time": "^1.5.0",
@@ -34,7 +34,8 @@
 	"devDependencies": {
 		"@catppuccin/tailwindcss": "^1.0.0",
 		"@tailwindcss/forms": "^0.5.11",
-		"@tailwindcss/typography": "^0.5.19"
+		"@tailwindcss/typography": "^0.5.19",
+		"typescript": "^6.0.3"
 	},
 	"overrides": {
 		"vite": "^7"

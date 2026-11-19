@@ -12,6 +12,7 @@
 			"@client/*": ["./src/client/*"],
 			"@lib/*": ["./src/lib/*"],
 			"@/*": ["./src/*"]
-		}
+		},
+		"types": ["astro/client"]
 	}
 }

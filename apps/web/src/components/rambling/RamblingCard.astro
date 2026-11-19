@@ -5,7 +5,9 @@ import Tag from '@components/rambling/Tag.astro';
 import { leadText, link, ramblingHeader } from '@lib/classes';
 import { type CollectionEntry } from 'astro:content';
 
-type Props = { rambling: CollectionEntry<'ramblings'> };
+interface Props {
+	rambling: CollectionEntry<'ramblings'>;
+}
 const { rambling } = Astro.props;
 ---
 
