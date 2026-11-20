@@ -4,8 +4,9 @@ import FormattedDate from '@components/formatting/FormattedDate.astro';
 import IconLink from '@components/link/IconLink.astro';
 import PixelieImg from '@components/link/PixelieImg.astro';
 import WrapLink from '@components/link/WrapLink.astro';
+import { footerLinks } from '@data/navigationLinks';
+import { footerPixelies } from '@data/pixelies';
 import { caption } from '@lib/classes';
-import { footerPixelies, footerUrls } from '@lib/data';
 import { version } from 'vue';
 ---
 
@@ -49,7 +50,7 @@ import { version } from 'vue';
 		<div>
 			<div class="grid grid-cols-2 lg:grid-cols-2 xl:gap-3 select-none">
 				{
-					footerUrls.map(url => (
+					footerLinks.map(url => (
 						<div class="mb-2">
 							<IconLink {...url} />
 						</div>

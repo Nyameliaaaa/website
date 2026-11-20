@@ -3,9 +3,9 @@ import Divider from '@components/formatting/Divider.astro';
 import LinkSection from '@components/formatting/LinkSection.astro';
 import IconButton from '@components/link/IconButton.astro';
 import WrapLink from '@components/link/WrapLink.astro';
+import { contactLinks } from '@data/infoLinks';
 import Base from '@layouts/Base.astro';
-import { heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
-import { contactLinks } from '@lib/data';
+import { caption, heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
 
 const contactTitle = 'contact';
 const contactSub =
@@ -41,20 +41,28 @@ const contactSub =
 
 	<section>
 		<h2 class={heading}>public keys</h2>
-		<p class={leadText}>
-			you can find my public keys <WrapLink href="/pubkeys.txt">here</WrapLink>
-		</p>
-	</section>
+		<div class="my-2">
+			<h3 class={subHeading}>gpg</h3>
+			<p class={caption}>used for signing and encrypting emails, keyoxide, etc</p>
 
-	<Divider />
+			<p class="mt-1">you can find my gpg keys <WrapLink href="/keys/gpg.txt">here</WrapLink></p>
+		</div>
+		<div class="my-2">
+			<h3 class={subHeading}>ssh</h3>
+			<p class={caption}>used for signing commits and authenticating with forges or connecting to a server</p>
 
-	<section>
-		<h2 class={heading}>keyoxide</h2>
-		<p class={leadText}>
-			you can find my keyoxide <WrapLink href="https://keyoxide.org/09F4E5FAF8AB59385117ABE0204D9FACA1132556 "
-				>here</WrapLink
-			>
-		</p>
+			<p class="mt-1">you can find my ssh keys <WrapLink href="/keys/ssh.txt">here</WrapLink></p>
+		</div>
+		<div class="my-2">
+			<h3 class={subHeading}>keyoxide</h3>
+			<p class={caption}>used for verifying authenticity of my profiles using gpg</p>
+
+			<p class="mt-1">
+				you can find my keyoxide <WrapLink href="https://keyoxide.org/09F4E5FAF8AB59385117ABE0204D9FACA1132556 "
+					>here</WrapLink
+				>
+			</p>
+		</div>
 	</section>
 
 	<Divider />
@@ -74,10 +82,10 @@ const contactSub =
 		<section class="my-3">
 			<h3 class={subHeading}>matrix</h3>
 			<p>
-				<a
+				<WrapLink
 					href="https://matrix.to/#/@nyameliaaaa:matrix.org"
 					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
-					>@nyameliaaaa:matrix.org</a
+					>@nyameliaaaa:matrix.org</WrapLink
 				>
 			</p>
 		</section>
@@ -85,10 +93,10 @@ const contactSub =
 		<section class="my-3">
 			<h3 class={subHeading}>discord</h3>
 			<p>
-				<a
+				<WrapLink
 					href="https://discord.com/users/348591272476540928"
 					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
-					>@nyameliaaaa</a
+					>@nyameliaaaa</WrapLink
 				> thoo id prefer you use matrix instead
 			</p>
 		</section>
@@ -110,23 +118,21 @@ const contactSub =
 		<h2 class={heading}>git forge</h2>
 		<section class="my-3">
 			<h3 class={subHeading}>git.gay</h3>
-			<p
-				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
+			<WrapLink
+				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 mt-3 w-fit"
+				href="https://git.gay/nyamelia">@nyamelia</WrapLink
 			>
-				<WrapLink href="https://git.gay/nyamelia">@nyamelia</WrapLink>
-			</p>
 			<p>primary git forge</p>
 		</section>
 		<section class="my-3">
 			<h3 class={subHeading}>github</h3>
-			<p
+			<WrapLink
 				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
+				href="https://github.com/nyameliaaaa">@nyameliaaaa</WrapLink
 			>
-				<WrapLink href="https://github.com/nyameliaaaa">@nyameliaaaa</WrapLink>
-			</p>
 			<p>
-				used only as a mirror and for contributing to projects still on github, <a
-					href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</a
+				used only as a mirror and for contributing to projects still on github, <WrapLink
+					href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</WrapLink
 				>
 			</p>
 		</section>

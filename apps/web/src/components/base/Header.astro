@@ -1,7 +1,7 @@
 ---
 import WrapLink from '@components/link/WrapLink.astro';
-import { websiteTitle, text } from '@lib/classes';
-import { headerLinks } from '@lib/data';
+import { headerLinks } from '@data/navigationLinks';
+import { text, websiteTitle } from '@lib/classes';
 
 const isActiveURL = (href: string) => {
 	const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
@@ -39,7 +39,7 @@ const isActiveURL = (href: string) => {
 									hover: 'underline',
 									size: 'lg',
 									class: 'px-2',
-									accentOutline: true,
+									accentOutline: 'md',
 								})}
 							>
 								{url.name}

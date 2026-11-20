@@ -11,6 +11,7 @@
 			"@layouts/*": ["./src/layouts/*"],
 			"@client/*": ["./src/client/*"],
 			"@lib/*": ["./src/lib/*"],
+			"@data/*": ["./src/data/*"],
 			"@/*": ["./src/*"]
 		},
 		"types": ["astro/client"]

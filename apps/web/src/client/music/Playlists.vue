@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import type { MusicGridItem, Playlist } from '@lib/types';
 import MusicGrid from '@client/components/MusicGrid.vue';
-import { playlists } from '@lib/data';
+import { playlists } from '@data/playlists';
 
 const migrateDataFormat = (data: Playlist[]): MusicGridItem[] => {
 	return data.map(playlist => ({

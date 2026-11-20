@@ -2,10 +2,10 @@
 import MarkdownProse from '@components/formatting/MarkdownProse.astro';
 import PixelieImg from '@components/link/PixelieImg.astro';
 import WrapLink from '@components/link/WrapLink.astro';
+import { pixelies } from '@data/pixelies';
+import Page from '@layouts/Page.astro';
 import { heading, subHeading } from '@lib/classes';
-import { pixelies } from '@lib/data';
 import { codeToHtml } from 'shiki';
-import Page from '../layouts/Page.astro';
 
 const html = await codeToHtml(
 	[
