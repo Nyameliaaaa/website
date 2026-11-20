@@ -1,7 +1,12 @@
 ---
+import RamblingTagSelector from '@client/RamblingTagSelector.vue';
+import Divider from '@components/formatting/Divider.astro';
+import IconLink from '@components/link/IconLink.astro';
 import Rambling from '@components/rambling/RamblingCard.astro';
 import Page from '@layouts/Page.astro';
-import { text } from '@lib/classes';
+import { caption, subHeading } from '@lib/classes';
+import { RAMBLINGS_RSS_DESCRIPTION, RAMBLINGS_RSS_TITLE } from '@lib/consts';
+import { getTagList } from '@lib/tags';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -21,10 +26,17 @@ export async function getStaticPaths() {
 const { tag, ramblings } = Astro.props;
 ---
 
-<Page title="amelia's ramblings">
-	<span slot="description"
-		>viewing details for tag <span class={text({ weight: 'semibold', color: 'accent' })}>{tag}</span></span
-	>
+<Page title={RAMBLINGS_RSS_TITLE} description={RAMBLINGS_RSS_DESCRIPTION}>
+	<IconLink text="subscribe via rss" icon="rss" url="/atom.xml" />
+	<Divider />
+	<section>
+		<h2 class:list={[subHeading, 'mb-2']}>sort by tags</h2>
+		<RamblingTagSelector current={`ramblings/tags/${tag}`} tags={await getTagList()} client:load />
+		<p class:list={[caption, 'mt-2']}>
+			showing ramblings tagged with <span class="text-ctp-pink font-medium">#{tag}</span>
+		</p>
+	</section>
+	<Divider />
 	<section>
 		<ul class="flex flex-col gap-2">
 			{ramblings.map(rambling => <Rambling rambling={rambling} />)}

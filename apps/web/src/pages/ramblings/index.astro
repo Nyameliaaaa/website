@@ -1,11 +1,13 @@
 ---
-import { RAMBLINGS_RSS_DESCRIPTION, RAMBLINGS_RSS_TITLE } from '@lib/consts';
+import RamblingTagSelector from '@client/RamblingTagSelector.vue';
+import Divider from '@components/formatting/Divider.astro';
 import IconLink from '@components/link/IconLink.astro';
 import Rambling from '@components/rambling/RamblingCard.astro';
 import Page from '@layouts/Page.astro';
+import { caption, subHeading } from '@lib/classes';
+import { RAMBLINGS_RSS_DESCRIPTION, RAMBLINGS_RSS_TITLE } from '@lib/consts';
+import { getTagList } from '@lib/tags';
 import { getCollection } from 'astro:content';
-import { caption } from '@lib/classes';
-import Divider from '@components/formatting/Divider.astro';
 
 const ramblings = (await getCollection('ramblings'))
 	.filter(a => !a.data.draft)
@@ -13,11 +15,11 @@ const ramblings = (await getCollection('ramblings'))
 ---
 
 <Page title={RAMBLINGS_RSS_TITLE} description={RAMBLINGS_RSS_DESCRIPTION}>
-	<div class="flex flex-col lg:flex-row gap-3 lg:gap-2 lg:items-center">
-		<IconLink text="view by tags" icon="label" url="/ramblings/tags/" />
-		<p class:list={[caption, 'max-lg:hidden']}>•</p>
-		<IconLink text="subscribe via rss" icon="rss" url="/rss.xml" />
-	</div>
+	<IconLink text="subscribe via rss" icon="rss" url="/atom.xml" />
+	<Divider />
+	<h2 class:list={[subHeading, 'mb-2']}>sort by tags</h2>
+	<RamblingTagSelector current="ramblings" tags={await getTagList()} client:load />
+	<p class:list={[caption, 'mt-2']}>showing all ramblings</p>
 	<Divider />
 	<section>
 		<ul class="flex flex-col md:grid-cols-2 gap-2">
