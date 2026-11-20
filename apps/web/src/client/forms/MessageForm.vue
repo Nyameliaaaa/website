@@ -27,12 +27,7 @@
 			<Field name="message" label="message" placeholder="what do u wanna say" is-text-area required />
 		</div>
 
-		<SubmitButton
-			:mutation-status="mutationStatus"
-			action-text="send :3"
-			loading-text="sending :3"
-			done-text="sent! sending u back in a bit ^^"
-		/>
+		<SubmitButton :mutation-status="mutationStatus" action-text="send :3" loading-text="sending :3" done-text="sent!" />
 	</form>
 </template>
 
@@ -49,7 +44,7 @@ import { useFormSubmit } from '@client/composables/useFormSubmit';
 
 const { mutate } = useMutation<POSTMessage>('message');
 
-const { handleSubmit } = useForm({
+const { handleSubmit, resetForm } = useForm({
 	validationSchema: toTypedSchema(messageSchema),
 	initialValues: {
 		name: '',
@@ -61,8 +56,9 @@ const { handleSubmit } = useForm({
 const { status: mutationStatus, execute } = useFormSubmit<POSTMessage>(values => mutate(values), {
 	onSuccess: () => {
 		setTimeout(() => {
-			window.location.href = '/contact';
+			resetForm();
 		}, 3000);
+		mutationStatus.value = 'idle';
 	},
 });
 

@@ -1,81 +1,29 @@
 ---
+import MessageForm from '@client/forms/MessageForm.vue';
 import Divider from '@components/formatting/Divider.astro';
 import LinkSection from '@components/formatting/LinkSection.astro';
-import IconButton from '@components/link/IconButton.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import { contactLinks } from '@data/infoLinks';
-import Base from '@layouts/Base.astro';
-import { caption, heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
-
-const contactTitle = 'contact';
-const contactSub =
-	'locations where the cryptid known as amelia has been found on the interwebs. reports say she was barking, or being barked at, idk';
+import Page from '@layouts/Page.astro';
+import { caption, heading, leadText, link, subHeading } from '@lib/classes';
 ---
 
-<Base title={contactTitle} description={contactSub}>
-	<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
-		<div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
-			<img
-				src="/about/pfp.jpg"
-				alt="amelia :3"
-				class="border-2 border-dashed border-ctp-mauve aspect-square max-h-48"
-			/>
-		</div>
-		<section class="order-last md:order-first">
-			<div class="mb-6">
-				<h1 class={pageTitle}>{contactTitle}</h1>
-				<p class={pageSubtitle}>{contactSub}</p>
-			</div>
-
-			<section>
-				<h2 class={heading}>message</h2>
-				<p class={leadText}>you can message me through this site</p>
-				<div class="mt-2">
-					<IconButton text="message" icon="chevron-right" url="/message" />
-				</div>
-			</section>
-		</section>
-	</div>
-
+<Page
+	title="contact"
+	description="locations where the cryptid known as amelia has been found on the interwebs. reports say she was barking, or being barked at, idk"
+>
 	<Divider />
-
 	<section>
-		<h2 class={heading}>public keys</h2>
-		<div class="my-2">
-			<h3 class={subHeading}>gpg</h3>
-			<p class={caption}>used for signing and encrypting emails, keyoxide, etc</p>
-
-			<p class="mt-1">you can find my gpg keys <WrapLink href="/keys/gpg.txt">here</WrapLink></p>
-		</div>
-		<div class="my-2">
-			<h3 class={subHeading}>ssh</h3>
-			<p class={caption}>used for signing commits and authenticating with forges or connecting to a server</p>
-
-			<p class="mt-1">you can find my ssh keys <WrapLink href="/keys/ssh.txt">here</WrapLink></p>
-		</div>
-		<div class="my-2">
-			<h3 class={subHeading}>keyoxide</h3>
-			<p class={caption}>used for verifying authenticity of my profiles using gpg</p>
-
-			<p class="mt-1">
-				you can find my keyoxide <WrapLink href="https://keyoxide.org/09F4E5FAF8AB59385117ABE0204D9FACA1132556 "
-					>here</WrapLink
-				>
-			</p>
-		</div>
-	</section>
-
-	<Divider />
-
-	<section>
-		<h2 class={heading}>contact</h2>
+		<h2 class={heading}>reach me</h2>
 		<p class={leadText}>how to message me 101</p>
 
 		<section class="my-3">
 			<h3 class={subHeading}>mail</h3>
 			<p>
 				<span class="bg-ctp-crust px-2 rounded-md text-ctp-pink">nyameliaaaa (AT) proton (DOT) me</span>. for non-proton
-				gpg, see <span class="bg-ctp-crust px-2 rounded-md">public keys</span>
+				gpg, see <a class="bg-ctp-crust px-2 rounded-md hover:underline hover:underline-offset-2" href="#public-keys"
+					>public keys</a
+				>
 			</p>
 		</section>
 
@@ -91,25 +39,64 @@ const contactSub =
 		</section>
 
 		<section class="my-3">
+			<h3 class={subHeading}>signal</h3>
+			<p>
+				<WrapLink
+					href="https://signal.me/#eu/PEyeUlAAQRMJ2kYTCwDPexYYMs6DHWLILEOeRVipRMLc9_peu9dI0Y3cd3Ey2oxw"
+					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
+					>@nyamelia.64</WrapLink
+				>
+			</p>
+		</section>
+
+		<section class="my-3">
 			<h3 class={subHeading}>discord</h3>
 			<p>
 				<WrapLink
 					href="https://discord.com/users/348591272476540928"
 					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
 					>@nyameliaaaa</WrapLink
-				> thoo id prefer you use matrix instead
+				> thoo id prefer you use something else instead
 			</p>
-		</section>
-
-		<section class="my-3">
-			<h3 class={subHeading}>signal</h3>
-			<p>i don't give out my signal username unless i vibe with you tbh</p>
 		</section>
 
 		<section class="my-3">
 			<h3 class={subHeading}>telegram</h3>
 			<p>please seek immediate help. and possibly vodka</p>
 		</section>
+	</section>
+
+	<Divider />
+
+	<section>
+		<h2 class={heading}>message ^^</h2>
+		<p class={leadText}>waow u can talk to the amy???? (real)</p>
+		<div class="mt-2">
+			<MessageForm client:load />
+		</div>
+	</section>
+
+	<Divider />
+
+	<section>
+		<h2 class={heading} id="public-keys">public keys</h2>
+		<p class={leadText}>-----BEGIN PUBLIC KEY BLOCK-----</p>
+		<div class="my-2">
+			<h3 class={subHeading}><WrapLink href="/keys/gpg.txt" class:list={[subHeading, link]}>gpg ↗</WrapLink></h3>
+			<p class={caption}>signing and encrypting emails, keyoxide, etc</p>
+		</div>
+		<div class="my-2">
+			<h3 class={subHeading}><WrapLink href="/keys/ssh.txt" class:list={[subHeading, link]}>ssh ↗</WrapLink></h3>
+			<p class={caption}>signing commits, authenticating with forges, or connecting to a server</p>
+		</div>
+		<div class="my-2">
+			<h3 class={subHeading}>
+				<WrapLink href="https://keyoxide.org/09F4E5FAF8AB59385117ABE0204D9FACA1132556" class:list={[subHeading, link]}
+					>keyoxide ↗</WrapLink
+				>
+			</h3>
+			<p class={caption}>verifying authenticity of my profiles using gpg</p>
+		</div>
 	</section>
 
 	<Divider />
@@ -122,7 +109,7 @@ const contactSub =
 				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 mt-3 w-fit"
 				href="https://git.gay/nyamelia">@nyamelia</WrapLink
 			>
-			<p>primary git forge</p>
+			<p class={caption}>primary git forge</p>
 		</section>
 		<section class="my-3">
 			<h3 class={subHeading}>github</h3>
@@ -130,7 +117,7 @@ const contactSub =
 				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
 				href="https://github.com/nyameliaaaa">@nyameliaaaa</WrapLink
 			>
-			<p>
+			<p class={caption}>
 				used only as a mirror and for contributing to projects still on github, <WrapLink
 					href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</WrapLink
 				>
@@ -149,4 +136,4 @@ const contactSub =
 		</div>
 		<LinkSection links={contactLinks} />
 	</section>
-</Base>
+</Page>

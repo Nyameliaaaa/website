@@ -9,7 +9,7 @@
 			:type="isTextArea ? undefined : type"
 			:class="[
 				'formField',
-				outlineLg,
+				outlineMd,
 				isTextArea
 					? 'my-1 h-32 resize-none'
 					: {
@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { outlineLg } from '@lib/classes';
+import { outlineMd } from '@lib/classes';
 
 import { useField } from 'vee-validate';
 import { computed, type InputTypeHTMLAttribute } from 'vue';

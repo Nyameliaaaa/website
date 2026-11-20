@@ -1,5 +1,4 @@
 import { RAMBLINGS_RSS_DESCRIPTION, RAMBLINGS_RSS_TITLE } from '@lib/consts';
-import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
 import { getCollection } from 'astro:content';
 import { create } from 'xmlbuilder2';
@@ -9,6 +8,7 @@ export async function GET(context: APIContext) {
 	const ramblings = await getCollection('ramblings');
 
 	const doc = create({ version: '1.0', encoding: 'utf-8' })
+		// .ins('xml-stylesheet', 'type="text/xsl" href="/feed.xsl"')
 		.ele('feed', { xmlns: 'http://www.w3.org/2005/Atom', 'xmlns:site': 'https://nyamelia.is-immensely.gay/ns' })
 		.ele('title')
 		.txt(RAMBLINGS_RSS_TITLE)
@@ -34,6 +34,9 @@ export async function GET(context: APIContext) {
 		.txt('CC BY-NC 4.0')
 		.up()
 		.ele('link', { rel: 'self', href: 'https://nyamelia.is-immensely.gay/feed.xml' })
+		.up()
+		.ele('generator')
+		.txt(context.generator)
 		.up();
 
 	for (const rambling of ramblings) {
@@ -72,6 +75,6 @@ export async function GET(context: APIContext) {
 	}
 
 	return new Response(doc.end(), {
-		headers: { 'Content-Type': 'application/atom+xml' },
+		headers: { 'Content-Type': 'application/xml' },
 	});
 }
