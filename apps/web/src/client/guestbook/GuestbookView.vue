@@ -2,7 +2,7 @@
 	<AsyncState :loading="loading" :error="error" :empty="data?.data.length === 0">
 		<Paginator v-if="data" :items="data.data">
 			<template #default="{ item }">
-				<GuestbookEntry :entry="item" />
+				<GuestbookEntry :entry="item" :clamp="limitItems" />
 			</template>
 		</Paginator>
 	</AsyncState>

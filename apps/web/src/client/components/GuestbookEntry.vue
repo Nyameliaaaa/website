@@ -21,7 +21,9 @@
 			</a>
 		</div>
 		<div class="my-1">
-			<p :class="leadText">{{ entry.message }}</p>
+			<p :class="[leadText, 'wrap-break-word']">
+				{{ clamp && entry.message.length > 250 ? `${entry.message.slice(0, 250)}...` : entry.message }}
+			</p>
 		</div>
 
 		<div v-if="entry.ameliaReply" class="bg-ctp-mantle my-2 rounded-lg p-2">
@@ -29,7 +31,7 @@
 				<Icon icon="mdi:reply" :class="caption" size="24" />
 				<p :class="caption">amelia replied</p>
 			</div>
-			<p :class="leadText">{{ entry.ameliaReply }}</p>
+			<p :class="[leadText, 'wrap-break-word']">{{ entry.ameliaReply }}</p>
 		</div>
 
 		<div class="flex flex-row items-center justify-between">
@@ -67,5 +69,6 @@ import type { GETGuestbookID } from '@website/lib';
 
 defineProps<{
 	entry: GETGuestbookID;
+	clamp?: boolean;
 }>();
 </script>

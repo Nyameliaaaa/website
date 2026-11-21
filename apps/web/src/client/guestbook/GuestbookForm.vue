@@ -46,6 +46,7 @@
 				is-text-area
 				required
 			/>
+			<p>{{ length }}/500</p>
 		</div>
 
 		<SubmitButton
@@ -100,6 +101,8 @@ const { handleSubmit, values } = useForm({
 		borderColor: 'pink',
 	},
 });
+
+const length = computed(() => values.message?.length);
 
 const { status: mutationStatus, execute } = useFormSubmit<POSTGuestbook>(values => mutate(values), {
 	onSuccess: () => {
