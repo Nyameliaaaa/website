@@ -2,13 +2,13 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import MarkdownWithTOC from '@layouts/MarkdownWithTOC.astro';
 import WrapLink from '@components/link/WrapLink.astro';
-import Divider from '@components/formatting/Divider.astro';
+import Divider from '@components/ui/Divider.astro';
 
 export async function getStaticPaths() {
 	const pages = await getCollection('pages');
 	return pages.map(page => ({
 		params: { slug: page.id },
-		props: page
+		props: page,
 	}));
 }
 
