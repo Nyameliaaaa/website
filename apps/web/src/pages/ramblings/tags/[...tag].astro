@@ -31,7 +31,12 @@ const { tag, ramblings } = Astro.props;
 	<Divider />
 	<section>
 		<h2 class:list={[subHeading, 'mb-2']}>sort by tags</h2>
-		<RamblingTagSelector current={`ramblings/tags/${tag}`} tags={await getTagList()} client:load />
+		<RamblingTagSelector
+			current={`ramblings/tags/${tag}`}
+			tags={await getTagList()}
+			client:load
+			transition:persist="tag-selection"
+		/>
 		<p class:list={[caption, 'mt-2']}>
 			showing ramblings tagged with <span class="text-ctp-pink font-medium">#{tag}</span>
 		</p>

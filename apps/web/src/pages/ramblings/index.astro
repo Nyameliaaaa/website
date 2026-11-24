@@ -18,7 +18,7 @@ const ramblings = (await getCollection('ramblings'))
 	<IconLink text="subscribe via rss" icon="rss" url="/atom.xml" />
 	<Divider />
 	<h2 class:list={[subHeading, 'mb-2']}>sort by tags</h2>
-	<RamblingTagSelector current="ramblings" tags={await getTagList()} client:load />
+	<RamblingTagSelector current="ramblings" tags={await getTagList()} client:load transition:persist="tag-selection" />
 	<p class:list={[caption, 'mt-2']}>showing all ramblings</p>
 	<Divider />
 	<section>

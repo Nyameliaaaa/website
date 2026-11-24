@@ -1,5 +1,5 @@
 <template>
-	<Listbox v-model="selected" @update:model-value="navigate" v-slot="{ open }">
+	<Listbox v-model="selected" @update:model-value="select" v-slot="{ open }">
 		<div class="relative">
 			<ListboxButton
 				id="tag-select"
@@ -51,6 +51,7 @@
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue';
 import { Icon } from '@iconify/vue';
 import { outlineLg } from '@lib/classes';
+import { navigate } from 'astro:transitions/client';
 import { ref } from 'vue';
 
 const props = defineProps<{
@@ -59,7 +60,7 @@ const props = defineProps<{
 }>();
 
 const selected = ref(props.current ?? '');
-function navigate(value: string) {
-	window.location.href = `/${value}`;
-}
+const select = (value: string) => {
+	navigate(`/${value}`);
+};
 </script>
