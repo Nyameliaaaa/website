@@ -1,5 +1,5 @@
 <template>
-	<AsyncState :loading="loading" :error="error" :empty="false" static>
+	<AsyncState :loading="loading" :error="error" :empty="false">
 		<div
 			v-if="data"
 			class="bg-ctp-crust border-ctp-base flex flex-col rounded-lg border-2 border-dashed px-4 py-2 md:flex-row md:items-center md:justify-between"
@@ -12,7 +12,7 @@
 							.toLocaleDateString('en-us', {
 								year: 'numeric',
 								month: 'short',
-								day: 'numeric'
+								day: 'numeric',
 							})
 							.toLowerCase()
 					}}

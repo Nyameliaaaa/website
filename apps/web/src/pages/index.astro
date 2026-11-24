@@ -8,7 +8,9 @@ import RamblingCard from '@components/rambling/RamblingCard.astro';
 import Base from '@layouts/Base.astro';
 import { heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
 import { RAMBLINGS_RSS_DESCRIPTION } from '@lib/consts';
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+import pfp from '/public/about/pfp.jpg';
 
 const homeTitle = 'hiiiiiiii ^^';
 const homeSub =
@@ -21,11 +23,13 @@ const ramblings = (await getCollection('ramblings'))
 
 <Base title={homeTitle} description={homeSub}>
 	<div class="mt-5 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4">
-		<div class="order-first md:order-last md:self-start md:mr-5 rounded-lg" transition:persist>
-			<img
-				src="/about/pfp.jpg"
+		<div class="order-first md:order-last md:self-start md:mr-5 rounded-lg">
+			<Image
+				src={pfp}
 				alt="amelia :3"
-				class="border-2 border-dashed border-ctp-mauve aspect-square max-h-48"
+				class="border-2 border-dashed border-ctp-mauve aspect-square max-h-48 max-w-48"
+				width={310}
+				height={310}
 			/>
 		</div>
 		<section class="order-last md:order-first">
