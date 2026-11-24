@@ -13,11 +13,11 @@ const props = defineProps<{
 	limitItems?: boolean;
 }>();
 
-import AsyncState from '@client/components/AsyncState.vue';
-import { useWorker } from '@client/composables/useWorker';
-import GuestbookEntry from '@client/components/GuestbookEntry.vue';
+import AsyncState from '@components/ui/AsyncState.vue';
+import { useWorker } from '@composables/useWorker';
+import GuestbookEntry from '@components/guestbook/GuestbookEntry.vue';
 import { onMounted } from 'vue';
-import Paginator from '@client/components/Paginator.vue';
+import Paginator from '@components/ui/Paginator.vue';
 import type { GETGuestbook } from '@website/lib';
 
 const { loading, error, data, useFetch } = useWorker<GETGuestbook>('guestbook');

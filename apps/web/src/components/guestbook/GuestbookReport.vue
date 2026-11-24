@@ -28,20 +28,17 @@
 </template>
 
 <script setup lang="ts">
-// entry
-import AsyncState from '@client/components/AsyncState.vue';
-import GuestbookEntry from '@client/components/GuestbookEntry.vue';
-import { useWorker } from '@client/composables/useWorker';
-import { postGuestbookReportSchema, type GETGuestbookID, type POSTGuestbookIDReport } from '@website/lib';
-import { onMounted } from 'vue';
-
-// form
-import Field from '@client/components/forms/Field.vue';
-import SubmitButton from '@client/components/forms/SubmitButton.vue';
-import { useFormSubmit } from '@client/composables/useFormSubmit';
-import { useMutation } from '@client/composables/useMutation';
+import { useMutation } from '@/composables/useMutation';
+import AsyncState from '@components/ui/AsyncState.vue';
+import Field from '@components/ui/forms/Field.vue';
+import SubmitButton from '@components/ui/forms/SubmitButton.vue';
+import GuestbookEntry from '@components/guestbook/GuestbookEntry.vue';
+import { useFormSubmit } from '@composables/useFormSubmit';
+import { useWorker } from '@composables/useWorker';
 import { toTypedSchema } from '@vee-validate/zod';
+import { postGuestbookReportSchema, type GETGuestbookID, type POSTGuestbookIDReport } from '@website/lib';
 import { useForm } from 'vee-validate';
+import { onMounted } from 'vue';
 
 const id = new URLSearchParams(window.location.search).get('id');
 const { loading, error, data, useFetch } = useWorker<GETGuestbookID>(`guestbook/${id}`);

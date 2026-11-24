@@ -1,0 +1,26 @@
+---
+import IconLink from '@components/link/IconLink.astro';
+
+const pathname = Astro.url.pathname;
+
+const getBackPath = () => {
+	if (pathname.startsWith('/ramblings/tags')) {
+		return '/ramblings/';
+	}
+
+	const parts = pathname.split('/').filter(Boolean);
+	parts.pop();
+
+	return '/' + parts.join('/') || '/';
+};
+
+const isPage = pathname !== '/';
+---
+
+{
+	isPage && (
+		<div class="mb-3">
+			<IconLink icon="chevron-left" url={getBackPath()} text="go back" />
+		</div>
+	)
+}

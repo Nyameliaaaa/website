@@ -7,9 +7,9 @@
 </template>
 
 <script setup lang="ts">
-import AsyncState from '@client/components/AsyncState.vue';
-import MusicGrid from '@client/components/MusicGrid.vue';
-import { useWorker } from '@client/composables/useWorker';
+import AsyncState from '@components/ui/AsyncState.vue';
+import MusicGrid from '@components/ui/MusicGrid.vue';
+import { useWorker } from '@/composables/useWorker';
 import type { MusicGridItem } from '@lib/types';
 import type { GETLastFMRecent } from '@website/lib';
 import { onMounted } from 'vue';

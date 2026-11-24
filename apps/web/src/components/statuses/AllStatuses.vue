@@ -30,9 +30,9 @@ const props = defineProps<{
 	limitItems?: boolean;
 }>();
 
-import AsyncState from '@client/components/AsyncState.vue';
-import Paginator from '@client/components/Paginator.vue';
-import { useWorker } from '@client/composables/useWorker';
+import AsyncState from '@components/ui/AsyncState.vue';
+import Paginator from '@components/ui/Paginator.vue';
+import { useWorker } from '@/composables/useWorker';
 import { caption, leadText } from '@lib/classes';
 import type { GETStatus } from '@website/lib';
 import { onMounted } from 'vue';

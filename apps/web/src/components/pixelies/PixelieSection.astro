@@ -1,0 +1,18 @@
+---
+import { subHeading } from '@lib/classes';
+import { pixelies } from '@data/pixelies';
+import PixelieImg from '@components/pixelies/PixelieImg.astro';
+---
+
+{
+	pixelies(Astro.generator).map(pixelie => (
+		<section class="py-3">
+			<h2 class:list={[subHeading, 'mb-2']}>{pixelie.name}</h2>
+			<ul class="flex flex-row gap-2 flex-wrap">
+				{pixelie.pixelies.map(pixelie => (
+					<PixelieImg pixelie={pixelie} />
+				))}
+			</ul>
+		</section>
+	))
+}

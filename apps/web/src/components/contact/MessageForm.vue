@@ -32,15 +32,15 @@
 </template>
 
 <script setup lang="ts">
-import SubmitButton from '@client/components/forms/SubmitButton.vue';
-import Field from '@client/components/forms/Field.vue';
-import { useMutation } from '@client/composables/useMutation';
+import SubmitButton from '@components/ui/forms/SubmitButton.vue';
+import Field from '@components/ui/forms/Field.vue';
+import { useMutation } from '@/composables/useMutation';
 import { type POSTMessage } from '@website/lib';
 
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { messageSchema } from '@website/lib';
-import { useFormSubmit } from '@client/composables/useFormSubmit';
+import { useFormSubmit } from '@/composables/useFormSubmit';
 
 const { mutate } = useMutation<POSTMessage>('message');
 

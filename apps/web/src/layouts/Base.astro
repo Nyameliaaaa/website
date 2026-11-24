@@ -1,29 +1,14 @@
 ---
 import '@/styles/global.css';
-import LatestStatus from '@client/statuses/LatestStatus.vue';
-import Container from '@components/formatting/Container.astro';
-
-import BackgroundMusic from '@client/base/BackgroundMusic.vue';
-import BaseHead from '@components/base/BaseHead.astro';
-import Footer from '@components/base/Footer.astro';
-import Header from '@components/base/Header.astro';
+import BackgroundMusic from '@components/layout/BackgroundMusic.vue';
+import BaseHead from '@components/layout/BaseHead.astro';
+import Container from '@components/layout/Container.astro';
+import Footer from '@components/layout/Footer.astro';
+import GoBack from '@components/layout/GoBack.astro';
+import Header from '@components/layout/Header.astro';
+import TransFlag from '@components/layout/TransFlag.astro';
+import LatestStatus from '@components/statuses/LatestStatus.vue';
 import { body } from '@lib/classes';
-import IconLink from '@components/link/IconLink.astro';
-
-const pathname = Astro.url.pathname;
-
-const getBackPath = () => {
-	if (pathname.startsWith('/ramblings/tags')) {
-		return '/ramblings/';
-	}
-
-	const parts = pathname.split('/').filter(Boolean);
-	parts.pop();
-
-	return '/' + parts.join('/') || '/';
-};
-
-const isPage = pathname !== '/';
 
 interface Props {
 	title?: string;
@@ -44,15 +29,7 @@ interface Props {
 			'overflow-x-hidden',
 		]}
 	>
-		<div class="sticky top-0 z-10 drop-shadow-md">
-			<div class="grid grid-cols-5 h-3">
-				<div class="bg-[#5bcefa]"></div>
-				<div class="bg-[#f5a9b8]"></div>
-				<div class="bg-[#ffffff]"></div>
-				<div class="bg-[#f5a9b8]"></div>
-				<div class="bg-[#5bcefa]"></div>
-			</div>
-		</div>
+		<TransFlag />
 
 		<BackgroundMusic client:only />
 
@@ -74,13 +51,7 @@ interface Props {
 					]}
 					transition:animate="fade"
 				>
-					{
-						isPage && (
-							<div class="mb-3">
-								<IconLink icon="chevron-left" url={getBackPath()} text="go back" />
-							</div>
-						)
-					}
+					<GoBack />
 
 					<slot />
 				</main>
@@ -92,14 +63,6 @@ interface Props {
 			</Container>
 
 			<a class="hidden" rel="me" href="https://en.pronouns.page/@Nyameliaaaa"></a>
-
-			<Container class="mt-5 h-2 rounded-t-lg overflow-hidden w-full grid grid-cols-5">
-				<div class="bg-[#d72803]"></div>
-				<div class="bg-[#ff9a56]"></div>
-				<div class="bg-[#ffffff]"></div>
-				<div class="bg-[#d364a5]"></div>
-				<div class="bg-[#a40365]"></div>
-			</Container>
 		</div>
 	</body>
 </html>

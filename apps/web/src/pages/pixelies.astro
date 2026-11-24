@@ -1,10 +1,9 @@
 ---
-import MarkdownProse from '@components/formatting/MarkdownProse.astro';
-import PixelieImg from '@components/link/PixelieImg.astro';
+import PixelieSection from '@/components/pixelies/PixelieSection.astro';
 import WrapLink from '@components/link/WrapLink.astro';
-import { pixelies } from '@data/pixelies';
+import MarkdownProse from '@components/prose/MarkdownProse.astro';
 import Page from '@layouts/Page.astro';
-import { heading, subHeading } from '@lib/classes';
+import { heading } from '@lib/classes';
 import { codeToHtml } from 'shiki';
 
 const html = await codeToHtml(
@@ -32,18 +31,7 @@ const html = await codeToHtml(
 
 <Page title="the museum" description="a wall of 88x31's, obviously">
 	<div class="flex flex-col divide-y-2 divide-ctp-crust divide-dashed">
-		{
-			pixelies(Astro.generator).map(pixelie => (
-				<section class="py-3">
-					<h2 class:list={[subHeading, 'mb-2']}>{pixelie.name}</h2>
-					<ul class="flex flex-row gap-2 flex-wrap">
-						{pixelie.pixelies.map(pixelie => (
-							<PixelieImg pixelie={pixelie} />
-						))}
-					</ul>
-				</section>
-			))
-		}
+		<PixelieSection />
 		<section class="py-3">
 			<h2 class:list={[heading, 'mb-2']}>88x31 button :3</h2>
 			<p>i have one of my own too. here's how you add it lol</p>

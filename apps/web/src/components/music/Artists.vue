@@ -20,8 +20,8 @@
 
 <script setup lang="ts">
 import type { GETLastFMArtists } from '@website/lib';
-import AsyncState from '@client/components/AsyncState.vue';
-import { useWorker } from '@client/composables/useWorker';
+import AsyncState from '@components/ui/AsyncState.vue';
+import { useWorker } from '@/composables/useWorker';
 import { onMounted } from 'vue';
 
 const { loading, error, data, useFetch } = useWorker<GETLastFMArtists>('lastfm/artists');

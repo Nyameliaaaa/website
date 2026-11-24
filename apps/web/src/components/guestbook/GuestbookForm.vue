@@ -64,18 +64,17 @@
 </template>
 
 <script setup lang="ts">
-import SubmitButton from '@client/components/forms/SubmitButton.vue';
-import Field from '@client/components/forms/Field.vue';
-import SelectMenu from '@client/components/forms/SelectMenu.vue';
-import { useMutation } from '@client/composables/useMutation';
+import SubmitButton from '@components/ui/forms/SubmitButton.vue';
+import Field from '@components/ui/forms/Field.vue';
+import SelectMenu from '@components/ui/forms/SelectMenu.vue';
+import { useMutation } from '@composables/useMutation';
 import { CATPPUCCIN_MACCHIATO_COLORS, postGuestbookSchema, type POSTGuestbook } from '@website/lib';
-import GuestbookEntry from '@client/components/GuestbookEntry.vue';
-
+import GuestbookEntry from '@components/guestbook/GuestbookEntry.vue';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
-import { useFormSubmit } from '@client/composables/useFormSubmit';
-import { subHeading } from '@lib/classes';
+import { useFormSubmit } from '@composables/useFormSubmit';
 import { computed } from 'vue';
+import { subHeading } from '@lib/classes';
 
 const { mutate } = useMutation<POSTGuestbook>('guestbook');
 const date = computed(() => new Date().toISOString());

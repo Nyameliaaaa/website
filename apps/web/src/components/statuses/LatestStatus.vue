@@ -29,8 +29,8 @@ const props = defineProps<{
 	limitItems?: boolean;
 }>();
 
-import AsyncState from '@client/components/AsyncState.vue';
-import { useWorker } from '@client/composables/useWorker';
+import AsyncState from '@components/ui/AsyncState.vue';
+import { useWorker } from '@/composables/useWorker';
 import { caption, leadText, link } from '@lib/classes';
 import type { GETStatusLatest } from '@website/lib';
 import { onMounted } from 'vue';
