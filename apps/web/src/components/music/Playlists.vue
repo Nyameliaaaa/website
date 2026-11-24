@@ -1,15 +1,15 @@
 <template>
 	<div class="mt-3">
-		<MusicGrid v-if="data" :data="migrateDataFormat(data)" />
+		<MediaGrid v-if="data" :data="migrateDataFormat(data)" />
 	</div>
 </template>
 
 <script setup lang="ts">
-import type { MusicGridItem, Playlist } from '@lib/types';
-import MusicGrid from '@components/ui/MusicGrid.vue';
+import type { MediaGridItem, Playlist } from '@lib/types';
+import MediaGrid from '@components/ui/MediaGrid.vue';
 import { playlists } from '@data/playlists';
 
-const migrateDataFormat = (data: Playlist[]): MusicGridItem[] => {
+const migrateDataFormat = (data: Playlist[]): MediaGridItem[] => {
 	return data.map(playlist => ({
 		name: playlist.name,
 		image: playlist.image,

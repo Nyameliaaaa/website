@@ -10,7 +10,8 @@
 			target="_blank"
 			rel="noopener noreferrer"
 			:class="[
-				'group hover:border-ctp-pink focus:ring-ctp-pink focus:ring-offset-ctp-base text-ctp-text relative block aspect-square overflow-hidden rounded-lg border-2 border-transparent transition duration-300 focus:ring-2 focus:outline-none',
+				'group hover:border-ctp-pink focus:ring-ctp-pink focus:ring-offset-ctp-base text-ctp-text relative block overflow-hidden rounded-lg border-2 border-transparent transition duration-300 focus:ring-2 focus:outline-none',
+				aspectRatio,
 				activeItem === `${index}/${item.url}` ? 'is-active' : '',
 			]"
 			:aria-label="item.cardItem?.aria ?? ''"
@@ -37,10 +38,13 @@
 </template>
 
 <script setup lang="ts">
-import type { MusicGridItem } from '@lib/types';
+import type { MediaGridItem } from '@lib/types';
 import { onUnmounted, ref } from 'vue';
 
-defineProps<{ data: MusicGridItem[] }>();
+const { data, aspectRatio = 'aspect-square' } = defineProps<{
+	data: MediaGridItem[];
+	aspectRatio?: string;
+}>();
 
 const activeItem = ref<string | null>(null);
 let timeout: ReturnType<typeof setTimeout>;

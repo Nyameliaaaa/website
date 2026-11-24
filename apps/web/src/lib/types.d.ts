@@ -7,7 +7,7 @@ export interface PixelieEntry {
 	gif?: string;
 }
 
-export interface MusicGridItem {
+export interface MediaGridItem {
 	name: string;
 	image: string;
 	url: string;

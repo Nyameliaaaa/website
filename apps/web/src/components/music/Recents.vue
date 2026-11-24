@@ -1,16 +1,16 @@
 <template>
 	<div class="mt-3">
 		<AsyncState :loading="loading" :error="error" :empty="data?.data.length === 0">
-			<MusicGrid v-if="data" :data="migrateDataFormat(data)" />
+			<MediaGrid v-if="data" :data="migrateDataFormat(data)" />
 		</AsyncState>
 	</div>
 </template>
 
 <script setup lang="ts">
 import AsyncState from '@components/ui/AsyncState.vue';
-import MusicGrid from '@components/ui/MusicGrid.vue';
+import MediaGrid from '@components/ui/MediaGrid.vue';
 import { useWorker } from '@/composables/useWorker';
-import type { MusicGridItem } from '@lib/types';
+import type { MediaGridItem } from '@lib/types';
 import type { GETLastFMRecent } from '@website/lib';
 import { onMounted } from 'vue';
 
@@ -18,7 +18,7 @@ const props = defineProps<{
 	preview?: boolean;
 }>();
 
-const migrateDataFormat = (data: GETLastFMRecent): MusicGridItem[] => {
+const migrateDataFormat = (data: GETLastFMRecent): MediaGridItem[] => {
 	return data.data.map(track => ({
 		name: track.name,
 		image: track.image,
