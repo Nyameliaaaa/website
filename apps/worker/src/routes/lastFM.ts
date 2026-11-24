@@ -1,5 +1,5 @@
 import { LASTFM_BASE, LASTFM_USER, TTL } from '@/lib/consts';
-import { cachedFetch, getAlbumImage, getTrackImage } from '@/lib/lastFM';
+import { cachedFetch, getAlbumImage, getArtistImage, getTrackImage } from '@/lib/lastFM';
 import {
 	LastFMAlbum,
 	GETLastFMArtists,
@@ -51,13 +51,16 @@ lastFM.get('/artists', async c => {
 	);
 
 	const clean: GETLastFMArtists = {
-		data: data.topartists.artist.map(
-			(artist: any) =>
-				({
-					name: artist.name,
-					url: artist.url,
-					playcount: artist.playcount,
-				}) as LastFMArtist
+		data: await Promise.all(
+			data.topartists.artist.map(
+				async (artist: any) =>
+					({
+						name: artist.name,
+						url: artist.url,
+						playcount: artist.playcount,
+						image: await getArtistImage(artist.name, 'deezer:artist'),
+					}) as LastFMArtist
+			)
 		),
 	};
 

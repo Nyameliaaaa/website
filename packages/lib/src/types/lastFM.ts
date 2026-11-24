@@ -12,6 +12,7 @@ export interface LastFMArtist {
 	name: string;
 	url: string;
 	playcount: number;
+	image?: string;
 }
 
 export interface LastFMAlbum {

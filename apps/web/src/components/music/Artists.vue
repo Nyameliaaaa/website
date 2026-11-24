@@ -1,28 +1,31 @@
 <template>
 	<div class="mt-3">
 		<AsyncState :loading="loading" :error="error" :empty="data?.data.length === 0">
-			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-				<a
-					v-for="artist in data?.data"
-					:href="artist.url"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="hover:border-ctp-pink focus:ring-ctp-pink bg-ctp-base rounded-lg border-2 border-transparent p-2 transition duration-300 focus:ring-2 focus:outline-none"
-					:aria-label="artist.name"
-				>
-					<p class="text-ctp-text line-clamp-2 w-full text-xl font-bold">{{ artist.name }}</p>
-					<p class="text-ctp-subtext1 text-sm">{{ artist.playcount }} plays</p>
-				</a>
-			</div>
+			<MediaGrid v-if="data" :data="migrateDataFormat(data)" />
 		</AsyncState>
 	</div>
 </template>
 
 <script setup lang="ts">
-import type { GETLastFMArtists } from '@website/lib';
-import AsyncState from '@components/ui/AsyncState.vue';
 import { useWorker } from '@/composables/useWorker';
+import AsyncState from '@components/ui/AsyncState.vue';
+import MediaGrid from '@components/ui/MediaGrid.vue';
+import type { MediaGridItem } from '@lib/types';
+import type { GETLastFMArtists } from '@website/lib';
 import { onMounted } from 'vue';
+
+const migrateDataFormat = (data: GETLastFMArtists): MediaGridItem[] => {
+	return data.data.map(artist => ({
+		name: artist.name,
+		image: artist.image ?? '',
+		url: artist.url,
+		secondaryText: `${artist.playcount} plays`,
+		cardItem: {
+			aria: `${artist.name} ${artist.playcount} plays`,
+			alt: `${artist.name}`,
+		},
+	}));
+};
 
 const { loading, error, data, useFetch } = useWorker<GETLastFMArtists>('lastfm/artists');
 

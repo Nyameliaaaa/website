@@ -53,6 +53,21 @@ export const getTrackImage = async (artist: string, track: string, lastfmImage: 
 	return await getImage(artist, track, lastfmImage, 'mb:track');
 };
 
-export const getAlbumImage = async (artist: string, album: string, lastfmImage: string | null) => {
+export const 	getAlbumImage = async (artist: string, album: string, lastfmImage: string | null) => {
 	return await getImage(artist, album, lastfmImage, 'mb:album');
+};
+
+export const getArtistImage = async (name: string, key: string): Promise<string | null> => {
+	try {
+		const res = await cachedFetch(
+			env.LASTFM_CACHE,
+			await cacheKey(key, name),
+			`https://api.deezer.com/search/artist?q=${encodeURIComponent(name)}&limit=1`,
+			TTL.MUSICBRAINZ_MBID
+		);
+
+		return res.data?.[0]?.picture_big ?? res.data?.[0]?.picture_medium ?? null;
+	} catch {
+		return null;
+	}
 };
