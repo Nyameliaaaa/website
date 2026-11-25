@@ -45,6 +45,7 @@ const canonicalTitle = `${title ?? 'a page'} | amelia :3`;
 <meta property="og:title" content={canonicalTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL('/about/pfp.jpg', Astro.url)} />
+<meta property="og:image:url" content={new URL('/about/pfp.jpg', Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
