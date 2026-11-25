@@ -1,4 +1,5 @@
 ---
+import { readingTime } from '@/lib/readingTime';
 import FormattedDate from '@components/ui/FormattedDate.astro';
 import { caption, ramblingIcon, ramblingLabel, text } from '@lib/classes';
 import { Icon } from 'astro-icon/components';
@@ -8,6 +9,7 @@ type Props = CollectionEntry<'ramblings'>;
 
 const {
 	data: { pubDate, updatedDate },
+	...rambling
 } = Astro.props;
 ---
 
@@ -19,11 +21,15 @@ const {
 	{
 		updatedDate && (
 			<div class="flex flex-row gap-2 items-center">
-				<Icon name="mdi:calendar-edit" size="20" class={ramblingIcon} title="date created" />
+				<Icon name="mdi:calendar-edit" size="20" class={ramblingIcon} title="date updated" />
 				<p class={ramblingLabel}>
 					<FormattedDate date={updatedDate} />
 				</p>
 			</div>
 		)
 	}
+	<div class="flex flex-row gap-2 items-center">
+		<Icon name="mdi:clock-outline" size="20" class={ramblingIcon} title="reading time" />
+		<p class={ramblingLabel}>{readingTime(rambling.body ?? '')} mins</p>
+	</div>
 </div>

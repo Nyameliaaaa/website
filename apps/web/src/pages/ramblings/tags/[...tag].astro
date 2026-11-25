@@ -1,50 +1,14 @@
 ---
-import RamblingTagSelector from '@components/rambling/RamblingTagSelector.vue';
-import Divider from '@components/ui/Divider.astro';
-import IconLink from '@components/link/IconLink.astro';
-import Rambling from '@components/rambling/RamblingCard.astro';
-import Page from '@layouts/Page.astro';
-import { caption, subHeading } from '@lib/classes';
-import { RAMBLINGS_RSS_DESCRIPTION, RAMBLINGS_RSS_TITLE } from '@lib/consts';
-import { getTagList } from '@lib/tags';
+import RamblingList from '@/components/rambling/RamblingList.astro';
 import { getCollection } from 'astro:content';
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
 	const ramblings = await getCollection('ramblings');
-	const tags = [...new Set(ramblings.flatMap(rambling => rambling.data.tags))];
-	return tags.map(tag => ({
-		params: { tag },
-		props: {
-			tag,
-			ramblings: ramblings.filter(
-				rambling => rambling.data.tags && rambling.data.tags.includes(tag ?? '') && !rambling.data.draft
-			),
-		},
-	}));
-}
+	const tags = [...new Set(ramblings.flatMap(rambling => rambling.data.tags ?? []))];
+	return tags.map(tag => ({ params: { tag }, props: { tag } }));
+};
 
-const { tag, ramblings } = Astro.props;
+const { tag } = Astro.props;
 ---
 
-<Page title={RAMBLINGS_RSS_TITLE} description={RAMBLINGS_RSS_DESCRIPTION}>
-	<IconLink text="subscribe via rss" icon="rss" url="/atom.xml" />
-	<Divider />
-	<section>
-		<h2 class:list={[subHeading, 'mb-2']}>sort by tags</h2>
-		<RamblingTagSelector
-			current={`ramblings/tags/${tag}`}
-			tags={await getTagList()}
-			client:load
-			transition:persist="tag-selection"
-		/>
-		<p class:list={[caption, 'mt-2']}>
-			showing ramblings tagged with <span class="text-ctp-pink font-medium">#{tag}</span>
-		</p>
-	</section>
-	<Divider />
-	<section>
-		<ul class="flex flex-col gap-2">
-			{ramblings.map(rambling => <Rambling rambling={rambling} />)}
-		</ul>
-	</section>
-</Page>
+<RamblingList tag={tag} />

@@ -1,5 +1,5 @@
 <template>
-	<Listbox v-model="selected" @update:model-value="select" v-slot="{ open }">
+	<Listbox v-model="selected" @update:model-value="navigate" v-slot="{ open }">
 		<div class="relative">
 			<ListboxButton
 				id="tag-select"
@@ -60,7 +60,4 @@ const props = defineProps<{
 }>();
 
 const selected = ref(props.current ?? '');
-const select = (value: string) => {
-	navigate(`/${value}`);
-};
 </script>

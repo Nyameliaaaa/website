@@ -1,29 +1,5 @@
 ---
-import RamblingTagSelector from '@components/rambling/RamblingTagSelector.vue';
-import Divider from '@components/ui/Divider.astro';
-import IconLink from '@components/link/IconLink.astro';
-import Rambling from '@components/rambling/RamblingCard.astro';
-import Page from '@layouts/Page.astro';
-import { caption, subHeading } from '@lib/classes';
-import { RAMBLINGS_RSS_DESCRIPTION, RAMBLINGS_RSS_TITLE } from '@lib/consts';
-import { getTagList } from '@lib/tags';
-import { getCollection } from 'astro:content';
-
-const ramblings = (await getCollection('ramblings'))
-	.filter(a => !a.data.draft)
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+import RamblingList from '@/components/rambling/RamblingList.astro';
 ---
 
-<Page title={RAMBLINGS_RSS_TITLE} description={RAMBLINGS_RSS_DESCRIPTION}>
-	<IconLink text="subscribe via rss" icon="rss" url="/atom.xml" />
-	<Divider />
-	<h2 class:list={[subHeading, 'mb-2']}>sort by tags</h2>
-	<RamblingTagSelector current="ramblings" tags={await getTagList()} client:load transition:persist="tag-selection" />
-	<p class:list={[caption, 'mt-2']}>showing all ramblings</p>
-	<Divider />
-	<section>
-		<ul class="flex flex-col md:grid-cols-2 gap-2">
-			{ramblings.map(rambling => <Rambling rambling={rambling} />)}
-		</ul>
-	</section>
-</Page>
+<RamblingList />

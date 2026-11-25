@@ -1,0 +1,66 @@
+---
+import Page from '@/layouts/Page.astro';
+import { RAMBLINGS_RSS_DESCRIPTION, RAMBLINGS_RSS_TITLE } from '@/lib/consts';
+import IconLink from '@components/link/IconLink.astro';
+import Rambling from '@components/rambling/RamblingCard.astro';
+import RamblingTagSelector from '@components/rambling/RamblingTagSelector.vue';
+import Divider from '@components/ui/Divider.astro';
+import { caption, subHeading } from '@lib/classes';
+import { getCollection } from 'astro:content';
+
+const ramblings = await getCollection('ramblings');
+const tags = [...new Set(ramblings.flatMap(rambling => rambling.data.tags ?? []))];
+const tag = Astro.props.tag;
+
+const filtered = ramblings
+	.filter(a => !a.data.draft)
+	.filter(a => (tag ? a.data.tags?.includes(tag) : true))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const getTagList = async () => {
+	return [
+		{ label: '(all posts)', value: '/ramblings' },
+		...tags.map(tag => ({
+			label: tag,
+			value: `/ramblings/tags/${tag}`,
+		})),
+	];
+};
+
+interface Props {
+	tag?: string;
+}
+---
+
+<Page title={RAMBLINGS_RSS_TITLE} description={RAMBLINGS_RSS_DESCRIPTION}>
+	<IconLink text="atom feed" icon="rss" url="/atom.xml" />
+
+	<h2 class:list={[subHeading, 'mt-3 mb-2']}>sort by tags</h2>
+	<RamblingTagSelector
+		current={Astro.url.pathname}
+		tags={await getTagList()}
+		client:load
+		transition:persist="tag-selection"
+	/>
+
+	<p class:list={[caption, 'mt-2']}>
+		{
+			tag ? (
+				<span>
+					showing {filtered.length} rambling{filtered.length !== 1 && 's'} tagged with{' '}
+					<span class="text-ctp-pink font-medium">#{tag}</span>
+				</span>
+			) : (
+				<span>showing all ramblings</span>
+			)
+		}
+	</p>
+
+	<Divider />
+
+	<section>
+		<ul class="flex flex-col md:grid-cols-2 gap-2">
+			{filtered.map(rambling => <Rambling rambling={rambling} />)}
+		</ul>
+	</section>
+</Page>
