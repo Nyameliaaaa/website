@@ -1,9 +1,9 @@
 ---
-import Divider from '@components/ui/Divider.astro';
 import MessageForm from '@components/contact/MessageForm.vue';
 import WrapLink from '@components/link/WrapLink.astro';
+import Divider from '@components/ui/Divider.astro';
 import LinkSection from '@components/ui/LinkSection.astro';
-import { contactLinks } from '@data/infoLinks';
+import { socialLinks, gitForgeLinks, pubKeyLinks, reachMeLinks } from '@data/links/contact';
 import Page from '@layouts/Page.astro';
 import { caption, heading, leadText, link, subHeading } from '@lib/classes';
 ---
@@ -17,53 +17,32 @@ import { caption, heading, leadText, link, subHeading } from '@lib/classes';
 		<h2 class={heading}>reach me</h2>
 		<p class={leadText}>how to message me 101</p>
 
-		<section class="my-3">
-			<h3 class={subHeading}>mail</h3>
-			<p>
-				<span class="bg-ctp-crust px-2 rounded-md text-ctp-pink">nyameliaaaa (AT) proton (DOT) me</span>. for non-proton
-				gpg, see <a class="bg-ctp-crust px-2 rounded-md hover:underline hover:underline-offset-2" href="#public-keys"
-					>public keys</a
-				>
-			</p>
-		</section>
-
-		<section class="my-3">
-			<h3 class={subHeading}>matrix</h3>
-			<p>
-				<WrapLink
-					href="https://matrix.to/#/@nyameliaaaa:wetdeer.club"
-					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
-					>@nyameliaaaa:wetdeer.club</WrapLink
-				>
-			</p>
-		</section>
-
-		<section class="my-3">
-			<h3 class={subHeading}>signal</h3>
-			<p>
-				<WrapLink
-					href="https://signal.me/#eu/PEyeUlAAQRMJ2kYTCwDPexYYMs6DHWLILEOeRVipRMLc9_peu9dI0Y3cd3Ey2oxw"
-					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
-					>@nyamelia.64</WrapLink
-				>
-			</p>
-		</section>
-
-		<section class="my-3">
-			<h3 class={subHeading}>discord</h3>
-			<p>
-				<WrapLink
-					href="https://discord.com/users/348591272476540928"
-					class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
-					>@nyameliaaaa</WrapLink
-				> thoo id prefer you use something else instead
-			</p>
-		</section>
-
-		<section class="my-3">
-			<h3 class={subHeading}>telegram</h3>
-			<p>please seek immediate help. and possibly vodka</p>
-		</section>
+		<ul class="flex flex-col mt-2 gap-2">
+			{
+				reachMeLinks.map(link => (
+					<li>
+						<h3 class={subHeading}>{link.label}</h3>
+						<p>
+							<WrapLink
+								href={link.url}
+								class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
+							>
+								{link.handle}
+							</WrapLink>
+						</p>
+						<p class:list={[caption, 'mt-0.5']}>
+							{link.comment}
+							{link.linksTo && (
+								<>
+									<span>{link.linksTo.proceeding}</span>
+									<WrapLink href={link.linksTo.url}>{link.linksTo.label}</WrapLink>
+								</>
+							)}
+						</p>
+					</li>
+				))
+			}
+		</ul>
 	</section>
 
 	<Divider />
@@ -81,48 +60,50 @@ import { caption, heading, leadText, link, subHeading } from '@lib/classes';
 	<section>
 		<h2 class={heading} id="public-keys">public keys</h2>
 		<p class={leadText}>-----BEGIN PUBLIC KEY BLOCK-----</p>
-		<div class="my-2">
-			<h3 class={subHeading}><WrapLink href="/keys/gpg.txt" class:list={[subHeading, link]}>gpg ↗</WrapLink></h3>
-			<p class={caption}>signing and encrypting emails, keyoxide, etc</p>
-		</div>
-		<div class="my-2">
-			<h3 class={subHeading}><WrapLink href="/keys/ssh.txt" class:list={[subHeading, link]}>ssh ↗</WrapLink></h3>
-			<p class={caption}>signing commits, authenticating with forges, or connecting to a server</p>
-		</div>
-		<div class="my-2">
-			<h3 class={subHeading}>
-				<WrapLink href="https://keyoxide.org/09F4E5FAF8AB59385117ABE0204D9FACA1132556" class:list={[subHeading, link]}
-					>keyoxide ↗</WrapLink
-				>
-			</h3>
-			<p class={caption}>verifying authenticity of my profiles using gpg</p>
-		</div>
+		<ul class="mt-2 flex flex-col gap-2">
+			{
+				pubKeyLinks.map(pubKey => (
+					<li>
+						<h3 class={subHeading}>
+							<WrapLink href={pubKey.url} class:list={[subHeading, link]}>
+								{pubKey.label} ↗
+							</WrapLink>
+						</h3>
+						<p class={caption}>{pubKey.comment}</p>
+					</li>
+				))
+			}
+		</ul>
 	</section>
 
 	<Divider />
 
 	<section>
 		<h2 class={heading}>git forge</h2>
-		<section class="my-3">
-			<h3 class={subHeading}>git.gay</h3>
-			<WrapLink
-				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 mt-3 w-fit"
-				href="https://git.gay/nyamelia">@nyamelia</WrapLink
-			>
-			<p class={caption}>primary git forge</p>
-		</section>
-		<section class="my-3">
-			<h3 class={subHeading}>github</h3>
-			<WrapLink
-				class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 my-2 w-fit"
-				href="https://github.com/nyameliaaaa">@nyameliaaaa</WrapLink
-			>
-			<p class={caption}>
-				used only as a mirror and for contributing to projects still on github, <WrapLink
-					href="https://github.com/Nyameliaaaa/Nyameliaaaa/blob/main/README.md">here's why</WrapLink
-				>
-			</p>
-		</section>
+		<ul class="mt-2 flex flex-col gap-2">
+			{
+				gitForgeLinks.map(link => (
+					<li>
+						<h3 class={subHeading}>{link.label}</h3>
+						<WrapLink
+							class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2 mt-3 w-fit"
+							href={link.url}
+						>
+							{link.handle}
+						</WrapLink>
+						<p class={caption}>
+							{link.comment}
+							{link.linksTo && (
+								<>
+									<span>{link.linksTo.proceeding}</span>
+									<WrapLink href={link.linksTo.url}>{link.linksTo.label}</WrapLink>
+								</>
+							)}
+						</p>
+					</li>
+				))
+			}
+		</ul>
 	</section>
 
 	<Divider />
@@ -134,6 +115,6 @@ import { caption, heading, leadText, link, subHeading } from '@lib/classes';
 				where else can the amelia be found. you did not ask that question or you did but im answering it
 			</p>
 		</div>
-		<LinkSection links={contactLinks} />
+		<LinkSection links={socialLinks} />
 	</section>
 </Page>

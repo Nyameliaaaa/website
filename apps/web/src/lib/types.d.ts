@@ -30,14 +30,3 @@ export interface PixelieSection {
 	name: string;
 	pixelies: PixelieEntry[];
 }
-
-export interface LinkEntry {
-	label: string;
-	handle: string;
-	url?: string;
-}
-
-export interface LinkSection {
-	name: string;
-	links: LinkEntry[];
-}
