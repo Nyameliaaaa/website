@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"web:dev": "pnpm --filter web dev",
+		"web:local": "pnpm --filter web dev:local",
 		"web:build": "pnpm --filter web build",
 		"web:astro": "pnpm --filter web astro",
 		"worker:dev": "pnpm --filter worker dev",

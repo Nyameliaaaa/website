@@ -6,8 +6,9 @@
 		"node": ">=22.12.0"
 	},
 	"scripts": {
-		"dev": "CF_PAGES_COMMIT_SHA=$(git rev-parse HEAD) astro dev",
-		"build": "astro build",
+		"dev": "CF_PAGES_COMMIT_SHA=$(git rev-parse HEAD) PUBLIC_LAST_UPDATED=$(git log -1 --format=%cI) astro dev",
+		"dev:local": "PUBLIC_USE_DEV_WORKER_URL='true' pnpm run dev",
+		"build": "PUBLIC_LAST_UPDATED=$(git log -1 --format=%cI) astro build",
 		"astro": "astro"
 	},
 	"dependencies": {

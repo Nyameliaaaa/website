@@ -12,7 +12,7 @@ import { version } from 'vue';
 
 <footer class={caption}>
 	<div class="grid grid-cols-1 md:grid-cols-2 items-start gap-2">
-		<div class="flex flex-col gap-3">
+		<small class="flex flex-col gap-3">
 			<div>
 				<p>
 					&copy; copyright 2017-<CopyrightEnd client:load /> amelia cynthia winters
@@ -40,24 +40,25 @@ import { version } from 'vue';
 					>
 				</p>
 				<p>
-					last updated <b><FormattedDate date={new Date()} /></b>
+					last updated <b><FormattedDate date={new Date(import.meta.env.PUBLIC_LAST_UPDATED)} /></b>
 				</p>
 				<p>
 					tested using <WrapLink href="https://firefox.com"> firefox</WrapLink>
 				</p>
 			</div>
-		</div>
-		<div>
-			<div class="grid grid-cols-2 lg:grid-cols-2 xl:gap-3 select-none">
+		</small>
+
+		<nav>
+			<ul class="grid grid-cols-2 lg:grid-cols-2 xl:gap-3 select-none">
 				{
 					footerLinks.map(url => (
-						<div class="mb-2">
+						<li class="mb-2">
 							<IconLink {...url} />
-						</div>
+						</li>
 					))
 				}
-			</div>
-		</div>
+			</ul>
+		</nav>
 	</div>
 
 	<ul class="mt-3 flex flex-row justify-around gap-2">
