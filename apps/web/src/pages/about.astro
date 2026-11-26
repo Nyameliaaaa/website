@@ -4,7 +4,8 @@ import LinkSection from '@components/ui/LinkSection.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import Base from '@layouts/Base.astro';
 import { heading, leadText, pageSubtitle, pageTitle, subHeading } from '@lib/classes';
-import { meLinks } from '@data/infoLinks';
+import { meLinks, socialLinks } from '@data/links/about';
+import Arlecchino from '@/components/ui/Arlecchino.astro';
 
 const aboutTitle = 'about';
 const aboutSub = 'this page is kinda about me AND this site but this site IS me so it works';
@@ -70,30 +71,19 @@ const aboutSub = 'this page is kinda about me AND this site but this site IS me 
 
 			<Divider />
 
-			<section class="flex flex-col gap-2">
-				<div>
-					<h2 class={heading}>more</h2>
-					<p class={leadText}>i am a little silly :3</p>
+			<section class="my-4">
+				<div class="mb-3">
+					<h2 class={heading}>elsewhere</h2>
+					<p class={leadText}>
+						where can the amelia be found. you did not ask that question or you did but im answering it
+					</p>
 				</div>
-				<ul class="list-disc list-inside mt-1">
-					<li>
-						<WrapLink href="/music">music</WrapLink>
-					</li>
-					<li>
-						<WrapLink href="https://backloggd.com/u/nyameliaaaa">games (backloggd)</WrapLink>
-					</li>
-					<li>
-						<WrapLink href="https://letterboxd.com/nyamelia/">films (letterboxd)</WrapLink>
-					</li>
-				</ul>
+				<LinkSection links={socialLinks} />
 			</section>
 		</article>
 
 		<aside class="xl:hidden bg-ctp-base p-2 pb-0 inset-shadow-sm inset-shadow-ctp-mantle" transition:persist>
-			<p class="text-ctp-pink font-medium text-sm text-center">what i look like (real)</p>
-			<div class="w-full h-full flex flex-col justify-center items-center">
-				<img src="/about/arlecchino.png" alt="arlecchino" class="aspect-2/3" />
-			</div>
+			<Arlecchino />
 		</aside>
 	</div>
 
@@ -102,9 +92,6 @@ const aboutSub = 'this page is kinda about me AND this site but this site IS me 
 		class="max-xl:hidden sticky top-5 bg-ctp-crust border-2 border-dashed border-ctp-base h-fit p-2 m-3 rounded-lg inset-shadow-ctp-mantle"
 		transition:persist
 	>
-		<p class="text-ctp-pink font-medium text-sm text-center">what i look like (real)</p>
-		<div class="w-full h-full flex flex-col justify-center items-center">
-			<img src="/about/arlecchino.png" alt="arlecchino" class="aspect-2/3" />
-		</div>
+		<Arlecchino />
 	</aside>
 </Base>

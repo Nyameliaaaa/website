@@ -6,11 +6,12 @@ import Recents from '@components/music/Recents.vue';
 import WrapLink from '@components/link/WrapLink.astro';
 import Page from '@layouts/Page.astro';
 import { caption, heading, leadText } from '@lib/classes';
+import { getProfile } from '@lib/getProfile';
 ---
 
 <Page title="music :P" description="please enjoy staring at my music taste">
 	<span slot="description">
-		please enjoy staring at my music taste. check out my <WrapLink href="https://listenbrainz.org/user/nyameliaaaa/"
+		please enjoy staring at my music taste. check out my <WrapLink href={getProfile('listenbrainz').url}
 			>listenbrainz profile</WrapLink
 		> ^^
 	</span>

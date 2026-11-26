@@ -1,0 +1,45 @@
+---
+import { caption, heading, leadText, subHeading } from '@/lib/classes';
+import type { LinkWithComment } from '@/types/links';
+import WrapLink from '@components/link/WrapLink.astro';
+
+interface Props {
+	title: string;
+	subtitle?: string;
+	links: LinkWithComment[];
+}
+
+const { title, subtitle, links } = Astro.props;
+---
+
+<section>
+	<h2 class={heading}>{title}</h2>
+	{subtitle && <p class={leadText}>{subtitle}</p>}
+
+	<ul class="flex flex-col mt-2 gap-2">
+		{
+			links.map(link => (
+				<li>
+					<h3 class={subHeading}>{link.label}</h3>
+					<p>
+						<WrapLink
+							href={link.url}
+							class="bg-ctp-crust px-2 rounded-md text-ctp-pink transition-all duration-300 hover:bg-ctp-base hover:underline hover:underline-offset-2"
+						>
+							{link.handle}
+						</WrapLink>
+					</p>
+					<p class:list={[caption, 'mt-0.5']}>
+						{link.comment}
+						{link.linksTo && (
+							<>
+								<span>{link.linksTo.proceeding}</span>
+								<WrapLink href={link.linksTo.url}>{link.linksTo.label}</WrapLink>
+							</>
+						)}
+					</p>
+				</li>
+			))
+		}
+	</ul>
+</section>
