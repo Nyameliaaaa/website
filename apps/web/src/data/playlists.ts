@@ -1,4 +1,4 @@
-import type { Playlist } from '@lib/types';
+import type { Playlist } from '@typings/media';
 
 export const playlists: Playlist[] = [
 	{

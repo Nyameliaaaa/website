@@ -1,12 +1,3 @@
-import type { string } from 'astro:schema';
-
-export interface PixelieEntry {
-	img: string;
-	url?: string;
-	alt?: string;
-	gif?: string;
-}
-
 export interface MediaGridItem {
 	name: string;
 	image: string;
@@ -24,9 +15,4 @@ export interface Playlist {
 	content: string;
 	image: string;
 	url: string;
-}
-
-export interface PixelieSection {
-	name: string;
-	pixelies: PixelieEntry[];
 }

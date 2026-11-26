@@ -1,4 +1,4 @@
-import type { PixelieEntry, PixelieSection } from '@lib/types';
+import type { PixelieEntry, PixelieSection } from '@typings/pixelies';
 
 // https://gayspace.fr/images/buttons/button.gif
 

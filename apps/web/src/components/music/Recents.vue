@@ -10,7 +10,7 @@
 import AsyncState from '@components/ui/AsyncState.vue';
 import MediaGrid from '@components/ui/MediaGrid.vue';
 import { useWorker } from '@/composables/useWorker';
-import type { MediaGridItem } from '@lib/types';
+import type { MediaGridItem } from '@typings/media';
 import type { GETMusicRecentSongs } from '@website/lib';
 import { onMounted } from 'vue';
 

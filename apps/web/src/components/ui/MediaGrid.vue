@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import type { MediaGridItem } from '@lib/types';
+import type { MediaGridItem } from '@typings/media';
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 
 const {

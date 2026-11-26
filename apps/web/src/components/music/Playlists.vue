@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import type { MediaGridItem, Playlist } from '@lib/types';
+import type { MediaGridItem, Playlist } from '@typings/media';
 import MediaGrid from '@components/ui/MediaGrid.vue';
 import { playlists } from '@data/playlists';
 
