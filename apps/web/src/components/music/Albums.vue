@@ -11,10 +11,10 @@ import AsyncState from '@components/ui/AsyncState.vue';
 import MediaGrid from '@components/ui/MediaGrid.vue';
 import { useWorker } from '@/composables/useWorker';
 import type { MediaGridItem } from '@lib/types';
-import type { GETLastFMAlbums } from '@website/lib';
+import type { GETMusicTopAlbums } from '@website/lib';
 import { onMounted } from 'vue';
 
-const migrateDataFormat = (data: GETLastFMAlbums): MediaGridItem[] => {
+const migrateDataFormat = (data: GETMusicTopAlbums): MediaGridItem[] => {
 	return data.data.map(album => ({
 		name: album.name,
 		image: album.image,
@@ -28,7 +28,7 @@ const migrateDataFormat = (data: GETLastFMAlbums): MediaGridItem[] => {
 	}));
 };
 
-const { loading, error, data, useFetch } = useWorker<GETLastFMAlbums>('lastfm/albums');
+const { loading, error, data, useFetch } = useWorker<GETMusicTopAlbums>('music/top-albums');
 
 onMounted(() => useFetch());
 </script>

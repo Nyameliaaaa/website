@@ -11,14 +11,14 @@ import AsyncState from '@components/ui/AsyncState.vue';
 import MediaGrid from '@components/ui/MediaGrid.vue';
 import { useWorker } from '@/composables/useWorker';
 import type { MediaGridItem } from '@lib/types';
-import type { GETLastFMRecent } from '@website/lib';
+import type { GETMusicRecentSongs } from '@website/lib';
 import { onMounted } from 'vue';
 
 const props = defineProps<{
 	preview?: boolean;
 }>();
 
-const migrateDataFormat = (data: GETLastFMRecent): MediaGridItem[] => {
+const migrateDataFormat = (data: GETMusicRecentSongs): MediaGridItem[] => {
 	return data.data.map(track => ({
 		name: track.name,
 		image: track.image,
@@ -32,7 +32,7 @@ const migrateDataFormat = (data: GETLastFMRecent): MediaGridItem[] => {
 	}));
 };
 
-const { loading, error, data, useFetch } = useWorker<GETLastFMRecent>('lastfm/recent');
+const { loading, error, data, useFetch } = useWorker<GETMusicRecentSongs>('music/recent-songs');
 
 onMounted(() => useFetch({ handler: data => (props.preview ? { data: data.data.slice(0, 5) } : data) }));
 </script>

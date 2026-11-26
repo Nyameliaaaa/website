@@ -2,7 +2,7 @@ import { getOrigin } from '@/lib/helpers';
 import { queue } from '@/queue';
 import discord from '@/routes/discord';
 import guestbook from '@/routes/guestbook';
-import lastFM from '@/routes/lastFM';
+import music from '@/routes/music';
 import message from '@/routes/message';
 import rss from '@/routes/rss';
 import statuses from '@/routes/statuses';
@@ -34,7 +34,7 @@ app.onError((err, c) => {
 });
 
 app.route('/api/discord', discord);
-app.route('/api/lastfm', lastFM);
+app.route('/api/music', music);
 app.route('/api/guestbook', guestbook);
 app.route('/api/message', message);
 app.route('/api/statuses', statuses);

@@ -1,6 +1,6 @@
 <template>
 	<div class="mt-3">
-		<MediaGrid v-if="data" :data="migrateDataFormat(data)" />
+		<MediaGrid v-if="data" :data="migrateDataFormat(data)" :clip-data="false" />
 	</div>
 </template>
 

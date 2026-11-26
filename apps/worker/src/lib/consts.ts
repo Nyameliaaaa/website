@@ -1,11 +1,12 @@
-export const LASTFM_PLACEHOLDER_HASH = '2a96cbd8b46e442fc41c2b86b821562f';
-export const LASTFM_BASE = 'https://ws.audioscrobbler.com/2.0';
-export const LASTFM_USER = 'nyamelia';
+export const LISTENBRAINZ_BASE = 'https://api.listenbrainz.org';
+export const LISTENBRAINZ_USER = 'nyameliaaaa';
 
 export const TTL = {
-	MUSICBRAINZ_MBID: 7 * 24 * 60 * 60, // 1 week,
-	LASTFM_RECENT: 5 * 60, // 5 minutes
-	LASTFM_TOP: 1 * 60 * 60, // 1 hour
+	MUSICBRAINZ_MBID: 7 * 24 * 60 * 60, // 1 week
+	DEEZER_ARTIST_AVATAR: 7 * 24 * 60 * 60, // 1 week
+	LISTENBRAINZ_RECENT_SONGS: 5 * 60, // 5 minutes
+	LISTENBRAINZ_TOP_ARTISTS: 30 * 60, // 30 minutes
+	LISTENBRAINZ_TOP_ALBUMS: 24 * 60 * 60, // 1 day
 };
 
 export const NEW_GUESTBOOK_ENTRY_CHANNEL_ID = '1501499421983244338';

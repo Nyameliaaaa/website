@@ -1,11 +1,12 @@
 <template>
 	<div
-		class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+		ref="gridEl"
+		class="grid grid-cols-2 gap-4 [--cols:2] sm:grid-cols-3 sm:[--cols:3] md:grid-cols-4 md:[--cols:4] lg:grid-cols-5 lg:[--cols:5]"
 		role="region"
 		@click.self="activeItem = null"
 	>
 		<a
-			v-for="(item, index) in data"
+			v-for="(item, index) in visibleData"
 			:href="item.url"
 			target="_blank"
 			rel="noopener noreferrer"
@@ -39,15 +40,32 @@
 
 <script setup lang="ts">
 import type { MediaGridItem } from '@lib/types';
-import { onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 
-const { data, aspectRatio = 'aspect-square' } = defineProps<{
+const {
+	data,
+	aspectRatio = 'aspect-square',
+	clipData = true,
+} = defineProps<{
 	data: MediaGridItem[];
 	aspectRatio?: string;
+	clipData?: boolean;
 }>();
+
+const gridEl = ref<HTMLElement | null>(null);
+const cols = ref(2);
 
 const activeItem = ref<string | null>(null);
 let timeout: ReturnType<typeof setTimeout>;
+
+const visibleData = computed(() => {
+	if (clipData) {
+		const fullRows = Math.floor(data.length / cols.value) * cols.value;
+		return data.slice(0, fullRows || data.length);
+	} else {
+		return data;
+	}
+});
 
 const handleClick = (e: MouseEvent, url: string, index: number) => {
 	if (activeItem.value !== `${index}/${url}`) {
@@ -64,5 +82,18 @@ const handleClick = (e: MouseEvent, url: string, index: number) => {
 	}
 };
 
-onUnmounted(() => clearTimeout(timeout));
+const readCols = () => {
+	if (!gridEl.value) return;
+
+	cols.value = Number(getComputedStyle(gridEl.value).getPropertyValue('--cols'));
+};
+
+onMounted(() => {
+	readCols();
+	window.addEventListener('resize', readCols);
+});
+onUnmounted(() => {
+	clearTimeout(timeout);
+	window.removeEventListener('resize', readCols);
+});
 </script>

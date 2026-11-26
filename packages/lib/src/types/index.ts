@@ -1,4 +1,4 @@
 export * from './guestbook';
 export * from './helpers';
-export * from './lastFM';
+export * from './music';
 export * from './status';

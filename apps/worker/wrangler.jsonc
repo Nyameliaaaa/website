@@ -13,7 +13,7 @@
 	],
 	"kv_namespaces": [
 		{
-			"binding": "LASTFM_CACHE",
+			"binding": "REQUEST_CACHE",
 			"id": "6a13a1b9e26044c0a5ce5c1dc4960fad",
 		},
 	],
