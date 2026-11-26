@@ -15,8 +15,8 @@ const ramblings = defineCollection({
 		})
 });
 
-const pages = defineCollection({
-	loader: glob({ base: './src/content/pages', pattern: '**/*.{md,mdx}' }),
+const info = defineCollection({
+	loader: glob({ base: './src/content/info', pattern: '**/*.{md,mdx}' }),
 	schema: () =>
 		z.object({
 			title: z.string(),
@@ -24,4 +24,4 @@ const pages = defineCollection({
 		})
 });
 
-export const collections = { ramblings, pages };
+export const collections = { ramblings, info };

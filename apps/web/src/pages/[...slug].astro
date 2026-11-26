@@ -5,14 +5,14 @@ import WrapLink from '@components/link/WrapLink.astro';
 import Divider from '@components/ui/Divider.astro';
 
 export async function getStaticPaths() {
-	const pages = await getCollection('pages');
-	return pages.map(page => ({
+	const info = await getCollection('info');
+	return info.map(page => ({
 		params: { slug: page.id },
 		props: page,
 	}));
 }
 
-type Props = CollectionEntry<'pages'>;
+type Props = CollectionEntry<'info'>;
 
 const page = Astro.props;
 const { Content, headings } = await render(page);

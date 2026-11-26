@@ -27,14 +27,14 @@
 					leave-to-class="opacity-0"
 					mode="out-in"
 				>
-					<DisclosurePanel :class="['bg-ctp-mantle max-h-128 overflow-y-scroll p-4', outlineLg]">
+					<DisclosurePanel :class="['bg-ctp-mantle max-h-128 overflow-y-scroll px-4 py-2.5', outlineLg]">
 						<ul>
 							<li v-for="(heading, i) in headings" :key="i">
 								<a
 									:href="`#${heading.slug}`"
-									:class="[body, link]"
+									:class="[body, link, 'mb-1.5']"
 									:style="{
-										marginLeft: `calc(2rem * ${hasH1 ? heading.depth - 1 : heading.depth - 2})`,
+										marginLeft: `calc(1.25rem * ${hasH1 ? heading.depth - 1 : heading.depth - 2})`,
 									}"
 								>
 									{{ heading.text === 'Footnotes' ? heading.text.toLowerCase() : heading.text }}
