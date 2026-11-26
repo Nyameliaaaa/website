@@ -33,7 +33,7 @@ export const contactLinks: LinkEntry[] = [
 		url: 'https://bsky.app/profile/nyamelia.is-immensely.gay',
 	},
 	{ label: 'instagram', handle: '@Nyameliaaaa', url: 'https://instagram.com/Nyameliaaaa' },
-	{ label: 'steam', handle: '@nyameliaaaa', url: 'https://steamcommunity.com/id/nyameliaaaa/' },
-	{ label: 'last.fm', handle: '@nyamelia', url: 'https://last.fm/user/nyamelia' },
-	{ label: 'backloggd', handle: '@nyameliaaaa', url: 'https://backloggd.com/u/nyameliaaaa/' },
+	{ label: 'steam', handle: '@nyameliaaaa', url: 'https://steamcommunity.com/id/nyameliaaaa' },
+	{ label: 'listenbrainz', handle: '@nyameliaaaa', url: 'https://listenbrainz.org/user/nyameliaaaa' },
+	{ label: 'backloggd', handle: '@nyameliaaaa', url: 'https://backloggd.com/u/nyameliaaaa' },
 ];
