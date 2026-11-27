@@ -1,6 +1,6 @@
 export interface MediaGridItem {
 	name: string;
-	image: string;
+	imageSet: string[];
 	url: string;
 	secondaryText: string;
 	tertiaryText?: string;

@@ -12,7 +12,7 @@ import { playlists } from '@data/playlists';
 const migrateDataFormat = (data: Playlist[]): MediaGridItem[] => {
 	return data.map(playlist => ({
 		name: playlist.name,
-		image: playlist.image,
+		imageSet: [playlist.image],
 		url: playlist.url,
 		secondaryText: playlist.content,
 		cardItem: {

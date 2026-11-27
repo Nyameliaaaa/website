@@ -17,7 +17,7 @@ import { onMounted } from 'vue';
 const migrateDataFormat = (data: GETMusicTopAlbums): MediaGridItem[] => {
 	return data.data.map(album => ({
 		name: album.name,
-		image: album.image,
+		imageSet: album.images,
 		url: album.url,
 		secondaryText: album.artist,
 		tertiaryText: `${album.playcount} plays`,

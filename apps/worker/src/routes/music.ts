@@ -28,13 +28,13 @@ music.get('/recent-songs', async c => {
 						name: track.track_metadata.track_name,
 						artist: track.track_metadata.artist_name,
 						album: track.track_metadata.release_name,
-						image: getReleaseCoverUrl({
+						images: getReleaseCoverUrl({
 							caaReleaseMbid: track.track_metadata.mbid_mapping?.caa_release_mbid ?? null,
 							releaseGroupMbid: track.track_metadata.mbid_mapping?.release_group_mbid ?? null,
 							releaseMbid: track.track_metadata.mbid_mapping?.release_mbid ?? null,
 						}),
 						url: `https://musicbrainz.org/recording/${track.track_metadata.mbid_mapping?.recording_mbid}`,
-					}) as MusicRecentSong
+					}) satisfies MusicRecentSong
 			)
 		),
 	};
@@ -60,7 +60,7 @@ music.get('/top-artists', async c => {
 							: `https://musicbrainz.org/search?query=${encodeURIComponent(artist.artist_name)}&type=artist`,
 						playcount: artist.listen_count,
 						image: await getArtistImage(artist.artist_name, 'deezer:artist'),
-					}) as MusicArtist
+					}) satisfies MusicArtist
 			)
 		),
 	};
@@ -83,14 +83,14 @@ music.get('/top-albums', async c => {
 						name: album.release_name,
 						artist: album.artist_name,
 						playcount: album.listen_count,
-						image: getReleaseCoverUrl({
+						images: getReleaseCoverUrl({
 							caaReleaseMbid: album.caa_release_mbid ?? null,
 							releaseMbid: album.release_mbid ?? null,
 						}),
 						url: album.release_mbid
 							? `https://musicbrainz.org/release/${album.release_mbid}`
 							: `https://musicbrainz.org/search?query=${encodeURIComponent(`${album.artist_name} ${album.release_name}`)}&type=release`,
-					}) as MusicAlbum
+					}) satisfies MusicAlbum
 			)
 		),
 	};

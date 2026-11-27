@@ -21,7 +21,7 @@ const props = defineProps<{
 const migrateDataFormat = (data: GETMusicRecentSongs): MediaGridItem[] => {
 	return data.data.map(track => ({
 		name: track.name,
-		image: track.image,
+		imageSet: track.images,
 		url: track.url,
 		secondaryText: track.artist,
 		tertiaryText: track.album,

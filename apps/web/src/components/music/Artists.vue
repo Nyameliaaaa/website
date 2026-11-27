@@ -17,7 +17,7 @@ import { onMounted } from 'vue';
 const migrateDataFormat = (data: GETMusicTopArtists): MediaGridItem[] => {
 	return data.data.map(artist => ({
 		name: artist.name,
-		image: artist.image ?? '',
+		imageSet: [artist.image],
 		url: artist.url,
 		secondaryText: `${artist.playcount} plays`,
 		cardItem: {

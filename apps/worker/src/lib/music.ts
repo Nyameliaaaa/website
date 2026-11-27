@@ -6,22 +6,28 @@ export const getReleaseCoverUrl = (params: {
 	releaseMbid?: string;
 	releaseGroupMbid?: string;
 }) => {
+	const possibleURLs: string[] = [];
+
 	if (params.caaReleaseMbid) {
-		return `https://coverartarchive.org/release/${params.caaReleaseMbid}/front-500`;
+		possibleURLs.push(`https://coverartarchive.org/release/${params.caaReleaseMbid}/front-500`);
 	}
 
 	if (params.releaseMbid) {
-		return `https://coverartarchive.org/release/${params.releaseMbid}/front-500`;
+		possibleURLs.push(`https://coverartarchive.org/release/${params.releaseMbid}/front-500`);
 	}
 
 	if (params.releaseGroupMbid) {
-		return `https://coverartarchive.org/release-group/${params.releaseGroupMbid}/front-500`;
+		possibleURLs.push(`https://coverartarchive.org/release-group/${params.releaseGroupMbid}/front-500`);
 	}
 
-	return 'data:,'; // forces the alt text to show
+	if (possibleURLs.length) {
+		return possibleURLs;
+	}
+
+	return ['data:,']; // forces the alt text to show
 };
 
-export const getArtistImage = async (name: string, key: string): Promise<string | null> => {
+export const getArtistImage = async (name: string, key: string): Promise<string> => {
 	try {
 		const res = await cachedFetch({
 			key: await cacheKey(key, name),
@@ -29,8 +35,8 @@ export const getArtistImage = async (name: string, key: string): Promise<string 
 			ttl: TTL.DEEZER_ARTIST_AVATAR,
 		});
 
-		return res.data?.[0]?.picture_big ?? res.data?.[0]?.picture_medium ?? null;
+		return res.data?.[0]?.picture_big ?? res.data?.[0]?.picture_medium ?? 'data:,';
 	} catch {
-		return null;
+		return 'data:,';
 	}
 };

@@ -19,12 +19,17 @@
 			@click="handleClick($event, item.url, index)"
 			:key="`${index}/${item.url}`"
 		>
-			<img
-				v-if="item.image"
-				:src="item.image"
-				:alt="item.cardItem?.alt ?? ''"
-				class="bg-ctp-crust h-full w-full object-cover transition duration-300 group-hover:opacity-90 group-hover:blur-sm group-[.is-active]:opacity-90"
-			/>
+			<picture>
+				<template v-for="(image, i) in item.imageSet">
+					<source :srcset="image" v-if="i !== 0" />
+				</template>
+				<img
+					v-if="item.imageSet[0]"
+					:src="item.imageSet[0]"
+					:alt="item.cardItem?.alt ?? ''"
+					class="bg-ctp-crust h-full w-full object-cover transition duration-300 group-hover:opacity-90 group-hover:blur-sm group-[.is-active]:opacity-90"
+				/>
+			</picture>
 			<div
 				class="bg-ctp-mantle/60 pointer-events-none absolute inset-0 flex flex-col items-center justify-center p-4 text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-[.is-active]:opacity-100"
 			>

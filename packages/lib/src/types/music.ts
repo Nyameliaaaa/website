@@ -4,7 +4,7 @@ export interface MusicRecentSong {
 	name: string;
 	artist: string;
 	album: string;
-	image: string;
+	images: string[];
 	url: string;
 }
 
@@ -12,12 +12,12 @@ export interface MusicArtist {
 	name: string;
 	url: string;
 	playcount: number;
-	image?: string;
+	image: string;
 }
 
 export interface MusicAlbum {
 	name: string;
-	image: string;
+	images: string[];
 	url: string;
 	artist: string;
 	playcount: string;
