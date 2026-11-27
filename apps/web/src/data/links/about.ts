@@ -1,7 +1,7 @@
 import type { LinkEntry } from '@typings/links';
 
 export const meLinks: LinkEntry[] = [
-	{ label: 'pronouns.page', handle: '@nyamelia', url: 'https://en.pronouns.page/@Nyameliaaaa' },
+	{ label: 'pronouns.page', handle: '@nyameliaaaaa', url: 'https://en.pronouns.page/@Nyameliaaaa' },
 	{ label: 'attraction layer cake', handle: 'rC6', url: 'https://cake.avris.it/rC6' },
 	{ label: 'arvis.it spectrum', handle: 'F4Q2', url: 'https://spectrum.avris.it/F4Q2' },
 ];
