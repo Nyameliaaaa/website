@@ -1,10 +1,9 @@
 ---
-import FormattedDate from '@components/ui/FormattedDate.astro';
-import CopyrightEnd from '@components/layout/CopyrightEnd.vue';
+import { footerLinks } from '@/data/links/navigation';
 import IconLink from '@components/link/IconLink.astro';
 import WrapLink from '@components/link/WrapLink.astro';
 import PixelieImg from '@components/pixelies/PixelieImg.astro';
-import { footerLinks } from '@/data/links/navigation';
+import FormattedDate from '@components/ui/FormattedDate.astro';
 import { footerPixelies } from '@data/pixelies';
 import { caption } from '@lib/classes';
 import { version } from 'vue';
@@ -15,7 +14,7 @@ import { version } from 'vue';
 		<small class="flex flex-col gap-3">
 			<div>
 				<p>
-					&copy; copyright 2017-<CopyrightEnd client:load /> amelia cynthia winters
+					&copy; copyright 2017-{new Date().getFullYear()} amelia cynthia winters
 				</p>
 				<p>
 					ramblings licensed under <WrapLink href="https://creativecommons.org/licenses/by-nc/4.0/">
